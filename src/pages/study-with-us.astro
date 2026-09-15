@@ -12,14 +12,34 @@ const perks = [
   },
   {
     title: 'Flexible scheduling',
-    description: 'Meet online at a time that works for you, one-on-one or in a small group, with learning materials included.',
+    description: 'Meet online one-on-one, in a small group, or asynchronously, at times that work around your life.',
   },
+  {
+    title: 'A global network of educators',
+    description: 'Learn with volunteer teachers from 15+ countries, trained to support students learning under difficult circumstances.',
+  },
+  {
+    title: 'Real materials, real support',
+    description: 'A textbook and curated resources are provided for every student, with your progress tracked throughout the term.',
+  },
+  {
+    title: 'Built around your goals',
+    description: 'Whether you are preparing for exams, further study, or remote work, your lessons are shaped around what you want to achieve.',
+  },
+];
+
+const eligibility = [
+  'Palestinian students based in Gaza, the West Bank, or displaced elsewhere because of the war',
+  'Primarily aged 15–20, though every application is considered individually',
+  'Any starting level — from complete beginner to advanced — we assess and place you accurately before matching',
+  'Motivated to build language skills for further study, official exams, or remote work opportunities',
+  'Access to an internet connection and a device for online lessons',
 ];
 
 const steps = [
   {
     number: '01',
-    title: 'Sign Up Free',
+    title: 'Apply Online',
     description: 'Tell us your language, level, and availability — it only takes a few minutes.',
   },
   {
@@ -56,6 +76,15 @@ const steps = [
     </div>
   </section>
 
+  <!-- Closed Notice -->
+  <div class="bg-accent-50 py-4 dark:bg-accent-900/20">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <p class="text-sm font-medium text-accent-800 dark:text-accent-200">
+        Student enrolment is currently closed for the autumn term. Read on to see how it works for when it reopens, or explore our <a href="/services" class="underline hover:no-underline">programmes</a> and <a href="/get-involved" class="underline hover:no-underline">ways to support us</a> in the meantime.
+      </p>
+    </div>
+  </div>
+
   <!-- Why Study With Us -->
   <section class="py-20 lg:py-28">
     <div class="container mx-auto px-4 lg:px-8">
@@ -65,7 +94,7 @@ const steps = [
           Learning that <em class="not-italic text-primary-600 dark:text-primary-400">works for you</em>
         </h2>
       </div>
-      <div class="mt-16 grid gap-8 sm:grid-cols-3">
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {
           perks.map((perk) => (
             <div class="rounded-2xl bg-cream-100 p-8 shadow-sm dark:bg-gray-900">
@@ -74,6 +103,35 @@ const steps = [
             </div>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Can Join -->
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="text-center lg:text-left">
+          <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Who Can Join</div>
+          <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+            Is this <em class="not-italic text-primary-600 dark:text-primary-400">programme for you?</em>
+          </h2>
+          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+            Ramzunā Languages was created specifically for Palestinian students. Here is who we welcome into the programme.
+          </p>
+        </div>
+        <ul class="space-y-4">
+          {
+            eligibility.map((item) => (
+              <li class="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">
+                <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">{item}</span>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   </section>
@@ -103,11 +161,16 @@ const steps = [
   <!-- CTA -->
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
-      <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Ready to Start Learning?</h2>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Sign up for free lessons today — no cost, no catch, just support to help you learn.</p>
-      <a href="/contact" class="mt-8 inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-medium text-primary-600 shadow-lg transition-colors hover:bg-gray-100">
-        Sign Up Free
-      </a>
+      <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Enrolment Is Currently Closed for the Autumn Term</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Thank you for your interest — we are not accepting new students right now. Explore our programmes or help keep every lesson free with a donation.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/services" class="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-medium text-primary-600 shadow-lg transition-colors hover:bg-gray-100">
+          Our Programmes
+        </a>
+        <a href="/donate" class="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-3 font-medium text-white transition-colors hover:bg-white/10">
+          Make a Donation
+        </a>
+      </div>
     </div>
   </section>
 </Base>

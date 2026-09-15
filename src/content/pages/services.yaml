@@ -13,46 +13,48 @@ servicesGrid:
   items:
     - icon: local
       title: English Lessons
-      description: "Conversational and academic English from beginner to advanced, with a focus on real confidence."
+      description: "Conversational and academic English from beginner (A1) to near-native fluency (C1), with a focus on real, usable confidence — not just grammar rules."
       features:
-        - One-on-one or small group
-        - Flexible weekly scheduling
+        - Five CEFR levels, A1 to C1
+        - One-on-one or small group (2-3 students)
+        - 60- or 90-minute weekly lessons
+        - Flexible scheduling around your week
         - Learning materials included
     - icon: longDistance
       title: French Lessons
-      description: Structured French instruction with native and fluent speakers from around the world.
+      description: "Structured French instruction from first words (A1) to near-native mastery (C1), taught by native and fluent volunteer speakers."
       features:
-        - Grammar & vocabulary building
-        - Weekly conversation practice
-        - Beginner to advanced levels
+        - Five CEFR levels, A1 to C1
+        - One-on-one or small group (2-3 students)
+        - 60- or 90-minute weekly lessons
+        - Grammar, vocabulary & real conversation
+        - DELF/DALF exam preparation available
     - icon: commercial
       title: German Lessons
-      description: "Step-by-step German instruction, from the alphabet to advanced conversation."
+      description: "Step-by-step German instruction from the alphabet (A1) to advanced, near-native conversation (C1)."
       features:
-        - Structured curriculum
-        - Speaking-focused lessons
-        - Goethe-Institut exam prep available
+        - Five CEFR levels, A1 to C1
+        - One-on-one or small group (2-3 students)
+        - 60- or 90-minute weekly lessons
+        - Speaking-focused, structured curriculum
+        - Goethe-Institut exam preparation available
     - icon: packing
       title: Conversation Partners
-      description: Low-pressure, weekly conversation practice to build fluency and confidence in any of our three languages.
+      description: "Weekly, low-pressure conversation practice in English, French or German — built to grow fluency and confidence through real conversation, not textbook drills."
       features:
-        - No homework, just conversation
-        - Flexible, casual scheduling
-        - Great alongside formal lessons
-    - icon: storage
-      title: Group Workshops
-      description: Small-group classes for students who learn best alongside peers, on grammar, writing, and speaking.
-      features:
-        - Small groups of 3-5 students
-        - Peer learning environment
-        - Rotating monthly topics
+        - One 60-minute video call each week, one-on-one
+        - No homework, no grading, no fixed curriculum
+        - You and your partner choose the topics together
+        - Great alongside formal lessons, or on its own
+        - Ideal for students who already know the basics and want to speak more
     - icon: specialty
       title: Exam Preparation
-      description: "Focused, one-on-one coaching for IELTS, TOEFL, DELF, and Goethe-Institut certification exams."
+      description: "Focused, one-on-one coaching to prepare for IELTS, TOEFL, DELF, DALF, and Goethe-Institut certification exams."
       features:
         - Practice tests included
         - Experienced exam tutors
         - Personalised study plan
+        - Available from Intermediate (B1) level upward
 
 # Process Section
 process:
@@ -74,8 +76,8 @@ process:
 
 # CTA Section
 cta:
-  title: Ready to Start Learning?
-  description: "Sign up for free lessons today — no cost, no catch, just support to help you learn."
+  title: Applications Are Currently Closed for the Autumn Term
+  description: "Enrolment and volunteer applications are currently closed for the autumn term. Thank you for your interest — you can still support our work with a donation."
   primaryCta:
-    text: Sign Up Free
-    url: /contact
+    text: Make a Donation
+    url: /donate

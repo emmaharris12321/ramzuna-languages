@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   compressHTML: true,
-  site: 'https://ramzunalanguages.org',
+  site: 'https://example.com',
   vite: {
     plugins: [tailwindcss()],
   },

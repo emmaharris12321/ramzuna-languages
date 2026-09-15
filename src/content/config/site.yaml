@@ -26,9 +26,6 @@ address:
 # Header Settings
 header:
   darkMode: true
-  cta:
-    text: Home
-    url: "/"
 
 # Navigation
 nav:
@@ -50,12 +47,12 @@ nav:
         url: /teach-with-us
       - text: Become a Conversation Partner
         url: /become-a-conversation-partner
-  - text: Stories
-    children:
-      - text: Student Stories
-        url: "/#testimonials"
-      - text: Palestinian Voices
-        url: /palestinian-voices
+      - text: Partner With Us
+        url: /partners
+      - text: Donate
+        url: /donate
+  - text: Palestinian Voices
+    url: /palestinian-voices
   - text: Blog
     url: /blog
   - text: Resources

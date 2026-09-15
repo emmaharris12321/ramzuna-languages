@@ -80,6 +80,13 @@ const { showTeach = true, showInvolved = true } = Astro.props;
     }
   }
 
+  .ramzuna-programmes .rz-closed-note {
+    margin: 10px 0 0;
+    color: #7a222b;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
   .ramzuna-programmes .rz-head::after {
     content: "";
     display: block;
@@ -293,6 +300,39 @@ const { showTeach = true, showInvolved = true } = Astro.props;
       text-underline-offset: 4px;
     }
   }
+
+  /* Bigger, roomier cards on desktop — mobile stays exactly as-is */
+  @media (min-width: 1280px) {
+    .ramzuna-programmes {
+      max-width: 1120px;
+    }
+
+    .ramzuna-programmes .rz-card {
+      padding: 34px 30px;
+      border-radius: 20px;
+    }
+
+    .ramzuna-programmes .rz-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      font-size: 26px;
+    }
+
+    .ramzuna-programmes .rz-card h3 {
+      font-size: 1.3rem;
+    }
+
+    .ramzuna-programmes .rz-description {
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .ramzuna-programmes .rz-link,
+    .ramzuna-programmes .rz-button {
+      font-size: 15px;
+    }
+  }
 </style>
 
 <div class="ramzuna-programmes">
@@ -317,11 +357,11 @@ const { showTeach = true, showInvolved = true } = Astro.props;
                 <span class="rz-link-label">English Classes</span>
                 <span class="rz-arrow" aria-hidden="true">→</span>
               </a>
-              <a href="/services" class="rz-link">
+              <a href="/french-classes" class="rz-link">
                 <span class="rz-link-label">French Classes</span>
                 <span class="rz-arrow" aria-hidden="true">→</span>
               </a>
-              <a href="/services" class="rz-link">
+              <a href="/german-classes" class="rz-link">
                 <span class="rz-link-label">German Classes</span>
                 <span class="rz-arrow" aria-hidden="true">→</span>
               </a>
@@ -332,8 +372,9 @@ const { showTeach = true, showInvolved = true } = Astro.props;
             <div class="rz-icon" aria-hidden="true">💬</div>
             <h3>Conversations &amp; Asynchronous Learning</h3>
             <p class="rz-description">
-              Conversation sessions and asynchronous learning for students
-              whose internet does not enable them to join live lessons.
+              Weekly, one-on-one conversation practice with no fixed curriculum,
+              plus self-paced asynchronous learning for students whose internet
+              does not enable them to join live lessons.
             </p>
             <div class="rz-links">
               <a href="/services" class="rz-link">
@@ -380,6 +421,7 @@ const { showTeach = true, showInvolved = true } = Astro.props;
         <header class="rz-head">
           <p class="rz-eyebrow">Join the effort</p>
           <h2>Get Involved</h2>
+          <p class="rz-closed-note">Student enrolment and volunteer applications are currently closed for the autumn term.</p>
         </header>
 
         <div class="rz-grid">
@@ -388,10 +430,11 @@ const { showTeach = true, showInvolved = true } = Astro.props;
             <h3>Teach with Us</h3>
             <p class="rz-description">
               Share your knowledge and teach English, French or German
-              to Palestinian students.
+              to Palestinian students. Applications are closed for the
+              autumn term — read about the role for when they reopen.
             </p>
-            <a href="/get-involved" class="rz-button">
-              Apply Now
+            <a href="/teach-with-us" class="rz-button">
+              Learn More
               <span class="rz-arrow" aria-hidden="true">→</span>
             </a>
           </article>
@@ -401,10 +444,11 @@ const { showTeach = true, showInvolved = true } = Astro.props;
             <h3>Become a Language Partner</h3>
             <p class="rz-description">
               Support Palestinian students as they improve their
-              conversation skills.
+              conversation skills. Applications are closed for the
+              autumn term — read about the role for when they reopen.
             </p>
-            <a href="/get-involved" class="rz-button">
-              Join Us
+            <a href="/become-a-conversation-partner" class="rz-button">
+              Learn More
               <span class="rz-arrow" aria-hidden="true">→</span>
             </a>
           </article>
@@ -413,9 +457,9 @@ const { showTeach = true, showInvolved = true } = Astro.props;
             <div class="rz-icon" aria-hidden="true">🤝</div>
             <h3>Make a Donation</h3>
             <p class="rz-description">
-              Help us continue our work and reach more students.
+              Help us continue our work and reach more students — this stays open any time.
             </p>
-            <a href="/get-involved" class="rz-button">
+            <a href="/donate" class="rz-button">
               Donate Now
               <span class="rz-arrow" aria-hidden="true">→</span>
             </a>

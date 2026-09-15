@@ -55,15 +55,15 @@ team:
   title: Our Team & Coordinators
   description: A small core team supports our global network of volunteer educators.
   members:
-    - name: Programme Director
-      role: "Founder & Programme Lead"
+    - name: Juliette D.
+      role: "Founder and President"
       image: "/assets/img/avatar-placeholder.svg"
-    - name: Volunteer Coordinator
-      role: Educator Onboarding & Training
+    - name: Kim P.
+      role: Teacher Coordinator
       image: "/assets/img/avatar-placeholder.svg"
-    - name: Student Coordinator
-      role: Student Matching & Support
+    - name: Rawan S.
+      role: Student Coordinator
       image: "/assets/img/avatar-placeholder.svg"
-    - name: Community Liaison
-      role: Palestine-Based Outreach
+    - name: Shams R.
+      role: Community Liaison
       image: "/assets/img/avatar-placeholder.svg"

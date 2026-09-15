@@ -9,6 +9,7 @@ interface Props {
   secondaryCta?: { text: string; url: string; icon?: boolean };
   stats?: { value: string; label: string }[];
   image?: string;
+  note?: string;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   secondaryCta,
   stats,
   image,
+  note,
 } = Astro.props;
 ---
 
@@ -121,6 +123,18 @@ const {
             )
           }
         </div>
+
+        {
+          note && (
+            <p
+              class="mt-4 text-sm text-gray-500 dark:text-gray-500"
+              data-animate="fade-in-up"
+              data-delay="350"
+            >
+              {note}
+            </p>
+          )
+        }
 
         {
           stats && stats.length > 0 && (

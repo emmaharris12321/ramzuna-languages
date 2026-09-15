@@ -1,7 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
 import ProgrammesAndInvolved from '@/components/sections/ProgrammesAndInvolved.astro';
-import FAQ from '@/components/sections/FAQ.astro';
 import { getPage } from '@/data/site';
 
 const page = await getPage('get-involved');
@@ -22,7 +21,6 @@ const page = await getPage('get-involved');
   </section>
 
   <ProgrammesAndInvolved showTeach={false} />
-  {page.faq && <FAQ {...page.faq} />}
 
   <!-- CTA Section -->
   {

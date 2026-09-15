@@ -23,6 +23,25 @@ const blog = defineCollection({
 });
 
 // ============================================
+// Voices Collection (Markdown poems/stories)
+// Edit: src/content/voices/*.md
+// ============================================
+const voices = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/voices' }),
+  schema: z.object({
+    author: z.string(),
+    title: z.string(),
+    arabicTitle: z.string().optional(),
+    tag: z.string().default('Poem'),
+    bio: z.string().optional(),
+    excerpt: z.string().optional(),
+    readTime: z.string().optional(),
+    coverImage: z.string().optional(),
+    draft: z.boolean().optional().default(false),
+  }),
+});
+
+// ============================================
 // Site Config Collection (YAML)
 // Edit: src/content/config/site.yaml
 // ============================================
@@ -86,4 +105,4 @@ const pages = defineCollection({
   }).passthrough(),
 });
 
-export const collections = { blog, config, homepage, pages };
+export const collections = { blog, config, homepage, pages, voices };

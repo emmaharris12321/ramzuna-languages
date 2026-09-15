@@ -60,33 +60,14 @@ pricing:
           included: true
         - text: One-time gifts welcome
           included: true
-        - text: Corporate partnerships available
-          included: false
-
-# FAQ
-faq:
-  badge: FAQ
-  title: Questions About Getting Involved
-  description: Answers for prospective students, volunteers, and donors.
-  items:
-    - question: Do I need teaching experience to volunteer?
-      answer: "No formal teaching experience is required — just fluency in English, French, or German and a willingness to learn our onboarding process. We provide free training for all new volunteers."
-    - question: How much time does volunteering take?
-      answer: "Most volunteer educators teach one hour per week, though some choose to take on more students. You set your own availability when you sign up."
-    - question: Where does my donation go?
-      answer: "Donations fund our coordination team, learning materials, and the technology that connects students and educators. Every lesson itself remains free for students."
-    - question: Can organisations partner with Ramzunā Languages?
-      answer: "Yes — we welcome partnerships with schools, companies, and other nonprofits. Reach out through our contact page to start the conversation."
-    - question: Is there a minimum commitment for students?
-      answer: "We ask students to commit to regular weekly lessons so both they and their volunteer educator can build momentum, but there is no long-term contract."
 
 # CTA Section
 cta:
-  title: Every Role Makes a Difference
-  description: "Whether you learn, teach, or give — you are helping build language access for students who need it most."
+  title: Every Donation Makes a Difference
+  description: "Enrolment and volunteer applications are currently closed for the autumn term, but you can still help build language access for students who need it most."
   primaryCta:
-    text: Sign Up to Learn
-    url: "/contact"
+    text: Our Programmes
+    url: "/services"
   secondaryCta:
-    text: Apply to Volunteer
-    url: /contact
+    text: Make a Donation
+    url: /donate

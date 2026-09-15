@@ -14,12 +14,13 @@ hero:
     - Should Cross Every Border
   description: Ramzunā Languages pairs Palestinian students with volunteer educators around the world for free, personalised English, French, and German lessons — no fees, ever.
   primaryCta:
-    text: Sign Up Free
-    url: "/contact"
+    text: Our Programmes
+    url: "/services"
   secondaryCta:
-    text: "Become a Volunteer"
+    text: "Support With a Donation"
     url: "/get-involved"
     icon: true
+  note: "Student enrolment and volunteer applications are currently closed for the autumn term. Thank you for your interest — explore our programmes or support our work with a donation."
   stats:
     - value: "712+"
       label: Hours Delivered
@@ -30,17 +31,6 @@ hero:
     - value: "1:4"
       label: Teacher-Student Ratio
   image: "/assets/img/illustration-hero.svg"
-
-# Stats Section
-stats:
-  - value: "3000+"
-    label: Students Reached
-  - value: "600+"
-    label: Volunteer Educators
-  - value: "15+"
-    label: Countries Represented
-  - value: "5+"
-    label: Years Running
 
 # How We Teach Section
 services:
@@ -196,8 +186,6 @@ pricing:
           included: true
         - text: One-time gifts welcome
           included: true
-        - text: Corporate partnerships available
-          included: false
   note: "Every learning programme stays free for students — donations cover coordination, materials, and platform costs."
 
 # Testimonials Section
@@ -256,11 +244,11 @@ faq:
 
 # CTA Section
 cta:
-  title: Ready to Start Learning — or Start Teaching?
-  description: "Join thousands of students and hundreds of volunteer educators building language access, one lesson at a time."
+  title: Applications Are Currently Closed for the Autumn Term
+  description: "Enrolment for students and applications for volunteer educators are currently closed for the autumn term. In the meantime, explore our programmes or help us keep every lesson free with a donation."
   primaryCta:
-    text: Sign Up Free
-    url: "/contact"
+    text: Our Programmes
+    url: "/services"
   secondaryCta:
-    text: Become a Volunteer
-    url: "/get-involved"
+    text: Make a Donation
+    url: "/donate"

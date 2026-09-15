@@ -296,6 +296,41 @@
       transition: none;
     }
   }
+
+  /* Bigger, more prominent testimonials on desktop — mobile stays as-is */
+  @media (min-width: 1280px) {
+    .tm-section .tm-wrap {
+      max-width: 760px;
+    }
+
+    .tm-section .tm-card {
+      padding: 40px;
+      border-radius: 20px;
+    }
+
+    .tm-section .tm-quote-mark {
+      font-size: 48px;
+    }
+
+    .tm-section .tm-quote {
+      font-size: 19px;
+      line-height: 1.75;
+    }
+
+    .tm-section .tm-avatar {
+      width: 44px;
+      height: 44px;
+      font-size: 14px;
+    }
+
+    .tm-section .tm-name {
+      font-size: 16px;
+    }
+
+    .tm-section .tm-role {
+      font-size: 14px;
+    }
+  }
 </style>
 
 <section class="tm-section" data-testimonials aria-label="What our community says">

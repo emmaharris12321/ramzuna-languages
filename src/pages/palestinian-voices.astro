@@ -1,10 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
+
+const voicePosts = await getCollection('voices', ({ data }) => !data.draft);
+const excerptBySlug = new Map(voicePosts.map((v) => [v.id, v.data.excerpt]));
 
 interface Poem {
   title: string;
   tag: string;
-  url?: string;
+  slug?: string;
 }
 
 interface Author {
@@ -17,37 +21,40 @@ const authors: Author[] = [
   {
     name: 'Amira',
     bio: 'Amira is a Palestinian translation student and writer. She writes to document the genocide Palestinians have endured, and she translates her words so the story of Palestinians reaches the world, ensuring it is never forgotten.',
-    poems: [{ title: 'To My Brother', tag: 'Poem', url: 'https://ramzunalanguages.org/amira' }],
+    poems: [{ title: 'To My Brother', tag: 'Poem' }],
   },
   {
     name: 'Arwa',
     bio: 'Arwa is a junior student at the Islamic University of Gaza, majoring in English translation and Literature. She turns to poetry and prose to translate silence into language and pain into meaning, believing that words are powerful tools of resistance, awareness, and transformation.',
-    poems: [{ title: 'Kindle the Spark', tag: 'Poem', url: 'https://ramzunalanguages.org/palestinian-poet-arwa' }],
+    poems: [{ title: 'Kindle the Spark', tag: 'Poem' }],
   },
   {
     name: 'Mais',
     bio: 'Mais is only fourteen, yet her dreams far exceed her years. Mais believes learning is a never-ending journey. She dreams of becoming someone of value and influence who leaves a positive mark on her community and is remembered for her kindness and achievements.',
-    poems: [{ title: 'Meeting My New Self', tag: 'Poem', url: 'https://ramzunalanguages.org/palestinian-poet-mais' }],
+    poems: [
+      { title: 'Meeting My New Self', tag: 'Poem' },
+      { title: 'I Am Still Here', tag: 'Poem', slug: 'mais-i-am-still-here' },
+    ],
   },
   {
     name: 'Marah',
     bio: 'Twenty-two-year-old Marah started writing during the war, focusing on her experiences of trying not just to survive but also to live with her family. Writing is not a choice to her — it is a way to survive.',
     poems: [
-      { title: 'A Day of Breathing Life', tag: 'Chapter 1', url: 'https://ramzunalanguages.org/a-day-of-breathing-life-chapter-1' },
-      { title: 'A Day of Breathing Life', tag: 'Chapter 2', url: 'https://ramzunalanguages.org/a-day-of-breathing-life-chapter-2' },
-      { title: 'A Day of Breathing Life', tag: 'Chapter 3', url: 'https://ramzunalanguages.org/a-day-of-breathing-life-chapter-3' },
-      { title: 'A Day of Breathing Life', tag: 'Chapter 4', url: 'https://ramzunalanguages.org/a-day-of-breathing-life-chapter-4' },
-      { title: 'A Day of Breathing Life', tag: 'Chapter 5', url: 'https://ramzunalanguages.org/a-day-of-breathing-life-chapter-5' },
-      { title: 'A Day of Breathing Life', tag: 'Chapter 6', url: 'https://ramzunalanguages.org/a-day-of-breathing-life-chapter-5-copy' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 1' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 2' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 3' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 4' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 5' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 6' },
     ],
   },
   {
     name: 'Noor',
     bio: 'Noor is a student in English Literature and Translation who is passionate about writing. She aims to use her craft to share the voice of Gaza with the world.',
     poems: [
-      { title: 'Between North and South', tag: 'Poem', url: 'https://ramzunalanguages.org/noor-2' },
-      { title: 'To My Beloved Home', tag: 'Poem', url: 'https://www.ramzunalanguages.org/my-beloved-home' },
-      { title: 'Just Write', tag: 'Poem', url: 'https://www.ramzunalanguages.org/just-write-gaza' },
+      { title: 'Between North and South', tag: 'Poem', slug: 'noor-between-north-and-south' },
+      { title: 'To My Beloved Home', tag: 'Poem' },
+      { title: 'Just Write', tag: 'Poem' },
       { title: 'Grey', tag: 'Poem' },
       { title: 'Midnight', tag: 'Poem' },
       { title: 'A Letter From Gaza to Santa Claus', tag: 'Poem' },
@@ -57,15 +64,15 @@ const authors: Author[] = [
     name: 'Shams',
     bio: 'Shams has a bachelor’s degree in English Language and Teaching Methods from Al-Aqsa University in Gaza. She is passionate about creative writing and translation, believing in the power of words to express resilience and hope.',
     poems: [
-      { title: 'The Sun of Hope', tag: 'Poem', url: 'https://ramzunalanguages.org/shams-sun-of-hope' },
-      { title: 'A Spring in Autumn', tag: 'Poem', url: 'https://ramzunalanguages.org/shams-spring-in-autumn' },
+      { title: 'The Sun of Hope', tag: 'Poem' },
+      { title: 'A Spring in Autumn', tag: 'Poem' },
     ],
   },
   {
     name: 'Shahed',
     bio: 'Shahed is a Palestinian poet who writes from the heart of lived experience. Even when life shuts the door, she finds ways to reach out through her letters, believing that true connection cannot be measured by maps or blocked by walls.',
     poems: [
-      { title: 'The Door I No Longer Knock On', tag: 'Poem', url: 'https://ramzunalanguages.org/shahed' },
+      { title: 'The Door I No Longer Knock On', tag: 'Poem' },
       { title: 'Ash', tag: 'Poem' },
     ],
   },
@@ -223,48 +230,63 @@ function isSeries(author: Author): boolean {
                         <p class="font-semibold text-gray-900 dark:text-white">{author.poems[0].title}</p>
                         <p class="mt-0.5 text-sm text-gray-500 dark:text-gray-400">A story in {author.poems.length} chapters</p>
                       </div>
-                      <a
-                        href={author.poems[0].url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class:list={[
-                          'mt-1 flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5',
-                          solidBtn,
-                        ]}
-                      >
-                        Start Reading — Chapter 1 <span aria-hidden="true">→</span>
-                      </a>
-                      <div class="mt-1 flex flex-wrap items-center justify-center gap-2">
-                        {author.poems.slice(1).map((poem, pi) => (
+                      {author.poems[0].slug ? (
+                        <>
                           <a
-                            href={poem.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href={`/voices/${author.poems[0].slug}`}
                             class:list={[
-                              'rounded-full px-3 py-1.5 text-xs font-semibold transition-colors',
-                              tone === 'primary'
-                                ? 'bg-primary-100 text-primary-700 hover:bg-primary-600 hover:text-white dark:bg-primary-900/50 dark:text-primary-300'
-                                : 'bg-accent-100 text-accent-700 hover:bg-accent-600 hover:text-white dark:bg-accent-900/50 dark:text-accent-300',
+                              'mt-1 flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5',
+                              solidBtn,
                             ]}
                           >
-                            Ch. {pi + 2}
+                            Start Reading — Chapter 1 <span aria-hidden="true">→</span>
                           </a>
-                        ))}
-                      </div>
+                          <div class="mt-1 flex flex-wrap items-center justify-center gap-2">
+                            {author.poems.slice(1).map((poem, pi) =>
+                              poem.slug ? (
+                                <a
+                                  href={`/voices/${poem.slug}`}
+                                  class:list={[
+                                    'rounded-full px-3 py-1.5 text-xs font-semibold transition-colors',
+                                    tone === 'primary'
+                                      ? 'bg-primary-100 text-primary-700 hover:bg-primary-600 hover:text-white dark:bg-primary-900/50 dark:text-primary-300'
+                                      : 'bg-accent-100 text-accent-700 hover:bg-accent-600 hover:text-white dark:bg-accent-900/50 dark:text-accent-300',
+                                  ]}
+                                >
+                                  Ch. {pi + 2}
+                                </a>
+                              ) : (
+                                <span class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-semibold text-gray-400 dark:bg-gray-900/40 dark:text-gray-500">
+                                  Ch. {pi + 2}
+                                </span>
+                              )
+                            )}
+                          </div>
+                        </>
+                      ) : (
+                        <div class="flex items-center justify-center gap-1.5 rounded-lg bg-gray-50 px-4 py-2.5 text-xs italic text-gray-400 dark:bg-gray-900/40 dark:text-gray-500">
+                          Coming soon
+                        </div>
+                      )}
                     </>
                   ) : (
                     author.poems.map((poem) =>
-                      poem.url ? (
+                      poem.slug ? (
                         <a
-                          href={poem.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class:list={['group/poem flex items-center justify-between gap-3 rounded-xl px-4 py-3 font-semibold text-gray-900 transition-colors dark:text-white', tintRow]}
+                          href={`/voices/${poem.slug}`}
+                          class:list={['group/poem flex flex-col gap-1 rounded-xl px-4 py-3 font-semibold text-gray-900 transition-colors dark:text-white', tintRow]}
                         >
-                          <span>{poem.title}</span>
-                          <span class="flex flex-shrink-0 items-center gap-1 text-xs font-bold uppercase tracking-wide opacity-70 transition-opacity group-hover/poem:opacity-100">
-                            Read <span aria-hidden="true">→</span>
+                          <span class="flex items-center justify-between gap-3">
+                            <span>{poem.title}</span>
+                            <span class="flex flex-shrink-0 items-center gap-1 text-xs font-bold uppercase tracking-wide opacity-70 transition-opacity group-hover/poem:opacity-100">
+                              Read <span aria-hidden="true">→</span>
+                            </span>
                           </span>
+                          {excerptBySlug.get(poem.slug) && (
+                            <span class="text-sm font-normal italic leading-snug opacity-80">
+                              &ldquo;{excerptBySlug.get(poem.slug)}&rdquo;
+                            </span>
+                          )}
                         </a>
                       ) : (
                         <div class="flex items-center justify-between gap-3 rounded-xl bg-gray-50 px-4 py-3 text-gray-400 dark:bg-gray-900/40 dark:text-gray-500">
