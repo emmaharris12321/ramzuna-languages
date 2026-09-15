@@ -1,0 +1,59 @@
+---
+import Base from '@/layouts/Base.astro';
+
+const principles = [
+  { title: 'Educator Vetting', description: 'Every volunteer completes an application, a language check, and an interview before being matched with a student.' },
+  { title: 'Ongoing Check-Ins', description: 'Coordinators regularly check in with students and educators to make sure lessons stay positive and productive.' },
+  { title: 'Clear Reporting', description: 'Anyone can report a concern about a lesson, an educator, or the platform at any time, confidentially.' },
+  { title: 'Fast Response', description: 'Safeguarding reports are reviewed by our coordination team within 48 hours.' },
+];
+---
+
+<Base title="Safeguarding" description="How Ramzunā Languages keeps students safe and how to report a concern.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Safeguarding</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        Student safety and wellbeing come first in everything we do. Here is how we protect it, and how to reach us with a concern.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <span class="text-white">Safeguarding</span>
+      </nav>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Our Safeguarding Approach</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Every part of our programme is built around keeping students safe.</p>
+      </div>
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          principles.map((item) => (
+            <div class="rounded-2xl bg-cream-100 p-6 text-center shadow-sm dark:bg-gray-900">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h3>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{item.description}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mx-auto mt-16 max-w-2xl rounded-2xl bg-cream-100 p-8 text-center shadow-soft dark:bg-gray-900">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Have a concern to report?</h3>
+        <p class="mt-2 text-gray-600 dark:text-gray-400">
+          Contact our coordination team directly and confidentially — reports are reviewed by our safeguarding lead, not the educator involved.
+        </p>
+        <a
+          href="/contact"
+          class="mt-6 inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-sm font-medium text-white shadow-lg shadow-primary-600/25 transition-all hover:bg-primary-700"
+        >
+          Report a Concern
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

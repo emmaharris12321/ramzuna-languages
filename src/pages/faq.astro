@@ -1,0 +1,345 @@
+---
+import Base from '@/layouts/Base.astro';
+
+interface FaqItem {
+  q: string;
+  a: string[];
+}
+
+interface FaqGroup {
+  num: string;
+  theme: 'primary' | 'accent';
+  title: string;
+  description: string;
+  items: FaqItem[];
+}
+
+const groups: FaqGroup[] = [
+  {
+    num: '01',
+    theme: 'accent',
+    title: 'Students & Learning',
+    description: 'Who the students are, their goals, and the learning support provided.',
+    items: [
+      { q: 'Where are the students based and how old are they?', a: ['Our students are all Palestinians. While most are in Gaza, we also accept students from the West Bank and those who have been displaced due to the war. Our students are predominantly aged between 15 and 20.'] },
+      { q: 'What are the students’ objectives?', a: ['Students’ objectives vary according to their circumstances and needs. These may include improving language skills, preparing for official examinations, or strengthening their remote career prospects. We match students with teachers according to experience, qualifications, and teaching preferences.'] },
+      { q: 'Do you provide any textbooks?', a: ['Yes. We provide a textbook and a curated collection of teaching resources, although you are also welcome to use suitable resources of your own. At the start of the term, teachers receive learning objectives for their students.'] },
+      { q: 'Are volunteers expected to assess or grade students?', a: ['Teachers are expected to assess their students. We provide the student’s initial level and a specific assessment resource for teachers to use. Conversation partners are not expected to conduct assessments; their partners’ levels are provided in advance.'] },
+      { q: 'How should I record and report my student’s progress?', a: ['Teachers receive a specific progress-recording resource, which they must complete by the end of the term.'] },
+    ],
+  },
+  {
+    num: '02',
+    theme: 'primary',
+    title: 'Application & Safeguarding',
+    description: 'The recruitment process, required training, and safeguarding checks.',
+    items: [
+      { q: 'After I apply, what are the next steps?', a: [
+        'After we review your application, you will be invited to complete training in trauma-informed practice and education in emergencies.',
+        'Once we have reviewed your responses and confirmed your understanding of the training, you will sign a volunteer agreement.',
+        'Finally, you will be invited to a group introductory meeting before you begin teaching. If your student is a minor, you will also need to provide a valid, current background check.',
+      ] },
+      { q: 'Why do I need trauma-informed and EIE training?', a: ['The training is a crucial part of the recruitment process. It explains potential triggers for students, offers strategies to minimise them, and provides guidance on teaching students from conflict-affected regions.'] },
+      { q: 'Do you accept volunteers whose first language is not English?', a: ['Yes. We welcome volunteers whose first language is not English, provided that they have an advanced level of English.'] },
+      { q: 'What level of English proficiency is required for volunteers?', a: ['Volunteers need an advanced level of English so that they can communicate clearly and support students effectively.'] },
+      { q: 'Are volunteer teaching positions paid?', a: ['No. All teaching and conversation-partner positions are entirely voluntary and unpaid.'] },
+      { q: 'I won’t be able to complete the training by the deadline. What should I do?', a: ['Contact us as soon as possible, before the deadline. Because we receive a high volume of applications, failure to complete the training on time will usually mean that your application cannot progress.'] },
+      { q: 'I missed the training deadline. What should I do?', a: ['Unfortunately, we cannot accept applications once the training deadline has passed. You are welcome to apply again for the next term when applications reopen.'] },
+      { q: 'Are applications open all year round?', a: [
+        'No. Applications open twice a year, one month before the beginning of each term. We announce reopening dates on our website and social media.',
+        'If applications are closed, you can express your interest and join the waiting list through the relevant buttons on our website. Teachers on the waiting list receive priority notification when applications reopen and may be contacted if a place becomes available earlier.',
+      ] },
+    ],
+  },
+  {
+    num: '03',
+    theme: 'accent',
+    title: 'Lessons & Logistics',
+    description: 'Lesson formats, scheduling, and the platforms used to teach.',
+    items: [
+      { q: 'Are lessons group-based or one-to-one?', a: ['Ramzunā Languages offers one-to-one lessons, small-group lessons for two or three students, and asynchronous learning options.'] },
+      { q: 'What are the lesson times?', a: ['We do not set fixed lesson dates. Instead, teachers and students are matched according to their availability.'] },
+      { q: 'When do sessions usually take place?', a: ['Sessions usually take place in the morning, in the afternoon, or at weekends. We generally advise against evening or night-time sessions because these can be difficult for students in Gaza. However, the final schedule depends on everyone’s circumstances, and we match volunteers and students with similar availability.'] },
+      { q: 'Which platforms are classes held on?', a: ['Live lessons are typically conducted through Google Meet, Zoom, or Microsoft Teams. WhatsApp is also used for ongoing communication because it is the most widely used communication tool in Palestine.'] },
+      { q: 'Am I expected to plan my own lessons?', a: ['Yes. Teachers are expected to plan their lessons using the textbook and curated resources we provide, as well as any suitable resources of their own. Conversation partners should also prepare topics and prompts so that their conversations have a clear purpose.'] },
+      { q: 'Are sessions affected by public holidays, Ramadan, or time-zone changes?', a: ['Time-zone changes do not alter the programme’s general expectations. For Ramadan and public holidays, agree any changes directly with your students. We do not impose a single schedule because arrangements depend on each group’s circumstances.'] },
+    ],
+  },
+  {
+    num: '04',
+    theme: 'primary',
+    title: 'Time & Commitment',
+    description: 'Weekly volunteering and what happens after the initial term.',
+    items: [
+      { q: 'Can I volunteer for more than 90 minutes a week?', a: ['Certainly. If you are available and can commit for three months, you may choose to volunteer for more than 90 minutes each week.'] },
+      { q: 'What happens after three months?', a: ['Three months is the minimum period for which we ask teachers to volunteer. However, we would be delighted if you chose to continue teaching your student beyond the initial term.'] },
+      { q: 'Can I pause or end my volunteering commitment early?', a: ['Volunteers are expected to complete the minimum commitment set out in the code of conduct. This consistency is important for students’ stability. If exceptional circumstances make this impossible, contact us as soon as possible.'] },
+      { q: 'Can volunteers receive a reference or certificate?', a: ['Certificates and awards are provided when volunteers reach the relevant milestones. A certificate depends on completing the required number of weeks and, for teachers, fulfilling the student-assessment requirements. References are considered individually rather than issued automatically.'] },
+    ],
+  },
+  {
+    num: '05',
+    theme: 'accent',
+    title: 'After Matching & Ongoing Support',
+    description: 'Communication, scheduling difficulties, attendance, and support with your student.',
+    items: [
+      { q: 'I’ve just received my match email. What do I do next?', a: ['First, read the teacher handbook carefully, as it contains the information you need. Then contact your student or group and arrange an introductory meeting.'] },
+      { q: 'Who should I contact if I need support during my placement?', a: ['Begin by checking the teacher handbook, textbook, Google Classroom, and online resources. If you still cannot find the information you need, contact the Ramzunā Languages team for support.'] },
+      { q: 'I don’t check my email often. Do we have to communicate by email?', a: ['You may communicate with students through WhatsApp or another mutually agreed platform; WhatsApp is usually the easiest option. Ramzunā Languages communicates with volunteers by email, so you must check your inbox regularly.'] },
+      { q: 'My student isn’t responding to my messages. What can I do?', a: ['Wait four days after your message. If you still have not received a response, contact us so that we can follow up.'] },
+      { q: 'My student and I can’t find a suitable time for our sessions. What should we do?', a: ['Continue discussing possible times and look for a workable compromise. If you genuinely cannot find a suitable arrangement, email us for support.'] },
+      { q: 'My student doesn’t seem to enjoy speaking with me. Can you help?', a: ['This can be normal at the beginning. Trust and confidence take time to develop. Be patient, avoid putting the student under pressure, and use topics and activities connected to their interests. If the situation does not improve, contact us for advice.'] },
+      { q: 'Can I be rematched with a different student?', a: ['Yes, once you have completed the minimum three-month commitment with your current student. If a serious difficulty arises before then, contact us to discuss the situation.'] },
+      { q: 'Can I take on an additional student?', a: ['Yes. If you have enough availability to make an additional commitment, contact us and we will arrange another match where possible.'] },
+      { q: 'Can I request a conversation partner based on criteria such as age or marital status?', a: ['No. We cannot guarantee matches based on personal criteria such as age or marital status. Matches are made primarily according to availability and programme needs.'] },
+      { q: 'What happens if one of my students cannot continue participating in the programme?', a: ['Let us know and continue teaching the other students in the group. We will try to add another student, particularly when the withdrawal happens near the beginning of the term.'] },
+      { q: 'I currently teach one student. Can we switch to a group format?', a: ['Yes. Contact us and we will discuss adding suitable students to create a group.'] },
+      { q: 'My student’s proficiency differs from the level stated in my match information. What should I do?', a: ['Adapt your lesson content, instructions, and activities to the level you observe. Use the assessment resource where applicable, and focus on the student’s demonstrated needs rather than the original level label.'] },
+    ],
+  },
+  {
+    num: '06',
+    theme: 'primary',
+    title: 'Mini-Groups & Teaching Practice',
+    description: 'Group size, communication, participation, mixed levels, feedback, and teaching resources.',
+    items: [
+      { q: 'How many students are typically in a mini-group?', a: ['Mini-groups typically contain three to four students.'] },
+      { q: 'How will volunteers and mini-group members communicate outside sessions?', a: ['We recommend creating a WhatsApp group chat for the volunteer and all mini-group members. This keeps scheduling, reminders, materials, and asynchronous activities in one shared place.'] },
+      { q: 'What should I do if one student is shy or hesitant to participate?', a: ['Never force a student to speak. Use a trauma-informed approach: acknowledge them, give them time, offer low-pressure ways to contribute, and invite rather than demand participation. For example, let them answer in the chat, choose between two options, or prepare before speaking.'] },
+      { q: 'How can I encourage active student participation?', a: ['Use interactive activities such as debates, role plays, polls, games, collaborative tasks, and student-led questions. Ask open-ended questions, connect topics to students’ interests, and make sure each student has meaningful opportunities to contribute.'] },
+      { q: 'How can I keep both students engaged and motivated during a session?', a: ['Vary the pace and activity type, give each student a clear role, and avoid allowing one person to dominate. Use pair exchanges, turn-taking, shared problem-solving, and brief individual tasks. Build activities around the students’ interests and celebrate progress.'] },
+      { q: 'How should I manage different proficiency levels within a mini-group?', a: ['Keep the same overall topic but adjust the level of support and challenge. Give students differentiated tasks, ask questions of varying difficulty, provide sentence starters where needed, and offer extension activities to more advanced students.'] },
+      { q: 'Where can I find more teaching tips and activity ideas?', a: ['You will receive access to Google Classroom and a curated list of teaching resources, activities, and useful websites.'] },
+      { q: 'Do you provide session plans designed specifically for groups?', a: ['No. We provide a textbook and curated resources, but volunteers are responsible for creating session plans that suit their group.'] },
+      { q: 'How should I give feedback to students in a mini-group?', a: ['Give regular positive feedback and recognise each student’s progress. Do not correct every mistake, as this can discourage participation. Focus on errors that affect understanding, recur frequently, or relate directly to the lesson’s language focus. At the end of the session, briefly highlight what went well and one or two priorities for improvement.'] },
+    ],
+  },
+  {
+    num: '07',
+    theme: 'accent',
+    title: 'Safeguarding & Privacy',
+    description: 'Reporting concerns and protecting students’ personal information.',
+    items: [
+      { q: 'What should I do if a student shares something that raises a safeguarding concern?', a: ['Report the concern as soon as possible by emailing [safeguarding@ramzunalanguages.org](mailto:safeguarding@ramzunalanguages.org). Do not investigate the situation yourself or promise complete secrecy; record what was shared accurately and follow the safeguarding guidance in the teacher handbook.'] },
+      { q: 'What information about students must remain confidential?', a: ['All personal information about students must remain confidential, especially their names, phone numbers, contact details, circumstances, and anything they share privately. Do not publish or forward this information outside the authorised programme channels.'] },
+    ],
+  },
+  {
+    num: '08',
+    theme: 'primary',
+    title: 'Attendance & Session Disruptions',
+    description: 'Cancellations, non-attendance, technical problems, and continuity through asynchronous learning.',
+    items: [
+      { q: 'Why are volunteers required to complete attendance forms?', a: ['Attendance forms help us confirm that sessions are taking place and identify where support may be needed. They also provide programme data that allows us to evaluate performance, report our impact, and support grant applications.'] },
+      { q: 'What should I do if I need to cancel or reschedule a session?', a: ['Give your students at least 24 hours’ notice whenever possible. Agree on a new time and arrange a make-up session for every cancelled lesson.'] },
+      { q: 'My student keeps cancelling or missing our sessions. What should I do?', a: ['Speak with the student first to understand what is happening and try to resolve the situation together. If the problem continues, email us. We will follow up and, where necessary, arrange another match.'] },
+      { q: 'No students have joined after 15 minutes. How long should I wait?', a: ['You do not need to wait longer than 15 minutes. If it was a lesson, send the planned material asynchronously. If it was a conversation session, post two or three planned questions in the group chat and tell students when you will review or respond to their answers, so the missed session does not disrupt everyone’s schedule.'] },
+      { q: 'What should I do if one student in my mini-group cannot join a scheduled session?', a: ['Record the absence in the attendance form and continue with the available students. Reschedule only if everyone in the group prefers to do so and can agree on another suitable time.'] },
+      { q: 'What should I do if technical difficulties prevent a live lesson?', a: ['When technical difficulties prevent a live lesson, continue learning asynchronously. Send structured lesson activities consistently, or maintain a planned asynchronous conversation through an agreed messaging platform. Keep the work purposeful and connected to the student’s learning objectives.'] },
+    ],
+  },
+];
+
+const totalQuestions = groups.reduce((sum, g) => sum + g.items.length, 0);
+
+// Converts a single `[label](url)` markdown-style link into an anchor tag.
+// Content is fully author-controlled (defined above), so this is safe to render as HTML.
+function renderAnswer(text: string): string {
+  return text.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    '<a href="$2" class="font-medium text-accent-600 underline decoration-accent-300 underline-offset-2 hover:text-accent-700 dark:text-accent-400">$1</a>'
+  );
+}
+
+// Two rotating tones for the group cards, alternating primary / accent —
+// the same two-colour system used for cards everywhere else on the site
+// (see the Values cards on the About page), rather than introducing a
+// third colour unique to this page.
+type Tone = 'accent' | 'primary';
+const toneOrder: Tone[] = ['primary', 'accent'];
+const toneStyles: Record<Tone, { border: string; mark: string; icon: string; head: string }> = {
+  accent: {
+    border: 'border-accent-500',
+    mark: 'bg-accent-600',
+    icon: 'bg-accent-100 text-accent-700 dark:bg-accent-900/50 dark:text-accent-300',
+    head: 'border-gray-100 dark:border-gray-800',
+  },
+  primary: {
+    border: 'border-primary-500',
+    mark: 'bg-primary-600',
+    icon: 'bg-primary-100 text-primary-700 dark:bg-primary-900/50 dark:text-primary-300',
+    head: 'border-gray-100 dark:border-gray-800',
+  },
+};
+---
+
+<Base title="FAQ" description="Answers to the questions we hear most often about learning and volunteering with Ramzunā Languages.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Frequently Asked Questions</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Everything you need to know about joining, teaching, and learning with us.</p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <span class="text-white">FAQ</span>
+      </nav>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-28" id="faq-page">
+    <div class="container mx-auto px-4 lg:px-8">
+      <!-- Search -->
+      <div class="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-2.5 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div class="relative flex items-center">
+          <svg
+            class="pointer-events-none absolute left-4 h-5 w-5 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+          </svg>
+          <input
+            type="search"
+            data-faq-search
+            placeholder="Search questions and answers..."
+            class="w-full rounded-xl border-0 bg-cream-100 py-3.5 pl-12 pr-20 text-gray-900 placeholder-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500/30 dark:bg-gray-900 dark:text-white dark:placeholder-gray-500"
+          />
+          <button
+            type="button"
+            data-faq-clear
+            hidden
+            class="absolute right-2 rounded-lg px-3 py-2 text-sm font-semibold text-accent-600 transition-colors hover:bg-accent-50 dark:text-accent-400 dark:hover:bg-accent-900/30"
+          >
+            Clear
+          </button>
+        </div>
+        <p class="mt-2 px-2 text-sm text-gray-500 dark:text-gray-400">
+          <span data-faq-count>{totalQuestions}</span> questions across {groups.length} themes
+        </p>
+      </div>
+
+      <!-- Groups -->
+      <div class="mx-auto mt-16 grid max-w-5xl gap-12">
+        {
+          groups.map((group, i) => {
+            const tone = toneStyles[toneOrder[i % toneOrder.length]];
+            return (
+              <div
+                data-faq-group
+                class:list={[
+                  'rounded-2xl border-t-4 bg-white p-6 shadow-sm dark:bg-gray-800 sm:p-10',
+                  tone.border,
+                ]}
+              >
+                <div class:list={['mb-8 flex items-center gap-4 border-b pb-6', tone.head]}>
+                  <span class:list={['flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl text-base font-semibold text-white', tone.mark]}>
+                    {group.num}
+                  </span>
+                  <div>
+                    <h2 class="font-display text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">{group.title}</h2>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{group.description}</p>
+                  </div>
+                </div>
+
+                <div class="grid items-start gap-4 sm:grid-cols-2" data-faq-list>
+                  {
+                    group.items.map((item) => (
+                      <div
+                        class="overflow-hidden rounded-2xl border border-gray-200 bg-cream-100 transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-900/60"
+                        data-faq-item
+                      >
+                        <button type="button" data-faq-toggle class="flex w-full items-center justify-between gap-4 p-5 text-left">
+                          <span class="font-semibold text-gray-900 dark:text-white">{item.q}</span>
+                          <span
+                            class:list={['ml-2 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm transition-transform duration-200', tone.icon]}
+                            data-faq-icon
+                          >
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12M6 12h12" />
+                            </svg>
+                          </span>
+                        </button>
+                        <div class="overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+                          <div class="space-y-3 px-5 pb-5 leading-relaxed text-gray-600 dark:text-gray-400">
+                            {item.a.map((p) => <p set:html={renderAnswer(p)} />)}
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <div class="mx-auto mt-8 hidden max-w-4xl rounded-2xl border border-dashed border-gray-300 p-10 text-center dark:border-gray-700" data-faq-empty>
+        <p class="font-medium text-gray-900 dark:text-white">No matching questions found.</p>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Try a broader term such as &ldquo;lessons&rdquo;, &ldquo;training&rdquo;, or &ldquo;students&rdquo;.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Still have questions?</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Our coordination team is happy to walk you through the details.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/contact" class="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-primary-600 shadow-lg transition-all hover:bg-gray-100">
+          Contact Us
+        </a>
+        <a href="/contact" class="inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">
+          Sign Up Free
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const root = document.getElementById('faq-page');
+      if (!root) return;
+      const input = root.querySelector('[data-faq-search]');
+      const clearBtn = root.querySelector('[data-faq-clear]');
+      const countEl = root.querySelector('[data-faq-count]');
+      const empty = root.querySelector('[data-faq-empty]');
+      const groupEls = Array.from(root.querySelectorAll('[data-faq-group]'));
+      const itemEls = Array.from(root.querySelectorAll('[data-faq-item]'));
+
+      if (!input) return;
+
+      const runFilter = () => {
+        const query = input.value.trim().toLowerCase();
+        let visible = 0;
+
+        itemEls.forEach((item) => {
+          const matches = !query || item.textContent.toLowerCase().includes(query);
+          item.hidden = !matches;
+          if (matches) visible += 1;
+        });
+
+        groupEls.forEach((group) => {
+          const hasVisible = Array.from(group.querySelectorAll('[data-faq-item]')).some((i) => !i.hidden);
+          group.hidden = !hasVisible;
+        });
+
+        if (countEl) countEl.textContent = String(visible);
+        if (empty) empty.classList.toggle('hidden', visible !== 0);
+        if (clearBtn) clearBtn.hidden = !query;
+      };
+
+      input.addEventListener('input', runFilter);
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          input.value = '';
+          runFilter();
+          input.focus();
+        });
+      }
+    })();
+  </script>
+</Base>

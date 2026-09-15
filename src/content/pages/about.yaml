@@ -1,0 +1,69 @@
+# ============================================
+# About Page Content
+# Edit this file to update the About page
+# ============================================
+
+title: About Ramzunā Languages
+description: Free, personalised language education for Palestinian students — powered by volunteer educators worldwide.
+
+# About Us / Our Story / Our Mission Section
+story:
+  badge: About Us
+  title: Language education for Palestinians.
+  lede: "Ramzunā Languages is a non-profit organisation of global educators committed to offering free online English, French and German lessons specifically for Palestinian learners residing in Palestine or having been displaced."
+  ourStory:
+    title: Our Story
+    paragraphs:
+      - "Ramzunā Languages was created by Juliette Delbarre, a seasoned educator, in direct response to the destruction of schools, universities and workplaces in Gaza."
+      - "Ramzunā has since expanded to be composed of Palestinian team members and educators from 15 different nationalities."
+  ourMission:
+    title: Our Mission
+    paragraphs:
+      - "In a time of humanitarian crisis, language is more than just a skill; it is a tool for continuity, economic survival, and personal agency."
+      - "Our mission is to support Palestinian students in overcoming the significant infrastructural and mobility barriers imposed by ongoing conflict."
+      - "Through language instruction, we equip learners with the tools to access remote work, advanced studies, academic exams, and global advocacy networks, ensuring that educational and economic opportunities remain accessible to Palestinians."
+
+# Values Section
+values:
+  title: Our Values
+  description: The principles that guide everything we do.
+  items:
+    - title: "Education — A Human Right"
+      description: "In line with Article 26 of the Universal Declaration of Human Rights, we firmly believe education is a human right, and every Palestinian should have access to it."
+    - title: Empowerment
+      description: "We support students in reinforcing their language skills, preparing them for further study and professional careers, and empowering them to make their voices heard."
+    - title: Justice and Sumud
+      description: "We value justice, dignity, humanity, peace, and the right to continue learning."
+    - title: Community and Transnational Solidarity
+      description: "We are strongly committed to advancing the UN Sustainable Development Goals, particularly Quality Education, Reduced Inequalities, and Peace, Justice and Strong Institutions."
+
+# UN Sustainable Development Goals we align with (shown alongside the
+# "Community and Transnational Solidarity" value)
+sdgs:
+  - number: 4
+    title: Quality Education
+    color: "#C5192D"
+  - number: 10
+    title: Reduced Inequalities
+    color: "#DD1367"
+  - number: 16
+    title: "Peace, Justice and Strong Institutions"
+    color: "#00689D"
+
+# Team Section
+team:
+  title: Our Team & Coordinators
+  description: A small core team supports our global network of volunteer educators.
+  members:
+    - name: Programme Director
+      role: "Founder & Programme Lead"
+      image: "/assets/img/avatar-placeholder.svg"
+    - name: Volunteer Coordinator
+      role: Educator Onboarding & Training
+      image: "/assets/img/avatar-placeholder.svg"
+    - name: Student Coordinator
+      role: Student Matching & Support
+      image: "/assets/img/avatar-placeholder.svg"
+    - name: Community Liaison
+      role: Palestine-Based Outreach
+      image: "/assets/img/avatar-placeholder.svg"
