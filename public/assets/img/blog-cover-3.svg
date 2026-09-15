@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#234132"/>
+  <circle cx="500" cy="55" r="115" fill="white" opacity="0.07"/>
+  <circle cx="65" cy="350" r="135" fill="white" opacity="0.07"/>
+
+  <!-- Two figures -->
+  <g transform="translate(215,235)">
+    <circle cx="0" cy="-58" r="34" fill="#fefaf3"/>
+    <path d="M-58 60 C-58 5 -30 -18 0 -18 C30 -18 58 5 58 60 Z" fill="#fefaf3"/>
+  </g>
+  <g transform="translate(385,235)">
+    <circle cx="0" cy="-58" r="34" fill="#e3bcbe"/>
+    <path d="M-58 60 C-58 5 -30 -18 0 -18 C30 -18 58 5 58 60 Z" fill="#e3bcbe"/>
+  </g>
+
+  <!-- connecting heart -->
+  <g transform="translate(300,205)">
+    <path d="M0 20 C-24 -4 -46 4 -46 -16 C-46 -32 -30 -38 -18 -30 C-10 -25 0 -14 0 -14 C0 -14 10 -25 18 -30 C30 -38 46 -32 46 -16 C46 4 24 -4 0 20 Z" fill="#7a222b"/>
+  </g>
+  <path d="M255 210 L280 200" stroke="#7a222b" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round" opacity="0.7"/>
+  <path d="M345 210 L320 200" stroke="#7a222b" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round" opacity="0.7"/>
+</svg>
