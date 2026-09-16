@@ -1,0 +1,63 @@
+# ============================================
+# Site Configuration
+# Edit this file to change your site settings
+# ============================================
+
+# Site Identity
+name: Ramzunā Languages
+description: Connecting Palestinian students with volunteer educators for free, personalised English, French, and German lessons.
+url: /
+
+# Logo
+logo:
+  src: /assets/img/logo.png
+  srcLight: /assets/img/logo.png
+  alt: Ramzunā Languages
+
+# Contact Information
+phone: "+1 (312) 555-0148"
+email: contacteam@ramzunalanguages.org
+address:
+  street: Remote & Online Programme
+  city: Ramallah
+  state: Palestine
+  zip: ""
+
+# Header Settings
+header:
+  darkMode: true
+
+# Navigation
+nav:
+  - text: About
+    children:
+      - text: About Us
+        url: /about
+      - text: Our Name
+        url: /our-name
+      - text: Our Approach
+        url: /our-approach
+  - text: Programmes
+    url: /services
+  - text: Get Involved
+    children:
+      - text: Study with Us
+        url: /study-with-us
+      - text: Teach with Us
+        url: /teach-with-us
+      - text: Become a Conversation Partner
+        url: /become-a-conversation-partner
+      - text: Partner With Us
+        url: /partners
+      - text: Donate
+        url: /donate
+  - text: Palestinian Voices
+    url: /palestinian-voices
+  - text: Blog
+    url: /blog
+  - text: Resources
+    url: /resources
+  - text: FAQ
+    url: /faq
+  - text: Contact
+    url: /contact

@@ -1,0 +1,73 @@
+# ============================================
+# Get Involved Page Content
+# Edit this file to update the Get Involved page
+# ============================================
+
+title: Get Involved
+description: Three ways to take part in Ramzunā Languages — learn, teach, or support our work.
+
+# Ways to Get Involved
+pricing:
+  badge: Get Involved
+  title: "Choose How You Would Like to Take Part"
+  description: "Every learning programme stays free — here is how the whole community makes that possible."
+  note: "Donations cover coordination, learning materials, and platform costs so every lesson stays free for students."
+  plans:
+    - name: "Learn"
+      size: For students in Palestine
+      price: "Free"
+      features:
+        - text: Matched with a volunteer educator
+          included: true
+        - text: Weekly one-on-one or group lessons
+          included: true
+        - text: Learning materials included
+          included: true
+        - text: Flexible online scheduling
+          included: true
+        - text: Progress check-ins
+          included: true
+        - text: No cost, ever
+          included: true
+    - name: "Teach"
+      size: For volunteer educators
+      price: "Free"
+      popular: true
+      features:
+        - text: Fluent or native in English, French, or German
+          included: true
+        - text: As little as 1 hour a week
+          included: true
+        - text: Free onboarding & training
+          included: true
+        - text: Teach from anywhere in the world
+          included: true
+        - text: Ongoing coordinator support
+          included: true
+        - text: Make a lasting impact
+          included: true
+    - name: "Give"
+      size: For donors & partners
+      price: "$10/mo"
+      features:
+        - text: Sponsors one student's materials
+          included: true
+        - text: Funds coordinator support
+          included: true
+        - text: Helps us reach new regions
+          included: true
+        - text: Monthly impact updates
+          included: true
+        - text: One-time gifts welcome
+          included: true
+
+# CTA Section
+cta:
+  title: Every Donation Makes a Difference
+  description: "Enrolment and volunteer applications are currently closed for the autumn term, but you can still help build language access for students who need it most."
+  primaryCta:
+    text: Our Programmes
+    url: "/services"
+  secondaryCta:
+    text: Make a Donation
+    url: /donate

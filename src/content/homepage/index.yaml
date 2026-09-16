@@ -1,0 +1,254 @@
+# ============================================
+# Homepage Content
+# Edit this file to update your homepage sections
+# ============================================
+
+# Hero Section
+hero:
+  badge: 100% Free, Always
+  title: "Language Access"
+  titleHighlight: "Should Never Be a Privilege"
+  titleRotate:
+    - Should Never Be a Privilege
+    - Should Be Open to Everyone
+    - Should Cross Every Border
+  description: Ramzunā Languages pairs Palestinian students with volunteer educators around the world for free, personalised English, French, and German lessons — no fees, ever.
+  primaryCta:
+    text: Our Programmes
+    url: "/services"
+  secondaryCta:
+    text: "Support With a Donation"
+    url: "/get-involved"
+    icon: true
+  note: "Student enrolment and volunteer applications are currently closed for the autumn term. Thank you for your interest — explore our programmes or support our work with a donation."
+  stats:
+    - value: "712+"
+      label: Hours Delivered
+    - value: "480"
+      label: Lessons Delivered
+    - value: "15"
+      label: Nationalities
+    - value: "1:4"
+      label: Teacher-Student Ratio
+  image: "/assets/img/illustration-hero.svg"
+
+# How We Teach Section
+services:
+  badge: Language Lab
+  title: How We Teach
+  description: Three ways we bring free language access and Palestinian voices to students, wherever they are and whatever their connection allows.
+  items:
+    - icon: graduation
+      title: Language Lessons
+      description: Empowering Palestinian students through general, academic and business language lessons.
+      links:
+        - text: English Classes
+          url: /services
+        - text: French Classes
+          url: /services
+        - text: German Classes
+          url: /services
+    - icon: chat
+      title: Conversations & Asynchronous Learning
+      description: Conversation sessions and asynchronous learning for students whose internet does not enable them to join live lessons.
+      highlight: true
+      links:
+        - text: Conversation Sessions
+          url: /services
+        - text: Asynchronous Learning
+          url: /services
+        - text: Resources
+          url: /resources
+    - icon: megaphone
+      title: Palestinian Poetry & Storytelling
+      description: Publishing Palestinian literature, poetry and art from our students and wider community.
+      links:
+        - text: Storytelling Classes
+          url: /services
+        - text: Palestinian Voices
+          url: /palestinian-voices
+
+# How It Works Section
+howItWorks:
+  badge: How It Works
+  title: From Sign-Up to Fluency in 4 Steps
+  description: We have made it simple to start learning — or to start teaching.
+  steps:
+    - number: "01"
+      title: Sign Up Free
+      description: Tell us your language goals, current level, and availability. It takes less than five minutes.
+    - number: "02"
+      title: Get Matched
+      description: We pair you with a vetted volunteer educator based on your language, level, and schedule.
+    - number: "03"
+      title: Start Learning
+      description: Meet online for regular lessons — one-on-one or in a small group, whatever fits you best.
+    - number: "04"
+      title: Track Your Progress
+      description: Build real fluency over time, with check-ins to keep your learning on course.
+
+# Terms Section
+terms:
+  badge: Academic Calendar
+  title: We Teach Across Three Terms a Year
+  description: Lessons run in structured terms, so students and volunteer educators always know what to expect.
+  items:
+    - name: Autumn Term
+      dates: 27 September – 20 December
+    - name: Spring Term
+      dates: 2 February – 18 May
+    - name: Summer Term
+      dates: Dates to be announced
+      tbd: true
+
+# Reach Section
+areas:
+  badge: Our Reach
+  title: Students in Palestine, Educators Worldwide
+  description: A global volunteer network, built to reach students wherever they are.
+  localAreas:
+    - city: Gaza
+      detail: Active programme
+    - city: West Bank
+      detail: Active programme
+    - city: Ramallah
+      detail: Active programme
+    - city: Nablus
+      detail: Active programme
+    - city: Hebron
+      detail: Active programme
+    - city: Jenin
+      detail: Active programme
+  longDistanceRoutes:
+    - city: United States
+      detail: 180+ educators
+    - city: United Kingdom
+      detail: 95+ educators
+    - city: Canada
+      detail: 60+ educators
+    - city: France
+      detail: 70+ educators
+    - city: Germany
+      detail: 55+ educators
+    - city: Australia
+      detail: 30+ educators
+
+# Get Involved (homepage teaser, reuses Pricing-style card layout)
+pricing:
+  badge: Get Involved
+  title: "Three Ways to Take Part"
+  description: "Whether you want to learn, teach, or support us — there is a place for you."
+  plans:
+    - name: "Learn"
+      size: For students in Palestine
+      price: "Free"
+      features:
+        - text: Matched with a volunteer educator
+          included: true
+        - text: Weekly one-on-one or group lessons
+          included: true
+        - text: Learning materials included
+          included: true
+        - text: Flexible online scheduling
+          included: true
+        - text: Progress check-ins
+          included: true
+        - text: No cost, ever
+          included: true
+    - name: "Teach"
+      size: For volunteer educators
+      price: "Free"
+      popular: true
+      features:
+        - text: Fluent or native in English, French, or German
+          included: true
+        - text: As little as 1 hour a week
+          included: true
+        - text: Free onboarding & training
+          included: true
+        - text: Teach from anywhere in the world
+          included: true
+        - text: Ongoing coordinator support
+          included: true
+        - text: Make a lasting impact
+          included: true
+    - name: "Give"
+      size: For donors & partners
+      price: "$10/mo"
+      features:
+        - text: Sponsors one student's materials
+          included: true
+        - text: Funds coordinator support
+          included: true
+        - text: Helps us reach new regions
+          included: true
+        - text: Monthly impact updates
+          included: true
+        - text: One-time gifts welcome
+          included: true
+  note: "Every learning programme stays free for students — donations cover coordination, materials, and platform costs."
+
+# Testimonials Section
+testimonials:
+  badge: Stories
+  title: Voices From Our Community
+  description: Hear from students and volunteer educators about their experience with Ramzunā Languages.
+  items:
+    - quote: My English tutor has been patient and encouraging every single week. I went from being too shy to speak to leading conversations with confidence.
+      author: Layla
+      role: English Student, Gaza
+      rating: 5
+    - quote: Volunteering just one hour a week has been so rewarding. Watching my student's confidence grow has meant more to me than I expected.
+      author: Sophie M.
+      role: Volunteer French Educator, Canada
+      rating: 5
+    - quote: The German lessons were structured but relaxed, and my tutor always made time to answer my questions. I passed my Goethe exam because of this programme.
+      author: Yousef
+      role: German Student, West Bank
+      rating: 5
+    - quote: Being matched with a dedicated coordinator made the whole process easy from day one. It is clear this programme is run with real care.
+      author: Ahmad & Rana
+      role: English Students, Ramallah
+      rating: 5
+    - quote: I have taught with several volunteer programmes, and this is by far the most organised. The onboarding and ongoing support make it easy to focus on teaching.
+      author: David R.
+      role: Volunteer English Educator, UK
+      rating: 5
+    - quote: My conversation partner helped me practise everyday English I could not learn from textbooks. It made a real difference before my university interviews.
+      author: Noor
+      role: Conversation Partner Student, Nablus
+      rating: 5
+
+# Sign Up Section
+quote:
+  badge: Get Started
+  title: Sign Up for Free Lessons
+  description: Tell us about your language goals and we will match you with a volunteer educator within a few days.
+
+# FAQ Section
+faq:
+  badge: FAQ
+  title: Frequently Asked Questions
+  description: Answers to the questions we hear most often about our programmes.
+  items:
+    - question: Is this really completely free?
+      answer: "Yes. Every lesson, for every student, is entirely free — funded by donations and run by volunteer educators. There are no hidden fees at any stage."
+    - question: How are volunteer educators vetted?
+      answer: "Every educator completes an application, a language proficiency check, and a short interview with our coordination team before being matched with students."
+    - question: Can I choose which language I learn?
+      answer: "Yes — you can request English, French, or German when you sign up, along with your current level and learning goals."
+    - question: How do I become a volunteer educator?
+      answer: "Visit our Get Involved page and fill out the volunteer application. We will walk you through a short onboarding process before matching you with a student."
+    - question: How is Ramzunā Languages funded?
+      answer: "We are funded entirely by individual donations and partner organisations. Every donation goes toward coordination, learning materials, and reaching new students."
+
+# CTA Section
+cta:
+  title: Applications Are Currently Closed for the Autumn Term
+  description: "Enrolment for students and applications for volunteer educators are currently closed for the autumn term. In the meantime, explore our programmes or help us keep every lesson free with a donation."
+  primaryCta:
+    text: Our Programmes
+    url: "/services"
+  secondaryCta:
+    text: Make a Donation
+    url: "/donate"
