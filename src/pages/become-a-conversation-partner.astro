@@ -16,6 +16,36 @@ const perks = [
   },
 ];
 
+const comparison = [
+  {
+    role: 'Volunteer Teacher',
+    points: [
+      'Delivers structured lessons: grammar, vocabulary, and a curriculum building toward a CEFR level',
+      'Weekly 90-minute lesson plus roughly 45 minutes of preparation',
+      'Teaching qualifications or tutoring experience expected',
+      'Tracks a student’s progress against learning objectives over the term',
+    ],
+  },
+  {
+    role: 'Conversation Partner',
+    points: [
+      'No lesson plans, no homework, no grading — just real conversation',
+      'As little as 30 to 60 minutes a week, whenever suits you both',
+      'No teaching background needed — fluency in the language is enough',
+      'You and your student choose the topics together, at your own pace',
+    ],
+  },
+];
+
+const requirements = [
+  'No teaching qualification or experience required — just fluency in the language',
+  'Commitment to a weekly 30–60 minute conversation session for at least 3 months',
+  'A reliable internet connection for online sessions',
+  'Patient, encouraging, and sensitive to trauma-informed conversation practices',
+  'Comfortable letting the student lead the conversation and choose topics',
+  'Commitment to a short note or attendance form after each session',
+];
+
 const steps = [
   {
     number: '01',
@@ -24,16 +54,26 @@ const steps = [
   },
   {
     number: '02',
-    title: 'Short onboarding',
-    description: 'A brief introduction to how conversation sessions work and what students find most helpful.',
+    title: 'Trauma-informed training',
+    description: 'Complete our compulsory trauma-informed/EIE training before your first conversation.',
   },
   {
     number: '03',
-    title: 'Get matched',
-    description: 'We pair you with a student based on your language and availability.',
+    title: 'Sign the volunteer agreement',
+    description: 'Sign our volunteer agreement and code of conduct.',
   },
   {
     number: '04',
+    title: 'Attend the group meeting',
+    description: 'Join a compulsory collective group meeting with the wider volunteer team before you are matched.',
+  },
+  {
+    number: '05',
+    title: 'Get matched with a group',
+    description: 'We pair you with a group of students based on your language and availability.',
+  },
+  {
+    number: '06',
     title: 'Start talking',
     description: 'Meet online for regular conversation practice, with no lesson plan required.',
   },
@@ -90,15 +130,64 @@ const steps = [
     </div>
   </section>
 
+  <!-- Teacher vs Conversation Partner -->
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">What's the Difference?</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Teacher or Conversation Partner?</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Both roles matter. Here's how they differ, so you can pick the one that fits you.</p>
+      </div>
+      <div class="mx-auto mt-16 grid max-w-4xl gap-8 sm:grid-cols-2">
+        {
+          comparison.map((item) => (
+            <div class="rounded-2xl bg-white p-8 shadow-sm dark:bg-gray-800">
+              <h3 class="font-display text-xl font-semibold text-gray-900 dark:text-white">{item.role}</h3>
+              <ul class="mt-4 space-y-3">
+                {item.points.map((point) => (
+                  <li class="flex items-start gap-2 text-gray-600 dark:text-gray-400">
+                    <svg class="mt-1 h-4 w-4 flex-shrink-0 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements -->
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">What We Look For</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">No Teaching Background Needed</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">You do not need to be a teacher — here is what we do ask for.</p>
+      </div>
+      <div class="mx-auto mt-12 grid max-w-3xl gap-4 sm:grid-cols-2">
+        {
+          requirements.map((item) => (
+            <div class="flex items-start gap-3 rounded-xl border border-gray-200 p-4 dark:border-gray-800">
+              <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="text-gray-600 dark:text-gray-400">{item}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <!-- Getting Started -->
   <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
         <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Getting Started</div>
         <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Before Your First Conversation</h2>
-        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Four steps to get matched with a student.</p>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Six steps to get matched with a group of students.</p>
       </div>
-      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {
           steps.map((step) => (
             <div class="text-center">

@@ -12,7 +12,7 @@ const perks = [
   },
   {
     title: 'Flexible scheduling',
-    description: 'Meet online one-on-one, in a small group, or asynchronously, at times that work around your life.',
+    description: 'Meet online in a small group by default, one-to-one for exam prep or special needs, or asynchronously, at times that work around your life.',
   },
   {
     title: 'A global network of educators',
@@ -25,6 +25,40 @@ const perks = [
   {
     title: 'Built around your goals',
     description: 'Whether you are preparing for exams, further study, or remote work, your lessons are shaped around what you want to achieve.',
+  },
+];
+
+const lessonTypes = [
+  {
+    title: 'Small Group Lessons',
+    tag: 'Most students',
+    description: 'Our default format. You learn alongside two or three other students at a similar level, with a volunteer educator, on a regular weekly schedule.',
+    points: [
+      'Weekly 60- or 90-minute sessions',
+      'Textbook and learning materials included',
+      'Built-in peer support and conversation practice',
+    ],
+  },
+  {
+    title: 'One-to-One Lessons',
+    tag: 'Exam prep & special needs',
+    description: 'Individual lessons are reserved for students preparing for an official exam (IELTS, TOEFL, DELF, DALF, Goethe-Institut) or with special educational needs that require individual attention.',
+    points: [
+      'Focused, personalised coaching',
+      'Practice tests for exam candidates',
+      'Available from Intermediate (B1) level upward for exam prep',
+    ],
+  },
+  {
+    title: 'Asynchronous Lessons',
+    tag: 'No live internet needed',
+    description: 'Learn on your own schedule using low-bandwidth materials — built for students without reliable internet for live classes, or when live courses are fully booked.',
+    points: [
+      'Compressed, lightweight PDFs you can download in seconds',
+      'Audio listening exercises with comprehension questions',
+      'Personalised written and voice-note feedback in a dedicated group chat',
+      'Speaking circles — practise speaking by sending and responding to voice messages whenever suits you',
+    ],
   },
 ];
 
@@ -103,6 +137,83 @@ const steps = [
             </div>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Ways to Learn -->
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">How Lessons Work</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Three Ways to Learn</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">We match you to the format that fits your circumstances — most students learn in a small group.</p>
+      </div>
+      <div class="mx-auto mt-16 grid max-w-6xl gap-8 lg:grid-cols-3">
+        {
+          lessonTypes.map((type) => (
+            <div class="flex flex-col rounded-2xl bg-white p-8 shadow-sm dark:bg-gray-800">
+              <div class="mb-3 inline-flex w-fit items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent-700 dark:bg-accent-900/40 dark:text-accent-300">{type.tag}</div>
+              <h3 class="font-display text-xl font-semibold text-gray-900 dark:text-white">{type.title}</h3>
+              <p class="mt-3 text-gray-600 dark:text-gray-400">{type.description}</p>
+              <ul class="mt-4 space-y-2">
+                {type.points.map((point) => (
+                  <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+                    <svg class="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Asynchronous Lessons, in detail -->
+      <div class="mx-auto mt-16 max-w-5xl rounded-2xl border border-accent-200 bg-white p-8 dark:border-accent-900/40 dark:bg-gray-800 lg:p-12">
+        <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/40 dark:text-accent-300">A Closer Look</div>
+        <h3 class="font-display text-2xl font-semibold text-gray-900 dark:text-white">Inside an Asynchronous Lesson</h3>
+        <p class="mt-3 max-w-3xl text-gray-600 dark:text-gray-400">
+          Asynchronous lessons are not boring videos or pre-recorded lectures — they are an engaging, flexible programme in their own right, and we are expanding it because it helps students who cannot join live classes reliably, or who simply want extra practice when live courses are full. Here is what it actually looks like.
+        </p>
+        <div class="mt-8 grid gap-8 sm:grid-cols-2">
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white">Get personalised feedback</h4>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Submit a writing task or an audio recording and receive direct notes on both from your teacher in a dedicated group chat — the same kind of correction and encouragement you would get in a live lesson.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white">Practise speaking asynchronously</h4>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Join speaking circles with other students and respond by voice message on your own schedule — real speaking practice, without needing everyone online at the same time.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white">Grammar and vocabulary in context</h4>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Structured lesson materials — like seeing how the present perfect connects past actions to the present moment — teach real grammar through clear, worked examples, not dry rules.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3v11.25" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white">Low-bandwidth by design</h4>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Compressed PDFs, audio listening exercises, and comprehension questions are all built to download quickly and work offline once saved — so a weak connection is never a barrier to learning.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

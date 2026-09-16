@@ -82,7 +82,7 @@ howItWorks:
       description: We pair you with a vetted volunteer educator based on your language, level, and schedule.
     - number: "03"
       title: Start Learning
-      description: Meet online for regular lessons — one-on-one or in a small group, whatever fits you best.
+      description: Meet online for regular lessons — in a small group by default, or asynchronously on your own schedule.
     - number: "04"
       title: Track Your Progress
       description: Build real fluency over time, with check-ins to keep your learning on course.
@@ -145,7 +145,7 @@ pricing:
       features:
         - text: Matched with a volunteer educator
           included: true
-        - text: Weekly one-on-one or group lessons
+        - text: Weekly small-group lessons (one-to-one for exam prep)
           included: true
         - text: Learning materials included
           included: true

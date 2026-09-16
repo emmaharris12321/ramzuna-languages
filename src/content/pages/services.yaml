@@ -16,8 +16,8 @@ servicesGrid:
       description: "Conversational and academic English from beginner (A1) to near-native fluency (C1), with a focus on real, usable confidence — not just grammar rules."
       features:
         - Five CEFR levels, A1 to C1
-        - One-on-one or small group (2-3 students)
-        - 60- or 90-minute weekly lessons
+        - Small group by default (2-3 students); one-to-one for exam prep or special needs
+        - 60- or 90-minute weekly lessons, or fully asynchronous
         - Flexible scheduling around your week
         - Learning materials included
     - icon: longDistance
@@ -25,8 +25,8 @@ servicesGrid:
       description: "Structured French instruction from first words (A1) to near-native mastery (C1), taught by native and fluent volunteer speakers."
       features:
         - Five CEFR levels, A1 to C1
-        - One-on-one or small group (2-3 students)
-        - 60- or 90-minute weekly lessons
+        - Small group by default (2-3 students); one-to-one for exam prep or special needs
+        - 60- or 90-minute weekly lessons, or fully asynchronous
         - Grammar, vocabulary & real conversation
         - DELF/DALF exam preparation available
     - icon: commercial
@@ -34,10 +34,18 @@ servicesGrid:
       description: "Step-by-step German instruction from the alphabet (A1) to advanced, near-native conversation (C1)."
       features:
         - Five CEFR levels, A1 to C1
-        - One-on-one or small group (2-3 students)
-        - 60- or 90-minute weekly lessons
+        - Small group by default (2-3 students); one-to-one for exam prep or special needs
+        - 60- or 90-minute weekly lessons, or fully asynchronous
         - Speaking-focused, structured curriculum
         - Goethe-Institut exam preparation available
+    - icon: storage
+      title: Asynchronous Lessons
+      description: "For students without reliable internet for live classes, or when live courses are fully booked — engaging, flexible lessons on your own schedule."
+      features:
+        - Compressed, low-bandwidth PDFs and audio exercises
+        - Personalised feedback in a dedicated group chat
+        - Speaking circles — respond by voice message, on your schedule
+        - Available in English, French, and German
     - icon: packing
       title: Conversation Partners
       description: "Weekly, low-pressure conversation practice in English, French or German — built to grow fluency and confidence through real conversation, not textbook drills."

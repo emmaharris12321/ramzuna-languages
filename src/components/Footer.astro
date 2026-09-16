@@ -18,7 +18,7 @@ const footerLinks = {
     { text: 'Language Lessons', url: '/english-classes' },
     { text: 'Conversation Sessions', url: '/services' },
     { text: 'Palestinian Voices', url: '/palestinian-voices' },
-    { text: 'Volunteer With Us', url: '/volunteer' },
+    { text: 'Get Involved', url: '/teach-with-us' },
     { text: 'Volunteer Flyers', url: '/resources/volunteer-flyers' },
     { text: 'Partner With Us', url: '/partners' },
     { text: 'Donate', url: '/donate' },
@@ -59,13 +59,13 @@ const socialLinks = [
           }
           <span class="font-display text-xl font-semibold text-white">{site.name}</span>
         </a>
-        <p class="mt-4 max-w-xs text-accent-200">
+        <p class="mt-4 lg:max-w-xs text-accent-200">
           {site.description}
         </p>
 
         <!-- Contact info -->
         <div class="mt-6 space-y-2">
-          <a href={`mailto:${site.email}`} class="flex items-center gap-2 text-accent-200 transition-colors hover:text-white">
+          <a href={`mailto:${site.email}`} class="flex items-center gap-2 break-all text-accent-200 transition-colors hover:text-white">
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
@@ -138,7 +138,7 @@ const socialLinks = [
             Stories, programme updates, and ways to get involved — straight to your inbox.
           </p>
           <form
-            class="mt-4 flex gap-2"
+            class="mt-4 flex flex-col gap-2 xs:flex-row"
             onsubmit={`event.preventDefault(); const email = this.elements.email.value; window.location.href = 'mailto:${site.email}?subject=' + encodeURIComponent('Newsletter signup') + '&body=' + encodeURIComponent('Please add ' + email + ' to the newsletter list.');`}
           >
             <input

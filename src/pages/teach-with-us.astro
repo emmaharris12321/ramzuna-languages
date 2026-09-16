@@ -24,18 +24,28 @@ const steps = [
   },
   {
     number: '02',
-    title: 'Complete trauma-informed training',
-    description: 'Complete trauma-informed/EIE training before starting to teach.',
+    title: 'Trauma-informed training',
+    description: 'Complete our compulsory trauma-informed/EIE training before you start teaching.',
   },
   {
     number: '03',
-    title: 'Code of Conduct & Criminal Record Check',
-    description: 'Sign our code of conduct and provide a criminal record check (required only to teach minors).',
+    title: 'Sign the volunteer agreement',
+    description: 'Sign our volunteer agreement and code of conduct (a criminal record check is also required to teach minors).',
   },
   {
     number: '04',
+    title: 'Attend the group meeting',
+    description: 'Join a compulsory collective group meeting with the wider teaching team before you are matched.',
+  },
+  {
+    number: '05',
+    title: 'Get matched with a group',
+    description: 'We match you with a small group of students based on your language, level, and availability.',
+  },
+  {
+    number: '06',
     title: 'Start teaching',
-    description: 'Get matched with students and begin sharing your knowledge in classes you love.',
+    description: 'Begin sharing your knowledge in classes you love, with ongoing coordinator support.',
   },
 ];
 
@@ -102,9 +112,9 @@ const requirements = [
       <div class="mx-auto max-w-3xl text-center">
         <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Getting Started</div>
         <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Before You Start Teaching</h2>
-        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Four steps to complete before your first class.</p>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Six steps to complete before your first class.</p>
       </div>
-      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {
           steps.map((step) => (
             <div class="text-center">

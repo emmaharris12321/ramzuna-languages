@@ -9,11 +9,15 @@
     scroll-behavior: smooth;
   }
 
-  /* Desktop gets a bit more presence: text, spacing, and cards all scale up
-     together since Tailwind's sizing is rem-based. Mobile is untouched —
-     it's already sized right. Threshold is 1280px (not the 1024px nav
-     breakpoint) so the desktop nav still has room to lay out horizontally
-     before things start growing. */
+  /* Base text size is bumped slightly on mobile since Tailwind's sizing is
+     rem-based and scales off this. Desktop keeps its original size — it
+     didn't need the bump and got too large when it also went up. Threshold
+     is 1280px (not the 1024px nav breakpoint) so the desktop nav still has
+     room to lay out horizontally before things settle back down. */
+  html {
+    font-size: 17px;
+  }
+
   @media (min-width: 1280px) {
     html {
       font-size: 18px;
