@@ -1,0 +1,83 @@
+# ============================================
+# Programmes Page Content
+# Edit this file to update the Programmes page
+# ============================================
+
+title: Our Programmes
+description: Free English, French, and German lessons for Palestinian students, taught by vetted volunteer educators worldwide.
+
+# Programmes Grid
+servicesGrid:
+  title: Language Programmes for Every Level
+  description: Every programme is free, flexible, and matched to your goals and schedule.
+  items:
+    - icon: local
+      title: English Lessons
+      description: "Conversational and academic English from beginner (A1) to near-native fluency (C1), with a focus on real, usable confidence — not just grammar rules."
+      features:
+        - Five CEFR levels, A1 to C1
+        - One-on-one or small group (2-3 students)
+        - 60- or 90-minute weekly lessons
+        - Flexible scheduling around your week
+        - Learning materials included
+    - icon: longDistance
+      title: French Lessons
+      description: "Structured French instruction from first words (A1) to near-native mastery (C1), taught by native and fluent volunteer speakers."
+      features:
+        - Five CEFR levels, A1 to C1
+        - One-on-one or small group (2-3 students)
+        - 60- or 90-minute weekly lessons
+        - Grammar, vocabulary & real conversation
+        - DELF/DALF exam preparation available
+    - icon: commercial
+      title: German Lessons
+      description: "Step-by-step German instruction from the alphabet (A1) to advanced, near-native conversation (C1)."
+      features:
+        - Five CEFR levels, A1 to C1
+        - One-on-one or small group (2-3 students)
+        - 60- or 90-minute weekly lessons
+        - Speaking-focused, structured curriculum
+        - Goethe-Institut exam preparation available
+    - icon: packing
+      title: Conversation Partners
+      description: "Weekly, low-pressure conversation practice in English, French or German — built to grow fluency and confidence through real conversation, not textbook drills."
+      features:
+        - One 60-minute video call each week, one-on-one
+        - No homework, no grading, no fixed curriculum
+        - You and your partner choose the topics together
+        - Great alongside formal lessons, or on its own
+        - Ideal for students who already know the basics and want to speak more
+    - icon: specialty
+      title: Exam Preparation
+      description: "Focused, one-on-one coaching to prepare for IELTS, TOEFL, DELF, DALF, and Goethe-Institut certification exams."
+      features:
+        - Practice tests included
+        - Experienced exam tutors
+        - Personalised study plan
+        - Available from Intermediate (B1) level upward
+
+# Process Section
+process:
+  title: How It Works
+  description: Getting matched with a volunteer educator takes just a few simple steps.
+  steps:
+    - number: "1"
+      title: Sign Up Free
+      description: "Tell us your language, level, and availability — it only takes a few minutes."
+    - number: "2"
+      title: Get Matched
+      description: We pair you with a vetted volunteer educator who fits your goals and schedule.
+    - number: "3"
+      title: Start Lessons
+      description: Meet online for regular lessons, at a pace that works for you.
+    - number: "4"
+      title: Grow Your Fluency
+      description: "Build real, lasting language skills with consistent support along the way."
+
+# CTA Section
+cta:
+  title: Ready to Start Learning?
+  description: "Sign up for free lessons today — no cost, no catch, just support to help you learn."
+  primaryCta:
+    text: Sign Up Free
+    url: /contact

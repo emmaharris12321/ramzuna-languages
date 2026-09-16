@@ -1,0 +1,84 @@
+---
+import Base from '@/layouts/Base.astro';
+
+const channels = [
+  {
+    title: "Luke's English Podcast",
+    url: 'https://www.youtube.com/@LukesEnglishPodcast',
+    lang: 'English',
+    description: 'Long-running podcast and video lessons for English learners, covering vocabulary, grammar and culture.',
+  },
+  {
+    title: 'Elephant English Podcasts',
+    url: 'https://www.youtube.com/@elephantenglishpodcasts',
+    lang: 'English',
+    description: 'Bite-sized English listening practice with clear, natural conversation.',
+  },
+  {
+    title: 'IELTS Prep Channel',
+    url: 'https://www.youtube.com/channel/UCglDIsg_Z9mE2oT9hsrbzFA',
+    lang: 'English · IELTS',
+    description: 'Video lessons and strategies to prepare for the IELTS exam across all four skills.',
+  },
+  {
+    title: 'German Learning Channel',
+    url: 'https://www.youtube.com/channel/UCbxb2fqe9oNgglAoYqsYOtQ',
+    lang: 'German',
+    description: 'Video lessons for learners building their German vocabulary, grammar and listening skills.',
+  },
+];
+---
+
+<Base title="YouTube Channels" description="Curated YouTube channels sharing educational content for English and German learners.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">YouTube Channels</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        Curated channels sharing educational content, lessons and discussions.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <a href="/resources" class="transition-colors hover:text-white">Resources</a>
+        <span>/</span>
+        <span class="text-white">YouTube Channels</span>
+      </nav>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2">
+        {
+          channels.map((ch) => (
+            <article class="group flex flex-col rounded-2xl bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800">
+              <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent-100 text-lg dark:bg-accent-900/50">📹</div>
+              <span class="mb-2 inline-flex w-fit items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
+                {ch.lang}
+              </span>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                <a href={ch.url} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-primary-600 dark:hover:text-primary-400">
+                  {ch.title}
+                </a>
+              </h3>
+              <p class="mt-2 flex-1 text-gray-600 dark:text-gray-400">{ch.description}</p>
+              <a
+                href={ch.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex w-fit items-center gap-1 text-sm font-medium text-accent-600 transition-colors hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
+              >
+                Watch on YouTube <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="mx-auto mt-12 max-w-2xl text-center text-gray-600 dark:text-gray-400">
+        Looking for more? Browse our full <a href="/resources/language-resources" class="font-medium text-primary-600 hover:underline dark:text-primary-400">Language Resources</a> directory.
+      </p>
+    </div>
+  </section>
+</Base>

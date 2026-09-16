@@ -1,0 +1,92 @@
+# ============================================
+# Get Involved Page Content
+# Edit this file to update the Get Involved page
+# ============================================
+
+title: Get Involved
+description: Three ways to take part in Ramzunā Languages — learn, teach, or support our work.
+
+# Ways to Get Involved
+pricing:
+  badge: Get Involved
+  title: "Choose How You Would Like to Take Part"
+  description: "Every learning programme stays free — here is how the whole community makes that possible."
+  note: "Donations cover coordination, learning materials, and platform costs so every lesson stays free for students."
+  plans:
+    - name: "Learn"
+      size: For students in Palestine
+      price: "Free"
+      features:
+        - text: Matched with a volunteer educator
+          included: true
+        - text: Weekly one-on-one or group lessons
+          included: true
+        - text: Learning materials included
+          included: true
+        - text: Flexible online scheduling
+          included: true
+        - text: Progress check-ins
+          included: true
+        - text: No cost, ever
+          included: true
+    - name: "Teach"
+      size: For volunteer educators
+      price: "Free"
+      popular: true
+      features:
+        - text: Fluent or native in English, French, or German
+          included: true
+        - text: As little as 1 hour a week
+          included: true
+        - text: Free onboarding & training
+          included: true
+        - text: Teach from anywhere in the world
+          included: true
+        - text: Ongoing coordinator support
+          included: true
+        - text: Make a lasting impact
+          included: true
+    - name: "Give"
+      size: For donors & partners
+      price: "$10/mo"
+      features:
+        - text: Sponsors one student's materials
+          included: true
+        - text: Funds coordinator support
+          included: true
+        - text: Helps us reach new regions
+          included: true
+        - text: Monthly impact updates
+          included: true
+        - text: One-time gifts welcome
+          included: true
+        - text: Corporate partnerships available
+          included: false
+
+# FAQ
+faq:
+  badge: FAQ
+  title: Questions About Getting Involved
+  description: Answers for prospective students, volunteers, and donors.
+  items:
+    - question: Do I need teaching experience to volunteer?
+      answer: "No formal teaching experience is required — just fluency in English, French, or German and a willingness to learn our onboarding process. We provide free training for all new volunteers."
+    - question: How much time does volunteering take?
+      answer: "Most volunteer educators teach one hour per week, though some choose to take on more students. You set your own availability when you sign up."
+    - question: Where does my donation go?
+      answer: "Donations fund our coordination team, learning materials, and the technology that connects students and educators. Every lesson itself remains free for students."
+    - question: Can organisations partner with Ramzunā Languages?
+      answer: "Yes — we welcome partnerships with schools, companies, and other nonprofits. Reach out through our contact page to start the conversation."
+    - question: Is there a minimum commitment for students?
+      answer: "We ask students to commit to regular weekly lessons so both they and their volunteer educator can build momentum, but there is no long-term contract."
+
+# CTA Section
+cta:
+  title: Every Role Makes a Difference
+  description: "Whether you learn, teach, or give — you are helping build language access for students who need it most."
+  primaryCta:
+    text: Sign Up to Learn
+    url: "/contact"
+  secondaryCta:
+    text: Apply to Volunteer
+    url: /contact

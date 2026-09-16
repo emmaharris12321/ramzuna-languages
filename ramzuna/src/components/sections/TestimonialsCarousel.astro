@@ -1,0 +1,520 @@
+---
+---
+
+<style>
+  .tm-section,
+  .tm-section * {
+    box-sizing: border-box;
+  }
+
+  .tm-section {
+    width: 100%;
+    padding: clamp(24px, 3.5vw, 44px) clamp(16px, 3vw, 36px);
+    background: linear-gradient(180deg, #f7f1e8, #fbf8f3);
+    color: #2a2622;
+    font-family: 'Outfit', system-ui, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .tm-section .tm-wrap {
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .tm-section .tm-head {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .tm-section .tm-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 16px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    background: #d9e6da;
+    color: #38664f;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .tm-section .tm-head h2 {
+    margin: 0;
+    color: #38664f;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 640px) {
+    .tm-section .tm-head h2 {
+      font-size: 2.25rem;
+    }
+  }
+
+  .tm-section .tm-head::after {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 2px;
+    margin: 14px auto 0;
+    background: #7a222b;
+    opacity: 0.35;
+  }
+
+  .tm-section .tm-slides {
+    display: grid;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .tm-section .tm-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin: 0;
+    padding: clamp(18px, 3vw, 28px);
+    border: 1px solid #d3dfd3;
+    border-radius: 16px;
+    background: #eaf0e9;
+    color: #2a2622;
+  }
+
+  .tm-section[data-ready] .tm-slides {
+    gap: 0;
+  }
+
+  .tm-section[data-ready] .tm-card {
+    grid-area: 1 / 1;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 220ms ease;
+  }
+
+  .tm-section[data-ready] .tm-card.is-active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .tm-section .tm-quote-mark {
+    margin-bottom: 2px;
+    color: #38664f;
+    font-family: Georgia, serif;
+    font-size: 36px;
+    line-height: 0.9;
+  }
+
+  .tm-section .tm-quote {
+    flex: 1;
+    margin: 0 0 16px;
+    color: inherit;
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+  }
+
+  .tm-section .tm-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(56, 102, 79, 0.2);
+  }
+
+  .tm-section .tm-avatar {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #d9e6da;
+    color: #38664f;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .tm-section .tm-info {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .tm-section .tm-name {
+    display: block;
+    margin-bottom: 4px;
+    color: #38664f;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .tm-section .tm-role {
+    display: block;
+    color: #514b44;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .tm-section .tm-card--maroon {
+    border-color: #7a222b;
+    background: #7a222b;
+    color: #fff;
+  }
+
+  .tm-section .tm-card--maroon .tm-quote-mark,
+  .tm-section .tm-card--maroon .tm-name {
+    color: #fff;
+  }
+
+  .tm-section .tm-card--maroon .tm-role {
+    color: #f5e9e9;
+  }
+
+  .tm-section .tm-card--maroon .tm-avatar {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+  }
+
+  .tm-section .tm-card--maroon .tm-profile {
+    border-top-color: rgba(255, 255, 255, 0.22);
+  }
+
+  .tm-section .tm-controls[hidden] {
+    display: none;
+  }
+
+  .tm-section .tm-controls {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .tm-section .tm-navigation,
+  .tm-section .tm-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tm-section .tm-button {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid rgba(122, 34, 43, 0.2);
+    border-radius: 50%;
+    background: #fffdfa;
+    color: #7a222b;
+    font: 22px 'Outfit', system-ui, sans-serif;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .tm-section .tm-count {
+    min-width: 64px;
+    color: #514b44;
+    font-size: 14px;
+  }
+
+  .tm-section .tm-dots {
+    gap: 0;
+    margin-top: 8px;
+  }
+
+  .tm-section .tm-dot {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .tm-section .tm-dot::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #c6a5a5;
+  }
+
+  .tm-section .tm-dot[aria-current="true"]::before {
+    width: 11px;
+    height: 11px;
+    background: #7a222b;
+  }
+
+  .tm-section .tm-play {
+    min-height: 44px;
+    max-width: 100%;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #7a222b;
+    font: 600 13px/1.5 'Outfit', system-ui, sans-serif;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .tm-section button:focus-visible {
+    outline: 3px solid #38664f;
+    outline-offset: 3px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .tm-section .tm-button:hover {
+      background: #7a222b;
+      color: #fff;
+    }
+
+    .tm-section .tm-play:hover {
+      background: rgba(122, 34, 43, 0.06);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tm-section[data-ready] .tm-card {
+      transition: none;
+    }
+  }
+</style>
+
+<section class="tm-section" data-testimonials aria-label="What our community says">
+  <div class="tm-wrap">
+    <header class="tm-head">
+      <p class="tm-eyebrow">Impact &amp; Stories</p>
+      <h2>What Our Community Says</h2>
+    </header>
+
+    <div class="tm-slides">
+      <figure class="tm-card">
+        <div class="tm-quote-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          I can now speak English with a level of confidence that I
+          previously lacked, and I am truly happy with this progress.
+          I feel I have improved the most in my listening and speaking
+          skills, which has made a huge difference in how I express myself.
+        </blockquote>
+        <figcaption class="tm-profile">
+          <span class="tm-avatar" aria-hidden="true">LM</span>
+          <div class="tm-info">
+            <span class="tm-name">Laila.</span>
+            <span class="tm-role">English Student, Gaza</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <figure class="tm-card tm-card--maroon">
+        <div class="tm-quote-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          Nelson Mandela once said, &rdquo;Education is the most powerful weapon
+          to change the world." Teaching French to a young Palestinian
+          student at Ramzunā Languages has been incredibly rewarding.
+          Preparing lessons, finding new ways to explain rules, and
+          watching her progress fills me with joy and honour.
+        </blockquote>
+        <figcaption class="tm-profile">
+          <span class="tm-avatar" aria-hidden="true">NF</span>
+          <div class="tm-info">
+            <span class="tm-name">Nour Fassi</span>
+            <span class="tm-role">French Teacher, Morocco</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <figure class="tm-card">
+        <div class="tm-quote-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          One of the best things that happened to me this year was joining
+          Ramzunā. From the bottom of my heart, thank you.
+          I have noticed a big difference in my level. I have improved a
+          lot, and I even feel that my level stands out among my classmates
+          at school, especially in speaking and fluency.
+        </blockquote>
+        <figcaption class="tm-profile">
+          <span class="tm-avatar" aria-hidden="true">MK</span>
+          <div class="tm-info">
+            <span class="tm-name">Mais.</span>
+            <span class="tm-role">English Student, Gaza</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <figure class="tm-card tm-card--maroon">
+        <div class="tm-quote-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          An amazing initiative forging meaningful change in Palestine.
+          Joining Ramzuna was the best decision I have ever made.
+          I urge anyone with teaching or tutoring experience to apply ❤️.
+        </blockquote>
+        <figcaption class="tm-profile">
+          <span class="tm-avatar" aria-hidden="true">DL</span>
+          <div class="tm-info">
+            <span class="tm-name">Daniela Latini</span>
+            <span class="tm-role">English Teacher, UK</span>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="tm-controls" hidden>
+      <div class="tm-navigation">
+        <button class="tm-button tm-prev" type="button" aria-label="Previous testimonial">←</button>
+        <span class="tm-count" aria-live="off" aria-atomic="true"></span>
+        <button class="tm-button tm-next" type="button" aria-label="Next testimonial">→</button>
+      </div>
+      <div class="tm-dots" role="group" aria-label="Choose a testimonial"></div>
+      <button class="tm-play" type="button">Pause slideshow</button>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+(() => {
+  function initializeTestimonials() {
+    document.querySelectorAll(
+      '[data-testimonials]:not([data-ready])'
+    ).forEach(section => {
+      const cards = Array.from(section.querySelectorAll('.tm-card'));
+      const controls = section.querySelector('.tm-controls');
+      const dotsWrap = section.querySelector('.tm-dots');
+      const count = section.querySelector('.tm-count');
+      const playButton = section.querySelector('.tm-play');
+      const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      if (!cards.length) return;
+
+      let current = 0;
+      let timer = null;
+      let playing = !motion.matches;
+      let hovering = false;
+
+      const dots = cards.map((card, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'tm-dot';
+        button.setAttribute(
+          'aria-label',
+          'Show testimonial from ' +
+          card.querySelector('.tm-name').textContent.trim()
+        );
+
+        button.addEventListener('click', () => {
+          pause();
+          show(index);
+        });
+
+        dotsWrap.appendChild(button);
+        return button;
+      });
+
+      function show(index) {
+        current = (index + cards.length) % cards.length;
+
+        cards.forEach((card, i) => {
+          const active = i === current;
+          card.classList.toggle('is-active', active);
+          card.setAttribute('aria-hidden', String(!active));
+          dots[i].setAttribute('aria-current', String(active));
+        });
+
+        count.textContent = (current + 1) + ' / ' + cards.length;
+      }
+
+      function schedule() {
+        window.clearInterval(timer);
+        timer = null;
+
+        if (playing && !hovering && !document.hidden && cards.length > 1) {
+          timer = window.setInterval(() => {
+            if (!section.isConnected) {
+              window.clearInterval(timer);
+              return;
+            }
+            show(current + 1);
+          }, 9000);
+        }
+      }
+
+      function updatePlayback() {
+        playButton.textContent = playing
+          ? 'Pause slideshow'
+          : 'Play slideshow';
+        count.setAttribute('aria-live', playing ? 'off' : 'polite');
+        schedule();
+      }
+
+      function pause() {
+        playing = false;
+        updatePlayback();
+      }
+
+      section.querySelector('.tm-prev').addEventListener('click', () => {
+        pause();
+        show(current - 1);
+      });
+
+      section.querySelector('.tm-next').addEventListener('click', () => {
+        pause();
+        show(current + 1);
+      });
+
+      playButton.addEventListener('click', () => {
+        playing = !playing;
+        updatePlayback();
+      });
+
+      section.addEventListener('focusin', pause);
+
+      section.addEventListener('pointerenter', event => {
+        if (event.pointerType === 'mouse') {
+          hovering = true;
+          schedule();
+        }
+      });
+
+      section.addEventListener('pointerleave', event => {
+        if (event.pointerType === 'mouse') {
+          hovering = false;
+          schedule();
+        }
+      });
+
+      document.addEventListener('visibilitychange', schedule);
+      motion.addEventListener('change', () => {
+        if (motion.matches) pause();
+      });
+
+      show(0);
+      section.setAttribute('data-ready', '');
+      controls.hidden = cards.length < 2;
+      updatePlayback();
+    });
+  }
+
+  initializeTestimonials();
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeTestimonials, { once: true });
+  }
+})();
+</script>

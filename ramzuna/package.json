@@ -1,0 +1,19 @@
+{
+  "name": "ramzuna-languages",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^7.2.2",
+    "@astrojs/mdx": "^7.0.5",
+    "@astrojs/sitemap": "^3.7.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}

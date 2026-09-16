@@ -1,0 +1,98 @@
+---
+import Base from '@/layouts/Base.astro';
+
+const cards = [
+  {
+    icon: '📖',
+    tone: 'accent',
+    title: 'Language Resources',
+    description: 'A curated directory of free resources to study and teach English, French and German — including IELTS preparation.',
+    cta: 'Explore Language Resources',
+    href: '/resources/language-resources',
+  },
+  {
+    icon: '📹',
+    tone: 'primary',
+    title: 'YouTube Channels',
+    description: 'Follow curated YouTube channels sharing educational content, lessons and discussions in English and German.',
+    cta: 'Explore YouTube Channels',
+    href: '/resources/youtube-channels',
+  },
+  {
+    icon: '🇵🇸',
+    tone: 'accent',
+    title: 'Resources on Palestine',
+    description: 'Read poetry and prose from Palestinian writers, and discover Palestinian voices, stories and art.',
+    cta: 'Discover Palestinian Voices',
+    href: '/palestinian-voices',
+  },
+  {
+    icon: '📄',
+    tone: 'primary',
+    title: 'Volunteer Flyers',
+    description: 'Download ready-made recruitment flyers to share on social media, at events, or with your community, to help us find more volunteers.',
+    cta: 'Download Flyers',
+    href: '/resources/volunteer-flyers',
+  },
+];
+---
+
+<Base title="Resources" description="A curated collection of language-learning resources and Palestinian voices, shared by Ramzunā Languages.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Resources</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        Free tools, channels and voices to support students, teachers and anyone learning alongside us.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <span class="text-white">Resources</span>
+      </nav>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
+          Learn More
+        </div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Resources</h2>
+      </div>
+
+      <div class="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          cards.map((card) => (
+            <div class="flex flex-col rounded-2xl bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800">
+              <div
+                class:list={[
+                  'mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-2xl',
+                  card.tone === 'primary'
+                    ? 'bg-primary-100 dark:bg-primary-900/50'
+                    : 'bg-accent-100 dark:bg-accent-900/50',
+                ]}
+              >
+                {card.icon}
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                {card.title}
+              </h3>
+              <p class="mt-2 flex-1 text-gray-600 dark:text-gray-400">{card.description}</p>
+              <a
+                href={card.href}
+                class:list={[
+                  'mt-6 inline-flex w-fit items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:-translate-y-0.5',
+                  card.tone === 'primary' ? 'bg-primary-600 hover:bg-primary-700' : 'bg-accent-600 hover:bg-accent-700',
+                ]}
+              >
+                {card.cta} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

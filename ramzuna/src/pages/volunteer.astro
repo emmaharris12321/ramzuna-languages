@@ -1,0 +1,81 @@
+---
+import Base from '@/layouts/Base.astro';
+
+const roles = [
+  { title: 'English Educator', commitment: '1+ hour / week', location: 'Remote, any timezone' },
+  { title: 'French Educator', commitment: '1+ hour / week', location: 'Remote, any timezone' },
+  { title: 'German Educator', commitment: '1+ hour / week', location: 'Remote, any timezone' },
+  { title: 'Conversation Partner', commitment: '30-60 min / week', location: 'Remote, any timezone' },
+];
+
+const perks = [
+  { title: 'Free Onboarding', description: 'Every volunteer completes a short, free training before their first lesson.' },
+  { title: 'Flexible Hours', description: 'Teach as little as one hour a week, on a schedule that works for you.' },
+  { title: 'Real Impact', description: 'Help a student build fluency and confidence — one consistent lesson at a time.' },
+  { title: 'Global Community', description: 'Join volunteer educators from more than 15 countries around the world.' },
+];
+---
+
+<Base title="Volunteer With Us" description="Become a volunteer educator with Ramzunā Languages and teach English, French, or German for free.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Volunteer With Us</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        No teaching degree required — just fluency in English, French, or German and a willingness to show up, week after week.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <span class="text-white">Volunteer</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Perks -->
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Why Volunteer With Ramzunā Languages</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Every volunteer educator helps close the language-access gap for a student who needs it.</p>
+      </div>
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          perks.map((perk) => (
+            <div class="rounded-2xl bg-cream-100 p-6 text-center shadow-sm dark:bg-gray-900">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{perk.title}</h3>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{perk.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Roles -->
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Volunteer Roles</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Do not see a fit? Reach out anyway — we are always growing our educator network.</p>
+      </div>
+      <div class="mx-auto mt-12 max-w-3xl divide-y divide-gray-200 rounded-2xl bg-white shadow-soft dark:divide-gray-800 dark:bg-gray-800">
+        {
+          roles.map((role) => (
+            <div class="flex flex-col gap-2 p-6 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{role.title}</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  {role.commitment} &middot; {role.location}
+                </p>
+              </div>
+              <a href="/contact" class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-700 sm:flex-shrink-0">
+                Apply to Volunteer
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
