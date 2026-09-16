@@ -3,16 +3,23 @@ author: Mais
 title: "I Am Still Here"
 arabicTitle: "أنا هنا... وما زلت هنا"
 tag: Poem
-bio: "Mais is only fourteen, yet her dreams far exceed her years. She believes learning is a never-ending journey, and dreams of becoming someone of value and influence who leaves a positive mark on her community."
-excerpt: "I cling on like a tree branch, and I bloom like a jasmine flower."
+bio: "Mais is only fourteen. Yet her dreams far exceed her years. Through writing, she finds a way to organise her thoughts and transform pain into meaning. Mais does not aspire to live an ordinary life, but dreams of becoming someone of value and influence who leaves a positive mark on her community and is remembered for her kindness and contributions."
+excerpt: "I cling on like a branch of a tree, and I bloom like a jasmine flower."
 readTime: "2 min read"
-coverImage: "/assets/img/voices/mais-i-am-still-here-cover.jpg"
 ---
 
+<div data-poem data-mode="ar">
+<div class="poem-langs">
+<button type="button" data-set-lang="ar" class="poem-lang-btn is-active" lang="ar">العربية</button>
+<button type="button" data-set-lang="both" class="poem-lang-btn">Both</button>
+<button type="button" data-set-lang="en" class="poem-lang-btn">English</button>
+</div>
+<div class="poem-pair">
+<div class="poem-col poem-en">
 <div class="poem-groups poem-groups-en">
 <div class="poem-block">
 <p>I am here… and I am still here.</p>
-<p>I cling on like a tree branch, and I bloom like a jasmine flower.</p>
+<p>I cling on like a branch of a tree, and I bloom like a jasmine flower.</p>
 <p>But the bitter reality imposes its conditions, society imposes its judgments, and war has stolen our dreams.</p>
 <p>So I try to fill my lungs with the scent of spring, with the warmth of the sun, and with a light that embraces me.</p>
 </div>
@@ -25,7 +32,7 @@ coverImage: "/assets/img/voices/mais-i-am-still-here-cover.jpg"
 <div class="poem-block">
 <p>So I raise my hands to the sky, asking God to change the state of our nation for the better, and to grant us, from His mercy, what dispels this darkness.</p>
 <p>For He alone is capable of reviving hope within us, and writing for us the most beautiful endings.</p>
-<p>Oh peace… oh peace, I call upon you to fulfill the dreams.</p>
+<p>Oh peace… oh peace, I call upon you to fulfil the dreams.</p>
 <p>Sadly, there is no peace, and there are dreams, but without peace, there are no dreams.</p>
 </div>
 <div class="poem-block">
@@ -35,10 +42,9 @@ coverImage: "/assets/img/voices/mais-i-am-still-here-cover.jpg"
 <p>Yet we are still waiting for a dawn that carries peace.</p>
 </div>
 </div>
-
-<details class="poem-original">
-<summary>Read the original in Arabic — أنا هنا... وما زلت هنا</summary>
-<div dir="rtl" lang="ar" class="poem-groups poem-groups-ar">
+</div>
+<div class="poem-col poem-ar" dir="rtl" lang="ar">
+<div class="poem-groups poem-groups-ar">
 <div class="poem-block">
 <p>أنا هنا... وما زلت هنا.</p>
 <p>أتشبث كغصن شجرة، وأزهر كزهرة الياسمين.</p>
@@ -58,4 +64,7 @@ coverImage: "/assets/img/voices/mais-i-am-still-here-cover.jpg"
 <p>يا سلام... يا سلام، أناديك لتلبية الأحلام، للأسف لا يوجد سلام، وتوجد أحلام، ولكن دون السلام لا توجد أحلام. فأُهدي سلامي للسلام، وأخاطبه كأنني أخاطب الغمام، أسأله: متى تعود وتُزهر الأيام؟ فقد طال الليل، واشتد الظلام، وما زلنا ننتظر فجرًا يحمل السلام.</p>
 </div>
 </div>
-</details>
+<p class="poem-bio-ar">أنا ميس، أبلغ من العمر أربعة عشر عامًا، لكن أحلامي أكبر من عمري بكثير. فتاةٌ تؤمن بأن المستقبل يُبنى بالإرادة، وأن الإنسان لا يُقاس بعدد سنواته، بل بما يحمله في قلبه من طموح وأثر. أعشق الكتابة؛ فهي ملاذي حين يشتد الحزن، وصوتي حين تعجز الكلمات عن الخروج، وسلاحي الذي أواجه به الغضب وخيبات الحياة. أجد بين الحروف وطنًا صغيرًا أرتب فيه فوضى مشاعري وأحوّل فيه الألم إلى معنى.</p>
+</div>
+</div>
+</div>

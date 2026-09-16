@@ -16,6 +16,14 @@ const { Content } = await render(poem);
 const moreByAuthor = allPoems.filter((p) => p.id !== poem.id && p.data.author === poem.data.author);
 const others = allPoems.filter((p) => p.id !== poem.id && p.data.author !== poem.data.author);
 const related = [...moreByAuthor, ...others].slice(0, 3);
+
+const cardTheme = poem.data.cardTheme ?? 'green';
+const cardGradientClasses =
+  cardTheme === 'burgundy'
+    ? 'bg-gradient-to-r from-accent-600 to-accent-700 dark:from-accent-800 dark:to-accent-900'
+    : 'bg-gradient-to-r from-primary-600 to-primary-700 dark:from-primary-800 dark:to-primary-900';
+const cardOverlayClass = cardTheme === 'burgundy' ? 'bg-accent-900/20' : 'bg-primary-900/20';
+const cardSubtitleClass = cardTheme === 'burgundy' ? 'text-accent-100' : 'text-primary-100';
 ---
 
 <style>
@@ -52,61 +60,17 @@ const related = [...moreByAuthor, ...others].slice(0, 3);
     color: rgba(224, 148, 156, 0.5);
   }
 
-  /* The reading room: warm textured paper, like the pages people actually
-     post — never a flat white page */
-  .poem-surface {
+  /* The poem itself, presented exactly like the Mawtinī poem on the
+     "Our Name" page: one flat brand-green card, no texture, no
+     decoration — just the verse. */
+  .poem-card {
     position: relative;
-    background:
-      radial-gradient(ellipse 70% 50% at 12% 8%, rgba(122, 34, 43, 0.07), transparent 55%),
-      radial-gradient(ellipse 60% 45% at 90% 95%, rgba(56, 102, 79, 0.08), transparent 55%),
-      linear-gradient(180deg, #f2e6ce 0%, #efe0c6 45%, #ecdcc0 100%);
-    overflow: hidden;
+    text-align: left;
+    --poem-accent-color: #38664f;
   }
 
-  :global(.dark) .poem-surface {
-    background:
-      radial-gradient(ellipse 70% 50% at 12% 8%, rgba(224, 148, 156, 0.06), transparent 55%),
-      radial-gradient(ellipse 60% 45% at 90% 95%, rgba(56, 102, 79, 0.1), transparent 55%),
-      linear-gradient(180deg, #1c1712 0%, #171310 100%);
-  }
-
-  /* Fine paper grain so the warm tone doesn't read as a flat gradient */
-  .poem-surface::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0.5;
-    background-image: radial-gradient(rgba(90, 66, 40, 0.09) 1px, transparent 1px);
-    background-size: 3px 3px;
-    pointer-events: none;
-  }
-
-  :global(.dark) .poem-surface::before {
-    opacity: 0.35;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  }
-
-  /* Decorative corner flourishes, echoing the hand-designed poem cards */
-  .poem-flourish {
-    position: absolute;
-    width: 92px;
-    height: 92px;
-    color: #7a222b;
-    opacity: 0.28;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  :global(.dark) .poem-flourish {
-    color: #e0949c;
-    opacity: 0.22;
-  }
-
-  .poem-flourish--tl { top: 0.5rem; left: 0.5rem; }
-  .poem-flourish--br { bottom: 0.5rem; right: 0.5rem; transform: rotate(180deg); }
-
-  @media (min-width: 640px) {
-    .poem-flourish { width: 128px; height: 128px; }
+  .poem-card[data-theme='burgundy'] {
+    --poem-accent-color: #7a222b;
   }
 
   .poem-frame {
@@ -114,8 +78,64 @@ const related = [...moreByAuthor, ...others].slice(0, 3);
     z-index: 1;
   }
 
-  /* The poem itself: four unhurried passages, not sixteen little boxes and
-     not one unbroken wall of text */
+  /* Language toggle, identical to the one on the Mawtinī poem: Arabic
+     first, with the option to switch to English or see both. */
+  .poem-content :global(.poem-langs) {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .poem-content :global(.poem-lang-btn) {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 9999px;
+    padding: 0.5rem 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .poem-content :global(.poem-lang-btn):hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  .poem-content :global(.poem-lang-btn.is-active) {
+    background: #fff;
+    color: var(--poem-accent-color, #38664f);
+    border-color: #fff;
+  }
+
+  .poem-content :global(.poem-pair) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .poem-content :global([data-mode='both'] .poem-pair) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .poem-content :global([data-mode='en'] .poem-ar) {
+    display: none;
+  }
+
+  .poem-content :global([data-mode='ar'] .poem-en) {
+    display: none;
+  }
+
+  /* The poem itself — same font, same size, in both languages, exactly
+     like the Mawtinī poem's .poem-text: only italic vs. normal and the
+     line-height differ between English and Arabic. */
   .poem-groups {
     display: flex;
     flex-direction: column;
@@ -123,16 +143,11 @@ const related = [...moreByAuthor, ...others].slice(0, 3);
 
   .poem-content :global(.poem-block) {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.1875rem;
-    line-height: 1.95;
-    color: #43362a;
-    text-align: center;
-    max-width: 34rem;
-    margin: 0 auto;
-  }
-
-  :global(.dark) .poem-content :global(.poem-block) {
-    color: #e7ddcf;
+    font-style: italic;
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: #fff;
+    margin: 0;
   }
 
   .poem-content :global(.poem-block p) {
@@ -140,78 +155,34 @@ const related = [...moreByAuthor, ...others].slice(0, 3);
   }
 
   .poem-content :global(.poem-block p + p) {
-    margin-top: 1.1rem;
+    margin-top: 0.75rem;
   }
 
-  /* A small hand-drawn-feeling divider between passages, instead of a card edge */
   .poem-content :global(.poem-block + .poem-block) {
-    margin-top: 2.75rem;
-    padding-top: 2.75rem;
-    position: relative;
-  }
-
-  .poem-content :global(.poem-block + .poem-block)::before {
-    content: '❧';
-    position: absolute;
-    top: -0.15rem;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.1rem;
-    color: #7a222b;
-    opacity: 0.55;
-  }
-
-  :global(.dark) .poem-content :global(.poem-block + .poem-block)::before {
-    color: #e0949c;
-  }
-
-  /* Arabic original — collapsed by default so the page doesn't dump
-     two full poems on the reader at once */
-  .poem-content :global(.poem-original) {
-    margin-top: 3rem;
-    text-align: center;
-  }
-
-  .poem-content :global(.poem-original summary) {
-    cursor: pointer;
-    list-style: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: 9999px;
-    background: rgba(122, 34, 43, 0.09);
-    padding: 0.6rem 1.25rem;
-    color: #7a222b;
-    font-family: 'Outfit', system-ui, sans-serif;
-    font-size: 0.875rem;
-    font-weight: 600;
-  }
-
-  :global(.dark) .poem-content :global(.poem-original summary) {
-    background: rgba(224, 148, 156, 0.12);
-    color: #e0949c;
-  }
-
-  .poem-content :global(.poem-original summary)::-webkit-details-marker {
-    display: none;
-  }
-
-  .poem-content :global(.poem-original summary)::after {
-    content: '\25BE';
-  }
-
-  .poem-content :global(.poem-original[open] summary)::after {
-    content: '\25B4';
-  }
-
-  .poem-content :global(.poem-original .poem-groups) {
     margin-top: 2rem;
+  }
+
+  .poem-content :global(.poem-groups-ar) {
     text-align: right;
   }
 
   .poem-content :global(.poem-groups-ar .poem-block) {
-    font-size: 1.375rem;
-    line-height: 2.1;
+    font-style: normal;
+    line-height: 2;
+  }
+
+  /* Author's own words, in Arabic — a short note beneath the poem. Same
+     font, same size as the poem itself. */
+  .poem-content :global(.poem-bio-ar) {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: normal;
+    font-size: 0.9375rem;
+    line-height: 2;
+    color: #fff;
+    opacity: 0.88;
   }
 
   /* Cover-image hero, for poems that have their own designed graphic */
@@ -268,10 +239,10 @@ const related = [...moreByAuthor, ...others].slice(0, 3);
   )}
 
   <article>
-    <!-- Author + pull quote -->
-    <div class="bg-cream-100 py-14 lg:py-20 dark:bg-gray-900/40">
+    <div class="bg-cream-100 py-14 lg:py-24 dark:bg-gray-900/40">
       <div class="container mx-auto px-4 lg:px-8">
         <div class="mx-auto max-w-xl">
+          <!-- Author + pull quote -->
           <div class="flex items-center gap-4">
             <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 font-display text-xl font-semibold text-white shadow-sm">
               {poem.data.author.charAt(0)}
@@ -290,47 +261,58 @@ const related = [...moreByAuthor, ...others].slice(0, 3);
               </p>
             </div>
           )}
-        </div>
-      </div>
-    </div>
 
-    <!-- Poem Content -->
-    <div class="poem-surface py-16 lg:py-24">
-      <svg class="poem-flourish poem-flourish--tl" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-        <path d="M6 6 C 30 8, 34 32, 58 34" />
-        <path d="M6 6 C 8 30, 32 34, 34 58" />
-        <path d="M20 14 C 26 20, 24 28, 30 32" />
-        <circle cx="58" cy="34" r="3.2" fill="currentColor" stroke="none" />
-        <circle cx="34" cy="58" r="3.2" fill="currentColor" stroke="none" />
-        <path d="M46 12 c 4 4, 4 10, -2 12 c -6 -2, -6 -8, 2 -12 Z" />
-      </svg>
-      <svg class="poem-flourish poem-flourish--br" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-        <path d="M6 6 C 30 8, 34 32, 58 34" />
-        <path d="M6 6 C 8 30, 32 34, 34 58" />
-        <path d="M20 14 C 26 20, 24 28, 30 32" />
-        <circle cx="58" cy="34" r="3.2" fill="currentColor" stroke="none" />
-        <circle cx="34" cy="58" r="3.2" fill="currentColor" stroke="none" />
-        <path d="M46 12 c 4 4, 4 10, -2 12 c -6 -2, -6 -8, 2 -12 Z" />
-      </svg>
-      <div class="poem-frame container mx-auto px-4 lg:px-8">
-        <div class="poem-content mx-auto max-w-xl">
-          <Content />
-        </div>
-      </div>
-    </div>
+          <!-- The poem, in the same card as the Mawtinī poem on the Our
+               Name page: a header row with icon + title, then the poem
+               itself on a slightly deeper shade of the same green,
+               Arabic and English switchable. -->
+          <div class={`poem-card mt-10 overflow-hidden rounded-2xl shadow-soft-lg ${cardGradientClasses}`} data-theme={cardTheme}>
+            <div class="flex items-center gap-4 px-6 py-6">
+              <span class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-white/15 text-white">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                </svg>
+              </span>
+              <span class="flex-1">
+                <span class="block text-lg font-semibold text-white">{poem.data.title}</span>
+                <span class={`mt-0.5 block text-sm ${cardSubtitleClass}`}>In Arabic and English, by {poem.data.author}</span>
+              </span>
+            </div>
+            <div class={`${cardOverlayClass} px-6 py-10 sm:px-10`}>
+              <div class="poem-frame poem-content">
+                <Content />
+              </div>
+            </div>
+          </div>
 
-    <!-- Back link -->
-    <div class="poem-surface pb-16">
-      <div class="container mx-auto px-4 text-center lg:px-8">
-        <a href="/palestinian-voices" class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Back to Palestinian Voices
-        </a>
+          <!-- Back link -->
+          <div class="mt-10 text-center">
+            <a href="/palestinian-voices" class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back to Palestinian Voices
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </article>
+
+  <script is:inline>
+    (() => {
+      document.querySelectorAll('[data-poem]').forEach((poem) => {
+        const buttons = poem.querySelectorAll('[data-set-lang]');
+        buttons.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const mode = btn.getAttribute('data-set-lang');
+            poem.setAttribute('data-mode', mode || 'both');
+            buttons.forEach((b) => b.classList.toggle('is-active', b === btn));
+          });
+        });
+      });
+    })();
+  </script>
 
   <!-- More Voices -->
   {related.length > 0 && (

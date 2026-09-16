@@ -23,6 +23,13 @@ address:
   state: Palestine
   zip: ""
 
+# Social Media Profiles
+social:
+  facebook: https://www.facebook.com/profile.php?id=61584593229542
+  instagram: https://www.instagram.com/ramzuna.languages_4pal/
+  linkedin: https://www.linkedin.com/company/ramzuna-languages/
+  youtube: https://www.youtube.com/@RamzunāLanguages
+
 # Header Settings
 header:
   darkMode: true

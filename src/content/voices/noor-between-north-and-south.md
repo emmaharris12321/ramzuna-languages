@@ -8,6 +8,14 @@ excerpt: "I am here, as I never have before."
 readTime: "2 min read"
 ---
 
+<div data-poem data-mode="ar">
+<div class="poem-langs">
+<button type="button" data-set-lang="ar" class="poem-lang-btn is-active" lang="ar">العربية</button>
+<button type="button" data-set-lang="both" class="poem-lang-btn">Both</button>
+<button type="button" data-set-lang="en" class="poem-lang-btn">English</button>
+</div>
+<div class="poem-pair">
+<div class="poem-col poem-en">
 <div class="poem-groups poem-groups-en">
 <div class="poem-block">
 <p>I am here, as I never have before.</p>
@@ -31,10 +39,9 @@ readTime: "2 min read"
 <p>Until it arrives, I try to survive here with my heart.</p>
 </div>
 </div>
-
-<details class="poem-original">
-<summary>Read the original in Arabic — بين شمالٍ وجنوب</summary>
-<div dir="rtl" lang="ar" class="poem-groups poem-groups-ar">
+</div>
+<div class="poem-col poem-ar" dir="rtl" lang="ar">
+<div class="poem-groups poem-groups-ar">
 <div class="poem-block">
 <p>أنا هنا كما لم أكن يوماً. أغادر بيتي مجبرة، نحو الموت، تاركة كل شيء هناك وتاركة قلبي معه إلى وجهةٍ مجهولة ومكانٍ لطالما رأيته بعيدًا، لكنه القدر.</p>
 <p>أسير نحوه الآن بخطواتي المثقلة، بقهر السنين.</p>
@@ -52,4 +59,6 @@ readTime: "2 min read"
 <p>لكن هذه أنا أُعاند الواقع وأرفض التعايش معه. أرسم في خيالي نُسخةٌ أخرى تشبهني. وإلى حينه، أحاول أن أنجو بقلبي من هنا.</p>
 </div>
 </div>
-</details>
+</div>
+</div>
+</div>

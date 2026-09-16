@@ -37,6 +37,7 @@ const voices = defineCollection({
     excerpt: z.string().optional(),
     readTime: z.string().optional(),
     coverImage: z.string().optional(),
+    cardTheme: z.enum(['green', 'burgundy']).optional().default('green'),
     draft: z.boolean().optional().default(false),
   }),
 });
@@ -63,6 +64,12 @@ const config = defineCollection({
       city: z.string(),
       state: z.string(),
       zip: z.string(),
+    }).optional(),
+    social: z.object({
+      facebook: z.string().optional(),
+      instagram: z.string().optional(),
+      linkedin: z.string().optional(),
+      youtube: z.string().optional(),
     }).optional(),
     header: z.object({
       darkMode: z.boolean().optional().default(true),

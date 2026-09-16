@@ -23,17 +23,24 @@ const { title, description = site.description } = Astro.props;
     <title>{title} | {site.name}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={`${title} | ${site.name}`} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/favicon.svg" />
+    <meta property="og:image" content={new URL('/assets/img/og-image.png', Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
     <meta property="og:site_name" content={site.name} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`${title} | ${site.name}`} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/assets/img/og-image.png', Astro.site)} />
 
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,9 +68,25 @@ const { title, description = site.description } = Astro.props;
       applyTheme();
     </script>
     <!-- Structured Data -->
-    <script is:inline type="application/ld+json">
-      {"@context":"https://schema.org","@type":"NGO","name":"Ramzunā Languages","description":"Free English, French, and German lessons for Palestinian students, taught by volunteer educators worldwide.","url":"/","email":"contacteam@ramzunalanguages.org"}
-    </script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'NGO',
+      name: site.name,
+      description: site.description,
+      url: Astro.site?.toString(),
+      logo: new URL(site.logo.src, Astro.site).toString(),
+      email: site.email,
+      ...(site.address ? {
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: site.address.street,
+          addressLocality: site.address.city,
+          addressRegion: site.address.state,
+          postalCode: site.address.zip || undefined,
+        },
+      } : {}),
+      sameAs: [site.social?.facebook, site.social?.instagram, site.social?.linkedin, site.social?.youtube].filter(Boolean),
+    })} />
   </head>
   <body class="min-h-screen">
     <!-- Page Preloader -->

@@ -171,9 +171,25 @@ const toneStyles: Record<Tone, { border: string; mark: string; icon: string; hea
     head: 'border-gray-100 dark:border-gray-800',
   },
 };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: groups.flatMap((group) =>
+    group.items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a.join(' '),
+      },
+    }))
+  ),
+};
 ---
 
 <Base title="FAQ" description="Answers to the questions we hear most often about learning and volunteering with Ramzunā Languages.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   <!-- Page Header -->
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
