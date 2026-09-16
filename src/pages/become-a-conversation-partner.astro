@@ -1,0 +1,219 @@
+---
+import Base from '@/layouts/Base.astro';
+
+const perks = [
+  {
+    title: 'Low pressure',
+    description: 'No lesson plans and no homework to mark — just relaxed, regular conversation that builds a student’s confidence.',
+  },
+  {
+    title: 'Flexible commitment',
+    description: 'As little as 30 to 60 minutes a week, at a time that suits your schedule, alongside your other commitments.',
+  },
+  {
+    title: 'Real difference',
+    description: 'Give a student the chance to practise speaking out loud with someone who is simply there to talk, not to test them.',
+  },
+];
+
+const comparison = [
+  {
+    role: 'Volunteer Teacher',
+    points: [
+      'Delivers structured lessons: grammar, vocabulary, and a curriculum building toward a CEFR level',
+      'Weekly 90-minute lesson plus roughly 45 minutes of preparation',
+      'Teaching qualifications or tutoring experience expected',
+      'Tracks a student’s progress against learning objectives over the term',
+    ],
+  },
+  {
+    role: 'Conversation Partner',
+    points: [
+      'No lesson plans, no homework, no grading — just real conversation',
+      'As little as 30 to 60 minutes a week, whenever suits you both',
+      'No teaching background needed — fluency in the language is enough',
+      'You and your student choose the topics together, at your own pace',
+    ],
+  },
+];
+
+const requirements = [
+  'No teaching qualification or experience required — just fluency in the language',
+  'Commitment to a weekly 30–60 minute conversation session for at least 3 months',
+  'A reliable internet connection for online sessions',
+  'Patient, encouraging, and sensitive to trauma-informed conversation practices',
+  'Comfortable letting the student lead the conversation and choose topics',
+  'Commitment to a short note or attendance form after each session',
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Apply online',
+    description: 'Tell us which language you are fluent in and when you are usually free to talk.',
+  },
+  {
+    number: '02',
+    title: 'Trauma-informed training',
+    description: 'Complete our compulsory trauma-informed/EIE training before your first conversation.',
+  },
+  {
+    number: '03',
+    title: 'Sign the volunteer agreement',
+    description: 'Sign our volunteer agreement and code of conduct.',
+  },
+  {
+    number: '04',
+    title: 'Attend the group meeting',
+    description: 'Join a compulsory collective group meeting with the wider volunteer team before you are matched.',
+  },
+  {
+    number: '05',
+    title: 'Get matched with a group',
+    description: 'We pair you with a group of students based on your language and availability.',
+  },
+  {
+    number: '06',
+    title: 'Start talking',
+    description: 'Meet online for regular conversation practice, with no lesson plan required.',
+  },
+];
+---
+
+<Base title="Become a Conversation Partner" description="Give a Palestinian student regular, low-pressure conversation practice in English, French, or German.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Become a Conversation Partner</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        Help a student build real confidence with regular, low-pressure conversation practice.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <span class="text-white">Become a Conversation Partner</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Closed Notice -->
+  <div class="bg-accent-50 py-4 dark:bg-accent-900/20">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <p class="text-sm font-medium text-accent-800 dark:text-accent-200">
+        Conversation partner applications are currently closed for the autumn term. Read on to see how it works for when they reopen, or explore our <a href="/services" class="underline hover:no-underline">programmes</a> and <a href="/get-involved" class="underline hover:no-underline">ways to support us</a> in the meantime.
+      </p>
+    </div>
+  </div>
+
+  <!-- Why Become a Conversation Partner -->
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Why This Role Matters</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+          Conversation <em class="not-italic text-primary-600 dark:text-primary-400">changes everything</em>
+        </h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          A conversation partner is not there to correct every mistake or assign homework — they are there to talk. That shift in pressure is often where real fluency starts to show up.
+        </p>
+      </div>
+      <div class="mt-16 grid gap-8 sm:grid-cols-3">
+        {
+          perks.map((perk) => (
+            <div class="rounded-2xl bg-cream-100 p-8 shadow-sm dark:bg-gray-900">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{perk.title}</h3>
+              <p class="mt-3 text-gray-600 dark:text-gray-400">{perk.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Teacher vs Conversation Partner -->
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">What's the Difference?</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Teacher or Conversation Partner?</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Both roles matter. Here's how they differ, so you can pick the one that fits you.</p>
+      </div>
+      <div class="mx-auto mt-16 grid max-w-4xl gap-8 sm:grid-cols-2">
+        {
+          comparison.map((item) => (
+            <div class="rounded-2xl bg-white p-8 shadow-sm dark:bg-gray-800">
+              <h3 class="font-display text-xl font-semibold text-gray-900 dark:text-white">{item.role}</h3>
+              <ul class="mt-4 space-y-3">
+                {item.points.map((point) => (
+                  <li class="flex items-start gap-2 text-gray-600 dark:text-gray-400">
+                    <svg class="mt-1 h-4 w-4 flex-shrink-0 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements -->
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">What We Look For</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">No Teaching Background Needed</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">You do not need to be a teacher — here is what we do ask for.</p>
+      </div>
+      <div class="mx-auto mt-12 grid max-w-3xl gap-4 sm:grid-cols-2">
+        {
+          requirements.map((item) => (
+            <div class="flex items-start gap-3 rounded-xl border border-gray-200 p-4 dark:border-gray-800">
+              <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="text-gray-600 dark:text-gray-400">{item}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Getting Started</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Before Your First Conversation</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Six steps to get matched with a group of students.</p>
+      </div>
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          steps.map((step) => (
+            <div class="text-center">
+              <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-bold text-white">{step.number}</div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{step.title}</h3>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{step.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Applications Are Currently Closed for the Autumn Term</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Thank you for your interest. We are not matching new conversation partners right now — explore our programmes or support our work with a donation instead.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/services" class="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-medium text-primary-600 shadow-lg transition-colors hover:bg-gray-100">
+          Our Programmes
+        </a>
+        <a href="/donate" class="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-3 font-medium text-white transition-colors hover:bg-white/10">
+          Make a Donation
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

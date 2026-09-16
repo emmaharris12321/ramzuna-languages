@@ -1,0 +1,227 @@
+---
+import { getSite, getNav, getHeader } from '@/data/site';
+
+const site = await getSite();
+const nav = await getNav();
+const header = await getHeader();
+
+interface NavItem {
+  text: string;
+  url?: string;
+  children?: { text: string; url: string }[];
+}
+---
+
+<div class="bg-primary-800 text-white">
+  <div class="container mx-auto flex h-9 items-center justify-between gap-4 px-4 lg:px-8">
+    <a href={`mailto:${site.email}`} class="flex items-center gap-2 text-xs font-medium text-white/90 transition hover:text-white">
+      <svg class="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+      <span class="hidden sm:inline">{site.email}</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <span class="hidden text-xs text-white/70 md:inline">100% free for every student, always</span>
+      <a href="/get-involved" class="inline-flex items-center gap-1.5 text-xs font-bold text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">
+        Get Involved
+        <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+<header
+  class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg transition-all dark:border-gray-800 dark:bg-gray-950/80"
+  data-header
+>
+  <div
+    class="container mx-auto flex h-16 items-center justify-between px-4 lg:h-20 lg:px-8"
+  >
+    <!-- Logo + Home -->
+    <div class="flex items-center gap-4">
+      <a href={site.url} class="flex items-center gap-2.5">
+        {
+          site.logo ? (
+            <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm ring-1 ring-gray-200 lg:h-11 lg:w-11 dark:ring-gray-700">
+              <img src={site.logo.src} alt={site.logo.alt} class="h-full w-full object-cover" />
+            </span>
+          ) : null
+        }
+        <span class="font-display text-lg font-semibold leading-tight text-gray-900 sm:text-xl dark:text-white">
+          {site.name}
+        </span>
+      </a>
+
+      {
+        header.cta && (
+          <a
+            href={header.cta.url}
+            class="hidden rounded-lg bg-accent-500 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-600 sm:inline-flex"
+          >
+            {header.cta.text}
+          </a>
+        )
+      }
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav
+      class="hidden lg:flex lg:items-center lg:gap-8"
+      aria-label="Main navigation"
+    >
+      {
+        nav.map((item: NavItem) => (
+          item.children ? (
+            <div class="group relative">
+              <button
+                type="button"
+                class="flex items-center gap-1 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              >
+                {item.text}
+                <svg class="h-3.5 w-3.5 transition-transform duration-150 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="invisible absolute left-0 top-full z-20 min-w-[240px] pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100">
+                <div class="rounded-xl border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-800 dark:bg-gray-900">
+                  {item.children.map((child) => (
+                    <a
+                      href={child.url}
+                      class="block px-4 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-cream-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                    >
+                      {child.text}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.url}
+              data-nav-link={item.url?.replace("/#", "")}
+              class="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+            >
+              {item.text}
+            </a>
+          )
+        ))
+      }
+    </nav>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-4">
+      {
+        header.darkMode && (
+          <button
+            type="button"
+            data-dark-toggle
+            class="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+            aria-label="Toggle dark mode"
+          >
+            <svg
+              class="h-5 w-5 dark:hidden"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
+            </svg>
+            <svg
+              class="hidden h-5 w-5 dark:block"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+          </button>
+        )
+      }
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        data-mobile-toggle
+        class="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-100 lg:hidden dark:text-gray-400 dark:hover:bg-gray-800"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="hidden lg:hidden" data-mobile-menu>
+    <nav
+      class="border-t border-gray-200 bg-white px-4 py-4 dark:border-gray-800 dark:bg-gray-950"
+    >
+      {
+        header.cta && (
+          <div class="mb-4 border-b border-gray-200 pb-4 dark:border-gray-800">
+            <a
+              href={header.cta.url}
+              class="block w-full rounded-lg bg-accent-500 px-5 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-accent-600"
+            >
+              {header.cta.text}
+            </a>
+          </div>
+        )
+      }
+
+      {
+        nav.map((item: NavItem) => (
+          item.children ? (
+            <div class="border-b border-gray-100 last:border-0 dark:border-gray-800">
+              <button
+                type="button"
+                data-mobile-submenu-toggle
+                aria-expanded="false"
+                class="flex w-full items-center justify-between py-3 text-base font-medium text-gray-900 dark:text-white"
+              >
+                {item.text}
+                <svg data-mobile-submenu-icon class="h-4 w-4 transition-transform duration-150" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div data-mobile-submenu class="hidden pb-2 pl-4">
+                {item.children.map((child) => (
+                  <a
+                    href={child.url}
+                    class="block py-2.5 text-sm font-medium text-gray-600 dark:text-gray-400"
+                  >
+                    {child.text}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.url}
+              class="block py-3 text-base font-medium text-gray-900 dark:text-white"
+            >
+              {item.text}
+            </a>
+          )
+        ))
+      }
+    </nav>
+  </div>
+</header>

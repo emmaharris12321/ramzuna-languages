@@ -1,0 +1,174 @@
+---
+import Base from '@/layouts/Base.astro';
+
+interface Resource {
+  title: string;
+  url: string;
+  category: string;
+  lang: string;
+}
+
+const categories = ['English', 'IELTS General', 'IELTS Listening', 'IELTS Writing', 'French', 'German'];
+
+const categoryIcon: Record<string, string> = {
+  English: '📖',
+  'IELTS General': '📝',
+  'IELTS Listening': '🎧',
+  'IELTS Writing': '✍️',
+  French: '🇫🇷',
+  German: '🇩🇪',
+};
+
+const resources: Resource[] = [
+  // English
+  { title: 'British Council – Learn English', url: 'https://learnenglish.britishcouncil.org', category: 'English', lang: 'English' },
+  { title: 'British Council Palestine – Digital Catalogues', url: 'https://www.britishcouncil.ps/en/programmes/english-palestine-digital-catalogues', category: 'English', lang: 'English' },
+  { title: 'VOA Learning English', url: 'https://learningenglish.voanews.com', category: 'English', lang: 'English' },
+  { title: 'Spotlight English', url: 'https://spotlightenglish.com', category: 'English', lang: 'English' },
+  { title: 'BBC Learning English', url: 'https://www.bbc.co.uk/learningenglish/english/home', category: 'English', lang: 'English' },
+  { title: 'TED-Ed', url: 'https://ed.ted.com', category: 'English', lang: 'English' },
+  { title: 'BBC Learning English – News English', url: 'https://www.bbc.co.uk/learningenglish/news_english', category: 'English', lang: 'English' },
+  { title: "Luke's English Podcast", url: 'https://www.youtube.com/@LukesEnglishPodcast', category: 'English', lang: 'English' },
+  { title: 'BBC 6 Minute English', url: 'https://www.bbc.co.uk/learningenglish/english/features/6-minute-english', category: 'English', lang: 'English' },
+  { title: 'Elephant English Podcasts', url: 'https://www.youtube.com/@elephantenglishpodcasts', category: 'English', lang: 'English' },
+  { title: 'News in Levels', url: 'https://www.newsinlevels.com', category: 'English', lang: 'English' },
+  { title: 'ELLLO', url: 'https://www.elllo.org', category: 'English', lang: 'English' },
+  { title: 'Breaking News English', url: 'https://breakingnewsenglish.com', category: 'English', lang: 'English' },
+  { title: 'Cambridge English', url: 'https://www.cambridgeenglish.org/learners/', category: 'English', lang: 'English' },
+  { title: 'Rong-Chang English', url: 'https://www.rong-chang.com/', category: 'English', lang: 'English' },
+  { title: 'Write & Improve', url: 'https://writeandimprove.com', category: 'English', lang: 'English' },
+  { title: 'Ramzuna Languages – Padlet', url: 'https://padlet.com/RamzunaLang/ramzuna-languages-3zub7vag84jcw9ad/wish/O7A9Qmw39K0JW6x3', category: 'English', lang: 'English' },
+
+  // IELTS General
+  { title: 'IELTS Liz', url: 'https://ieltsliz.com', category: 'IELTS General', lang: 'English' },
+  { title: 'IELTS.org – Sample Test Questions', url: 'https://ielts.org/take-a-test/preparation-resources/sample-test-questions', category: 'IELTS General', lang: 'English' },
+  { title: 'IELTS-Up', url: 'https://ielts-up.com/index.html', category: 'IELTS General', lang: 'English' },
+  { title: 'YouTube – IELTS Prep Channel', url: 'https://www.youtube.com/channel/UCglDIsg_Z9mE2oT9hsrbzFA', category: 'IELTS General', lang: 'English' },
+  { title: 'Magoosh IELTS', url: 'https://magoosh.com/ielts/ielts-resources/', category: 'IELTS General', lang: 'English' },
+  { title: 'IELTS etc.', url: 'https://ieltsetc.com/resources/', category: 'IELTS General', lang: 'English' },
+  { title: 'IELTS Practice Hub', url: 'https://ieltspracticehub.ai/?sso=anon', category: 'IELTS General', lang: 'English' },
+  { title: 'Shared IELTS Resource 1', url: 'https://drive.google.com/file/d/1_goP0MMEEhNM9W4rdkuyUG_yJLKX-0Gy/view', category: 'IELTS General', lang: 'English' },
+  { title: 'Shared IELTS Resource 2', url: 'https://drive.google.com/file/d/1_R4QYfW6dq6shzLXW3PxoLA-wCUORwDE/view', category: 'IELTS General', lang: 'English' },
+  { title: 'Shared IELTS Resource 3', url: 'https://drive.google.com/file/d/1d6aFC2bn7UmalW5KXvwVv1JATBzs0FdA/view', category: 'IELTS General', lang: 'English' },
+
+  // IELTS Listening
+  { title: 'IELTS Podcast', url: 'https://www.ieltspodcast.com', category: 'IELTS Listening', lang: 'English' },
+  { title: 'Mini IELTS – Listening', url: 'http://mini-ielts.com/listening', category: 'IELTS Listening', lang: 'English' },
+  { title: 'Practice PTE Online – IELTS Listening', url: 'https://practicepteonline.com/ielts-listening-tests-ielts-listening-practice-test-ielts-listening-pdf-ielts-cambridge-test/', category: 'IELTS Listening', lang: 'English' },
+
+  // IELTS Writing
+  { title: 'IELTS-Writing.info', url: 'https://www.ielts-writing.info/EXAM/Download-free-IELTS-resources.htm', category: 'IELTS Writing', lang: 'English' },
+  { title: 'IELTS Mentor – Writing Task 2', url: 'https://www.ielts-mentor.com/writing-sample/writing-task-2', category: 'IELTS Writing', lang: 'English' },
+  { title: 'Writing9 – IELTS Writing Task 2', url: 'https://writing9.com/ielts-writing-task-2-topics', category: 'IELTS Writing', lang: 'English' },
+  { title: 'IELTS Buddy – Writing Task 1', url: 'https://www.ieltsbuddy.com/ielts-writing-task-1.html', category: 'IELTS Writing', lang: 'English' },
+
+  // French
+  { title: 'TV5Monde', url: 'https://www.tv5monde.com', category: 'French', lang: 'French' },
+  { title: 'RFI Savoirs – Français Facile', url: 'https://francaisfacile.rfi.fr/fr/', category: 'French', lang: 'French' },
+  { title: 'Lawless French', url: 'https://www.lawlessfrench.com', category: 'French', lang: 'French' },
+  { title: 'Coffee Break French', url: 'https://coffeebreaklanguages.com/coffeebreakfrench/', category: 'French', lang: 'French' },
+  { title: 'DELF DALF – Official Site', url: 'http://www.delfdalf.fr/index-en.html', category: 'French', lang: 'French' },
+
+  // German
+  { title: 'Deutsche Welle – Learn German', url: 'https://learngerman.dw.com/en/learn-german/s-9528', category: 'German', lang: 'German' },
+  { title: 'Goethe-Institut – Deutsch für dich', url: 'https://www.goethe.de/prj/dfd/en/home.cfm', category: 'German', lang: 'German' },
+  { title: 'Goethe-Institut – Exams', url: 'https://www.goethe.de/ins/mm/en/spr/prf.html', category: 'German', lang: 'German' },
+  { title: 'YouTube – German Learning Channel', url: 'https://www.youtube.com/channel/UCbxb2fqe9oNgglAoYqsYOtQ', category: 'German', lang: 'German' },
+  { title: 'VHS Lernportal', url: 'https://www.vhs-lernportal.de/wws/9.php', category: 'German', lang: 'German' },
+  { title: 'Pressbooks – German 101', url: 'https://una.pressbooks.pub/gr101/chapter/section-1-1/', category: 'German', lang: 'German' },
+];
+---
+
+<Base title="Language Resources" description="A searchable directory of free resources to study and teach English, French and German.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Language Resources</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        {resources.length} free resources to study and teach English, French and German.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <a href="/resources" class="transition-colors hover:text-white">Resources</a>
+        <span>/</span>
+        <span class="text-white">Language Resources</span>
+      </nav>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <!-- Search -->
+      <div class="mx-auto max-w-2xl">
+        <div class="relative">
+          <svg
+            class="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+          </svg>
+          <input
+            type="search"
+            data-blog-search
+            placeholder="Search this collection..."
+            class="w-full rounded-lg border border-gray-300 bg-white py-3 pl-12 pr-4 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
+          />
+        </div>
+
+        <!-- Category Filters -->
+        <div class="mt-6 flex flex-wrap justify-center gap-3" data-blog-filters>
+          <button type="button" data-filter="all" class="rounded-full bg-primary-600 px-4 py-2 text-sm font-medium text-white transition-colors">
+            All
+          </button>
+          {
+            categories.map((cat) => (
+              <button
+                type="button"
+                data-filter={cat}
+                class="rounded-full bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors dark:bg-gray-700 dark:text-gray-300"
+              >
+                {cat}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Resource Grid -->
+      <div class="mt-16 grid gap-6 sm:grid-cols-2">
+        {
+          resources.map((res) => (
+            <article
+              data-category={res.category}
+              class="group flex flex-col rounded-2xl bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800"
+            >
+              <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent-100 text-lg dark:bg-accent-900/50">
+                {categoryIcon[res.category]}
+              </div>
+              <span class="mb-2 inline-flex w-fit items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
+                {res.category}
+              </span>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                <a href={res.url} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-primary-600 dark:hover:text-primary-400">
+                  {res.title}
+                </a>
+              </h3>
+              <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{res.lang}</p>
+              <a
+                href={res.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex w-fit items-center gap-1 text-sm font-medium text-accent-600 transition-colors hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
+              >
+                Open resource <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

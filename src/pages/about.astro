@@ -1,0 +1,320 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getPage } from '@/data/site';
+
+const page = await getPage('about');
+
+const teacherCountries = [
+  { flag: '🇬🇧', name: 'United Kingdom', pct: 27.1 },
+  { flag: '🇺🇸', name: 'United States', pct: 15.68 },
+  { flag: '🇵🇸', name: 'Palestine', pct: 11.54 },
+  { flag: '🇪🇬', name: 'Egypt', pct: 11.54 },
+  { flag: '🇫🇷', name: 'France', pct: 7.69 },
+  { flag: '🇩🇿', name: 'Algeria', pct: 7.69 },
+  { flag: '🇵🇭', name: 'Philippines', pct: 7.69 },
+];
+const teacherMaxPct = Math.max(...teacherCountries.map((c) => c.pct));
+
+const demographics = [
+  { term: 'Spring Term', women: 91, men: 9 },
+  { term: 'Summer Term', women: 77, men: 22 },
+];
+
+const valueStyles = [
+  {
+    tone: 'primary',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347M4.26 10.147a50.548 50.548 0 0 0-2.658-.813A59.907 59.907 0 0 1 12 3.493a59.9 59.9 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814M4.26 10.147a50.717 50.717 0 0 1 7.74-3.342M4.26 10.147a49.99 49.99 0 0 0-1.499 8.093M12 6.805a50.717 50.717 0 0 1 7.74 3.342" />',
+  },
+  {
+    tone: 'accent',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />',
+  },
+  {
+    tone: 'primary',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z" />',
+  },
+  {
+    tone: 'accent',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />',
+  },
+];
+---
+
+<Base title={page.title} description={page.description}>
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">{page.title}</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">{page.description}</p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <span class="text-white">About</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- About Us intro -->
+  <section class="pb-4 pt-20 lg:pt-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
+          {page.story.badge}
+        </div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+          {page.story.title}
+        </h2>
+        <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+          {page.story.lede}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story (image + text) -->
+  <section class="py-16 lg:py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="order-1 mx-auto aspect-[4/3] w-full max-w-lg">
+          <img
+            src="/assets/img/community-drawing.jpg"
+            alt="A colourful drawing made by our community showing students and volunteers holding up words in Arabic, English, Spanish and Japanese"
+            class="h-full w-full object-cover object-center [mask-image:radial-gradient(ellipse_62%_62%_at_center,black_40%,transparent_92%)] [-webkit-mask-image:radial-gradient(ellipse_62%_62%_at_center,black_40%,transparent_92%)]"
+            loading="lazy"
+          />
+        </div>
+        <div class="order-2">
+          <p class="text-sm font-semibold uppercase tracking-wider text-accent-600 dark:text-accent-400">
+            {page.story.ourStory.title}
+          </p>
+          <h3 class="mt-2 font-display text-2xl font-semibold text-gray-900 sm:text-3xl dark:text-white">
+            Born out of a response to crisis
+          </h3>
+          {page.story.ourStory.paragraphs.map((p: string) => (
+            <p class="mt-4 text-lg leading-relaxed text-gray-600 dark:text-gray-400">{p}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Mission (text + image) -->
+  <section class="py-16 lg:py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="order-2 lg:order-1">
+          <p class="text-sm font-semibold uppercase tracking-wider text-primary-600 dark:text-primary-400">
+            {page.story.ourMission.title}
+          </p>
+          <h3 class="mt-2 font-display text-2xl font-semibold text-gray-900 sm:text-3xl dark:text-white">
+            Language as a lifeline, not a luxury
+          </h3>
+          {page.story.ourMission.paragraphs.map((p: string) => (
+            <p class="mt-4 text-lg leading-relaxed text-gray-600 dark:text-gray-400">{p}</p>
+          ))}
+        </div>
+        <div class="order-1 mx-auto aspect-[4/3] w-full max-w-lg lg:order-2">
+          <img
+            src="/assets/img/mission-video-call.jpg"
+            alt="Illustration of a volunteer educator teaching a Palestinian student over video call"
+            class="h-full w-full object-cover object-center [mask-image:radial-gradient(ellipse_62%_62%_at_center,black_40%,transparent_92%)] [-webkit-mask-image:radial-gradient(ellipse_62%_62%_at_center,black_40%,transparent_92%)]"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">{page.values.title}</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">{page.values.description}</p>
+      </div>
+      <div class="mx-auto mt-16 grid max-w-4xl gap-8 sm:grid-cols-2">
+        {page.values.items.map((value: any, i: number) => {
+          const style = valueStyles[i % valueStyles.length];
+          return (
+            <div
+              class:list={[
+                'rounded-2xl border-t-4 bg-white p-8 shadow-sm transition-transform hover:-translate-y-1 dark:bg-gray-900',
+                style.tone === 'primary' ? 'border-primary-500' : 'border-accent-500',
+              ]}
+            >
+              <div
+                class:list={[
+                  'mb-5 flex h-12 w-12 items-center justify-center rounded-xl',
+                  style.tone === 'primary'
+                    ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400'
+                    : 'bg-accent-100 text-accent-600 dark:bg-accent-900/50 dark:text-accent-400',
+                ]}
+              >
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" set:html={style.icon} />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{value.title}</h3>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{value.description}</p>
+            </div>
+          );
+        })}
+      </div>
+
+      <!-- UN Sustainable Development Goals -->
+      <div class="mx-auto mt-16 max-w-4xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+          Aligned with the UN Sustainable Development Goals
+        </p>
+        <div class="mx-auto mt-6 grid max-w-md grid-cols-3 gap-4 sm:max-w-lg">
+          {page.sdgs.map((sdg: any) => (
+            <div
+              class="flex flex-col items-center justify-center gap-2 rounded-xl p-4 text-center text-white shadow-sm"
+              style={`background-color:${sdg.color}`}
+            >
+              <span class="text-2xl font-bold leading-none">{sdg.number}</span>
+              <span class="text-xs font-medium leading-tight">{sdg.title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Impact -->
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <img
+          src="/assets/img/ramzuna-heritage-banner.png"
+          alt="Ramzunā Languages crest with a keffiyeh and olive-branch pattern"
+          class="mx-auto mb-8 w-36 sm:w-44"
+          loading="lazy"
+        />
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
+          Our Impact
+        </div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+          The Numbers Behind Our Mission
+        </h2>
+        <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+          A look at the community of students and volunteer educators powering Ramzunā Languages in 2026.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-14 grid max-w-4xl gap-8 sm:grid-cols-2">
+        <!-- Teacher nationality stat card -->
+        <div class="overflow-hidden rounded-2xl bg-primary-600 p-8 text-white shadow-soft-lg dark:bg-primary-800">
+          <p class="text-sm font-semibold uppercase tracking-wider text-primary-100">Volunteer Educators</p>
+          <p class="mt-1 font-display text-4xl font-bold">15 Countries</p>
+          <p class="mt-2 text-sm leading-relaxed text-primary-100">
+            Where our volunteer teachers are based, 2026.
+          </p>
+          <div class="mt-6 space-y-4">
+            {teacherCountries.map((c) => (
+              <div>
+                <div class="flex items-center justify-between gap-2 text-sm font-medium">
+                  <span class="truncate">{c.flag} {c.name}</span>
+                  <span class="flex-shrink-0 font-semibold tabular-nums">{c.pct}%</span>
+                </div>
+                <div class="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-white/20">
+                  <div class="h-2 rounded-full bg-white" style={`width:${(c.pct / teacherMaxPct) * 100}%`}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p class="mt-6 text-xs leading-relaxed text-primary-100">
+            Also represented (3.85% each): 🇬🇷 Greece, 🇲🇦 Morocco, 🇨🇦 Canada, 🇿🇦 South Africa, 🇱🇸 Lesotho, 🇵🇰 Pakistan, 🇧🇩 Bangladesh &amp; 🇪🇸 Spain.
+          </p>
+        </div>
+
+        <!-- Student demographics stat card -->
+        <div class="overflow-hidden rounded-2xl bg-accent-600 p-8 text-white shadow-soft-lg dark:bg-accent-800">
+          <p class="text-sm font-semibold uppercase tracking-wider text-accent-100">Student Demographics</p>
+          <p class="mt-1 font-display text-4xl font-bold">91% Women</p>
+          <p class="mt-2 text-sm leading-relaxed text-accent-100">
+            Share of learners by gender, by term, 2026.
+          </p>
+          <div class="mt-8 grid grid-cols-2 gap-6">
+            {demographics.map((d) => (
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wider text-accent-100">{d.term}</p>
+                <div class="mt-4 flex h-28 items-end gap-4">
+                  <div class="flex flex-1 flex-col items-center">
+                    <span class="mb-1.5 text-sm font-bold tabular-nums">{d.women}%</span>
+                    <div class="w-full rounded-t-md bg-white" style={`height:${d.women * 0.9}px`}></div>
+                  </div>
+                  <div class="flex flex-1 flex-col items-center">
+                    <span class="mb-1.5 text-sm font-bold tabular-nums">{d.men}%</span>
+                    <div class="w-full rounded-t-md bg-white/50" style={`height:${d.men * 0.9}px`}></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex gap-4 text-center text-[11px] text-accent-100">
+                  <span class="flex-1">Women</span>
+                  <span class="flex-1">Men</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p class="mt-6 text-xs leading-relaxed text-accent-100">
+            A small remaining share of students identify as non-binary or genderqueer.
+          </p>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-8 grid max-w-4xl gap-6 sm:grid-cols-2">
+        <div class="rounded-2xl bg-white p-8 shadow-sm dark:bg-gray-800">
+          <div class="flex items-start gap-4">
+            <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-accent-600 text-sm font-semibold text-white">1</span>
+            <div>
+              <h3 class="font-display text-lg font-semibold italic text-primary-600 dark:text-primary-400">
+                Advancing Language Instruction and Equality in Education
+              </h3>
+              <p class="mt-3 text-justify text-gray-600 dark:text-gray-400">
+                In 2026, our programmes have welcomed an inspiring number of women.
+              </p>
+              <p class="mt-2 text-justify text-gray-600 dark:text-gray-400">
+                We are equally encouraged by the growing participation of male learners, reflecting the inclusive and dynamic nature of Ramzunā Languages.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl bg-white p-8 shadow-sm dark:bg-gray-800">
+          <div class="flex items-start gap-4">
+            <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-accent-600 text-sm font-semibold text-white">2</span>
+            <div>
+              <h3 class="font-display text-lg font-semibold italic text-primary-600 dark:text-primary-400">
+                Global Community
+              </h3>
+              <p class="mt-3 text-justify text-gray-600 dark:text-gray-400">
+                At Ramzunā Languages, we are proud to have teachers from around the world, empowering and contributing to our students&rsquo; success.
+              </p>
+              <p class="mt-2 text-justify text-gray-600 dark:text-gray-400">
+                We are also delighted to report a 35% increase in our teaching staff for 2026.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">{page.team.title}</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">{page.team.description}</p>
+      </div>
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {page.team.members.map((member: any) => (
+          <div class="text-center">
+            <div class="mx-auto h-40 w-40 overflow-hidden rounded-full">
+              <img src={member.image} alt={member.name} class="h-full w-full object-cover" loading="lazy" />
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-gray-900 dark:text-white">{member.name}</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{member.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

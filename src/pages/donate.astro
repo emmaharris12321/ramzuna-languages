@@ -1,0 +1,251 @@
+---
+import Base from '@/layouts/Base.astro';
+---
+
+<Base title="Donate" description="Support free English, French, and German lessons for Palestinian students with a donation to Ramzunā Languages.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Make a Donation</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        Every donation helps keep language lessons free for Palestinian students, for as long as they need them.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <span class="text-white">Donate</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ═══════════ Fundraiser widget ═══════════ -->
+  <section style="padding:64px 20px;background:linear-gradient(180deg,#f7f1e8 0%,#fbf8f3 100%);">
+    <style>
+      .rf-wrap{max-width:960px;margin:0 auto;font-family:'Outfit',system-ui,sans-serif;color:#222;}
+
+      .rf-head{text-align:center;margin-bottom:28px;}
+      .rf-label{display:block;color:#7a222b;font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:10px;}
+      .rf-title{margin:0 0 10px;font-family:'Playfair Display',Georgia,serif;font-size:1.875rem;line-height:1.25;color:#4f886c;font-weight:600;}
+      .rf-body{margin:0 auto;font-size:17px;line-height:1.8;color:#4a4a4a;max-width:680px;text-align:justify;}
+
+      .rf-progress{background:rgba(255,255,255,.78);border:1px solid rgba(122,34,43,.10);border-radius:10px;padding:24px 28px;box-shadow:0 10px 18px rgba(31,31,31,.05);margin-bottom:40px;}
+      .rf-prow{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px;}
+      .rf-raised{font-size:28px;font-weight:700;color:#4f886c;line-height:1;}
+      .rf-goal{font-size:17px;color:#888;}
+      .rf-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+      .rf-pill{display:inline-block;background:rgba(79,136,108,.12);color:#4f886c;font-size:14px;font-weight:700;letter-spacing:.04em;padding:3px 12px;border-radius:50px;}
+      .rf-bar-bg{height:10px;background:rgba(79,136,108,.15);border-radius:99px;overflow:hidden;margin-bottom:16px;}
+      .rf-bar-fill{height:100%;width:0%;background:#4f886c;border-radius:99px;}
+      .rf-tagline{font-size:17px;color:#4a4a4a;line-height:1.8;font-style:italic;}
+
+      .rf-divider{height:1px;background:rgba(122,34,43,.08);margin:40px 0;}
+
+      .rf-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:28px;}
+      .rf-card{background:rgba(255,255,255,.85);border:1px solid rgba(122,34,43,.10);border-radius:10px;padding:20px 16px 18px;box-shadow:0 10px 18px rgba(31,31,31,.05);transition:transform .28s ease,box-shadow .28s ease;cursor:pointer;position:relative;}
+      .rf-card:hover{transform:translateY(-8px);box-shadow:0 18px 32px rgba(31,31,31,.10);}
+      .rf-card.alt{background:#7a222b;border-color:#7a222b;}
+      .rf-card.soft{background:rgba(79,136,108,.12);border-color:rgba(79,136,108,.18);}
+      .rf-card.selected{outline:2px solid #4f886c;outline-offset:3px;}
+      .rf-card.alt.selected{outline-color:rgba(255,255,255,.6);}
+      .rf-card::before{content:'';position:absolute;top:0;left:16px;right:16px;height:2px;background:rgba(122,34,43,.18);border-radius:0 0 2px 2px;}
+      .rf-card.alt::before{background:rgba(255,255,255,.25);}
+      .rf-card.soft::before{background:rgba(79,136,108,.35);}
+
+      .rf-ctop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;}
+      .rf-dot{width:10px;height:10px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+      .rf-amount{font-size:28px;font-weight:700;line-height:1;color:#7a222b;}
+      .rf-card.alt .rf-amount{color:#fff;}
+      .rf-card.soft .rf-amount{color:#4f886c;}
+      .rf-name{margin:0 0 8px;font-size:1.125rem;line-height:1.25;font-weight:600;color:#7a222b;}
+      .rf-card.alt .rf-name{color:#fff;}
+      .rf-card.soft .rf-name{color:#4f886c;}
+      .rf-desc{margin:0;font-size:17px;line-height:1.65;color:#4a4a4a;text-align:justify;}
+      .rf-card.alt .rf-desc{color:rgba(255,255,255,.88);}
+
+      .rf-donate{text-align:center;padding-top:8px;}
+      .rf-btn{display:inline-block;background:#7a222b;color:#fff;font-family:'Outfit',system-ui,sans-serif;font-size:1rem;font-weight:600;padding:14px 52px;border-radius:50px;border:none;cursor:pointer;text-decoration:none;transition:background .25s,transform .25s,box-shadow .25s;box-shadow:0 8px 24px rgba(122,34,43,.25);}
+      .rf-btn:hover{background:#5e1a22;transform:translateY(-2px);box-shadow:0 12px 30px rgba(122,34,43,.35);}
+      .rf-btn-note{margin-top:10px;font-size:15px;color:#999;}
+
+      .rf-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:16px;}
+      .rf-fcard{background:rgba(255,255,255,.78);border:1px solid rgba(122,34,43,.10);border-radius:10px;padding:18px 14px;box-shadow:0 10px 18px rgba(31,31,31,.05);}
+      .rf-fnum{font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#7a222b;margin-bottom:10px;}
+      .rf-ftitle{font-size:1.125rem;font-weight:600;color:#4f886c;margin-bottom:8px;line-height:1.25;}
+      .rf-fdesc{margin:0;font-size:17px;color:#4a4a4a;line-height:1.6;text-align:justify;}
+
+      .rf-tnote{background:rgba(79,136,108,.10);border:1px solid rgba(79,136,108,.14);border-radius:10px;padding:18px 20px;font-size:17px;color:#4a4a4a;line-height:1.7;text-align:justify;}
+      .rf-tnote strong{color:#7a222b;}
+
+      .rf-footer{text-align:center;padding:24px 20px 4px;font-size:15px;color:#aaa;border-top:1px solid rgba(122,34,43,.08);margin-top:40px;}
+
+      @media(min-width:640px){
+        .rf-title{font-size:2.25rem;}
+      }
+      @media(max-width:900px){
+        .rf-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+        .rf-grid .rf-card{grid-column:span 1 !important;}
+        .rf-flow{grid-template-columns:1fr 1fr;}
+      }
+      @media(max-width:600px){
+        .rf-grid{grid-template-columns:1fr;}
+        .rf-grid .rf-card{grid-column:span 1 !important;}
+        .rf-flow{grid-template-columns:1fr;}
+        .rf-raised{font-size:24px;}
+      }
+
+      /* Text sizes above were bumped slightly for mobile legibility; revert
+         to the original, smaller sizes on desktop so it doesn't look too big. */
+      @media(min-width:1280px){
+        .rf-label{font-size:12px;}
+        .rf-body{font-size:16px;}
+        .rf-goal{font-size:16px;}
+        .rf-pill{font-size:13px;}
+        .rf-tagline{font-size:16px;}
+        .rf-desc{font-size:16px;}
+        .rf-btn-note{font-size:14px;}
+        .rf-fnum{font-size:12px;}
+        .rf-fdesc{font-size:16px;}
+        .rf-tnote{font-size:16px;}
+        .rf-footer{font-size:14px;}
+      }
+    </style>
+
+    <div class="rf-wrap">
+      <div class="rf-head">
+        <span class="rf-label">Active Fundraiser</span>
+        <h2 class="rf-title">Our Symbol of Hope</h2>
+        <p class="rf-body">In Gaza, the infrastructure to support education has been severely damaged. Our students are ready to learn, but they face a scarcity economy where the cost of basic connectivity has risen by over 1,000%. Your donation funds the essentials that keep learning alive.</p>
+      </div>
+
+      <div class="rf-progress">
+        <div class="rf-prow">
+          <span class="rf-raised">$50</span>
+          <span class="rf-goal">raised of $2,000 goal</span>
+        </div>
+        <div class="rf-pills">
+          <span class="rf-pill">2% Funded</span>
+          <span class="rf-pill">Campaign Live Now</span>
+        </div>
+        <div class="rf-bar-bg"><div class="rf-bar-fill"></div></div>
+        <p class="rf-tagline">Every donation goes directly toward keeping students powered, connected, and qualified — from device repairs and solar energy to the certification exams that open doors to scholarships and boost remote career opportunities.</p>
+      </div>
+
+      <div class="rf-divider"></div>
+
+      <div class="rf-head">
+        <span class="rf-label">Choose Your Impact</span>
+        <h2 class="rf-title">What will your donation do?</h2>
+        <p class="rf-body">Select the impact you want to make. You will complete your donation securely on WhyDonate.</p>
+      </div>
+
+      <div class="rf-grid">
+        <div class="rf-card" onclick="rfSelect(this)" style="grid-column:span 2;">
+          <div class="rf-ctop">
+            <div class="rf-amount">$25</div>
+            <div class="rf-dot" style="background:#7a222b;"></div>
+          </div>
+          <h3 class="rf-name">The Connectivity Share</h3>
+          <p class="rf-desc">Funds essential charging port and cable repairs, keeping a student's device alive for their weekly lessons.</p>
+        </div>
+
+        <div class="rf-card alt" onclick="rfSelect(this)" style="grid-column:span 2;">
+          <div class="rf-ctop">
+            <div class="rf-amount">$50</div>
+            <div class="rf-dot" style="background:rgba(255,255,255,.5);"></div>
+          </div>
+          <h3 class="rf-name">The Screen Rescue Fund</h3>
+          <p class="rf-desc">Contributes toward screen repairs ($135–$375 due to part scarcity). Just 3–5 donors restore one device from blacked-out to fully functional.</p>
+        </div>
+
+        <div class="rf-card soft" onclick="rfSelect(this)" style="grid-column:span 2;">
+          <div class="rf-ctop">
+            <div class="rf-amount">$100</div>
+            <div class="rf-dot" style="background:#4f886c;"></div>
+          </div>
+          <h3 class="rf-name">The Solar Study Unit</h3>
+          <p class="rf-desc">Procures high-efficiency solar capacity at $5/watt — the daily energy a student needs to attend lessons without a power grid.</p>
+        </div>
+
+        <div class="rf-card" onclick="rfSelect(this)" style="grid-column:span 3;">
+          <div class="rf-ctop">
+            <div class="rf-amount">$250</div>
+            <div class="rf-dot" style="background:#7a222b;"></div>
+          </div>
+          <h3 class="rf-name">The Power Storage Guardian</h3>
+          <p class="rf-desc">Funds a share of a high-capacity battery system ($2,600+ locally) so a student can study at night — often the only quiet time available for learning.</p>
+        </div>
+
+        <div class="rf-card alt" onclick="rfSelect(this)" style="grid-column:span 3;">
+          <div class="rf-ctop">
+            <div class="rf-amount">$300</div>
+            <div class="rf-dot" style="background:rgba(255,255,255,.5);"></div>
+          </div>
+          <h3 class="rf-name">Break the Barrier</h3>
+          <p class="rf-desc">Covers one full language certification exam (IELTS / TOEFL / DALF).</p>
+        </div>
+      </div>
+
+      <div class="rf-donate">
+        <a href="https://whydonate.com/fundraising/ramzuna-our-symbol-of-hope-in-every-lesson" target="_blank" rel="noopener noreferrer" class="rf-btn">Donate Now on WhyDonate</a>
+        <p class="rf-btn-note">Secure payment &bull; You will receive a receipt</p>
+      </div>
+
+      <div class="rf-divider"></div>
+
+      <div class="rf-head" style="margin-bottom:20px;">
+        <span class="rf-label">Transparency</span>
+        <h2 class="rf-title">How your donation is used</h2>
+        <p class="rf-body">Every dollar is tracked and reported. Here is exactly where your money goes.</p>
+      </div>
+
+      <div class="rf-flow">
+        <div class="rf-fcard">
+          <div class="rf-fnum">Step 01</div>
+          <div class="rf-ftitle">You Donate</div>
+          <p class="rf-fdesc">You contribute securely through WhyDonate and receive an immediate email receipt.</p>
+        </div>
+        <div class="rf-fcard">
+          <div class="rf-fnum">Step 02</div>
+          <div class="rf-ftitle">Devices &amp; Connectivity</div>
+          <p class="rf-fdesc">Funds cover device repairs and charging equipment, distributed directly to students in Gaza.</p>
+        </div>
+        <div class="rf-fcard">
+          <div class="rf-fnum">Step 03</div>
+          <div class="rf-ftitle">Energy &amp; Exams</div>
+          <p class="rf-fdesc">Remaining funds purchase solar equipment and cover certification exam fees.</p>
+        </div>
+      </div>
+
+      <div class="rf-tnote">
+        <strong>Transparency commitment:</strong> A small percentage (typically 2–3%) covers payment processing fees. All remaining funds are directed exactly as described above. We publish updates on our WhyDonate page so you can track every dollar.
+      </div>
+    </div>
+
+    <script is:inline>
+      function rfSelect(el) {
+        document.querySelectorAll('.rf-card').forEach(function (c) {
+          c.classList.remove('selected');
+        });
+        el.classList.add('selected');
+      }
+    </script>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Other Ways to Help</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        Not able to give right now? You can still support our mission by exploring our programmes or partnering with us.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/services" class="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-medium text-primary-600 shadow-lg transition-colors hover:bg-gray-100">
+          Our Programmes
+        </a>
+        <a href="/partners" class="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-3 font-medium text-white transition-colors hover:bg-white/10">
+          Partner With Us
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
