@@ -579,13 +579,41 @@ const initLightbox = (): void => {
       overlay.className = 'fixed inset-0 z-[70] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm';
       overlay.style.opacity = '0';
       overlay.style.transition = 'opacity 0.3s ease';
-      overlay.innerHTML = `
-        <button type="button" data-lightbox-close class="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20" aria-label="Close">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-        </button>
-        <img src="${img.src}" alt="${img.alt || ''}" class="max-h-[90vh] max-w-[90vw] rounded-lg object-contain shadow-2xl" />
-        ${img.alt ? `<p class="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-lg bg-black/50 px-4 py-2 text-sm text-white">${img.alt}</p>` : ''}
-      `;
+
+      const closeButton = document.createElement('button');
+      closeButton.type = 'button';
+      closeButton.setAttribute('data-lightbox-close', '');
+      closeButton.className = 'absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20';
+      closeButton.setAttribute('aria-label', 'Close');
+
+      const closeIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      closeIcon.setAttribute('class', 'h-6 w-6');
+      closeIcon.setAttribute('fill', 'none');
+      closeIcon.setAttribute('viewBox', '0 0 24 24');
+      closeIcon.setAttribute('stroke', 'currentColor');
+
+      const closePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      closePath.setAttribute('stroke-linecap', 'round');
+      closePath.setAttribute('stroke-linejoin', 'round');
+      closePath.setAttribute('stroke-width', '2');
+      closePath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+      closeIcon.appendChild(closePath);
+      closeButton.appendChild(closeIcon);
+
+      const lightboxImage = document.createElement('img');
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt || '';
+      lightboxImage.className = 'max-h-[90vh] max-w-[90vw] rounded-lg object-contain shadow-2xl';
+
+      overlay.appendChild(closeButton);
+      overlay.appendChild(lightboxImage);
+
+      if (img.alt) {
+        const caption = document.createElement('p');
+        caption.className = 'absolute bottom-6 left-1/2 -translate-x-1/2 rounded-lg bg-black/50 px-4 py-2 text-sm text-white';
+        caption.textContent = img.alt;
+        overlay.appendChild(caption);
+      }
 
       document.body.appendChild(overlay);
       document.body.style.overflow = 'hidden';
