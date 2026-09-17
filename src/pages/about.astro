@@ -17,7 +17,7 @@ const teacherMaxPct = Math.max(...teacherCountries.map((c) => c.pct));
 
 const demographics = [
   { term: 'Spring Term', women: 91, men: 9 },
-  { term: 'Summer Term', women: 77, men: 22 },
+  { term: 'Summer Term', women: 77, men: 23 },
 ];
 
 const valueStyles = [
@@ -84,7 +84,7 @@ const valueStyles = [
               loading="lazy"
             />
           </div>
-          <p class="mt-2 text-center text-xs text-gray-400 dark:text-gray-500">Artwork by Raneem (@raneem.arts)</p>
+          <p class="mt-2 text-center text-xs text-gray-400 dark:text-gray-500">Artwork by Raneem (@raneem_gaza)</p>
         </div>
         <div class="order-2">
           <p class="text-sm font-semibold uppercase tracking-wider text-accent-600 dark:text-accent-400">
@@ -257,9 +257,6 @@ const valueStyles = [
               </div>
             ))}
           </div>
-          <p class="mt-6 text-xs leading-relaxed text-accent-100">
-            A small remaining share of students identify as non-binary or genderqueer.
-          </p>
         </div>
       </div>
 
@@ -300,24 +297,4 @@ const valueStyles = [
     </div>
   </section>
 
-  <!-- Team -->
-  <section class="py-20 lg:py-28">
-    <div class="container mx-auto px-4 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">{page.team.title}</h2>
-        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">{page.team.description}</p>
-      </div>
-      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {page.team.members.map((member: any) => (
-          <div class="text-center">
-            <div class="mx-auto h-40 w-40 overflow-hidden rounded-full">
-              <img src={member.image} alt={member.name} class="h-full w-full object-cover" loading="lazy" />
-            </div>
-            <h3 class="mt-4 text-lg font-semibold text-gray-900 dark:text-white">{member.name}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">{member.role}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 </Base>
