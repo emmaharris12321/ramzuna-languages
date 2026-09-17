@@ -1,10 +1,10 @@
 ---
-author: Shahed
+author: Noor
 title: "Midnight"
 arabicTitle: "منتصف الليلة"
 tag: Poem
 bio: "Noor is a student in English Literature and Translation who is passionate about writing. She aims to use her craft to share the voice of Gaza with the world."
-excerpt: "Their crime is the same: We only wanted to live. Just to live". 
+excerpt: "Their crime is the same: we only wanted to live. Just to live."
 readTime: "2 min read"
 ---
 
@@ -18,10 +18,10 @@ readTime: "2 min read"
 <div class="poem-col poem-en">
 <div class="poem-groups poem-groups-en">
 <div class="poem-block">
-<p>In the city of Kohl</p> 
+<p>In the city of Kohl</p>
 <p>I gaze at the sky</p>
 <p>and watch the stars</p>
-<p>and ask myself</p>:
+<p>and ask myself:</p>
 <p>Is it a star or a knife of light?</p>
 <p>It moves, or perhaps watches me</p>
 <p>carrying with it the night's question</p>
@@ -34,7 +34,6 @@ readTime: "2 min read"
 <p>Or perhaps,</p>
 <p>me?</p>
 </div>
-
 <div class="poem-block">
 <p>Someone will taste orphanhood,</p>
 <p>tonight</p>
@@ -52,16 +51,15 @@ readTime: "2 min read"
 </div>
 </div>
 </div>
-
 <div class="poem-col poem-ar" dir="rtl" lang="ar">
 <div class="poem-groups poem-groups-ar">
 <div class="poem-block">
-<p>منتصف الليلة</p>
 <p>في مدينة الكحل</p>
 <p>أتأمل السماء</p>
 <p>وأراقب النجوم</p>
-<p>:أسأل نفسي</p>
-<p>هل هي نجمة أم سكين نور؟ تتحرك، أو ربما تراقبني</p>
+<p>أسأل نفسي:</p>
+<p>هل هي نجمة أم سكين نور؟</p>
+<p>تتحرك، أو ربما تراقبني</p>
 </div>
 <div class="poem-block">
 <p>حاملة معها سؤال الليل</p>
@@ -74,7 +72,7 @@ readTime: "2 min read"
 <p>أم ربما أنا؟</p>
 </div>
 <div class="poem-block">
-<p<أحدهم سيتجرع اليتم الليلة</p>
+<p>أحدهم سيتجرع اليتم الليلة</p>
 <p>وقلب أم سيذوب على فقد صغيرها وستكون آخر ليلة لأحدهم</p>
 <p>بجانب حبيبه</p>
 <p>أو العشاء الأخير لعائلة</p>
@@ -88,4 +86,4 @@ readTime: "2 min read"
 </div>
 </div>
 </div>
-
+</div>

@@ -24,6 +24,7 @@ const cardGradientClasses =
     : 'bg-gradient-to-r from-primary-600 to-primary-700 dark:from-primary-800 dark:to-primary-900';
 const cardOverlayClass = cardTheme === 'burgundy' ? 'bg-accent-900/20' : 'bg-primary-900/20';
 const cardSubtitleClass = cardTheme === 'burgundy' ? 'text-accent-100' : 'text-primary-100';
+const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
 ---
 
 <style>
@@ -125,12 +126,31 @@ const cardSubtitleClass = cardTheme === 'burgundy' ? 'text-accent-100' : 'text-p
     }
   }
 
-  .poem-content :global([data-mode='en'] .poem-ar) {
+  .poem-content :global([data-mode='en'] .poem-ar),
+  .poem-content :global([data-mode='en'] .poem-fr) {
     display: none;
   }
 
-  .poem-content :global([data-mode='ar'] .poem-en) {
+  .poem-content :global([data-mode='ar'] .poem-en),
+  .poem-content :global([data-mode='ar'] .poem-fr) {
     display: none;
+  }
+
+  .poem-content :global([data-mode='fr'] .poem-ar),
+  .poem-content :global([data-mode='fr'] .poem-en) {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .poem-content :global([data-mode='all'] .poem-pair) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .poem-content :global([data-mode='all'] .poem-pair) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
 
   /* The poem itself — same font, same size, in both languages, exactly
@@ -173,7 +193,8 @@ const cardSubtitleClass = cardTheme === 'burgundy' ? 'text-accent-100' : 'text-p
 
   /* Author's own words, in Arabic — a short note beneath the poem. Same
      font, same size as the poem itself. */
-  .poem-content :global(.poem-bio-ar) {
+  .poem-content :global(.poem-bio-ar),
+  .poem-content :global(.poem-bio-fr) {
     margin-top: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.25);
@@ -227,6 +248,9 @@ const cardSubtitleClass = cardTheme === 'burgundy' ? 'text-accent-100' : 'text-p
         {poem.data.arabicTitle && (
           <p dir="rtl" lang="ar" class="mx-auto mt-3 font-display text-xl text-primary-100">{poem.data.arabicTitle}</p>
         )}
+        {poem.data.frenchTitle && (
+          <p lang="fr" class="mx-auto mt-1 font-display text-lg italic text-primary-100/90">{poem.data.frenchTitle}</p>
+        )}
         <nav class="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
           <a href="/" class="transition-colors hover:text-white">Home</a>
           <span>/</span>
@@ -275,7 +299,7 @@ const cardSubtitleClass = cardTheme === 'burgundy' ? 'text-accent-100' : 'text-p
               </span>
               <span class="flex-1">
                 <span class="block text-lg font-semibold text-white">{poem.data.title}</span>
-                <span class={`mt-0.5 block text-sm ${cardSubtitleClass}`}>In Arabic and English, by {poem.data.author}</span>
+                <span class={`mt-0.5 block text-sm ${cardSubtitleClass}`}>In {languagesLabel}, by {poem.data.author}</span>
               </span>
             </div>
             <div class={`${cardOverlayClass} px-6 py-10 sm:px-10`}>
