@@ -62,8 +62,7 @@ services:
       title: Palestinian Poetry & Storytelling
       description: Publishing Palestinian literature, poetry and art from our students and wider community.
       links:
-        - text: Storytelling Classes
-          url: /services
+        
         - text: Palestinian Voices
           url: /palestinian-voices
 
