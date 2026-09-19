@@ -2,7 +2,7 @@
 # Homepage Content
 # Edit this file to update your homepage sections
 # ============================================
- 
+
 # Hero Section
 hero:
   badge: 100% Free, Always
@@ -27,7 +27,7 @@ hero:
     - value: "1:4"
       label: Teacher-Student Ratio
   image: "/assets/img/illustration-hero.svg"
- 
+
 # How We Teach Section
 services:
   badge: Language Lab
@@ -63,7 +63,7 @@ services:
           url: /services
         - text: Palestinian Voices
           url: /palestinian-voices
- 
+
 # How It Works Section
 howItWorks:
   badge: How It Works
@@ -82,7 +82,7 @@ howItWorks:
     - number: "04"
       title: Track Your Progress
       description: Build real fluency over time, with check-ins to keep your learning on course.
- 
+
 # Terms Section
 terms:
   badge: Academic Calendar
@@ -96,7 +96,7 @@ terms:
     - name: Summer Term
       dates: Dates to be announced
       tbd: true
- 
+
 # Reach Section
 areas:
   badge: Our Reach
@@ -128,7 +128,7 @@ areas:
       detail: 55+ educators
     - city: Australia
       detail: 30+ educators
- 
+
 # Get Involved (homepage teaser, reuses Pricing-style card layout)
 pricing:
   badge: Get Involved
@@ -183,7 +183,7 @@ pricing:
         - text: One-time gifts welcome
           included: true
   note: "Every learning programme stays free for students — donations cover coordination, materials, and platform costs."
- 
+
 # Testimonials Section
 testimonials:
   badge: Stories
@@ -214,13 +214,13 @@ testimonials:
       author: Noor
       role: Conversation Partner Student, Nablus
       rating: 5
- 
+
 # Sign Up Section
 quote:
   badge: Get Started
   title: Sign Up for Free Lessons
   description: Tell us about your language goals and we will match you with a volunteer educator within a few days.
- 
+
 # FAQ Section
 faq:
   badge: FAQ
@@ -237,7 +237,7 @@ faq:
       answer: "Visit our Get Involved page and fill out the volunteer application. We will walk you through a short onboarding process before matching you with a student."
     - question: How is Ramzunā Languages funded?
       answer: "We are funded entirely by individual donations and partner organisations. Every donation goes toward coordination, learning materials, and reaching new students."
- 
+
 # CTA Section
 cta:
   title: Applications Are Currently Closed for the Autumn Term
@@ -248,4 +248,3 @@ cta:
   secondaryCta:
     text: Make a Donation
     url: "/donate"
- 
