@@ -64,7 +64,11 @@ nav:
     url: /blog
   - text: Resources
     url: /resources
-  - text: FAQ
-    url: /faq
+  - text: FAQs
+    children:
+      - text: FAQs for Students
+        url: /faq-students
+      - text: FAQs for Teachers
+        url: /faq
   - text: Contact
     url: /contact

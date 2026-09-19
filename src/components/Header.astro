@@ -71,7 +71,7 @@ interface NavItem {
       aria-label="Main navigation"
     >
       {
-        nav.map((item: NavItem) => (
+        nav.map((item: NavItem, i: number) => (
           item.children ? (
             <div class="group relative">
               <button
@@ -83,7 +83,12 @@ interface NavItem {
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div class="invisible absolute left-0 top-full z-20 min-w-[240px] pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100">
+              <div
+                class:list={[
+                  'invisible absolute top-full z-20 min-w-[240px] pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100',
+                  i >= nav.length - 3 ? 'right-0' : 'left-0',
+                ]}
+              >
                 <div class="rounded-xl border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-800 dark:bg-gray-900">
                   {item.children.map((child) => (
                     <a

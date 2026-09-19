@@ -26,4 +26,40 @@ const page = await getHomepage();
   <TestimonialsCarousel />
   <BlogTeaser />
   {page.cta && <CTA {...page.cta} />}
+
+  <!-- Closing Quote -->
+  <section class="quote-section-photo py-12 lg:py-16">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="quote-glyph quote-glyph-photo" aria-hidden="true">&ldquo;</span>
+        <p class="font-display text-xl italic leading-relaxed text-white sm:text-2xl" style="text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);">
+          Language is the road map of a culture. It tells you where its people come from and where they are going.
+        </p>
+        <p class="mt-5 text-sm font-semibold text-white" style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);">Rita Mae Brown</p>
+      </div>
+    </div>
+  </section>
 </Base>
+
+<style>
+  .quote-glyph {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3rem;
+    line-height: 0.5;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Homepage closing quote: matches the olive-branch photo treatment used on
+     the Palestinian Voices closing quote, so both quotes read as one system. */
+  .quote-section-photo {
+    position: relative;
+    background-image: linear-gradient(rgba(20, 11, 9, 0.32), rgba(20, 11, 9, 0.4)), url('/assets/img/olive-branch-quote-bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .quote-glyph-photo {
+    color: rgba(255, 255, 255, 0.75);
+  }
+</style>

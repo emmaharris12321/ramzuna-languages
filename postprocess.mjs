@@ -47,7 +47,16 @@ function toRelative(target, depth) {
 async function main() {
   const allFiles = await walk(DIST);
   const htmlFiles = allFiles.filter((f) => f.endsWith('.html'));
+  // Standalone CSS chunk files (e.g. dist/_astro/index.HASH.css) can also carry
+  // root-absolute url(...) references (background-image on a scoped style that
+  // Astro/Vite decided to bundle into its own chunk rather than inline into the
+  // page's <style> block) — these need the same rewrite as the HTML files below.
+  const cssFiles = allFiles.filter((f) => f.endsWith('.css'));
   const attrRe = /(href|src)="(\/[^"]*)"/g;
+  // Also catches root-absolute paths inside CSS url(...) — e.g. background-image
+  // rules in <style> blocks or inline style="" attributes — which the attribute
+  // regex above does not reach.
+  const cssUrlRe = /url\((['"]?)(\/[^'")]+)\1\)/g;
 
   for (const f of htmlFiles) {
     let content = await readFile(f, 'utf8');
@@ -56,9 +65,24 @@ async function main() {
       if (target.startsWith('//')) return whole;
       return `${attr}="${toRelative(target, depth)}"`;
     });
+    content = content.replace(cssUrlRe, (whole, quote, target) => {
+      if (target.startsWith('//')) return whole;
+      return `url(${quote}${toRelative(target, depth)}${quote})`;
+    });
     await writeFile(f, content, 'utf8');
   }
-  console.log('Rewrote', htmlFiles.length, 'html files to use relative paths.');
+
+  for (const f of cssFiles) {
+    let content = await readFile(f, 'utf8');
+    const depth = depthOf(f);
+    content = content.replace(cssUrlRe, (whole, quote, target) => {
+      if (target.startsWith('//')) return whole;
+      return `url(${quote}${toRelative(target, depth)}${quote})`;
+    });
+    await writeFile(f, content, 'utf8');
+  }
+
+  console.log('Rewrote', htmlFiles.length, 'html files and', cssFiles.length, 'css files to use relative paths.');
 }
 
 main().catch((err) => {

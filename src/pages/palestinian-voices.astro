@@ -65,7 +65,7 @@ const authors: Author[] = [
     bio: 'Shams has a bachelor’s degree in English Language and Teaching Methods from Al-Aqsa University in Gaza. She is passionate about creative writing and translation, believing in the power of words to express resilience and hope.',
     poems: [
       { title: 'The Sun of Hope', tag: 'Poem', slug: 'shams-the-sun-of-hope' },
-      { title: 'A Spring in Autumn', tag: 'Poem' },
+      { title: 'A Spring in Autumn', tag: 'Poem', slug: 'shams-a-spring-in-autumn' },
     ],
   },
   {
@@ -313,7 +313,7 @@ function isSeries(author: Author): boolean {
         If you are a Palestinian writer with a poem, story, or letter you would like included here, we would love to hear from you. We publish both the Arabic and English/French/German versions.
       </p>
       <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a href="mailto:contacteam@ramzunalanguages.org" class="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-primary-600 shadow-lg transition-all hover:bg-gray-100">
+        <a href="https://ee-eu.kobotoolbox.org/x/IJHWeAbH" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-primary-600 shadow-lg transition-all hover:bg-gray-100">
           Submit Your Writing
         </a>
         <a href="/resources" class="inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">
@@ -322,4 +322,50 @@ function isSeries(author: Author): boolean {
       </div>
     </div>
   </section>
+
+  <!-- Closing Quote -->
+  <section class="quote-section-photo py-12 lg:py-16">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="quote-glyph quote-glyph-photo" aria-hidden="true">&ldquo;</span>
+        <p class="font-display text-xl italic leading-relaxed text-white sm:text-2xl" style="text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);">
+          Against barbarity, poetry can resist only by confirming its attachment to human fragility like a blade of grass growing on a wall while armies march by.
+        </p>
+        <p class="mt-5 text-sm font-semibold text-white" style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);">Mahmoud Darwish</p>
+        <p class="mt-1 text-xs uppercase tracking-wide text-white/80" style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);">Palestinian poet &amp; author</p>
+      </div>
+    </div>
+  </section>
 </Base>
+
+<style>
+  .quote-glyph {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4rem;
+    line-height: 0.5;
+    color: rgba(122, 34, 43, 0.35);
+    margin-bottom: 0.75rem;
+  }
+
+  :global(.dark) .quote-glyph {
+    color: rgba(224, 148, 156, 0.5);
+  }
+
+  /* Palestinian Voices closing quote: the olive-branch photo fills the whole
+     section edge to edge (no beige border), with just a light warm scrim so
+     the photo stays bright while the white text keeps its contrast. The
+     section itself is kept short (reduced vertical padding) so the banner
+     doesn't dominate the end of the page. */
+  .quote-section-photo {
+    position: relative;
+    background-image: linear-gradient(rgba(20, 11, 9, 0.32), rgba(20, 11, 9, 0.4)), url('/assets/img/olive-branch-quote-bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .quote-glyph-photo {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 3rem;
+  }
+</style>

@@ -21,7 +21,7 @@ const groups: FaqGroup[] = [
     title: 'Students & Learning',
     description: 'Who the students are, their goals, and the learning support provided.',
     items: [
-      { q: 'Where are the students based and how old are they?', a: ['Our students are all Palestinians. While most are in Gaza, we also accept students from the West Bank and those who have been displaced due to the war. Our students are predominantly aged between 15 and 20.'] },
+      { q: 'Where are the students based and how old are they?', a: ['Our students are all Palestinians. While most are in Gaza, we also accept students from the West Bank and those who have been displaced due to the war. Our students are predominantly aged between 13 and 30.'] },
       { q: 'What are the students’ objectives?', a: ['Students’ objectives vary according to their circumstances and needs. These may include improving language skills, preparing for official examinations, or strengthening their remote career prospects. We match students with teachers according to experience, qualifications, and teaching preferences.'] },
       { q: 'Do you provide any textbooks?', a: ['Yes. We provide a textbook and a curated collection of teaching resources, although you are also welcome to use suitable resources of your own. At the start of the term, teachers receive learning objectives for their students.'] },
       { q: 'Are volunteers expected to assess or grade students?', a: ['Teachers are expected to assess their students. We provide the student’s initial level and a specific assessment resource for teachers to use. Conversation partners are not expected to conduct assessments; their partners’ levels are provided in advance.'] },
@@ -43,11 +43,11 @@ const groups: FaqGroup[] = [
       { q: 'Do you accept volunteers whose first language is not English?', a: ['Yes. We welcome volunteers whose first language is not English, provided that they have an advanced level of English.'] },
       { q: 'What level of English proficiency is required for volunteers?', a: ['Volunteers need an advanced level of English so that they can communicate clearly and support students effectively.'] },
       { q: 'Are volunteer teaching positions paid?', a: ['No. All teaching and conversation-partner positions are entirely voluntary and unpaid.'] },
-      { q: 'I won’t be able to complete the training by the deadline. What should I do?', a: ['Contact us as soon as possible, before the deadline. Because we receive a high volume of applications, failure to complete the training on time will usually mean that your application cannot progress.'] },
+      { q: 'I will not be able to complete the training by the deadline. What should I do?', a: ['Contact us as soon as possible, before the deadline. Because we receive a high volume of applications, failure to complete the training on time will usually mean that your application cannot progress.'] },
       { q: 'I missed the training deadline. What should I do?', a: ['Unfortunately, we cannot accept applications once the training deadline has passed. You are welcome to apply again for the next term when applications reopen.'] },
       { q: 'Are applications open all year round?', a: [
         'No. Applications open twice a year, one month before the beginning of each term. We announce reopening dates on our website and social media.',
-        'If applications are closed, you can express your interest and join the waiting list through the relevant buttons on our website. Teachers on the waiting list receive priority notification when applications reopen and may be contacted if a place becomes available earlier.',
+        'If applications are closed, you can [join the waiting list](https://ee-eu.kobotoolbox.org/x/6pce2ex4) to express your interest. Teachers on the waiting list receive priority notification when applications reopen and may be contacted if a place becomes available earlier.',
       ] },
     ],
   },
@@ -83,12 +83,12 @@ const groups: FaqGroup[] = [
     title: 'After Matching & Ongoing Support',
     description: 'Communication, scheduling difficulties, attendance, and support with your student.',
     items: [
-      { q: 'I’ve just received my match email. What do I do next?', a: ['First, read the teacher handbook carefully, as it contains the information you need. Then contact your student or group and arrange an introductory meeting.'] },
+      { q: 'I have just received my match email. What do I do next?', a: ['First, read the teacher handbook carefully, as it contains the information you need. Then contact your student or group and arrange an introductory meeting.'] },
       { q: 'Who should I contact if I need support during my placement?', a: ['Begin by checking the teacher handbook, textbook, Google Classroom, and online resources. If you still cannot find the information you need, contact the Ramzunā Languages team for support.'] },
-      { q: 'I don’t check my email often. Do we have to communicate by email?', a: ['You may communicate with students through WhatsApp or another mutually agreed platform; WhatsApp is usually the easiest option. Ramzunā Languages communicates with volunteers by email, so you must check your inbox regularly.'] },
-      { q: 'My student isn’t responding to my messages. What can I do?', a: ['Wait four days after your message. If you still have not received a response, contact us so that we can follow up.'] },
-      { q: 'My student and I can’t find a suitable time for our sessions. What should we do?', a: ['Continue discussing possible times and look for a workable compromise. If you genuinely cannot find a suitable arrangement, email us for support.'] },
-      { q: 'My student doesn’t seem to enjoy speaking with me. Can you help?', a: ['This can be normal at the beginning. Trust and confidence take time to develop. Be patient, avoid putting the student under pressure, and use topics and activities connected to their interests. If the situation does not improve, contact us for advice.'] },
+      { q: 'I do not check my email often. Do we have to communicate by email?', a: ['You may communicate with students through WhatsApp or another mutually agreed platform; WhatsApp is usually the easiest option. Ramzunā Languages communicates with volunteers by email, so you must check your inbox regularly.'] },
+      { q: 'My student is not responding to my messages. What can I do?', a: ['Wait four days after your message. If you still have not received a response, contact us so that we can follow up.'] },
+      { q: 'My student and I cannot find a suitable time for our sessions. What should we do?', a: ['Continue discussing possible times and look for a workable compromise. If you genuinely cannot find a suitable arrangement, email us for support.'] },
+      { q: 'My student does not seem to enjoy speaking with me. Can you help?', a: ['This can be normal at the beginning. Trust and confidence take time to develop. Be patient, avoid putting the student under pressure, and use topics and activities connected to their interests. If the situation does not improve, contact us for advice.'] },
       { q: 'Can I be rematched with a different student?', a: ['Yes, once you have completed the minimum three-month commitment with your current student. If a serious difficulty arises before then, contact us to discuss the situation.'] },
       { q: 'Can I take on an additional student?', a: ['Yes. If you have enough availability to make an additional commitment, contact us and we will arrange another match where possible.'] },
       { q: 'Can I request a conversation partner based on criteria such as age or marital status?', a: ['No. We cannot guarantee matches based on personal criteria such as age or marital status. Matches are made primarily according to availability and programme needs.'] },
@@ -143,12 +143,15 @@ const groups: FaqGroup[] = [
 const totalQuestions = groups.reduce((sum, g) => sum + g.items.length, 0);
 
 // Converts a single `[label](url)` markdown-style link into an anchor tag.
-// Content is fully author-controlled (defined above), so this is safe to render as HTML.
+// External links (http/https) open in a new tab; internal links (relative
+// paths) navigate normally. Content is fully author-controlled (defined
+// above), so this is safe to render as HTML.
 function renderAnswer(text: string): string {
-  return text.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2" class="font-medium text-accent-600 underline decoration-accent-300 underline-offset-2 hover:text-accent-700 dark:text-accent-400">$1</a>'
-  );
+  return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, url) => {
+    const external = /^https?:\/\//.test(url);
+    const externalAttrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<a href="${url}"${externalAttrs} class="font-medium text-accent-600 underline decoration-accent-300 underline-offset-2 hover:text-accent-700 dark:text-accent-400">${label}</a>`;
+  });
 }
 
 // Two rotating tones for the group cards, alternating primary / accent —
@@ -188,20 +191,26 @@ const faqSchema = {
 };
 ---
 
-<Base title="FAQ" description="Answers to the questions we hear most often about learning and volunteering with Ramzunā Languages.">
+<Base title="FAQs for Teachers" description="Answers to the questions we hear most often from volunteer teachers and conversation partners at Ramzunā Languages.">
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   <!-- Page Header -->
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
-      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Frequently Asked Questions</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Everything you need to know about joining, teaching, and learning with us.</p>
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">FAQs for Teachers</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Everything volunteer teachers and conversation partners need to know about applying, teaching, and volunteering with us.</p>
       <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
         <a href="/" class="transition-colors hover:text-white">Home</a>
         <span>/</span>
-        <span class="text-white">FAQ</span>
+        <span class="text-white">FAQs for Teachers</span>
       </nav>
     </div>
   </section>
+
+  <div class="bg-cream-100 py-3 dark:bg-gray-900">
+    <div class="container mx-auto px-4 text-center text-sm text-gray-600 lg:px-8 dark:text-gray-400">
+      Looking for answers as a student? Visit our <a href="/faq-students" class="font-medium text-accent-600 underline decoration-accent-300 underline-offset-2 hover:text-accent-700 dark:text-accent-400">FAQs for Students</a>.
+    </div>
+  </div>
 
   <section class="py-20 lg:py-28" id="faq-page">
     <div class="container mx-auto px-4 lg:px-8">

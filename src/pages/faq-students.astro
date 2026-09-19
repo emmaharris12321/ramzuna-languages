@@ -1,0 +1,329 @@
+---
+import Base from '@/layouts/Base.astro';
+
+interface FaqItem {
+  q: string;
+  a: string[];
+}
+
+interface FaqGroup {
+  num: string;
+  theme: 'primary' | 'accent';
+  title: string;
+  description: string;
+  items: FaqItem[];
+}
+
+const groups: FaqGroup[] = [
+  {
+    num: '01',
+    theme: 'accent',
+    title: 'Joining & Eligibility',
+    description: 'Who can apply, what it costs, and what level you need to start.',
+    items: [
+      { q: 'Who can apply to study with Ramzunā Languages?', a: ['Our programme is for Palestinian students based in Gaza, the West Bank, or displaced elsewhere because of the war. Students are primarily aged 13–30, though every application is considered individually.'] },
+      { q: 'Is there any cost to join?', a: ['No. Every lesson is completely free, always. There is no cost to you at any stage, for as long as you keep learning with us.'] },
+      { q: 'What languages can I learn?', a: ['You can learn English, French, or German with a volunteer educator matched to your goals and schedule.'] },
+      { q: 'What level do I need to start?', a: ['Any level. Whether you are a complete beginner or already advanced, we assess your level during the application process and match you accurately before lessons begin.'] },
+      { q: 'Do I need a parent’s or guardian’s permission to apply?', a: ['No, you can apply on your own — a parent or guardian’s permission is not required. Our safeguarding policy still applies to every student, whatever your age.'] },
+    ],
+  },
+  {
+    num: '02',
+    theme: 'primary',
+    title: 'Applying & Getting Matched',
+    description: 'How the application works, and how we pair you with an educator.',
+    items: [
+      { q: 'What lesson formats are available?', a: ['Three formats, and we match you to the one that fits your circumstances: small group lessons (our default, learning alongside a couple of other students), one-to-one lessons (reserved for exam preparation or students with special educational needs), and fully asynchronous lessons for students without reliable internet for live classes.'] },
+      { q: 'How do I apply, and how long does it take to get matched?', a: ['Applying only takes a few minutes: tell us your language, level, and availability. Applications open twice a year, about a month before each term begins, and matching happens once applications close for that term.'] },
+      { q: 'What happens if enrolment is currently closed?', a: ['If student enrolment is closed, you can [join the waiting list](https://ee-eu.kobotoolbox.org/x/gDBB3MNp) to be notified as soon as it reopens ahead of the next term — we also announce reopening dates on our website and social media. In the meantime, you are welcome to explore our free resources, including recommended YouTube channels and language-learning materials.'] },
+      { q: 'How do you match me with a teacher?', a: ['We match you with a volunteer educator based on your language, level, and availability, so lessons fit your goals and schedule.'] },
+      { q: 'Where are the volunteer educators from?', a: ['Our volunteer educators come from more than 15 countries, and all are trained to support students learning under difficult circumstances.'] },
+      { q: 'Can I ask for a same-gender volunteer?', a: ['Yes. If you would feel more comfortable with a same-gender educator, let us know in your application and we will take this into account when matching you.'] },
+      { q: 'Are the volunteers who teach students background-checked?', a: ['Yes. Volunteers who teach students who are minors are required to provide a valid, current background check before they begin teaching, alongside safeguarding training and a signed volunteer agreement.'] },
+    ],
+  },
+  {
+    num: '03',
+    theme: 'accent',
+    title: 'Lessons & Groups',
+    description: 'How long the programme runs, group sizes, scheduling, and staying in touch.',
+    items: [
+      { q: 'How long does the programme last? Can I stay for more than one term?', a: ['Each term lasts a minimum of three months. You are welcome to keep learning with us beyond your first term, for as long as it is helpful to you.'] },
+      { q: 'Is it possible to have more than 90 minutes of lessons a week?', a: ['No. Sessions are set at 60 or 90 minutes a week to keep the programme sustainable for our volunteer educators, so we are not able to offer additional weekly lesson time.'] },
+      { q: 'How many students are typically in a small group?', a: ['Small groups usually have two or three other students learning alongside you, at a similar level.'] },
+      { q: 'Can I request to be in a mini-group with a family member?', a: ['Yes. If you would like to learn alongside a sibling or other family member, mention this in your application or contact us, and we will try to place you together where possible.'] },
+      { q: 'How are mini-groups structured? Are they really effective?', a: ['Mini-groups keep the same overall topic for everyone but let your teacher adjust the level of support and challenge for each student, using activities like debates, role-plays, and collaborative tasks to keep everyone engaged. It is a format that works well: it builds peer support and conversation practice while keeping lessons personalised to your level.'] },
+      { q: 'I want more practice — can I have a second volunteer?', a: ['No. Each student or mini-group is matched with one volunteer educator at a time, so your teacher can build a consistent picture of your progress and needs.'] },
+      { q: 'When do lessons usually take place?', a: ['There are no fixed lesson times. Teachers and students are matched by availability, and sessions usually happen in the morning, in the afternoon, or at weekends — we generally avoid evenings or nights, which can be difficult for students in Gaza.'] },
+      { q: 'How will my teacher and I communicate?', a: ['Live lessons are typically held over Google Meet, Zoom, or Microsoft Teams, and WhatsApp is used for day-to-day communication, since it is the most widely used messaging tool in Palestine.'] },
+    ],
+  },
+  {
+    num: '04',
+    theme: 'primary',
+    title: 'Progress, Materials & Certificates',
+    description: 'Tracking your learning, exam preparation, and what you receive along the way.',
+    items: [
+      { q: 'How is my progress tracked over the term?', a: ['Your teacher records your progress using a dedicated tracking resource throughout the term, so both you and your teacher can see how your learning is developing.'] },
+      { q: 'What does my portfolio consist of?', a: ['Your portfolio is completed at the end of the term: a short written essay and a recorded audio piece, which we use to check your level.'] },
+      { q: 'What happens if I do not complete my portfolio or assessments?', a: ['Completing your portfolio and assessments is what allows us to confirm your progress. If it is not completed, we will not be able to issue a certificate or confirm a new level for you at the end of the term.'] },
+      { q: 'Can I receive a certificate?', a: ['Yes. Certificates are provided to students who complete their term’s requirements, including their portfolio and assessments.'] },
+      { q: 'Can I get help preparing for an exam?', a: ['Yes. If you are preparing for an official exam such as IELTS, TOEFL, DELF, DALF, or a Goethe-Institut exam, you can be matched for one-to-one lessons with focused coaching and practice tests, available from Intermediate (B1) level upward.'] },
+      { q: 'Will I get a textbook or study materials?', a: ['Yes. Every student receives a textbook and a curated collection of learning resources, matched to your level and goals.'] },
+      { q: 'If I make progress, can I keep the same teacher for my next term?', a: ['Yes — if your teacher is also continuing to volunteer with us, you can usually continue learning together into the next term.'] },
+    ],
+  },
+  {
+    num: '05',
+    theme: 'accent',
+    title: 'Changes & Rematching',
+    description: 'What to do if something changes, and how rematching works.',
+    items: [
+      { q: 'What are the valid reasons for requesting a rematch?', a: ['We consider a rematch when there is a genuine, ongoing difficulty — for example, a serious scheduling conflict, an unresponsive teacher, or a mismatch in teaching style that has not improved despite raising it with us. We cannot guarantee a rematch based on personal preferences unrelated to your learning.'] },
+      { q: 'What happens if a student in my mini-group cannot continue?', a: ['Let us know, and you will continue lessons with the rest of your group. We will try to add another student to the group where possible, especially if this happens near the start of the term.'] },
+      { q: 'My teacher keeps cancelling our lesson or not answering my messages. What should I do?', a: ['First, try reaching out again directly. If you still do not hear back, or this keeps happening, contact us and we will follow up with your teacher and arrange another match if needed.'] },
+      { q: 'What happens if technical issues prevent a lesson from happening?', a: ['Your teacher will continue your learning asynchronously — sending structured lesson activities or planned questions through your usual messaging platform — so a technical problem does not disrupt your progress.'] },
+      { q: 'What are my expectations as a student in the programme?', a: ['We ask you to attend your sessions consistently, let your teacher (or us) know as early as possible if you need to reschedule, and complete the assessments and portfolio work used to track your progress. Being an active, engaged partner in your own lessons helps your teacher help you.'] },
+      { q: 'What happens if I have to leave the programme after three months — can I ever rejoin?', a: ['Three months is the minimum term length, and if you need to stop after that, that is completely fine. You are welcome to apply again in a future term when applications reopen.'] },
+    ],
+  },
+  {
+    num: '06',
+    theme: 'primary',
+    title: 'Safety & Support',
+    description: 'What to do if something does not feel right.',
+    items: [
+      { q: 'What should I do if my teacher makes me feel uncomfortable?', a: ['Tell us right away by emailing [safeguarding@ramzunalanguages.org](mailto:safeguarding@ramzunalanguages.org). You will be taken seriously, your concern will be handled confidentially by our safeguarding lead, and you will never be in trouble for speaking up.'] },
+    ],
+  },
+];
+
+const totalQuestions = groups.reduce((sum, g) => sum + g.items.length, 0);
+
+// Converts a single `[label](url)` markdown-style link into an anchor tag.
+// External links (http/https) open in a new tab; internal links (relative
+// paths) navigate normally. Content is fully author-controlled (defined
+// above), so this is safe to render as HTML.
+function renderAnswer(text: string): string {
+  return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, url) => {
+    const external = /^https?:\/\//.test(url);
+    const externalAttrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<a href="${url}"${externalAttrs} class="font-medium text-accent-600 underline decoration-accent-300 underline-offset-2 hover:text-accent-700 dark:text-accent-400">${label}</a>`;
+  });
+}
+
+// Two rotating tones for the group cards, alternating primary / accent —
+// the same two-colour system used for cards everywhere else on the site
+// (see the Values cards on the About page), rather than introducing a
+// third colour unique to this page.
+type Tone = 'accent' | 'primary';
+const toneOrder: Tone[] = ['accent', 'primary'];
+const toneStyles: Record<Tone, { border: string; mark: string; icon: string; head: string }> = {
+  accent: {
+    border: 'border-accent-500',
+    mark: 'bg-accent-600',
+    icon: 'bg-accent-100 text-accent-700 dark:bg-accent-900/50 dark:text-accent-300',
+    head: 'border-gray-100 dark:border-gray-800',
+  },
+  primary: {
+    border: 'border-primary-500',
+    mark: 'bg-primary-600',
+    icon: 'bg-primary-100 text-primary-700 dark:bg-primary-900/50 dark:text-primary-300',
+    head: 'border-gray-100 dark:border-gray-800',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: groups.flatMap((group) =>
+    group.items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a.join(' '),
+      },
+    }))
+  ),
+};
+---
+
+<Base title="FAQs for Students" description="Answers to the questions students ask most often about learning with Ramzunā Languages.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">FAQs for Students</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Everything you need to know about learning English, French, or German with us.</p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <span class="text-white">FAQs for Students</span>
+      </nav>
+    </div>
+  </section>
+
+  <div class="bg-cream-100 py-3 dark:bg-gray-900">
+    <div class="container mx-auto px-4 text-center text-sm text-gray-600 lg:px-8 dark:text-gray-400">
+      Volunteering or teaching with us instead? Visit our <a href="/faq" class="font-medium text-accent-600 underline decoration-accent-300 underline-offset-2 hover:text-accent-700 dark:text-accent-400">FAQs for Teachers</a>.
+    </div>
+  </div>
+
+  <section class="py-20 lg:py-28" id="faq-page">
+    <div class="container mx-auto px-4 lg:px-8">
+      <!-- Search -->
+      <div class="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-2.5 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div class="relative flex items-center">
+          <svg
+            class="pointer-events-none absolute left-4 h-5 w-5 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+          </svg>
+          <input
+            type="search"
+            data-faq-search
+            placeholder="Search questions and answers..."
+            class="w-full rounded-xl border-0 bg-cream-100 py-3.5 pl-12 pr-20 text-gray-900 placeholder-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500/30 dark:bg-gray-900 dark:text-white dark:placeholder-gray-500"
+          />
+          <button
+            type="button"
+            data-faq-clear
+            hidden
+            class="absolute right-2 rounded-lg px-3 py-2 text-sm font-semibold text-accent-600 transition-colors hover:bg-accent-50 dark:text-accent-400 dark:hover:bg-accent-900/30"
+          >
+            Clear
+          </button>
+        </div>
+        <p class="mt-2 px-2 text-sm text-gray-500 dark:text-gray-400">
+          <span data-faq-count>{totalQuestions}</span> questions across {groups.length} themes
+        </p>
+      </div>
+
+      <!-- Groups -->
+      <div class="mx-auto mt-16 grid max-w-5xl gap-12">
+        {
+          groups.map((group, i) => {
+            const tone = toneStyles[toneOrder[i % toneOrder.length]];
+            return (
+              <div
+                data-faq-group
+                class:list={[
+                  'rounded-2xl border-t-4 bg-white p-6 shadow-sm dark:bg-gray-800 sm:p-10',
+                  tone.border,
+                ]}
+              >
+                <div class:list={['mb-8 flex items-center gap-4 border-b pb-6', tone.head]}>
+                  <span class:list={['flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl text-base font-semibold text-white', tone.mark]}>
+                    {group.num}
+                  </span>
+                  <div>
+                    <h2 class="font-display text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">{group.title}</h2>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{group.description}</p>
+                  </div>
+                </div>
+
+                <div class="grid items-start gap-4 sm:grid-cols-2" data-faq-list>
+                  {
+                    group.items.map((item) => (
+                      <div
+                        class="overflow-hidden rounded-2xl border border-gray-200 bg-cream-100 transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-900/60"
+                        data-faq-item
+                      >
+                        <button type="button" data-faq-toggle class="flex w-full items-center justify-between gap-4 p-5 text-left">
+                          <span class="font-semibold text-gray-900 dark:text-white">{item.q}</span>
+                          <span
+                            class:list={['ml-2 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm transition-transform duration-200', tone.icon]}
+                            data-faq-icon
+                          >
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12M6 12h12" />
+                            </svg>
+                          </span>
+                        </button>
+                        <div class="overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+                          <div class="space-y-3 px-5 pb-5 leading-relaxed text-gray-600 dark:text-gray-400">
+                            {item.a.map((p) => <p set:html={renderAnswer(p)} />)}
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <div class="mx-auto mt-8 hidden max-w-4xl rounded-2xl border border-dashed border-gray-300 p-10 text-center dark:border-gray-700" data-faq-empty>
+        <p class="font-medium text-gray-900 dark:text-white">No matching questions found.</p>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Try a broader term such as &ldquo;lessons&rdquo;, &ldquo;certificate&rdquo;, or &ldquo;apply&rdquo;.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Still have questions?</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Our coordination team is happy to walk you through the details.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/contact" class="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-primary-600 shadow-lg transition-all hover:bg-gray-100">
+          Contact Us
+        </a>
+        <a href="/study-with-us" class="inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">
+          Study with Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const root = document.getElementById('faq-page');
+      if (!root) return;
+      const input = root.querySelector('[data-faq-search]');
+      const clearBtn = root.querySelector('[data-faq-clear]');
+      const countEl = root.querySelector('[data-faq-count]');
+      const empty = root.querySelector('[data-faq-empty]');
+      const groupEls = Array.from(root.querySelectorAll('[data-faq-group]'));
+      const itemEls = Array.from(root.querySelectorAll('[data-faq-item]'));
+
+      if (!input) return;
+
+      const runFilter = () => {
+        const query = input.value.trim().toLowerCase();
+        let visible = 0;
+
+        itemEls.forEach((item) => {
+          const matches = !query || item.textContent.toLowerCase().includes(query);
+          item.hidden = !matches;
+          if (matches) visible += 1;
+        });
+
+        groupEls.forEach((group) => {
+          const hasVisible = Array.from(group.querySelectorAll('[data-faq-item]')).some((i) => !i.hidden);
+          group.hidden = !hasVisible;
+        });
+
+        if (countEl) countEl.textContent = String(visible);
+        if (empty) empty.classList.toggle('hidden', visible !== 0);
+        if (clearBtn) clearBtn.hidden = !query;
+      };
+
+      input.addEventListener('input', runFilter);
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          input.value = '';
+          runFilter();
+          input.focus();
+        });
+      }
+    })();
+  </script>
+</Base>

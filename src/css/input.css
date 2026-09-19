@@ -20,8 +20,16 @@
     }
   }
 
+  /* Outfit is the site's body font (Playfair Display is reserved for
+     display headings via the font-display utility). Setting it here, once,
+     on body means every page and component inherits it by default — a few
+     components previously hardcoded 'Outfit' in their own scoped <style>
+     blocks because nothing was setting it globally, which left the rest of
+     the site's body text falling back to the browser's default sans-serif
+     instead of matching. Those local overrides are harmless now (same
+     font), but this is the single source of truth going forward. */
   body {
-    @apply bg-cream-200 text-gray-900 antialiased dark:bg-gray-950 dark:text-gray-100;
+    @apply bg-cream-200 text-gray-900 antialiased font-sans dark:bg-gray-950 dark:text-gray-100;
   }
 
   /* Focus styles */
