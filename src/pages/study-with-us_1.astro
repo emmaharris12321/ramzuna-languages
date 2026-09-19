@@ -1,0 +1,287 @@
+---
+import Base from '@/layouts/Base.astro';
+
+const perks = [
+  {
+    title: 'Completely free',
+    description: 'Every lesson is free, always. There is no cost to you at any stage, for as long as you keep learning with us.',
+  },
+  {
+    title: 'Matched to you',
+    description: 'We match you with a volunteer educator based on your language, level, and schedule, so lessons fit your goals.',
+  },
+  {
+    title: 'Flexible scheduling',
+    description: 'Meet online in a small group by default, one-to-one for exam prep or special needs, or asynchronously, at times that work around your life.',
+  },
+  {
+    title: 'A global network of educators',
+    description: 'Learn with volunteer teachers from 15+ countries, trained to support students learning under difficult circumstances.',
+  },
+  {
+    title: 'Real materials, real support',
+    description: 'A textbook and curated resources are provided for every student, with your progress tracked throughout the term.',
+  },
+  {
+    title: 'Built around your goals',
+    description: 'Whether you are preparing for exams, further study, or remote work, your lessons are shaped around what you want to achieve.',
+  },
+];
+
+const lessonTypes = [
+  {
+    title: 'Small Group Lessons',
+    tag: 'Most students',
+    description: 'Our default format. You learn alongside two or three other students at a similar level, with a volunteer educator, on a regular weekly schedule.',
+    points: [
+      'Weekly 60- or 90-minute sessions',
+      'Textbook and learning materials included',
+      'Built-in peer support and conversation practice',
+    ],
+  },
+  {
+    title: 'One-to-One Lessons',
+    tag: 'Exam prep & special needs',
+    description: 'Individual lessons are reserved for students preparing for an official exam (IELTS, TOEFL, DELF, DALF, Goethe-Institut) or with special educational needs that require individual attention.',
+    points: [
+      'Focused, personalised coaching',
+      'Practice tests for exam candidates',
+      'Available from Intermediate (B1) level upward for exam prep',
+    ],
+  },
+  {
+    title: 'Asynchronous Lessons',
+    tag: 'No live internet needed',
+    description: 'Learn on your own schedule using low-bandwidth materials — built for students without reliable internet for live classes, or when live courses are fully booked.',
+    points: [
+      'Compressed, lightweight PDFs you can download in seconds',
+      'Audio listening exercises with comprehension questions',
+      'Personalised written and voice-note feedback in a dedicated group chat',
+      'Speaking circles — practise speaking by sending and responding to voice messages whenever suits you',
+    ],
+  },
+];
+
+const eligibility = [
+  'Palestinian students based in Gaza, the West Bank, or displaced elsewhere because of the war',
+  'Primarily aged 13–30, though every application is considered individually',
+  'Any starting level — from complete beginner to advanced — we assess and place you accurately before matching',
+  'Motivated to build language skills for further study, official exams, or remote work opportunities',
+  'Access to an internet connection and a device for online lessons',
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Apply Online',
+    description: 'Tell us your language, level, and availability — it only takes a few minutes.',
+  },
+  {
+    number: '02',
+    title: 'Get Matched',
+    description: 'We pair you with a vetted volunteer educator who fits your goals and schedule.',
+  },
+  {
+    number: '03',
+    title: 'Start Learning',
+    description: 'Meet online for regular lessons, at a pace that works for you.',
+  },
+  {
+    number: '04',
+    title: 'Track Your Progress',
+    description: 'Build real fluency over time, with check-ins to keep your learning on course.',
+  },
+];
+---
+
+<Base title="Study with Us" description="Learn English, French, or German for free with a volunteer educator matched to your level and schedule.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Study with Us</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        Free English, French, and German lessons with a volunteer educator matched to your goals.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <span class="text-white">Study with Us</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Closed Notice -->
+  <div class="bg-accent-50 py-4 dark:bg-accent-900/20">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <p class="text-sm font-medium text-accent-800 dark:text-accent-200">
+        Student enrolment is currently closed for the autumn term. <a href="https://ee-eu.kobotoolbox.org/x/gDBB3MNp" target="_blank" rel="noopener noreferrer" class="font-semibold underline hover:no-underline">Join the waiting list</a> to be notified when it reopens, or read on to see how it works, and explore our <a href="/services" class="underline hover:no-underline">programmes</a> and <a href="/get-involved" class="underline hover:no-underline">ways to support us</a> in the meantime.
+      </p>
+    </div>
+  </div>
+
+  <!-- Why Study With Us -->
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Why Study With Us</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+          Learning that <em class="not-italic text-primary-600 dark:text-primary-400">works for you</em>
+        </h2>
+      </div>
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          perks.map((perk) => (
+            <div class="rounded-2xl bg-cream-100 p-8 shadow-sm dark:bg-gray-900">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{perk.title}</h3>
+              <p class="mt-3 text-gray-600 dark:text-gray-400">{perk.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Ways to Learn -->
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">How Lessons Work</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Three Ways to Learn</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">We match you to the format that fits your circumstances — most students learn in a small group.</p>
+      </div>
+      <div class="mx-auto mt-16 grid max-w-6xl gap-8 lg:grid-cols-3">
+        {
+          lessonTypes.map((type) => (
+            <div class="flex flex-col rounded-2xl bg-white p-8 shadow-sm dark:bg-gray-800">
+              <div class="mb-3 inline-flex w-fit items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent-700 dark:bg-accent-900/40 dark:text-accent-300">{type.tag}</div>
+              <h3 class="font-display text-xl font-semibold text-gray-900 dark:text-white">{type.title}</h3>
+              <p class="mt-3 text-gray-600 dark:text-gray-400">{type.description}</p>
+              <ul class="mt-4 space-y-2">
+                {type.points.map((point) => (
+                  <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+                    <svg class="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Asynchronous Lessons, in detail -->
+      <div class="mx-auto mt-16 max-w-5xl rounded-2xl border border-accent-200 bg-white p-8 dark:border-accent-900/40 dark:bg-gray-800 lg:p-12">
+        <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/40 dark:text-accent-300">A Closer Look</div>
+        <h3 class="font-display text-2xl font-semibold text-gray-900 dark:text-white">Inside an Asynchronous Lesson</h3>
+        <p class="mt-3 max-w-3xl text-gray-600 dark:text-gray-400">
+          Asynchronous lessons are not boring videos or pre-recorded lectures — they are an engaging, flexible programme in their own right, and we are expanding it because it helps students who cannot join live classes reliably, or who simply want extra practice when live courses are full. Here is what it actually looks like.
+        </p>
+        <div class="mt-8 grid gap-8 sm:grid-cols-2">
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white">Get personalised feedback</h4>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Submit a writing task or an audio recording and receive direct notes on both from your teacher in a dedicated group chat — the same kind of correction and encouragement you would get in a live lesson.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white">Practise speaking asynchronously</h4>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Join speaking circles with other students and respond by voice message on your own schedule — real speaking practice, without needing everyone online at the same time.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white">Grammar and vocabulary in context</h4>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Structured lesson materials — like seeing how the present perfect connects past actions to the present moment — teach real grammar through clear, worked examples, not dry rules.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3v11.25" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white">Low-bandwidth by design</h4>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Compressed PDFs, audio listening exercises, and comprehension questions are all built to download quickly and work offline once saved — so a weak connection is never a barrier to learning.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Can Join -->
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="text-center lg:text-left">
+          <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Who Can Join</div>
+          <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+            Is this <em class="not-italic text-primary-600 dark:text-primary-400">programme for you?</em>
+          </h2>
+          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+            Ramzunā Languages was created specifically for Palestinian students. Here is who we welcome into the programme.
+          </p>
+        </div>
+        <ul class="space-y-4">
+          {
+            eligibility.map((item) => (
+              <li class="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">
+                <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Getting Started</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">From Sign-Up to Fluency</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Four steps to your first lesson.</p>
+      </div>
+      <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          steps.map((step) => (
+            <div class="text-center">
+              <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-bold text-white">{step.number}</div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{step.title}</h3>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{step.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Enrolment Is Currently Closed for the Autumn Term</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Thank you for your interest — we are not accepting new students right now. Explore our programmes or help keep every lesson free with a donation.</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/services" class="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-medium text-primary-600 shadow-lg transition-colors hover:bg-gray-100">
+          Our Programmes
+        </a>
+        <a href="/donate" class="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-3 font-medium text-white transition-colors hover:bg-white/10">
+          Make a Donation
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
