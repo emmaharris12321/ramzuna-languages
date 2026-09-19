@@ -81,7 +81,7 @@ const { title, description = site.description } = Astro.props;
           '@type': 'PostalAddress',
           streetAddress: site.address.street,
           addressLocality: site.address.city,
-          addressRegion: site.address.state,
+          addressRegion: site.address.state || undefined,
           postalCode: site.address.zip || undefined,
         },
       } : {}),

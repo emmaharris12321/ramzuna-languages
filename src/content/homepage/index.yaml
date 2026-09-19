@@ -11,8 +11,7 @@ hero:
   titleRotate:
     - Empowering Through Languages
     - Language Access Should Cross Every Border
-    
-  description: Ramzunā Languages pairs Palestinian students with volunteer educators around the world for free, personalised English, French, and German lessons.
+  description: Ramzunā Languages pairs Palestinian students with volunteer educators around the world for free, personalised English, French, and German lessons — no fees, ever.
   primaryCta:
     text: Our Programmes
     url: "/services"
@@ -63,7 +62,8 @@ services:
       title: Palestinian Poetry & Storytelling
       description: Publishing Palestinian literature, poetry and art from our students and wider community.
       links:
-        
+        - text: Storytelling Classes
+          url: /services
         - text: Palestinian Voices
           url: /palestinian-voices
 
@@ -100,7 +100,37 @@ terms:
       dates: Dates to be announced
       tbd: true
 
-
+# Reach Section
+areas:
+  badge: Our Reach
+  title: Students in Palestine, Educators Worldwide
+  description: A global volunteer network, built to reach students wherever they are.
+  localAreas:
+    - city: Gaza
+      detail: Active programme
+    - city: West Bank
+      detail: Active programme
+    - city: Ramallah
+      detail: Active programme
+    - city: Nablus
+      detail: Active programme
+    - city: Hebron
+      detail: Active programme
+    - city: Jenin
+      detail: Active programme
+  longDistanceRoutes:
+    - city: United States
+      detail: 180+ educators
+    - city: United Kingdom
+      detail: 95+ educators
+    - city: Canada
+      detail: 60+ educators
+    - city: France
+      detail: 70+ educators
+    - city: Germany
+      detail: 55+ educators
+    - city: Australia
+      detail: 30+ educators
 
 # Get Involved (homepage teaser, reuses Pricing-style card layout)
 pricing:
@@ -177,7 +207,7 @@ testimonials:
       rating: 5
     - quote: Being matched with a dedicated coordinator made the whole process easy from day one. It is clear this programme is run with real care.
       author: Ahmad & Rana
-      role: English Students, Ramallah
+      role: English Students, UK and Palestine
       rating: 5
     - quote: I have taught with several volunteer programmes, and this is by far the most organised. The onboarding and ongoing support make it easy to focus on teaching.
       author: David R.
@@ -194,7 +224,22 @@ quote:
   title: Sign Up for Free Lessons
   description: Tell us about your language goals and we will match you with a volunteer educator within a few days.
 
-
+# FAQ Section
+faq:
+  badge: FAQ
+  title: Frequently Asked Questions
+  description: Answers to the questions we hear most often about our programmes.
+  items:
+    - question: Is this really completely free?
+      answer: "Yes. Every lesson, for every student, is entirely free — funded by donations and run by volunteer educators. There are no hidden fees at any stage."
+    - question: How are volunteer educators vetted?
+      answer: "Every educator completes an application, a language proficiency check, and a short interview with our coordination team before being matched with students."
+    - question: Can I choose which language I learn?
+      answer: "Yes — you can request English, French, or German when you sign up, along with your current level and learning goals."
+    - question: How do I become a volunteer educator?
+      answer: "Visit our Get Involved page and fill out the volunteer application. We will walk you through a short onboarding process before matching you with a student."
+    - question: How is Ramzunā Languages funded?
+      answer: "We are funded entirely by individual donations and partner organisations. Every donation goes toward coordination, learning materials, and reaching new students."
 
 # CTA Section
 cta:
