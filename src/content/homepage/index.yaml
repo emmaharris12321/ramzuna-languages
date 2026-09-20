@@ -107,29 +107,29 @@ areas:
       detail: Active programme
     - city: West Bank
       detail: Active programme
-    - city: Ramallah
-      detail: Active programme
-    - city: Nablus
+    - city: ""
+      detail: ""
+    - city: ""
       detail: ""
     - city: ""
       detail: ""
     - city: ""
       detail: ""
   longDistanceRoutes:
-    - city: United States
-      detail: 180+ educators
-    - city: United Kingdom
-      detail: 95+ educators
-    - city: Canada
-      detail: 60+ educators
-    - city: France
-      detail: 70+ educators
-    - city: Germany
-      detail: 55+ educators
-    - city: Australia
-      detail: 30+ educators
+    - city: ""
+      detail: ""
+    - city: ""
+      detail: ""
+    - city: ""
+      detail: ""
+    - city: ""
+      detail: ""
+    - city: ""
+      detail: ""
+    - city: ""
+      detail: ""
 
-# Get Involved (homepage teaser, reuses Pricing-style card layout)
+# Get Involved 
 pricing:
   badge: Get Involved
   title: "Three Ways to Take Part"
@@ -170,18 +170,18 @@ pricing:
           included: true
     - name: "Give"
       size: For donors & partners
-      price: "$10/mo"
+      price: ""
       features:
         - text: Sponsors one student's materials
-          included: true
+          included: false
         - text: Funds coordinator support
-          included: true
+          included: false
         - text: Helps us reach new regions
-          included: true
+          included: false
         - text: Monthly impact updates
-          included: true
+          included: false
         - text: One-time gifts welcome
-          included: true
+          included: false
   note: "Every learning programme stays free for students — donations cover coordination, materials, and platform costs."
 
 # Testimonials Section
@@ -190,30 +190,30 @@ testimonials:
   title: Voices From Our Community
   description: Hear from students and volunteer educators about their experience with Ramzunā Languages.
   items:
-    - quote: My English tutor has been patient and encouraging every single week. I went from being too shy to speak to leading conversations with confidence.
-      author: Layla
-      role: English Student, Gaza
-      rating: 5
-    - quote: Volunteering just one hour a week has been so rewarding. Watching my student's confidence grow has meant more to me than I expected.
-      author: Sophie M.
-      role: Volunteer French Educator, Canada
-      rating: 5
-    - quote: The German lessons were structured but relaxed, and my tutor always made time to answer my questions. I passed my Goethe exam because of this programme.
+    - quote: ""
+      author: ""
+      role: ""
+      rating: ""
+    - quote: ""
+      author: ""
+      role: ""
+      rating: ""
+    - quote: ""
       author: Yousef
-      role: German Student, West Bank
-      rating: 5
-    - quote: Being matched with a dedicated coordinator made the whole process easy from day one. It is clear this programme is run with real care.
-      author: Ahmad & Rana
-      role: English Students, UK and Palestine
-      rating: 5
-    - quote: I have taught with several volunteer programmes, and this is by far the most organised. The onboarding and ongoing support make it easy to focus on teaching.
-      author: David R.
-      role: Volunteer English Educator, UK
-      rating: 5
-    - quote: My conversation partner helped me practise everyday English I could not learn from textbooks. It made a real difference before my university interviews.
-      author: Noor
-      role: Conversation Partner Student, Nablus
-      rating: 5
+      role: ""
+      rating: ""
+    - quote: ""
+      author: ""
+      role: ""
+      rating: ""
+    - quote: ""
+      author: ""
+      role: ""
+      rating: ""
+    - quote: ""
+      author: ""
+      role: ""
+      rating:  ""
 
 # Sign Up Section
 quote:
