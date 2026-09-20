@@ -56,11 +56,11 @@ services:
         - text: Resources
           url: /resources
     - icon: megaphone
-      title: Palestinian Poetry & Storytelling
+      title: Palestinian Poetry 
       description: Publishing Palestinian literature, poetry and art from our students and wider community.
       links:
-        - text: Storytelling Classes
-          url: /services
+        - text: ""
+          url: ""
         - text: Palestinian Voices
           url: /palestinian-voices
 
@@ -110,11 +110,11 @@ areas:
     - city: Ramallah
       detail: Active programme
     - city: Nablus
-      detail: Active programme
-    - city: Hebron
-      detail: Active programme
-    - city: Jenin
-      detail: Active programme
+      detail: ""
+    - city: ""
+      detail: ""
+    - city: ""
+      detail: ""
   longDistanceRoutes:
     - city: United States
       detail: 180+ educators
@@ -241,7 +241,7 @@ faq:
 # CTA Section
 cta:
   title: Applications Are Currently Closed for the Autumn Term
-  description: "Enrolment for students and applications for volunteer educators are currently closed for the autumn term. In the meantime, explore our programmes or help us keep every lesson free with a donation."
+  description: "Enrolment for students and applications for volunteer educators are currently closed for the autumn term. In the meantime, join our waiting list, explore our programmes or help us keep every lesson free with a donation."
   primaryCta:
     text: Our Programmes
     url: "/services"
