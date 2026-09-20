@@ -3,8 +3,7 @@ author: Menna
 title: "Street Suffering"
 arabicTitle: "معاناة الشارع"
 tag: Poem
-bio: "Born in 2004, Menna is a translator, audio content presenter, podcaster, aspiring writer, and poet. Through her work, she brings life to her voice and to those the world has forgotten. Menna believes the genocide in Gaza has produced a new generation of writers.
-She writes many short texts you may find published on her Instagram page, and she also enjoys voice-over presentations and her latest work Roam the Streets and Collect Street Sayings, narrates colloquial Arabic street sayings alongside their English translations."
+bio: "Born in 2004, Menna is a translator, audio content presenter, podcaster, aspiring writer, and poet. Through her work, she brings life to her voice and to those the world has forgotten. Menna believes the genocide in Gaza has produced a new generation of writers.She writes many short texts you may find published on her Instagram page, and she also enjoys voice-over presentations and her latest work Roam the Streets and Collect Street Sayings, narrates colloquial Arabic street sayings alongside their English translations."
 readTime: "1 min read"
 ---
 
