@@ -13,8 +13,8 @@ hero:
     text: Our Programmes
     url: "/services"
   secondaryCta:
-    text: "Support With a Donation"
-    url: "/get-involved"
+    text: "Language Resources"
+    url: "/resources"
     icon: true
   note: "Student enrolment and volunteer applications are currently closed for the autumn term. Thank you for your interest — explore our programmes or support our work with a donation."
   stats:
