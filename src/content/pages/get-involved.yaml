@@ -63,11 +63,11 @@ pricing:
 
 # CTA Section
 cta:
-  title: Every Donation Makes a Difference
-  description: "Enrolment and volunteer applications are currently closed for the autumn term, but you can still help build language access for students who need it most."
+  title: Enrolment and Volunteer Applications Are Currently Closed for the Autumn Term
+  description: "Join the waiting list to be notified when they reopen, or explore our programmes in the meantime."
   primaryCta:
     text: Our Programmes
     url: "/services"
   secondaryCta:
-    text: Make a Donation
-    url: /donate
+    text: Join the Waiting List
+    url: https://ee-eu.kobotoolbox.org/x/6pce2ex4
