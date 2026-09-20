@@ -15,7 +15,7 @@ hero:
   secondaryCta:
     text: "Language Resources"
     url: "/resources"
-    icon: false
+ 
   note: "Student enrolment and volunteer applications are currently closed for the autumn term. Thank you for your interest — explore our programmes or support our work with a donation."
   stats:
     - value: "712+"
