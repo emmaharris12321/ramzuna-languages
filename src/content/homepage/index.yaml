@@ -64,14 +64,6 @@ services:
         - text: Palestinian Voices
           url: /palestinian-voices
 
-# Student-Led Conversations Section
-studentConversations:
-  badge: Student Life
-  title: Student-Led Conversations
-  description: "Every week, our enrolled students join a live conversation circle led by a moderator, who chooses that week's topic. It isn't open beyond current Ramzunā students yet, but it's one of our favourite examples of the community our lessons help build."
-  image: /assets/img/student-conversation-photo.jpg
-  imageCaption: "A recent conversation circle — this week's topic: “Do you think every story is literature?”"
-
 # How It Works Section
 howItWorks:
   badge: How It Works

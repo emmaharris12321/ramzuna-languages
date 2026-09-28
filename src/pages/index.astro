@@ -22,44 +22,6 @@ const page = await getHomepage();
   </div>
   <ProgrammesAndInvolved />
 
-  {
-    page.studentConversations && (
-      <section class="py-20 lg:py-28">
-        <div class="container mx-auto px-4 lg:px-8">
-          <div class="mx-auto max-w-3xl text-center">
-            <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/50 dark:text-accent-300">
-              {page.studentConversations.badge}
-            </div>
-            <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-              {page.studentConversations.title}
-            </h2>
-            <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-              {page.studentConversations.description}
-            </p>
-          </div>
-
-          {
-            page.studentConversations.image && (
-              <div class="mx-auto mt-14 max-w-4xl">
-                <div class="overflow-hidden rounded-2xl shadow-soft-lg">
-                  <img
-                    src={page.studentConversations.image}
-                    alt="Ramzunā students on a live student-led conversation call, discussing the week's topic"
-                    class="w-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                {page.studentConversations.imageCaption && (
-                  <p class="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">{page.studentConversations.imageCaption}</p>
-                )}
-              </div>
-            )
-          }
-        </div>
-      </section>
-    )
-  }
-
   {page.howItWorks && <HowItWorks {...page.howItWorks} />}
   {page.terms && <Terms badge={page.terms.badge} title={page.terms.title} description={page.terms.description} terms={page.terms.items} />}
   <TestimonialsCarousel />
