@@ -3,8 +3,8 @@ author: Aya
 title: "Obsessions"
 arabicTitle: "هواجس"
 tag: Poem
-bio: "Aya is a writer devoted to discovering the light hidden within overlooked details. Words are her sanctuary, an unshakable refuge that can never be destroyed."
-excerpt: "From the depths of my heart, I know with certainty that there is no creature on this earth more predatory than a human who has been robbed of what they hold dear."
+bio: "Aya Rezeq Aldeeb is a voice from Gaza, writing to be heard."
+excerpt: "There is no creature on this earth more predatory than a human who has been robbed of what they hold dear."
 readTime: "4 min read"
 ---
 

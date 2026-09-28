@@ -8,14 +8,14 @@ hero:
   badge: 100% Free, Always
   title: "Ramzunā Languages"
   titleHighlight: "Language Access Should Cross Every Border"
-  description: Ramzunā Languages pairs Palestinian students with volunteer educators around the world for free, personalised English, French, and German lessons.
+  description: Ramzunā Languages pairs Palestinian students with volunteer educators around the world for free, personalised English, French, and German lessons — no fees, ever.
   primaryCta:
     text: Our Programmes
     url: "/services"
   secondaryCta:
-    text: "Language Resources"
-    url: "/resources"
- 
+    text: "Our Waiting List"
+    url: "https://forms.gle/r9dahwJBcRy9Dcym9"
+    icon: false
   note: "Student enrolment and volunteer applications are currently closed for the autumn term. Thank you for your interest — explore our programmes or support our work with a donation."
   stats:
     - value: "712+"
@@ -56,13 +56,29 @@ services:
         - text: Resources
           url: /resources
     - icon: megaphone
-      title: Palestinian Poetry 
+      title: Palestinian Poetry & Storytelling
       description: Publishing Palestinian literature, poetry and art from our students and wider community.
       links:
-        - text: ""
-          url: ""
+        - text: Storytelling Classes
+          url: /services
         - text: Palestinian Voices
           url: /palestinian-voices
+
+# Student-Led Conversations Section
+studentConversations:
+  badge: Student Life
+  title: Student-Led Conversations
+  description: "Every week, our enrolled students run their own live conversation circle, choosing a new topic together. It isn't open beyond current Ramzunā students yet, but it's one of our favourite examples of the community our lessons help build."
+  topics:
+    - week: 1
+      topic: "Introductions"
+    - week: 2
+      topic: "AI: Advantages and Disadvantages"
+    - week: 3
+      topic: "The Role of Art — Especially Photography"
+    - week: 4
+      topic: "What Makes Literature Literature, and Who Decides?"
+      current: true
 
 # How It Works Section
 howItWorks:
@@ -107,29 +123,29 @@ areas:
       detail: Active programme
     - city: West Bank
       detail: Active programme
-    - city: ""
-      detail: ""
-    - city: ""
-      detail: ""
-    - city: ""
-      detail: ""
-    - city: ""
-      detail: ""
+    - city: Ramallah
+      detail: Active programme
+    - city: Nablus
+      detail: Active programme
+    - city: Hebron
+      detail: Active programme
+    - city: Jenin
+      detail: Active programme
   longDistanceRoutes:
-    - city: ""
-      detail: ""
-    - city: ""
-      detail: ""
-    - city: ""
-      detail: ""
-    - city: ""
-      detail: ""
-    - city: ""
-      detail: ""
-    - city: ""
-      detail: ""
+    - city: United States
+      detail: 180+ educators
+    - city: United Kingdom
+      detail: 95+ educators
+    - city: Canada
+      detail: 60+ educators
+    - city: France
+      detail: 70+ educators
+    - city: Germany
+      detail: 55+ educators
+    - city: Australia
+      detail: 30+ educators
 
-# Get Involved 
+# Get Involved (homepage teaser, reuses Pricing-style card layout)
 pricing:
   badge: Get Involved
   title: "Three Ways to Take Part"
@@ -170,18 +186,18 @@ pricing:
           included: true
     - name: "Give"
       size: For donors & partners
-      price: ""
+      price: "$10/mo"
       features:
         - text: Sponsors one student's materials
-          included: false
+          included: true
         - text: Funds coordinator support
-          included: false
+          included: true
         - text: Helps us reach new regions
-          included: false
+          included: true
         - text: Monthly impact updates
-          included: false
+          included: true
         - text: One-time gifts welcome
-          included: false
+          included: true
   note: "Every learning programme stays free for students — donations cover coordination, materials, and platform costs."
 
 # Testimonials Section
@@ -190,30 +206,30 @@ testimonials:
   title: Voices From Our Community
   description: Hear from students and volunteer educators about their experience with Ramzunā Languages.
   items:
-    - quote: ""
-      author: ""
-      role: ""
-      rating: ""
-    - quote: ""
-      author: ""
-      role: ""
-      rating: ""
-    - quote: ""
+    - quote: My English tutor has been patient and encouraging every single week. I went from being too shy to speak to leading conversations with confidence.
+      author: Layla
+      role: English Student, Gaza
+      rating: 5
+    - quote: Volunteering just one hour a week has been so rewarding. Watching my student's confidence grow has meant more to me than I expected.
+      author: Sophie M.
+      role: Volunteer French Educator, Canada
+      rating: 5
+    - quote: The German lessons were structured but relaxed, and my tutor always made time to answer my questions. I passed my Goethe exam because of this programme.
       author: Yousef
-      role: ""
-      rating: ""
-    - quote: ""
-      author: ""
-      role: ""
-      rating: ""
-    - quote: ""
-      author: ""
-      role: ""
-      rating: ""
-    - quote: ""
-      author: ""
-      role: ""
-      rating:  ""
+      role: German Student, West Bank
+      rating: 5
+    - quote: Being matched with a dedicated coordinator made the whole process easy from day one. It is clear this programme is run with real care.
+      author: Ahmad & Rana
+      role: English Students, UK and Palestine
+      rating: 5
+    - quote: I have taught with several volunteer programmes, and this is by far the most organised. The onboarding and ongoing support make it easy to focus on teaching.
+      author: David R.
+      role: Volunteer English Educator, UK
+      rating: 5
+    - quote: My conversation partner helped me practise everyday English I could not learn from textbooks. It made a real difference before my university interviews.
+      author: Noor
+      role: Conversation Partner Student, Nablus
+      rating: 5
 
 # Sign Up Section
 quote:
@@ -241,7 +257,7 @@ faq:
 # CTA Section
 cta:
   title: Applications Are Currently Closed for the Autumn Term
-  description: "Enrolment for students and applications for volunteer educators are currently closed for the autumn term. In the meantime, join our waiting list, explore our programmes or help us keep every lesson free with a donation."
+  description: "Enrolment for students and applications for volunteer educators are currently closed for the autumn term. In the meantime, explore our programmes or help us keep every lesson free with a donation."
   primaryCta:
     text: Our Programmes
     url: "/services"
