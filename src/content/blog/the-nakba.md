@@ -3,7 +3,7 @@ title: "At Ramzunā, we commemorate the 78th anniversary of the Nakba"
 description: "نَكْبَة - The Nakba. 78 Years Already."
 date: "May 15, 2026"
 category: "Palestinian history"
-image: "/assets/img/blog-cover-2.svg"
+image: "/assets/img/blog-cover-11.svg"
 readTime: "2 min read"
 author:
   name: "Shams Mazen Rajab"

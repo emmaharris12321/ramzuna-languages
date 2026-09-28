@@ -3,7 +3,7 @@ title: "Commemorating the 59th anniversary of the Naksa"
 description: "The Naksa. 59 Years."
 date: "June 5, 2026"
 category: "Memory"
-image: "/assets/img/blog-cover-5.svg"
+image: "/assets/img/blog-cover-12.svg"
 readTime: "2 min read"
 author:
   name: "Shams Mazen Rajab"

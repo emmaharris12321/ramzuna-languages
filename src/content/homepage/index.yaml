@@ -68,17 +68,9 @@ services:
 studentConversations:
   badge: Student Life
   title: Student-Led Conversations
-  description: "Every week, our enrolled students run their own live conversation circle, choosing a new topic together. It isn't open beyond current Ramzunā students yet, but it's one of our favourite examples of the community our lessons help build."
-  topics:
-    - week: 1
-      topic: "Introductions"
-    - week: 2
-      topic: "AI: Advantages and Disadvantages"
-    - week: 3
-      topic: "The Role of Art — Especially Photography"
-    - week: 4
-      topic: "What Makes Literature Literature, and Who Decides?"
-      current: true
+  description: "Every week, our enrolled students join a live conversation circle led by a moderator, who chooses that week's topic. It isn't open beyond current Ramzunā students yet, but it's one of our favourite examples of the community our lessons help build."
+  image: /assets/img/student-conversation-photo.jpg
+  imageCaption: "A recent conversation circle — this week's topic: “Do you think every story is literature?”"
 
 # How It Works Section
 howItWorks:
@@ -257,10 +249,10 @@ faq:
 # CTA Section
 cta:
   title: Applications Are Currently Closed for the Autumn Term
-  description: "Enrolment for students and applications for volunteer educators are currently closed for the autumn term. In the meantime, explore our programmes or help us keep every lesson free with a donation."
+  description: "Student enrolment and volunteer applications are currently closed for the autumn term. In the meantime, join our waiting list, explore our programmes, or support our work with a donation."
   primaryCta:
+    text: Join the Waiting List
+    url: "https://forms.gle/r9dahwJBcRy9Dcym9"
+  secondaryCta:
     text: Our Programmes
     url: "/services"
-  secondaryCta:
-    text: Make a Donation
-    url: "/donate"
