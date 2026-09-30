@@ -1,0 +1,143 @@
+---
+import Base from '@/layouts/Base.astro';
+
+interface Resource {
+  title: string;
+  url: string;
+  description: string;
+}
+
+const resources: Resource[] = [
+  {
+    title: 'Palestine 101 – USCPR',
+    url: 'https://uscpr.org/activist-resource/palestine-101/',
+    description: 'An introductory guide from the US Campaign for Palestinian Rights covering occupation, settlements, Gaza, Jerusalem, refugees and political prisoners.',
+  },
+  {
+    title: 'Decolonize Palestine',
+    url: 'https://decolonizepalestine.com',
+    description: 'A collection of resources for organisers and anyone who wants to learn more about Palestinian history and common misconceptions.',
+  },
+  {
+    title: 'Palestine Remembered',
+    url: 'https://www.palestineremembered.com',
+    description: 'An archive documenting Palestinian history, refugee experiences and destroyed villages through photographs, maps and oral histories.',
+  },
+  {
+    title: 'What Is the Nakba? – End the Nakba',
+    url: 'https://www.endthenakba.com/whatisthenakba1',
+    description: 'A concise explainer on the Nakba of 1948 and its lasting impact on Palestinian life and displacement.',
+  },
+  {
+    title: 'Palestine Chronology – Institute for Palestine Studies',
+    url: 'https://chronology.palestine-studies.org/',
+    description: 'A day-by-day record of events in Palestine and the region, maintained by the Institute for Palestine Studies.',
+  },
+  {
+    title: "Let's Talk Palestine",
+    url: 'https://www.instagram.com/letstalkpalestine/',
+    description: 'An Instagram account sharing accessible, bite-sized educational content about Palestinian history and current events.',
+  },
+  {
+    title: 'Teach Palestine Project',
+    url: 'https://teachpalestine.org/',
+    description: 'Curriculum and lesson plans helping K-12 teachers bring Palestinian history and current events into the classroom.',
+  },
+  {
+    title: 'Al-Awda – Facts',
+    url: 'http://www.al-awda.org/facts.html',
+    description: 'Historical facts and figures from the Palestine Right to Return Coalition on the Nakba and Palestinian displacement.',
+  },
+  {
+    title: 'Visualizing Palestine',
+    url: 'https://visualizingpalestine.org/',
+    description: 'Data and research communicated through visuals and infographics that document the Palestinian experience.',
+  },
+  {
+    title: 'Haymarket Books – Free Ebooks for a Free Palestine',
+    url: 'https://www.haymarketbooks.org/blogs/495-free-ebooks-for-a-free-palestine',
+    description: 'Free downloadable ebooks from Haymarket Books exploring Palestinian history, politics and liberation.',
+  },
+  {
+    title: 'Verso Books – Solidarity with Palestine',
+    url: 'https://www.versobooks.com/blogs/news/solidarity-with-palestine-free-resources-and-further-reading',
+    description: 'A curated reading list of free ebooks and articles on Palestine from Verso Books.',
+  },
+  {
+    title: 'Makan',
+    url: 'https://www.makan.org.uk/about/',
+    description: 'An independent education organisation situating Palestine within the wider framework of global social justice movements.',
+  },
+  {
+    title: 'Zinn Education Project – Teaching About Palestine-Israel',
+    url: 'https://www.zinnedproject.org/news/violence-in-israel-and-gaza/',
+    description: 'A large collection of teaching resources, lesson plans, articles and films for educators covering Palestine-Israel.',
+  },
+  {
+    title: 'The Hind Rajab Foundation',
+    url: 'https://www.hindrajabfoundation.org/about-us.html',
+    description: 'An organisation pursuing legal accountability for alleged war crimes and crimes against humanity against Palestinians.',
+  },
+  {
+    title: 'The Gaza Project',
+    url: 'https://arij.net/investigations/gaza-project2/en.html',
+    description: 'A collaborative investigation by journalists from multiple media organisations examining attacks on journalists in Gaza.',
+  },
+  {
+    title: 'IMEU – Institute for Middle East Understanding',
+    url: 'https://imeu.org',
+    description: 'A nonprofit dedicated to increasing public understanding of Palestine, Palestinians and Palestinian Americans.',
+  },
+];
+---
+
+<Base title="Learning About Palestine" description="A curated collection of resources to learn about Palestinian history, culture and current events.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Learning About Palestine</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        A curated collection of organisations, archives and educational resources to learn more about Palestinian history, culture and current events.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <a href="/resources" class="transition-colors hover:text-white">Resources</a>
+        <span>/</span>
+        <span class="text-white">Learning About Palestine</span>
+      </nav>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2">
+        {
+          resources.map((res) => (
+            <article class="group flex flex-col rounded-2xl bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800">
+              <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent-100 text-lg dark:bg-accent-900/50">🇵🇸</div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                <a href={res.url} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-primary-600 dark:hover:text-primary-400">
+                  {res.title}
+                </a>
+              </h3>
+              <p class="mt-2 flex-1 text-gray-600 dark:text-gray-400">{res.description}</p>
+              <a
+                href={res.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex w-fit items-center gap-1 text-sm font-medium text-accent-600 transition-colors hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
+              >
+                Visit resource <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="mx-auto mt-12 max-w-2xl text-center text-gray-600 dark:text-gray-400">
+        Looking for Palestinian poetry and storytelling instead? Explore <a href="/palestinian-voices" class="font-medium text-primary-600 hover:underline dark:text-primary-400">Palestinian Voices</a>.
+      </p>
+    </div>
+  </section>
+</Base>
