@@ -8,7 +8,7 @@ interface Resource {
   lang: string;
 }
 
-const categories = ['English', 'IELTS General', 'IELTS Listening', 'IELTS Writing', 'French', 'German'];
+const categories = ['English', 'IELTS General', 'IELTS Listening', 'IELTS Writing', 'French', 'German', 'Italian'];
 
 const categoryIcon: Record<string, string> = {
   English: '📖',
@@ -17,6 +17,7 @@ const categoryIcon: Record<string, string> = {
   'IELTS Writing': '✍️',
   French: '🇫🇷',
   German: '🇩🇪',
+  Italian: '🇮🇹',
 };
 
 const resources: Resource[] = [
@@ -102,13 +103,11 @@ const resources: Resource[] = [
   { title: 'YouTube – German Learning Channel', url: 'https://www.youtube.com/channel/UCbxb2fqe9oNgglAoYqsYOtQ', category: 'German', lang: 'German' },
   { title: 'VHS Lernportal', url: 'https://www.vhs-lernportal.de/wws/9.php', category: 'German', lang: 'German' },
   { title: 'Pressbooks – German 101', url: 'https://una.pressbooks.pub/gr101/chapter/section-1-1/', category: 'German', lang: 'German' },
-  { title: 'German GrammarPod', url: 'https://www.germangrammarpod.com/', category: 'German', lang: 'German' },
   { title: 'Coffee Break German', url: 'https://coffeebreaklanguages.com/coffeebreakgerman/', category: 'German', lang: 'German' },
   { title: 'Mein Deutschbuch', url: 'https://mein-deutschbuch.de/', category: 'German', lang: 'German' },
   { title: 'German Is Easy', url: 'https://www.germanveryeasy.com/', category: 'German', lang: 'German' },
   { title: 'Lingolia Deutsch', url: 'https://deutsch.lingolia.com/', category: 'German', lang: 'German' },
   { title: 'Learn German with Anja', url: 'https://www.youtube.com/c/LearnGermanwithAnja', category: 'German', lang: 'German' },
-  { title: 'Learn German with Jenny', url: 'https://www.youtube.com/c/GermanwithJenny', category: 'German', lang: 'German' },
   { title: 'StoryLearning German', url: 'https://www.storylearning.com/', category: 'German', lang: 'German' },
   { title: 'Learn Out Live', url: 'https://learnoutlive.com/', category: 'German', lang: 'German' },
   { title: 'EasyReaders.eu', url: 'https://www.easyreaders.eu/', category: 'German', lang: 'German' },
@@ -116,20 +115,30 @@ const resources: Resource[] = [
   { title: 'Deutsche Welle', url: 'https://www.dw.com/de/', category: 'German', lang: 'German' },
   { title: 'Project Gutenberg', url: 'https://www.gutenberg.org/', category: 'German', lang: 'German' },
   { title: 'Slow German', url: 'https://www.slowgerman.com/', category: 'German', lang: 'German' },
-  { title: 'DW – Warum nicht?', url: 'https://www.dw.com/de/deutsch-lernen/warum-nicht/s-2548', category: 'German', lang: 'German' },
   { title: 'News in Slow German', url: 'https://www.newsinslowgerman.com/', category: 'German', lang: 'German' },
-  { title: 'Deutsch für Euch', url: 'https://www.youtube.com/c/DeutschFuerEuch', category: 'German', lang: 'German' },
-  { title: 'Get Germanized', url: 'https://www.youtube.com/c/GetGermanized', category: 'German', lang: 'German' },
+  { title: 'Learn German Original – A1 Course', url: 'https://www.youtube.com/watch?v=RuGmc662HDg&list=PLF9mJC4RrjIhS4MMm0x72-qWEn1LRvPuW', category: 'German', lang: 'German' },
+  { title: 'GermanPod101', url: 'https://www.youtube.com/channel/UCTobWZV_HWGSoaRrhHyrJ-A', category: 'German', lang: 'German' },
+  { title: 'GermanTalks', url: 'https://www.youtube.com/@TalksGerman', category: 'German', lang: 'German' },
+  { title: 'Daily Deutsch', url: 'https://www.youtube.com/@Daily_Deutsch', category: 'German', lang: 'German' },
+  { title: 'DialogDE', url: 'https://www.youtube.com/@DialogDE-j8j', category: 'German', lang: 'German' },
+
+  // Italian
+  { title: 'Coffee Break Italian', url: 'https://coffeebreaklanguages.com/coffeebreakitalian/', category: 'Italian', lang: 'Italian' },
+  { title: 'Joy of Languages – Italian Podcast', url: 'https://joyoflanguages.com/italianpodcast/', category: 'Italian', lang: 'Italian' },
+  { title: 'ItalianPod101', url: 'https://www.italianpod101.com/', category: 'Italian', lang: 'Italian' },
+  { title: 'LearnAmo', url: 'https://learnamo.com', category: 'Italian', lang: 'Italian' },
+  { title: 'Online Italian Club – A1 Checklist', url: 'https://onlineitalianclub.com/wp-content/uploads/2026/01/checklist-A1-version-2.0.pdf', category: 'Italian', lang: 'Italian' },
+  { title: 'Easy Italian', url: 'https://www.youtube.com/@EasyItalian', category: 'Italian', lang: 'Italian' },
 ];
 ---
 
-<Base title="Language Resources" description="A searchable directory of free resources to study and teach English, French and German.">
+<Base title="Language Resources" description="A searchable directory of free resources to study and teach English, French, German and Italian.">
   <!-- Page Header -->
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
       <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Language Resources</h1>
       <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
-        {resources.length} free resources to study and teach English, French and German.
+        {resources.length} free resources to study and teach English, French, German and Italian.
       </p>
       <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
         <a href="/" class="transition-colors hover:text-white">Home</a>
