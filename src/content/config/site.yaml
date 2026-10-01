@@ -63,7 +63,15 @@ nav:
   - text: Blog
     url: /blog
   - text: Resources
-    url: /resources
+    children:
+      - text: Language Resources
+        url: /resources/language-resources
+      - text: Mental Health Resources for Palestinians
+        url: /resources/mental-health-resources
+      - text: Palestinian Voices
+        url: /palestinian-voices
+      - text: Palestine & Arabic Resources
+        url: /resources/learning-about-palestine
   - text: FAQs
     children:
       - text: FAQs for Students
