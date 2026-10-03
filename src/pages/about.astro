@@ -5,13 +5,13 @@ import { getPage } from '@/data/site';
 const page = await getPage('about');
 
 const teacherCountries = [
-  { flag: '🇬🇧', name: 'United Kingdom', pct: 27.1 },
-  { flag: '🇺🇸', name: 'United States', pct: 15.68 },
-  { flag: '🇵🇸', name: 'Palestine', pct: 11.54 },
-  { flag: '🇪🇬', name: 'Egypt', pct: 11.54 },
-  { flag: '🇫🇷', name: 'France', pct: 7.69 },
-  { flag: '🇩🇿', name: 'Algeria', pct: 7.69 },
-  { flag: '🇵🇭', name: 'Philippines', pct: 7.69 },
+  { flag: '🇬🇧', name: 'United Kingdom', pct: 29.73 },
+  { flag: '🇺🇸', name: 'United States', pct: 13.51 },
+  { flag: '🇵🇸', name: 'Palestine', pct: 10.81 },
+  { flag: '🇪🇬', name: 'Egypt', pct: 8.11 },
+  { flag: '🇩🇿', name: 'Algeria', pct: 8.11 },
+  { flag: '🇫🇷', name: 'France', pct: 5.41 },
+  { flag: '🇵🇭', name: 'Philippines', pct: 5.41 },
 ];
 const teacherMaxPct = Math.max(...teacherCountries.map((c) => c.pct));
 
@@ -207,7 +207,7 @@ const valueStyles = [
         <!-- Teacher nationality stat card -->
         <div class="overflow-hidden rounded-2xl bg-primary-600 p-8 text-white shadow-soft-lg dark:bg-primary-800">
           <p class="text-sm font-semibold uppercase tracking-wider text-primary-100">Volunteer Educators</p>
-          <p class="mt-1 font-display text-4xl font-bold">15 Countries</p>
+          <p class="mt-1 font-display text-4xl font-bold">19 Countries</p>
           <p class="mt-2 text-sm leading-relaxed text-primary-100">
             Where our volunteer teachers are based, 2026.
           </p>
@@ -225,7 +225,7 @@ const valueStyles = [
             ))}
           </div>
           <p class="mt-6 text-xs leading-relaxed text-primary-100">
-            Also represented (3.85% each): 🇬🇷 Greece, 🇲🇦 Morocco, 🇨🇦 Canada, 🇿🇦 South Africa, 🇱🇸 Lesotho, 🇵🇰 Pakistan, 🇧🇩 Bangladesh &amp; 🇪🇸 Spain.
+            Also represented (2.70% each): 🇬🇷 Greece, 🇲🇦 Morocco, 🇨🇦 Canada, 🇿🇦 South Africa, 🇱🇸 Lesotho, 🇵🇰 Pakistan, 🇧🇩 Bangladesh, 🇪🇸 Spain, 🇹🇳 Tunisia, 🇮🇹 Italy, 🇮🇳 India &amp; 🇩🇪 Germany.
           </p>
         </div>
 
