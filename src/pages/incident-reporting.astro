@@ -1,0 +1,107 @@
+---
+import Base from '@/layouts/Base.astro';
+---
+
+<Base title="Incident and Concern Reporting Procedure" description="How to report a concern, complaint, incident, or safeguarding matter to Ramzunā Languages.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Incident and Concern Reporting Procedure</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        How concerns, complaints, incidents, and safeguarding matters connected to Ramzunā Languages are reported and addressed.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <span class="text-white">Incident and Concern Reporting Procedure</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Report Now -->
+  <section class="py-16 lg:py-20">
+    <div class="container mx-auto max-w-4xl px-4 lg:px-8">
+      <div class="rounded-2xl bg-cream-100 p-8 text-center shadow-soft dark:bg-gray-900">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Ready to make a report?</h2>
+        <p class="mx-auto mt-2 max-w-xl text-gray-600 dark:text-gray-400">
+          Reports may be submitted by email or through our contact form as soon as reasonably practicable after the concern arises. You do not need to investigate a concern yourself before reporting it.
+        </p>
+        <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="mailto:safeguarding@ramzunalanguages.org" class="inline-flex items-center justify-center break-all rounded-lg bg-primary-600 px-6 py-3 text-sm font-medium text-white shadow-lg shadow-primary-600/25 transition-all hover:bg-primary-700">
+            Email safeguarding@ramzunalanguages.org
+          </a>
+          <a href="/contact" class="inline-flex items-center justify-center rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-white dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800">
+            Use Our Contact Form
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="pb-20 lg:pb-28">
+    <div class="container mx-auto max-w-4xl px-4 lg:px-8">
+      <div class="prose max-w-none dark:prose-invert">
+        <h2 class="font-display text-2xl font-semibold text-gray-900 dark:text-white">1. Purpose</h2>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">The purpose of this Procedure is to ensure that concerns, complaints, incidents, and safeguarding matters connected to Ramzunā Languages are identified, reported, and addressed appropriately. Ramzunā Languages encourages all team members, volunteers, students, parents, partners, and other stakeholders to raise concerns in good faith where they believe a student, volunteer, or the organisation may be at risk of harm or where organisational standards may have been breached.</p>
+
+        <h2 class="font-display mt-12 text-2xl font-semibold text-gray-900 dark:text-white">2. Scope</h2>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">This Procedure applies to all individuals acting on behalf of Ramzunā Languages, including volunteer teachers, team members, advisors, interns, partners, and members of leadership. It also applies to students, parents or guardians, and other individuals who wish to report concerns relating to Ramzunā Languages activities.</p>
+
+        <h2 class="font-display mt-12 text-2xl font-semibold text-gray-900 dark:text-white">3. What Should Be Reported</h2>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">The following should be reported under this Procedure:</p>
+        <ul class="mt-4 space-y-2 text-gray-600 dark:text-gray-400">
+          {[
+            'Complaints from students, parents, volunteers, or partners.',
+            'Safeguarding concerns.',
+            'Concerns regarding the welfare or safety of a student.',
+            'Alleged breaches of organisational policies.',
+            'Volunteer, team member or student misconduct.',
+            'Harassment, discrimination, or bullying.',
+            'Psychological or emotional abuse.',
+            'Breaches of confidentiality, privacy, or data protection, including the unauthorised disclosure of student, teacher, or team member information, safeguarding information, personal data, recordings, images, or other confidential information.',
+            'Security incidents affecting students, volunteers, or organisational activities.',
+            'Serious disputes.',
+            'Conflicts of interest.',
+            'Reputational risks.',
+            'Any incident that may result in harm to an individual or to the organisation.',
+          ].map((item) => (
+            <li class="flex items-start gap-2">
+              <svg class="mt-1.5 h-4 w-4 flex-shrink-0 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">Complaints are considered a form of concern and may be reported through this Procedure.</p>
+
+        <h2 class="font-display mt-12 text-2xl font-semibold text-gray-900 dark:text-white">4. Reporting a Concern or Incident</h2>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">Concerns or incidents should be reported as soon as reasonably practicable after they are identified. Reports may be submitted by email at <a href="mailto:safeguarding@ramzunalanguages.org" class="break-all text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">safeguarding@ramzunalanguages.org</a> or through our <a href="/contact" class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">contact form</a>.</p>
+
+        <h2 class="font-display mt-12 text-2xl font-semibold text-gray-900 dark:text-white">5. Information to Include</h2>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">Where possible, reports should include the date and time of the incident or concern, the names of any individuals involved, a description of what happened, any immediate actions taken, and any witnesses or supporting information. Individuals are not expected to investigate concerns themselves before making a report.</p>
+
+        <h2 class="font-display mt-12 text-2xl font-semibold text-gray-900 dark:text-white">6. Assessment and Response</h2>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">Upon receiving a report, Ramzunā Languages will assess the nature and seriousness of the concern, determine whether immediate action is required, consider whether additional information is needed, determine any appropriate safeguarding, disciplinary, operational, or organisational response, and record the actions taken and outcomes. Safeguarding concerns are managed in accordance with our <a href="/safeguarding" class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">Safeguarding Policy</a>.</p>
+
+        <h2 class="font-display mt-12 text-2xl font-semibold text-gray-900 dark:text-white">7. Confidentiality</h2>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">All reports are handled with appropriate confidentiality. Information is only shared with individuals who need it to protect people, fulfil organisational responsibilities, investigate concerns, or comply with legal obligations. Personal information is handled in accordance with our <a href="/privacy" class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">Privacy Policy</a>.</p>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">Reports may be submitted anonymously. We will consider and assess anonymous reports in the same manner as other reports, to the extent reasonably possible. However, anonymous reporting may limit our ability to verify information and conduct a thorough investigation.</p>
+
+        <h2 class="font-display mt-12 text-2xl font-semibold text-gray-900 dark:text-white">8. Protection from Retaliation</h2>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">Ramzunā Languages will not tolerate retaliation against any individual who raises a concern or reports an incident in good faith. Knowingly false or malicious reports will themselves be treated as misconduct.</p>
+
+        <h2 class="font-display mt-12 text-2xl font-semibold text-gray-900 dark:text-white">9. Record Keeping</h2>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">We maintain appropriate records of reported incidents and concerns. Records are stored securely, and access is restricted to authorised individuals. Where appropriate, actions taken and outcomes are also recorded.</p>
+
+        <h2 class="font-display mt-12 text-2xl font-semibold text-gray-900 dark:text-white">10. Review</h2>
+        <p class="mt-4 text-gray-600 dark:text-gray-400">This Procedure is reviewed at least every two years, or sooner where operational, legal, or safeguarding developments make review necessary.</p>
+
+        <div class="mt-10 rounded-xl border border-gray-200 bg-cream-100 p-6 dark:border-gray-800 dark:bg-gray-900">
+          <p class="font-semibold text-gray-900 dark:text-white">Ramzunā Languages</p>
+          <p class="mt-1 text-gray-600 dark:text-gray-400">Safeguarding email: <a href="mailto:safeguarding@ramzunalanguages.org" class="break-all text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">safeguarding@ramzunalanguages.org</a></p>
+          <p class="text-gray-600 dark:text-gray-400">General enquiries: <a href="/contact" class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">Contact us here</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
