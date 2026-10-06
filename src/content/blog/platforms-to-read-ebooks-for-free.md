@@ -3,7 +3,7 @@ title: "12 Platforms to read eBooks for free
 description: "A Guide to Open Access Digital Libraries and Platforms for Palestinian Students. 
 date: "Oct 6, 2026"
 category: "Education"
-image: "/assets/img/blog-cover-10.svg"
+image: "/assets/img/blog-cover-4.svg"
 readTime: "6 min read"
 author:
   name: "Ramzunā Languages Team"
