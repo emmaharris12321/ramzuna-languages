@@ -1,10 +1,6 @@
 ---
 title: "12 Platforms to read eBooks for free
-description: "A Guide to Open Access Digital Libraries and Platforms for Palestinian Students
-
-These resources allow Palestinian students to access literature and high‑quality academic material without the barriers of cost or complicated licensing. Here are some of the most useful open access options":
-
-
+description: "A Guide to Open Access Digital Libraries and Platforms for Palestinian Students. 
 date: "Oct 6, 2026"
 category: "Education"
 image: "/assets/img/blog-cover-10.svg"
