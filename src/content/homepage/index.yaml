@@ -16,7 +16,7 @@ hero:
     text: "Our Waiting List"
     url: "https://forms.gle/r9dahwJBcRy9Dcym9"
     icon: false
-  note: "Student enrolment and volunteer applications are currently closed for the autumn term. Thank you for your interest — explore our programmes or support our work with a donation."
+  note: "Student enrolment and volunteer applications are currently closed for the autumn term. Thank you for your interest — explore our programmes, join our waiting list, or support our work with a donation."
   stats:
     - value: "756+"
       label: Hours Delivered
