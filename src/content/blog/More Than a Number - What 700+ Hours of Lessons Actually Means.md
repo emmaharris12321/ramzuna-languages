@@ -3,7 +3,7 @@ title: "More Than a Number: What 700+ Hours of Lessons Actually Means"
 description: "More than a language-learning platform - A place to learn, speak, grow and connect with new people at a time when access to regular education has become extremely difficult to many Palestinian students."
 date: "Sep 12, 2026"
 category: "Education & Human Rights"
-image: "/assets/img/logo.png"
+image: "/assets/img/700+.jpeg"
 readTime: "3 min read"
 author:
   name: "Jana"

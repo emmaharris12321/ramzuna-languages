@@ -3,7 +3,7 @@ title: " Ramzunā Languages is now officially registered in the UK"
 description: "Ramzunā is officially a CIC in the UK."
 date: "Oct13, 2026"
 category: "Milestones"
-image: "/assets/img/blog-cover-6.svg"
+image: "/assets/img/logo.png"
 readTime: "1 min read"
 author:
   name: "Ramzunā Languages Team"
