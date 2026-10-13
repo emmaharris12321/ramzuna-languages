@@ -8,7 +8,7 @@ hero:
   badge: 100% Free, Always
   title: "Ramzunā Languages"
   titleHighlight: "Language Access Should Cross Every Border"
-  description: Ramzunā Languages pairs Palestinian students with volunteer educators around the world for free, personalised English, French, and German lessons — no fees, ever.
+  description: "Ramzunā Languages is a non-profit that is dedicated to providing free and personalised English,French and German lessons to Palestinian students."
   primaryCta:
     text: Our Programmes
     url: "/services"
@@ -72,16 +72,16 @@ howItWorks:
   steps:
     - number: "01"
       title: Sign Up Free
-      description: Tell us your language goals, current level, and availability. It takes less than five minutes.
+      description: Tell us your language goals, current level, and availability. 
     - number: "02"
-      title: Get Matched
-      description: We pair you with a vetted volunteer educator based on your language, level, and schedule.
+      title: Get Assessed
+      description: We assess your level to match you with the right course. 
     - number: "03"
-      title: Start Learning
-      description: Meet online for regular lessons — in a small group by default, or asynchronously on your own schedule.
+      title: Be Matched
+      description: We pair you with a vetted volunteer educator based on your language, level, and schedule. 
     - number: "04"
-      title: Track Your Progress
-      description: Build real fluency over time, with check-ins to keep your learning on course.
+      title: Start Learning
+      description: Meet online for regular lessons — in a small group by default, one-to-one sessions, or asynchronously on your own schedule.
 
 # Terms Section
 terms:
