@@ -36,7 +36,7 @@ services:
   items:
     - icon: graduation
       title: Language Lessons
-      description: Empowering Palestinian students through general, academic and business language lessons.
+      description: Empowering Palestinian students through general, conversation, academic and business language lessons.
       links:
         - text: English Classes
           url: /services
@@ -45,8 +45,8 @@ services:
         - text: German Classes
           url: /services
     - icon: chat
-      title: Conversations & Asynchronous Learning
-      description: Conversation sessions and asynchronous learning for students whose internet does not enable them to join live lessons.
+      title: Asynchronous Learning
+      description: Asynchronous learning for students whose internet does not enable them to join live lessons.
       highlight: true
       links:
         - text: Conversation Sessions
