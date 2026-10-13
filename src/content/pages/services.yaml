@@ -50,10 +50,9 @@ servicesGrid:
       title: Conversation Partners
       description: "Weekly, low-pressure conversation practice in English, French or German — built to grow fluency and confidence through real conversation, not textbook drills."
       features:
-        - One 60-minute video call each week, one-on-one
+        - One 60-minute video call each week
         - No homework, no grading, no fixed curriculum
         - You and your partner choose the topics together
-        - Great alongside formal lessons, or on its own
         - Ideal for students who already know the basics and want to speak more
     - icon: specialty
       title: Exam Preparation
