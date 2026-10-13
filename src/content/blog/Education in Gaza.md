@@ -3,7 +3,7 @@ title: "Testimony - Education in Gaza"
 description: "Learning is a daily struggle for survival."
 date: "Oct 05, 2026"
 category: "Education & Human Rights"
-image: "/assets/img/blog-cover-7.svg"
+image: "/assets/img/gaza.jpeg"
 readTime: "3 min read"
 author:
   name: "Mais"
