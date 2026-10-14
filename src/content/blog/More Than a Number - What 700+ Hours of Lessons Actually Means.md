@@ -24,10 +24,10 @@ They are not simply hours spent behind a screen.
 712 hours of learning. 
 712 hours of connection. 
 712 hours of hope. 
-712 hours in which Palestinian students said: "We still want to learn". 
+<strong>712 hours in which Palestinian students said: "We still want to learn".</strong>
 
 <p style="text-align: justify;">
 Ramzunā also gives students a space to express themselves and share their writing, poetry, and voices. It creates human and cultural connections that cross borders, connections that remind students they are seen, heard and supported!
 </p>
 
-This is what Ramzunā Languages means to us. 
+<strong>This is what Ramzunā Languages means to us.</strong>

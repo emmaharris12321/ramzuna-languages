@@ -14,7 +14,7 @@ author:
 ## At Ramzunā, we remember the Naksa and its consequences. 
 
 <p style="text-align: justify;">
-The Naksa reshaped the Palestinian and Arab struggle
+<strong>The Naksa reshaped the Palestinian and Arab struggle</strong>
 </p>
 
 <p style="text-align: justify;">

@@ -17,19 +17,31 @@ Learning a new language opens doors — and one of the most practical ones is re
 
 ## General Freelance Marketplaces
 
+<p style="text-align: justify;">
 **[Upwork](https://www.upwork.com/)** — A large international marketplace where you can offer a range of services including administrative work, teaching, translating, presentations, and writing.
+</p>
 
+<p style="text-align: justify;">
 **[Mostaql](https://mostaql.com/freelancers)** — Similar to Upwork, with opportunities in translation, writing, data entry, support, and training services, among others.
+</p>
 
+<p style="text-align: justify;">
 **[Khamsat](https://khamsat.com/)** — Very similar to Upwork and Mostaql, with a wide range of freelance service categories.
+</p>
 
+<p style="text-align: justify;">
 **[Taqat](https://www.taqat-gaza.com/en/talents)** — Very similar to Upwork, Mostaql, and Khamsat.
+</p>
 
 ## Platforms Built for Gaza and Palestine
 
+<p style="text-align: justify;">
 **[Freelancers in Gaza](https://www.freelancersingaza.com/)** — Lets you offer teaching, translating, design, and media services. This platform accepts minors.
+</p>
 
-**[Forlanso](https://www.forlanso.com/en/freelancers)** — Similar to Upwork or Khamsat, but requires you to be 18 years old. If you are younger, a parent can apply on your behalf — once your account is accepted, you can start working as usual.
+<p style="text-align: justify;">
+[Forlanso](https://www.forlanso.com/en/freelancers)** — Similar to Upwork or Khamsat, but requires you to be 18 years old. If you are younger, a parent can apply on your behalf — once your account is accepted, you can start working as usual.
+</p>
 
 **[Bright Gaza](https://www.brightgaza.com/en)** — A freelance platform connecting Gaza-based talent with opportunities.
 
