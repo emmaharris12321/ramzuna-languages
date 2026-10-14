@@ -19,6 +19,9 @@ Learning a new language is not only about the hour you spend with your tutor eac
 
 <p style="text-align: justify;">
 Fifteen minutes of daily practice beats two hours once a week. Short, consistent sessions help your brain retain vocabulary and grammar far better than occasional cramming. 
+</p>
+
+<p style="text-align: justify;">
 Try reviewing five new words each morning and using them in a sentence before bed.
 </p>
 
@@ -26,6 +29,9 @@ Try reviewing five new words each morning and using them in a sentence before be
 
 <p style="text-align: justify;">
 Reading silently is useful, but speaking out loud trains your mouth and ears together. 
+</p>
+
+<p style="text-align: justify;">
 Narrate your day in English as you go about it; describing what you are cooking, or what you see on your walk; builds fluency without needing a conversation partner every time.
 </p>
 
@@ -45,7 +51,11 @@ The students who improve fastest are usually the ones who speak the most, mistak
 ## Consistency is key
 
 <p style="text-align: justify;">
-Consistency is paramount and surpasses any app or textbook. This is why we ask our volunteer educators to deliver lessons asynchronously when technical issues arise. This way you can still access the resources and activities at your own pace whenever you have an internet connection. 
+Consistency is paramount and surpasses any app or textbook. This is why we ask our volunteer educators to deliver lessons asynchronously when technical issues arise. 
+</p>
+
+<p style="text-align: justify;">
+This way you can still access the resources and activities at your own pace whenever you have an internet connection. 
 </p>
 
 

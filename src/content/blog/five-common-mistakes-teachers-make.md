@@ -18,14 +18,21 @@ Every volunteer educator who joins Ramzunā Languages brings real skill and real
 ## 1. Talking More Than You Listen
 
 <p style="text-align: justify;">
-It is easy for a lesson to turn into a monologue, especially when you are explaining a tricky grammar point. But language is built through use, not through listening to someone else use it. Aim for your student to be speaking for at least half of every lesson. 
+It is easy for a lesson to turn into a monologue, especially when you are explaining a tricky grammar point. But language is built through use, not through listening to someone else use it. </p>
+
+<p style="text-align: justify;">
+Aim for your student to be speaking for at least half of every lesson. 
 If you notice you have been talking for several minutes straight, that is a good moment to ask a question and hand the conversation back.
 </p>
 
 ## 2. Teaching Content, Not Context
 
 <p style="text-align: justify;">
-Vocabulary lists and grammar drills matter, but they only stick when they are attached to something real. Instead of teaching the word "interview" in isolation, build a lesson around a mock job interview your student might actually face. 
+Vocabulary lists and grammar drills matter, but they only stick when they are attached to something real. 
+</p>
+
+<p style="text-align: justify;">
+Instead of teaching the word "interview" in isolation, build a lesson around a mock job interview your student might actually face. 
 Context turns information into something a student can actually use the next day.
 </p>
 
@@ -34,6 +41,9 @@ Context turns information into something a student can actually use the next day
 
 <p style="text-align: justify;">
 Our students are not working toward a report card — they are working toward confidence, opportunity, and connection. A student who makes fewer mistakes but never speaks up is not necessarily doing better than one who talks constantly and gets things wrong. 
+</p>
+
+<p style="text-align: justify;">
 Notice and name progress in fluency and confidence, not only in accuracy.
 </p>
 
@@ -41,6 +51,9 @@ Notice and name progress in fluency and confidence, not only in accuracy.
 
 <p style="text-align: justify;">
 What works brilliantly for one student can fall completely flat for another. Some learners thrive on structured grammar explanations; others learn best through stories, games, or open conversation. 
+</p>
+
+<p style="text-align: justify;">
 Stay curious about how your specific student learns, and be willing to change your approach mid-term if something is not landing.
 </p>
 
@@ -48,7 +61,11 @@ Stay curious about how your specific student learns, and be willing to change yo
 
 <p style="text-align: justify;">
 The best educators treat teaching as a two-way skill, not a fixed one. 
-Ask your students what is working and what is not. Talk to other volunteer educators about what they try in their own lessons. Small adjustments, made consistently, are what separate a good teacher from a great one.
+Ask your students what is working and what is not. Talk to other volunteer educators about what they try in their own lessons. 
+</p>
+
+<p style="text-align: justify;">
+Small adjustments, made consistently, are what separate a good teacher from a great one.
 </p>
 
 <p style="text-align: justify;">

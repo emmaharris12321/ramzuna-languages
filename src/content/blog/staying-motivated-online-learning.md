@@ -24,6 +24,9 @@ Here are some practical tips to stay motivated and engaged while learning a lang
 
 <p style="text-align: justify;">
 As well as opening doors, learning languages; whether English, French or German; is about discovering something that truly inspires you. 
+</p>
+
+<p style="text-align: justify;">
 It could be the music, films or culture of a particular country, or the desire to connect with people around the world. Whatever sparks your interest, hold onto it; it will be your fuel for the journey. 
 </p>
 
@@ -32,6 +35,9 @@ It could be the music, films or culture of a particular country, or the desire t
 
 <p style="text-align: justify;">
 Whether you study in the morning, late at night or during quiet moments in between, even short regular sessions will help you make progress. 
+</p>
+
+<p style="text-align: justify;">
 Try weaving the language into your daily life: hum along to a song, watch a quick video, or dive into something fun to read. The more it becomes part of your life, the more naturally it will stick.
 </p>
 
@@ -40,6 +46,9 @@ Try weaving the language into your daily life: hum along to a song, watch a quic
 
 <p style="text-align: justify;">
 Learning a language feels like walking a tightrope. You want to speak perfectly, no grammar errors, no wrong words, no wobbly pronunciation. The frustration builds because any slip feels like failure. 
+</p>
+
+<p style="text-align: justify;">
 And with AI tools ready to smooth out every rough edge, it is tempting to hide behind flawless writing and speech.However, perfection does not teach you. Relying on tools to cover mistakes might look good on the surface, but educators can spot it instantly, and you miss the chance to really learn. 
 </p>
 
@@ -59,6 +68,9 @@ Keep it simple and stay consistent. One notebook is all it takes, fill it with n
 
 <p style="text-align: justify;">
 Volunteer educators want their lessons to actually help. If a particular exercise or teaching method is not useful, or you would like more conversation practice and less grammar drilling, say so. 
+</p>
+
+<p style="text-align: justify;">
 The lessons are personalised to you, and that only works if you speak up. Feel free to also share it to the team if that helps. 
 </p>
 

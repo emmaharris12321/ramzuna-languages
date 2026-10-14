@@ -13,6 +13,9 @@ author:
 
 <p style="text-align: justify;">
 For many students, fluency in English, French or German is a practical necessity that can influence access to university scholarships, remote working opportunities and visibility within the wider world. 
+</p>
+
+<p style="text-align: justify;">
 However, quality language instruction is often beyond the reach of many Palestinian students facing war, disrupted schooling, limited resources and restricted movement.
 </p>
 
@@ -26,6 +29,9 @@ School closures, infrastructure damage and displacement disrupt formal education
 
 <p style="text-align: justify;">
 Proficiency in English is essential for securing international scholarships and remote job opportunities, which often depend on clients from around the world. 
+</p>
+
+<p style="text-align: justify;">
 Moreover, language proficiency enables Palestinians to connect with a wider audience and share their voices and perspectives across different cultures. 
 </p>
 
@@ -34,6 +40,9 @@ Moreover, language proficiency enables Palestinians to connect with a wider audi
 
 <p style="text-align: justify;">]
 Rather than being placed into a generic class, every student is matched based on their current level, goals, and schedule. For example, a student preparing for a university interview will receive different lessons to someone who is starting from scratch. 
+</p>
+
+<p style="text-align: justify;">
 It is this personalised attention, delivered consistently over at least three months, that turns a few phrases into real fluency.
 </p>
 

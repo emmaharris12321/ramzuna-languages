@@ -12,7 +12,11 @@ author:
 ---
 
 <p style="text-align: justify;">
-The Universal Declaration of Human Rights (UDHR) sets out the rights every person is meant to hold simply by being human — regardless of where they live. It has no borders written into it, and no exceptions carved out for any country or people. So we wanted to ask a simple question: does it apply to Palestine? 
+The Universal Declaration of Human Rights (UDHR) sets out the rights every person is meant to hold simply by being human — regardless of where they live. It has no borders written into it, and no exceptions carved out for any country or people. 
+</p>
+
+<p style="text-align: justify;">
+So we wanted to ask a simple question: does it apply to Palestine? 
 </p>
 
 <p style="text-align: justify;">
@@ -28,11 +32,19 @@ Here is what four of its articles promise, and what the reality looks like for P
 </p>
 
 <p style="text-align: justify;">
-Over 175,000 have been injured, and these figures are likely higher still, with thousands missing and bodies trapped under rubble. Starvation has been deliberately used as a weapon of war. In the West Bank and East Jerusalem, over 1,000 Palestinians have been killed by Israeli security forces and settlers during the same period.
+Over 175,000 have been injured, and these figures are likely higher still, with thousands missing and bodies trapped under rubble. 
 </p>
 
 <p style="text-align: justify;">
-In Gaza, the vast majority of the population remains internally displaced. In the West Bank, settler colonialism is the primary driver of displacement: on average, there are six settler attacks per day against Palestinians, resulting in casualties, property destruction, and the theft of land and agricultural assets.
+Starvation has been deliberately used as a weapon of war. In the West Bank and East Jerusalem, over 1,000 Palestinians have been killed by Israeli security forces and settlers during the same period.
+</p>
+
+<p style="text-align: justify;">
+In Gaza, the vast majority of the population remains internally displaced. 
+</p>
+
+<p style="text-align: justify;">
+In the West Bank, settler colonialism is the primary driver of displacement: on average, there are six settler attacks per day against Palestinians, resulting in casualties, property destruction, and the theft of land and agricultural assets.
 </p>
 
 ## Article 9: Right to Liberty and Security of Person
@@ -67,7 +79,11 @@ The Palestinian right of return is systematically blocked through absolute contr
 > "Everyone has the right to education."
 
 <p style="text-align: justify;">
-<strong>The Reality:</strong> Over 84,000 students in the West Bank have had their education violently interrupted by settler attacks, military raids, and school demolitions, and more than 80 schools face imminent demolition. This is not just about lost classroom time — it is a systematic campaign to make Palestinian life unsustainable and to erase communities from the map.
+<strong>The Reality:</strong> Over 84,000 students in the West Bank have had their education violently interrupted by settler attacks, military raids, and school demolitions, and more than 80 schools face imminent demolition. 
+</p>
+
+<p style="text-align: justify;">
+This is not just about lost classroom time — it is a systematic campaign to make Palestinian life unsustainable and to erase communities from the map.
 </p>
 
 <p style="text-align: justify;">
