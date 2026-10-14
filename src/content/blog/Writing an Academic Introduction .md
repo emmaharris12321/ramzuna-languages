@@ -13,9 +13,13 @@ author:
 
 ## The Anglo-Saxon Introduction Model
 
-In this model writing is reader-centred, not writer-centred. It's the writer's job to make the argument straightforward. Making the reader guess your position or wait until the conclusion to discover your answer is viewed as an unnecessary burden on the reader and as an unclear argument. 
+<p style="text-align: justify;">
+In this model writing is reader-centred, not writer-centred. It's the writer's job to make the argument straightforward. Making the reader guess your position or wait until the conclusion to discover your answer is viewed as an unnecessary burden on the reader and as an unclear argument.
+</p>
 
+<p style="text-align: justify;">
 On the contrary, in the introduction you tell the reader exactly what you are going to prove (the thesis) and how you are going to prove it (the signposting). The rest of the essay fulfils that promise. 
+</p>
 
 
 ```text
