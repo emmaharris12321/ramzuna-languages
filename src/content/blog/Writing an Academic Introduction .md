@@ -41,25 +41,39 @@ On the contrary, in the introduction you tell the reader exactly what you are go
 
 ## Step 1: The Hook (1-2 sentences)
 
+<p style="text-align: justify;">
 **Goal**: Introduce the broad topic and explain its significance without clichés like “Since the beginning of time…”.  You may begin with a significant historical event, an empirical observation, a relevant debate, or the wider historical, scientific, or literary context.
+</p>
 
 ## Step 2: The Pivot / Research Problem (1–2 Sentences)
 
+<p style="text-align: justify;">
 **Goal**: Narrow the broad topic down to the specific problem, debate, or tension your paper addresses. 
+</p>
 
 ## Step 3: The Thesis Statement(1 Sentence)
 
+<p style="text-align: justify;">
 **Goal**: State your exact argument clearly and directly. 
+</p>
 
---Examples--: "This paper argues that..."/ "This essay contends that"
+<p style="text-align: justify;">
+*Examples*: "This paper argues that..."/ "This essay contends that"
 (Avoid subjective verbs like think, believe, claim). Unless told otherwise, avoid using the first person. 
+</p>
 
 ## Step 4: The Signposting (1–2 Sentences)
 
+<p style="text-align: justify;">
 **Goal**: Outline the logical progression of your body paragraphs in the order in which it will be developed. 
+</p>
 
---Examples--: "First, this essay demonstrates that... Then, it shows how.... Finally, it analyses...". 
+<p style="text-align: justify;">
+*Examples*: "First, this essay demonstrates that... Then, it shows how.... Finally, it analyses...". 
 You can also use the future tense, although the present tense is usually recommended. 
+</p>
 
 
+<p style="text-align: justify;">
 **OPTIONAL STEP**: If you want/need to define key concepts/terms that are ambiguous or contested and explain their intended meaning in the essay, place the definitions before the thesis statement. 
+</p>
