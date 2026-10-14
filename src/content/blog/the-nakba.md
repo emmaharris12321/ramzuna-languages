@@ -19,7 +19,7 @@ In 1948, families were forced to leave their homes, carrying with them memories,
 
 <p style="text-align: justify;">
 The Nakba (the catastrophe in English) was the beginning of a journey of exile that continues to this day. 
-,/p>
+</p>
 
 <p style="text-align: justify;">
 The key is more than metal. It is a symbol of belonging, of a house that still lives on in memory. Generations hold it a as a promise of return. 
@@ -34,5 +34,5 @@ The Nakba was not the end. It was the beginning of resilience, struggle, and hol
 </p>
 
 <p style="text-align: justify;">
-78 Years. Never Forget.
+<strong>78 Years. Never Forget.</strong>
 </p>
