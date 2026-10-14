@@ -3,7 +3,7 @@ title: "Writing Across Academic Cultures: Part 1- The Anglo-Saxon Model"
 description: "An overview of the Anglo-Saxon introduction structure in academia."
 date: "Oct 14, 2026"
 category: "Education"
-image: "/assets/img/openaccess.png"
+image: "/assets/img/academic.svg"
 readTime: "6 min read"
 author:
   name: "Ramzunā Languages Team"
