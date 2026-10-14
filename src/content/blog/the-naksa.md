@@ -13,5 +13,14 @@ author:
 
 ## At Ramzunā, we remember the Naksa and its consequences. 
 
+<p style="text-align: justify;">
 The Naksa reshaped the Palestinian and Arab struggle
-In just a few days, the West Bank including East Jerusalem, Gaza, the Golan Heights, and Sinai fell under occupation. For approximately 400.000 Palestinians, this meant the cruelty of a second exile, deepening the tragedy that began in 1948. Humanitarian conditions worsened, and a new era of military control and dispossession began. Yet amid this loss, the Palestinian voice grew stronger, affirming that this was not a moment of surrender but a refusal to  be erased from the land and a commitment to Palestinian identity.
+</p>
+
+<p style="text-align: justify;">
+In just a few days, the West Bank including East Jerusalem, Gaza, the Golan Heights, and Sinai fell under occupation. For approximately 400.000 Palestinians, this meant the cruelty of a second exile, deepening the tragedy that began in 1948. 
+</p>
+
+<p style="text-align: justify;">
+Humanitarian conditions worsened, and a new era of military control and dispossession began. Yet amid this loss, the Palestinian voice grew stronger, affirming that this was not a moment of surrender but a refusal to  be erased from the land and a commitment to Palestinian identity.
+</p>

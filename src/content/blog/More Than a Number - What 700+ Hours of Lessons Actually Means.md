@@ -11,9 +11,13 @@ author:
   image: "/assets/img/avatar-placeholder.svg"
 ---
 
+<p style="text-align: justify;">
 Ramzunā Languages is a space that connects Palestinian students with a language speaker or educator from another part of the world. A space to learn, speak, grow and connect with new people at a time when access to regular education has become extremely difficult for many students. 
+</p>
 
+<p style="text-align: justify;">
 More than 712 hours of lessons have been delivered in 2026. Imagine what 712 hours mean to a student trying to continue their education!
+</p>
 
 They are not simply hours spent behind a screen. 
 
@@ -22,6 +26,8 @@ They are not simply hours spent behind a screen.
 712 hours of hope. 
 712 hours in which Palestinian students said: "We still want to learn". 
 
+<p style="text-align: justify;">
 Ramzunā also gives students a space to express themselves and share their writing, poetry, and voices. It creates human and cultural connections that cross borders, connections that remind students they are seen, heard and supported!
+</p>
 
 This is what Ramzunā Languages means to us. 

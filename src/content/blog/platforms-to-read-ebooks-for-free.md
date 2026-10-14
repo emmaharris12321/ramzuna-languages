@@ -11,7 +11,9 @@ author:
   image: "/assets/img/avatar-placeholder.svg"
 ---
 
+<p style="text-align: justify;">
 The destruction of Gaza and the blockade have prevented books from entering the Strip.  Many students, already burdened with university fees, family support and other textbook costs, find even affordable textbooks too expensive. However, there are a few legal platforms that provide free e-books and textbooks. 
+</p>
 
 
 ## 1. Open Access Textbook Repositories
