@@ -11,7 +11,9 @@ author:
   image: "/assets/img/avatar-placeholder.svg"
 ---
 
+<p style="text-align: justify;">
 Learning a new language opens doors — and one of the most practical ones is remote work. Many of our students ask where they can put their English, French, or German to use, or find other freelance work they can do from home. Below is a list of platforms worth exploring, including several built specifically for freelancers in Gaza and Palestine.
+</p>
 
 ## General Freelance Marketplaces
 
@@ -45,4 +47,6 @@ Learning a new language opens doors — and one of the most practical ones is re
 
 **Preply** and **italki** — Two well-known international platforms where you can create a profile and teach your native or fluent language directly to learners around the world.
 
+<p style="text-align: justify;">
 As always, take care with any platform that asks for payment to join, and never share personal or financial information you are not comfortable sharing. If you have questions about any of these platforms, feel free to reach out to our coordination team.
+</p>
