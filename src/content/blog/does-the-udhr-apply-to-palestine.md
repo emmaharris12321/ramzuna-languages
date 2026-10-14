@@ -12,7 +12,11 @@ author:
 ---
 
 <p style="text-align: justify;">
-The Universal Declaration of Human Rights (UDHR) sets out the rights every person is meant to hold simply by being human — regardless of where they live. It has no borders written into it, and no exceptions carved out for any country or people. So we wanted to ask a simple question: does it apply to Palestine? Here is what four of its articles promise, and what the reality looks like for Palestinians today.
+The Universal Declaration of Human Rights (UDHR) sets out the rights every person is meant to hold simply by being human — regardless of where they live. It has no borders written into it, and no exceptions carved out for any country or people. So we wanted to ask a simple question: does it apply to Palestine? 
+</p>
+
+<p style="text-align: justify;">
+Here is what four of its articles promise, and what the reality looks like for Palestinians today.
 </p>
 
 ## Article 3: Right to Life, Liberty and Security of Person
@@ -20,7 +24,11 @@ The Universal Declaration of Human Rights (UDHR) sets out the rights every perso
 > "Everyone has the right to life, liberty and security of person."
 
 <p style="text-align: justify;">
-<strong>The Reality:</strong> Since October 2023, over 75,000 Palestinians in Gaza — including more than 21,000 children — have been killed. Over 175,000 have been injured, and these figures are likely higher still, with thousands missing and bodies trapped under rubble. Starvation has been deliberately used as a weapon of war. In the West Bank and East Jerusalem, over 1,000 Palestinians have been killed by Israeli security forces and settlers during the same period.
+<strong>The Reality:</strong> Since October 2023, over 75,000 Palestinians in Gaza — including more than <strong>21,000 children — have been killed.</strong>
+</p>
+
+<p style="text-align: justify;">
+Over 175,000 have been injured, and these figures are likely higher still, with thousands missing and bodies trapped under rubble. Starvation has been deliberately used as a weapon of war. In the West Bank and East Jerusalem, over 1,000 Palestinians have been killed by Israeli security forces and settlers during the same period.
 </p>
 
 <p style="text-align: justify;">
@@ -42,7 +50,8 @@ In Gaza, the vast majority of the population remains internally displaced. In th
 > "Everyone has the right to leave any country, including his own, and to return to his country."
 
 <p style="text-align: justify;">
-<strong>The Reality:</strong> The two million residents of Gaza are currently contained within the territory, with no mechanism for civilian exit — the territory has become a closed prison. The military now controls 60% of the land, with plans to extend this to 70%, systematically shrinking the population's living space. This eliminates all freedom of movement, trapping even those in critical need of medical care inside a war zone.
+<strong>The Reality:</strong> The two million residents of Gaza are currently contained within the territory, with no mechanism for civilian exit — the territory has become a closed prison. The military now controls 60% of the land, with plans to extend this to 70%, systematically shrinking the population's living space. 
+This eliminates all freedom of movement, trapping even those in critical need of medical care inside a war zone.
 </p>
 
 <p style="text-align: justify;">
@@ -62,11 +71,16 @@ The Palestinian right of return is systematically blocked through absolute contr
 </p>
 
 <p style="text-align: justify;">
-In Gaza, more than 97% of schools have been damaged or destroyed, and 91.8% of all education facilities will require reconstruction or rehabilitation. Over three academic years, approximately 658,000 school-age children have been denied face-to-face learning in the Strip.
+In Gaza, <strong>more than 97% of schools have been damaged or destroyed, and 91.8% of all education facilities</strong> will require reconstruction or rehabilitation. 
+Over three academic years, approximately 658,000 school-age children have been denied face-to-face learning in the Strip.
 </p>
 
 ## Why We Share This
 
 <p style="text-align: justify;">
-Ramzunā Languages exists to give Palestinian students access to something the world has made harder and harder to reach: consistent, quality education, delivered by volunteers who show up every week regardless of what else is happening. We cannot undo the gap between what the UDHR promises and what Palestinians are living through. But we can keep showing up for the students on the other side of that gap, one free lesson at a time.
+Ramzunā Languages exists to give Palestinian students access to something the world has made harder and harder to reach: consistent, quality education, delivered by volunteers who show up every week regardless of what else is happening. 
+</p>
+
+<p style="text-align: justify;">
+We cannot undo the gap between what the UDHR promises and what Palestinians are living through. But we can keep showing up for the students on the other side of that gap, one free lesson at a time.
 </p>

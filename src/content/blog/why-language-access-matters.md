@@ -12,7 +12,8 @@ author:
 ---
 
 <p style="text-align: justify;">
-For many students, fluency in English, French or German is a practical necessity that can influence access to university scholarships, remote working opportunities and visibility within the wider world. However, quality language instruction is often beyond the reach of many Palestinian students facing war, disrupted schooling, limited resources and restricted movement.
+For many students, fluency in English, French or German is a practical necessity that can influence access to university scholarships, remote working opportunities and visibility within the wider world. 
+However, quality language instruction is often beyond the reach of many Palestinian students facing war, disrupted schooling, limited resources and restricted movement.
 </p>
 
 ## Education Does Not Pause Evenly
@@ -24,18 +25,24 @@ School closures, infrastructure damage and displacement disrupt formal education
 ## Language Skills Open Doors
 
 <p style="text-align: justify;">
-Proficiency in English is essential for securing international scholarships and remote job opportunities, which often depend on clients from around the world.  Moreover, language proficiency enables Palestinians to connect with a wider audience and share their voices and perspectives across different cultures. 
+Proficiency in English is essential for securing international scholarships and remote job opportunities, which often depend on clients from around the world. 
+Moreover, language proficiency enables Palestinians to connect with a wider audience and share their voices and perspectives across different cultures. 
 </p>
 
 
 ## What "Personalised" Actually Means
 
 <p style="text-align: justify;">]
-Rather than being placed into a generic class, every student is matched based on their current level, goals, and schedule. For example, a student preparing for a university interview will receive different lessons to someone who is starting from scratch. It is this personalised attention, delivered consistently over at least three months, that turns a few phrases into real fluency.
+Rather than being placed into a generic class, every student is matched based on their current level, goals, and schedule. For example, a student preparing for a university interview will receive different lessons to someone who is starting from scratch. 
+It is this personalised attention, delivered consistently over at least three months, that turns a few phrases into real fluency.
 </p>
 
 ## Every Volunteer Hour Counts
 
 <p style="text-align: justify;">
-90 minutes of your time each week might not seem like much, but for a student who has been unable to access consistent tuition, it can be life-changing. This is the premise behind Ramzunā Languages: connecting people with language skills to Palestinians who need to learn them, removing cost as a barrier and demonstrating that international solidarity is still very much alive.
+90 minutes of your time each week might not seem like much, but for a student who has been unable to access consistent tuition, it can be life-changing. 
+</p>
+
+<p style="text-align: justify;">
+This is the premise behind Ramzunā Languages: connecting people with language skills to Palestinians who need to learn them, removing cost as a barrier and demonstrating that international solidarity is still very much alive.
 </p>
