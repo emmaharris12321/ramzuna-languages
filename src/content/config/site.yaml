@@ -70,8 +70,8 @@ nav:
         url: /resources/mental-health-resources
       - text: Palestine & Arabic Resources
         url: /resources/learning-about-palestine
-      - text: Grenzenlos Deutsch (German Lessons)
-        url: /resources/grenzenlos-deutsch
+      - text: German Asynchronous Resources
+        url: /resources/german-async
   - text: FAQs
     children:
       - text: FAQs for Students

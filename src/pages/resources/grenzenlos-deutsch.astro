@@ -3,7 +3,7 @@ import Base from '@/layouts/Base.astro';
 
 const base = 'https://grenzenlos-deutsch.com/familie';
 const audio = (name: string) =>
-  `http://grenzenlos-deutsch.com/familie/wp-content/uploads/AUD_Familie_Einheit1_Lektion1_${name}.m4a`;
+  `https://grenzenlos-deutsch.com/familie/wp-content/uploads/AUD_Familie_Einheit1_Lektion1_${name}.m4a`;
 
 const speakers = [
   {
@@ -47,7 +47,8 @@ const h5p = (id: number) => `${base}/wp-admin/admin-ajax.php?action=h5p_embed&id
       <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
         <a href="/" class="transition-colors hover:text-white">Home</a><span>/</span>
         <a href="/resources" class="transition-colors hover:text-white">Resources</a><span>/</span>
-        <span class="text-white">Grenzenlos Deutsch</span>
+        <a href="/resources/german-async" class="transition-colors hover:text-white">German Asynchronous</a><span>/</span>
+        <span class="text-white">Lektion 1</span>
       </nav>
     </div>
   </section>
