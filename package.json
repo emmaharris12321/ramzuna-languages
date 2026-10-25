@@ -5,15 +5,18 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "prebuild": "node scripts/make-german-pack.mjs",
+    "predev": "node scripts/make-german-pack.mjs"
   },
   "dependencies": {
-    "astro": "^7.2.2",
     "@astrojs/mdx": "^7.0.5",
-    "@astrojs/sitemap": "^3.7.3"
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.2"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "fflate": "^0.8.3",
     "tailwindcss": "^4.3.3"
   }
 }

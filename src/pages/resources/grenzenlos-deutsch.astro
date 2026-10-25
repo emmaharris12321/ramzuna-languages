@@ -3,6 +3,31 @@ import Base from '@/layouts/Base.astro';
 
 const audio = (name: string) => `/assets/german/audio/AUD_Familie_Einheit1_Lektion1_${name}.m4a`;
 
+const img = (f: string) => `/assets/german/img/${f}`;
+const portraits: Record<string, string> = { Yasmin: 'Yasmin-223x300.png', Johannes: 'Johannes.pgn_-211x300.png', Max: 'Max.pgn_-211x300.png', Julia: 'Julia-251x300.png' };
+const bubbles = [
+  ['IMG_Familie_Unit1_Lesson1_SpeechBubble1.png', 'Speech Bubble: Wie heisst du?'],
+  ['IMG_Familie_Unit1_Lesson1_SpeechBubble2.png', 'Speech Bubble: Ich heisse Yasmin.'],
+  ['IMG_Familie_Unit1_Lesson1_SpeechBubble3.png', 'Speech Bubble: Woher kommst du?'],
+  ['IMG_Familie_Unit1_Lesson1_SpeechBubble4.png', 'Speech Bubble: Ich komme aus Berlin'],
+];
+const people = [
+  { name: 'Laura', origin: 'Neuwied', file: 'PIC_Familie_Unit1_Lesson-1_Laura-1024x576.jpg', alt: 'Laura sitting outside with a drink' },
+  { name: 'Petra Buda', origin: 'Ungarn', file: 'PIC_Familie_Unit1_Lesson-1_PetraBuda-1024x576.jpg', alt: 'Petra Buda sitting outside on a bench' },
+  { name: 'Evi', origin: 'Berlin', file: 'PIC_Familie_Unit1_Lesson-1_Evi-1024x576.jpg', alt: 'Evi sitting at a table' },
+  { name: 'Miriam', origin: 'Münster', file: 'PIC_Familie_Unit1_Lesson-1_Miriam-1024x576.jpg', alt: 'Miriam sitting inside in front of a plant' },
+];
+const names = ['Laura', 'Evi', 'Miriam', 'Petra Buda'];
+const wordsEx = {
+  id: 'ex-woerter', title: 'Wörter: welche Wörter hören Sie?',
+  help: 'Watch the video again and check the words that you hear.',
+  options: [['komme', 1], ['geboren', 1], ['Park', 0], ['Stadt', 1], ['Fußball', 0], ['ich', 1], ['du', 0], ['Sie', 0], ['er', 0]] as [string, number][],
+};
+const herkunft2 = {
+  id: 'ex-herkunft2', title: 'Hörverständnis: Herkunft', help: 'Choose the correct answer for each sentence.',
+  rows: [['Laura kommt aus', 'Neuwied'], ['Petra kommt aus', 'Ungarn'], ['Miriam kommt aus', 'dem Münsterland'], ['Evi kommt aus', 'Berlin']],
+  choices: ['Neuwied', 'Ungarn', 'dem Münsterland', 'Berlin'],
+};
 const speakers = [
   { name: 'Yasmin', audio: audio('Yasmin'), text: 'Grüß Gott, ich heiße Yasmin. Ich bin 21 Jahre alt und komme aus München. Ich studiere an der Ludwig-Maximilians-Universität München. Ich bin Studentin. Als Hobby spiele ich gern Fußball und gehe gern Windsurfen.' },
   { name: 'Johannes', audio: audio('Johannes'), text: 'Hallo! Mein Name ist Johannes. Ich bin 16 Jahre alt. Ich komme aus Stuttgart. Ich bin Schüler und lerne sehr viel für meine Tests. Mein Hobby ist Lesen.' },
@@ -72,20 +97,30 @@ const shuffle = (a: string[]) => [...a].sort((x, y) => (x.length + x.charCodeAt(
   <section class="py-16 lg:py-20">
     <div class="container mx-auto max-w-4xl px-4 lg:px-8">
 
+      <div id="offline-box" class="mb-10 rounded-2xl border border-primary-200 bg-primary-50 p-5 dark:border-primary-800 dark:bg-primary-900/30">
+        <p class="font-semibold text-gray-900 dark:text-white">Use this lesson without internet</p>
+        <p class="mt-1 text-sm text-gray-700 dark:text-gray-300">Press the button once while you are online. The lesson, audio, video and exercises are then saved on this device and keep working offline. The video is large, so use Wi-Fi if you can. You may also download the files and keep or share them: they are free to use under the license below.</p>
+        <button id="offline-btn" type="button" class="mt-3 rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700">Save lesson for offline use</button>
+        <a href="/downloads/grenzenlos-deutsch-e1-l1.zip" download class="ml-2 inline-block rounded-lg border border-primary-600 px-4 py-2 text-sm font-medium text-primary-700 hover:bg-primary-100 dark:text-primary-300 dark:hover:bg-primary-900/50">Download all audio, video and images (zip)</a>
+        <button type="button" onclick="window.print()" class="ml-2 rounded-lg border border-primary-600 px-4 py-2 text-sm font-medium text-primary-700 hover:bg-primary-100 dark:text-primary-300 dark:hover:bg-primary-900/50">Print or save as PDF</button>
+        <span id="offline-status" class="ml-3 text-sm text-gray-700 dark:text-gray-300" role="status" aria-live="polite"></span>
+      </div>
+
       <h2 class="font-display text-2xl font-semibold text-gray-900 dark:text-white">Sprechen</h2>
       <p class="mt-3 text-gray-700 dark:text-gray-300">Sprechen Sie mit anderen. Lernen Sie die Namen von anderen Studenten.</p>
-      <ul class="mt-4 grid gap-3 sm:grid-cols-2">
-        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Wie heißt du? <span class="text-gray-500">Ich heiße Yasmin.</span></li>
-        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Woher kommst du? <span class="text-gray-500">Ich komme aus Berlin.</span></li>
-      </ul>
+      <div class="mt-4 grid grid-cols-2 gap-3">
+        {bubbles.map(([f, alt]) => <img src={img(f)} alt={alt} loading="lazy" class="w-full rounded-xl" />)}
+      </div>
 
       <h2 class="mt-14 font-display text-2xl font-semibold text-gray-900 dark:text-white">Lesen</h2>
       <div class="mt-6 grid gap-6 sm:grid-cols-2">
         {speakers.map((s) => (
           <div class="rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800">
+            <img src={img(portraits[s.name])} alt={`image of ${s.name}`} loading="lazy" class="mb-3 h-40 w-auto rounded-lg" />
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{s.name}</h3>
             <p class="mt-2 italic text-gray-700 dark:text-gray-300">{s.text}</p>
             <audio controls preload="none" class="mt-4 w-full" src={s.audio}></audio>
+            <a class="mt-2 inline-block text-sm underline" href={s.audio} download>Download audio</a>
           </div>
         ))}
       </div>
@@ -151,9 +186,57 @@ const shuffle = (a: string[]) => [...a].sort((x, y) => (x.length + x.charCodeAt(
       </div>
 
       <h2 class="mt-14 font-display text-2xl font-semibold text-gray-900 dark:text-white">Hören</h2>
-      <p class="mt-3 text-gray-700 dark:text-gray-300">
-        The original lesson has a video of people introducing themselves. It is not included here, so listen again to the four recordings above and answer the questions: <em>Wie heißt diese Person? Woher kommt sie? Wie alt ist sie?</em>
-      </p>
+      <video controls preload="metadata" class="mt-4 w-full rounded-2xl bg-black" src="/assets/german/video/VID_Familie_Einheit1_Lektion1.mp4">
+        Your browser can't play this video. <a href="/assets/german/video/VID_Familie_Einheit1_Lektion1.mp4">Download it</a>.
+      </video>
+      <p class="mt-2 text-sm"><a class="underline" href="/assets/german/video/VID_Familie_Einheit1_Lektion1.mp4" download>Download video</a></p>
+
+      <h3 class="mt-10 font-display text-xl font-semibold text-gray-900 dark:text-white">Arbeit mit dem Hören</h3>
+      <div class="mt-6 space-y-8">
+        <div class="ex rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800" data-type="match" id="ex-namen">
+          <h4 class="font-semibold text-gray-900 dark:text-white">Namen: wie heißt diese Person?</h4>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Wie heißt diese Person? Choose the correct name for each photo.</p>
+          <div class="mt-3 grid gap-4 sm:grid-cols-2">
+            {people.map((p) => (
+              <div>
+                <img src={img(p.file)} alt={p.alt} loading="lazy" class="w-full rounded-lg" />
+                <select class="item mt-2 w-full rounded-lg border border-gray-300 bg-white px-2 py-1 dark:border-gray-600 dark:bg-gray-900" data-answer={p.name} aria-label={`Name: ${p.alt}`}>
+                  <option value="">…</option>
+                  {shuffle(names).map((n) => <option value={n}>{n}</option>)}
+                </select>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ex rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800" data-type="match" id={herkunft2.id}>
+          <h4 class="font-semibold text-gray-900 dark:text-white">{herkunft2.title}</h4>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{herkunft2.help}</p>
+          <div class="mt-3 space-y-2">
+            {herkunft2.rows.map(([p, a]) => (
+              <div class="flex flex-wrap items-center gap-2">
+                <span>{p}</span>
+                <select class="item rounded-lg border border-gray-300 bg-white px-2 py-1 dark:border-gray-600 dark:bg-gray-900" data-answer={a} aria-label={p}>
+                  <option value="">…</option>
+                  {shuffle(herkunft2.choices).map((c) => <option value={c}>{c}</option>)}
+                </select>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ex rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800" data-type="multi" id={wordsEx.id}>
+          <h4 class="font-semibold text-gray-900 dark:text-white">{wordsEx.title}</h4>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{wordsEx.help}</p>
+          <div class="mt-3 grid gap-2 sm:grid-cols-3">
+            {wordsEx.options.map(([label, ok]) => (
+              <label class="item flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 dark:border-gray-600">
+                <input type="checkbox" data-correct={ok ? '1' : '0'} /> <span>{label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
       <p class="mt-3 text-gray-700 dark:text-gray-300"><strong>Sprechen.</strong> Rollenspiel: play the role of interviewer and interviewee for two or three of the examples. Then answer again being yourself.</p>
 
       <h2 class="mt-14 font-display text-2xl font-semibold text-gray-900 dark:text-white">Strukturen</h2>
@@ -203,12 +286,17 @@ const shuffle = (a: string[]) => [...a].sort((x, y) => (x.length + x.charCodeAt(
 
       <h3 class="mt-10 text-lg font-semibold text-gray-900 dark:text-white">Sprechen</h3>
       <p class="mt-2 text-gray-700 dark:text-gray-300">Wie heißt diese Person? Woher kommt diese Person? Sprechen und/oder schreiben Sie Sätze über jede Person.</p>
-      <ul class="mt-3 grid gap-3 sm:grid-cols-2">
-        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Name: Evi<br />Herkunft: Berlin</li>
-        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Name: Miriam<br />Herkunft: Münster</li>
-        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Name: Petra Buda<br />Herkunft: Ungarn</li>
-        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Name: Laura<br />Herkunft: Neuwied</li>
-      </ul>
+      <div class="mt-3 grid gap-4 sm:grid-cols-2">
+        {['Evi', 'Miriam', 'Petra Buda', 'Laura'].map((n) => {
+          const p = people.find((x) => x.name === n)!;
+          return (
+            <figure class="rounded-xl bg-white p-3 shadow-sm dark:bg-gray-800">
+              <img src={img(p.file)} alt={`image of ${p.name}`} loading="lazy" class="w-full rounded-lg" />
+              <figcaption class="mt-2 text-sm">Name: {p.name}<br />Herkunft: {p.origin}</figcaption>
+            </figure>
+          );
+        })}
+      </div>
 
       <aside class="mt-16 rounded-2xl border border-gray-200 p-6 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-400">
         <p>
@@ -217,12 +305,48 @@ const shuffle = (a: string[]) => [...a].sort((x, y) => (x.length + x.charCodeAt(
           Funding for the original was provided in part by the National Endowment for the Humanities and the Mansergh-Stuessy Fund for College Innovation.
         </p>
         <p class="mt-2">
-          Changes: the reading texts, audio and explanations are reproduced from the original. The interactive exercises were rebuilt as plain HTML with the same content so the page works offline; the lesson video and photographs are not included.
+          Changes: the reading texts, audio and explanations are reproduced from the original. The interactive exercises were rebuilt as plain HTML with the same content so the page works offline; audio, video and images are the originals, hosted on this site.
           This page is shared under the same license. Not for commercial use.
         </p>
       </aside>
     </div>
   </section>
+
+  <script>
+    const CACHE = 'german-offline-v1';
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw-german.js').catch(() => {});
+    const btn = document.getElementById('offline-btn') as HTMLButtonElement | null;
+    const status = document.getElementById('offline-status') as HTMLElement | null;
+    const sameOrigin = (u: string) => { try { return new URL(u, location.href).origin === location.origin; } catch { return false; } };
+    btn?.addEventListener('click', async () => {
+      if (!('caches' in window) || !('serviceWorker' in navigator)) { status!.textContent = 'This browser cannot save pages for offline use.'; return; }
+      btn.disabled = true;
+      try {
+        await navigator.serviceWorker.ready;
+        const cache = await caches.open(CACHE);
+        const urls = new Set<string>([location.pathname, '/resources/german-async', '/resources', '/favicon.svg']);
+        const doc = new DOMParser().parseFromString(await (await fetch(location.href)).text(), 'text/html');
+        doc.querySelectorAll('link[rel=stylesheet],link[rel=icon]').forEach((e) => urls.add(e.getAttribute('href')!));
+        doc.querySelectorAll('script[src],img[src],audio[src],video[src]').forEach((e) => urls.add(e.getAttribute('src')!));
+        const list = [...urls].filter((u) => u && sameOrigin(u)).map((u) => new URL(u, location.href).pathname + new URL(u, location.href).search);
+        let done = 0, failed = 0;
+        for (const u of list) {
+          try {
+            const r = await fetch(u);
+            if (!r.ok) throw new Error(String(r.status));
+            await cache.put(u, r.clone());
+            if (u.endsWith('.css')) {
+              const css = await r.text();
+              for (const m of css.matchAll(/url\(["']?(\/[^"')]+)["']?\)/g)) { try { const f = await fetch(m[1]); if (f.ok) await cache.put(m[1], f); } catch {} }
+            }
+          } catch { failed++; }
+          done++; status!.textContent = `Saving… ${done} of ${list.length}`;
+        }
+        status!.textContent = failed ? `Saved, but ${failed} file(s) are missing (the site owner needs to add them).` : 'Saved. This lesson now works offline.';
+      } catch { status!.textContent = 'Could not save. Check your connection and try again.'; }
+      btn.disabled = false;
+    });
+  </script>
 
   <style is:global>
     .ex .word { cursor: pointer; border-radius: 4px; padding: 0 2px; }
