@@ -1,49 +1,65 @@
 ---
 import Base from '@/layouts/Base.astro';
 
-const base = 'https://grenzenlos-deutsch.com/familie';
-const audio = (name: string) =>
-  `https://grenzenlos-deutsch.com/familie/wp-content/uploads/AUD_Familie_Einheit1_Lektion1_${name}.m4a`;
+const audio = (name: string) => `/assets/german/audio/AUD_Familie_Einheit1_Lektion1_${name}.m4a`;
 
 const speakers = [
-  {
-    name: 'Yasmin',
-    audio: audio('Yasmin'),
-    text: 'Grüß Gott, ich heiße Yasmin. Ich bin 21 Jahre alt und komme aus München. Ich studiere an der Ludwig-Maximilians-Universität München. Ich bin Studentin. Als Hobby spiele ich gern Fußball und gehe gern Windsurfen.',
-  },
-  {
-    name: 'Johannes',
-    audio: audio('Johannes'),
-    text: 'Hallo! Mein Name ist Johannes. Ich bin 16 Jahre alt. Ich komme aus Stuttgart. Ich bin Schüler und lerne sehr viel für meine Tests. Mein Hobby ist Lesen.',
-  },
-  {
-    name: 'Max',
-    audio: audio('Max'),
-    text: 'Servus, mein Name ist Max und ich bin 34 Jahre alt. Ich komme aus New York, aber ich wohne jetzt in Wien. Ich arbeite bei einem Theater. Ich singe sehr gern als Hobby.',
-  },
-  {
-    name: 'Julia',
-    audio: audio('Julia'),
-    text: 'Guten Tag, ich heiße Julia und komme aus Hamburg. Ich bin 28 Jahre alt. Ich arbeite bei einer Computerfirma, aber in der Freizeit gehe ich gern in dem Park spazieren.',
-  },
+  { name: 'Yasmin', audio: audio('Yasmin'), text: 'Grüß Gott, ich heiße Yasmin. Ich bin 21 Jahre alt und komme aus München. Ich studiere an der Ludwig-Maximilians-Universität München. Ich bin Studentin. Als Hobby spiele ich gern Fußball und gehe gern Windsurfen.' },
+  { name: 'Johannes', audio: audio('Johannes'), text: 'Hallo! Mein Name ist Johannes. Ich bin 16 Jahre alt. Ich komme aus Stuttgart. Ich bin Schüler und lerne sehr viel für meine Tests. Mein Hobby ist Lesen.' },
+  { name: 'Max', audio: audio('Max'), text: 'Servus, mein Name ist Max und ich bin 34 Jahre alt. Ich komme aus New York, aber ich wohne jetzt in Wien. Ich arbeite bei einem Theater. Ich singe sehr gern als Hobby.' },
+  { name: 'Julia', audio: audio('Julia'), text: 'Guten Tag, ich heiße Julia und komme aus Hamburg. Ich bin 28 Jahre alt. Ich arbeite bei einer Computerfirma, aber in der Freizeit gehe ich gern in dem Park spazieren.' },
 ];
 
-// H5P exercise IDs from the original lesson
-const exercises = [
-  { id: 1, title: 'Greetings: wie sagt man "Hallo"?', height: 561 },
-  { id: 3, title: 'Herkunft: woher kommt diese Person', height: 297 },
-  { id: 6, title: 'Alter: wie alt ist diese Person?', height: 297 },
-  { id: 7, title: 'Hobbys', height: 497 },
-  { id: 8, title: 'Wer macht was?', height: 310 },
+// Exercise content is taken from the original H5P exercises, rebuilt as plain HTML so no connection is needed.
+type Part = string | { a: string };
+const greetings = {
+  id: 'ex-greet', title: 'Greetings: wie sagt man "Hallo"?',
+  help: 'Which of the following are possible ways to greet people? (Select all that apply.)',
+  options: [
+    ['Hallo!', 1], ['Ich!', 0], ['Servus!', 1], ['Guten Tag', 1],
+    ['Jahre!', 0], ['Freizeit!', 0], ['Grüß Gott!', 1], ['Fußball!', 0],
+  ] as [string, number][],
+};
+const matches = [
+  { id: 'ex-herkunft', title: 'Herkunft: woher kommt diese Person?', help: 'Choose the correct answer for each sentence.',
+    rows: [['Johannes kommt aus', 'Stuttgart'], ['Julia kommt aus', 'Hamburg'], ['Yasmin kommt aus', 'München'], ['Max kommt aus', 'New York']],
+    choices: ['Stuttgart', 'Hamburg', 'München', 'New York'] },
+  { id: 'ex-alter', title: 'Alter: wie alt ist diese Person?', help: 'Choose the correct answer for each sentence.',
+    rows: [['Johannes ist', '16 Jahre alt'], ['Julia ist', '28 Jahre alt'], ['Yasmin ist', '21 Jahre alt'], ['Max ist', '34 Jahre alt']],
+    choices: ['16 Jahre alt', '28 Jahre alt', '21 Jahre alt', '34 Jahre alt'] },
+  { id: 'ex-sv1', title: 'Subjekt/Verb 1', help: 'Match the subject and the verb.',
+    rows: [['ich', 'heiße'], ['Sie', 'heißen'], ['er', 'heißt']], choices: ['heiße', 'heißen', 'heißt'] },
+  { id: 'ex-sv2', title: 'Subjekt/Verb 2', help: 'Match the subject and the verb.',
+    rows: [['sie', 'kommt'], ['ich', 'komme'], ['du', 'kommst'], ['Sie', 'kommen']], choices: ['kommt', 'komme', 'kommst', 'kommen'] },
 ];
-const h5p = (id: number) => `${base}/wp-admin/admin-ajax.php?action=h5p_embed&id=${id}`;
+const marks = {
+  id: 'ex-hobbys', title: 'Hobbys',
+  help: 'Click the words in the texts that describe hobbies. You should find five nouns and verbs.',
+  texts: [
+    ['Ich bin 21 Jahre alt. Als Hobby spiele ich gern ', { a: 'Fußball' }, ' und gehe gern ', { a: 'Windsurfen' }, '.'],
+    ['Ich bin Schüler und lerne sehr viel für meine Tests. Mein Hobby ist ', { a: 'Lesen' }, '.'],
+    ['Ich arbeite bei einem Theater. Ich ', { a: 'singe' }, ' sehr gern als Hobby.'],
+    ['Ich arbeite bei einer Computerfirma, aber in der Freizeit gehe ich gern in dem Park ', { a: 'spazieren' }, '.'],
+  ] as Part[][],
+};
+const blanks = [
+  { id: 'ex-wer', title: 'Wer macht was?', help: 'Fill in the missing names for each sentence.',
+    lines: [[{ a: 'Yasmin' }, ' spielt gern Fußball.'], [{ a: 'Max' }, ' singt gern.'], [{ a: 'Johannes' }, ' liest gern.'], [{ a: 'Julia' }, ' geht gern spazieren.']] as Part[][] },
+  { id: 'ex-verb', title: 'Strukturen: supply the verb', help: 'Fill in the missing verbs in the correct forms.',
+    lines: [
+      ['Yasmin: Ich ', { a: 'heiße/heisse' }, ' Yasmin. Wie ', { a: 'heißt/heisst' }, ' du? Ich ', { a: 'komme' }, ' aus München. Und du? Woher ', { a: 'kommst' }, ' du?'],
+      ['Johannes: Ich ', { a: 'komme' }, ' aus Stuttgart. Und Max? Woher ', { a: 'kommt' }, ' Max?'],
+      ['Yasmin: Er ', { a: 'kommt' }, ' aus New York.'],
+    ] as Part[][] },
+];
+const shuffle = (a: string[]) => [...a].sort((x, y) => (x.length + x.charCodeAt(0)) % 5 - (y.length + y.charCodeAt(0)) % 5);
 ---
 
-<Base title="Grenzenlos Deutsch: Einheit 1, Lektion 1" description="A free German lesson from the open Grenzenlos Deutsch curriculum: introducing yourself, with audio and interactive exercises.">
+<Base title="Grenzenlos Deutsch: Einheit 1, Lektion 1" description="A free German lesson from the open Grenzenlos Deutsch curriculum: introducing yourself, with audio and interactive exercises that work offline.">
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
-      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Einheit 1, Lektion 1</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Sich vorstellen: introduce yourself in German (A1).</p>
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Einheit 1, Lektion 1: sich vorstellen</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Introduce yourself in German (A1).</p>
       <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
         <a href="/" class="transition-colors hover:text-white">Home</a><span>/</span>
         <a href="/resources" class="transition-colors hover:text-white">Resources</a><span>/</span>
@@ -58,52 +74,205 @@ const h5p = (id: number) => `${base}/wp-admin/admin-ajax.php?action=h5p_embed&id
 
       <h2 class="font-display text-2xl font-semibold text-gray-900 dark:text-white">Sprechen</h2>
       <p class="mt-3 text-gray-700 dark:text-gray-300">Sprechen Sie mit anderen. Lernen Sie die Namen von anderen Studenten.</p>
+      <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Wie heißt du? <span class="text-gray-500">Ich heiße Yasmin.</span></li>
+        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Woher kommst du? <span class="text-gray-500">Ich komme aus Berlin.</span></li>
+      </ul>
 
-      <h2 class="mt-12 font-display text-2xl font-semibold text-gray-900 dark:text-white">Lesen</h2>
+      <h2 class="mt-14 font-display text-2xl font-semibold text-gray-900 dark:text-white">Lesen</h2>
       <div class="mt-6 grid gap-6 sm:grid-cols-2">
         {speakers.map((s) => (
           <div class="rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{s.name}</h3>
-            <p class="mt-2 text-gray-700 dark:text-gray-300">{s.text}</p>
-            <audio controls preload="none" class="mt-4 w-full" src={s.audio}>
-              <a href={s.audio}>Audio: {s.name}</a>
-            </audio>
+            <p class="mt-2 italic text-gray-700 dark:text-gray-300">{s.text}</p>
+            <audio controls preload="none" class="mt-4 w-full" src={s.audio}></audio>
           </div>
         ))}
       </div>
 
-      <h2 class="mt-12 font-display text-2xl font-semibold text-gray-900 dark:text-white">Übungen</h2>
+      <h3 class="mt-10 font-display text-xl font-semibold text-gray-900 dark:text-white">Arbeit mit dem Lesen</h3>
+      <p class="mt-3 text-gray-700 dark:text-gray-300">
+        You already know a lot of German. Since English is a Germanic language, you can recognise many words, and you can use the context to anticipate what is being said even when you don't know every word.
+        Note that the character <em>ß</em> is almost the same as <em>ss</em>.
+      </p>
+
       <div class="mt-6 space-y-8">
-        {exercises.map((e) => (
-          <div>
-            <h3 class="mb-2 font-medium text-gray-900 dark:text-white">{e.title}</h3>
-            <iframe
-              src={h5p(e.id)}
-              width="100%"
-              height={e.height}
-              frameborder="0"
-              allowfullscreen
-              loading="lazy"
-              title={e.title}
-              class="w-full rounded-xl"></iframe>
-            <p class="mt-1 text-sm text-gray-500">
-              Not loading? <a class="underline" href={h5p(e.id)} target="_blank" rel="noopener">Open the exercise in a new tab</a>.
-            </p>
+        <div class="ex rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800" data-type="multi" id={greetings.id}>
+          <h4 class="font-semibold text-gray-900 dark:text-white">{greetings.title}</h4>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{greetings.help}</p>
+          <div class="mt-3 grid gap-2 sm:grid-cols-2">
+            {greetings.options.map(([label, ok]) => (
+              <label class="item flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 dark:border-gray-600">
+                <input type="checkbox" data-correct={ok ? '1' : '0'} /> <span>{label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {matches.slice(0, 2).map((m) => (
+          <div class="ex rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800" data-type="match" id={m.id}>
+            <h4 class="font-semibold text-gray-900 dark:text-white">{m.title}</h4>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{m.help}</p>
+            <div class="mt-3 space-y-2">
+              {m.rows.map(([p, a]) => (
+                <div class="flex flex-wrap items-center gap-2">
+                  <span>{p}</span>
+                  <select class="item rounded-lg border border-gray-300 bg-white px-2 py-1 dark:border-gray-600 dark:bg-gray-900" data-answer={a} aria-label={p}>
+                    <option value="">…</option>
+                    {shuffle(m.choices).map((c) => <option value={c}>{c}</option>)}
+                  </select>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <div class="ex rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800" data-type="mark" id={marks.id}>
+          <h4 class="font-semibold text-gray-900 dark:text-white">{marks.title}</h4>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{marks.help}</p>
+          <div class="mt-3 space-y-2 leading-8">
+            {marks.texts.map((t) => (
+              <p>{t.map((part) => typeof part === 'string'
+                ? part.split(/(\s+)/).map((w) => /^\s+$|^$/.test(w) ? w : <span class="word" data-correct="0">{w}</span>)
+                : <span class="word" data-correct="1">{part.a}</span>)}</p>
+            ))}
+          </div>
+        </div>
+
+        {blanks.slice(0, 1).map((b) => (
+          <div class="ex rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800" data-type="blanks" id={b.id}>
+            <h4 class="font-semibold text-gray-900 dark:text-white">{b.title}</h4>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{b.help}</p>
+            <div class="mt-3 space-y-2 leading-9">
+              {b.lines.map((l) => <p>{l.map((x) => typeof x === 'string' ? x : <input class="item w-28 rounded-lg border border-gray-300 bg-white px-2 py-1 dark:border-gray-600 dark:bg-gray-900" data-answer={x.a} aria-label="blank" autocomplete="off" />)}</p>)}
+            </div>
           </div>
         ))}
       </div>
-      <script is:inline src="https://grenzenlos-deutsch.com/familie/wp-content/plugins/h5p/h5p-php-library/js/h5p-resizer.js" charset="UTF-8"></script>
 
-      <!-- Required CC BY-NC-SA 4.0 attribution -->
+      <h2 class="mt-14 font-display text-2xl font-semibold text-gray-900 dark:text-white">Hören</h2>
+      <p class="mt-3 text-gray-700 dark:text-gray-300">
+        The original lesson has a video of people introducing themselves. It is not included here, so listen again to the four recordings above and answer the questions: <em>Wie heißt diese Person? Woher kommt sie? Wie alt ist sie?</em>
+      </p>
+      <p class="mt-3 text-gray-700 dark:text-gray-300"><strong>Sprechen.</strong> Rollenspiel: play the role of interviewer and interviewee for two or three of the examples. Then answer again being yourself.</p>
+
+      <h2 class="mt-14 font-display text-2xl font-semibold text-gray-900 dark:text-white">Strukturen</h2>
+      <h3 class="mt-6 text-lg font-semibold text-gray-900 dark:text-white">What is "ß"?</h3>
+      <p class="mt-2 text-gray-700 dark:text-gray-300">
+        You have already seen <em>ß</em> (<em>Eszett</em> or <em>scharfes S</em>) in <em>Fußball</em>, <em>heißen</em> and <em>Grüß Gott</em>. It is a grapheme unique to German and another way of writing "ss".
+        According to German spelling rules, "ß" follows long vowels or diphthongs, and "ss" is used after short vowels. "ß" is pronounced [s], as in "sing" or "see".
+      </p>
+      <h3 class="mt-6 text-lg font-semibold text-gray-900 dark:text-white">Conjugating verbs</h3>
+      <p class="mt-2 text-gray-700 dark:text-gray-300">Just like in English, German verbs change to match the subject.</p>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800"><p class="font-semibold">heißen</p>
+          <p>ich heiße<br />du heißt<br />Sie heißen<br />er heißt / sie heißt / xier heißt</p></div>
+        <div class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800"><p class="font-semibold">kommen</p>
+          <p>ich komme aus<br />du kommst aus<br />Sie kommen aus<br />sie kommt aus / er kommt aus / xier kommt aus</p></div>
+      </div>
+      <p class="mt-4 text-gray-700 dark:text-gray-300">Another way to say "ich heiße…" is "mein Name ist…". We often translate "heißen" as "to be called."</p>
+
+      <div class="mt-8 space-y-8">
+        {matches.slice(2).map((m) => (
+          <div class="ex rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800" data-type="match" id={m.id}>
+            <h4 class="font-semibold text-gray-900 dark:text-white">{m.title}</h4>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{m.help}</p>
+            <div class="mt-3 space-y-2">
+              {m.rows.map(([p, a]) => (
+                <div class="flex flex-wrap items-center gap-2">
+                  <span>{p}</span>
+                  <select class="item rounded-lg border border-gray-300 bg-white px-2 py-1 dark:border-gray-600 dark:bg-gray-900" data-answer={a} aria-label={p}>
+                    <option value="">…</option>
+                    {shuffle(m.choices).map((c) => <option value={c}>{c}</option>)}
+                  </select>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+        {blanks.slice(1).map((b) => (
+          <div class="ex rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800" data-type="blanks" id={b.id}>
+            <h4 class="font-semibold text-gray-900 dark:text-white">{b.title}</h4>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{b.help}</p>
+            <div class="mt-3 space-y-2 leading-9">
+              {b.lines.map((l) => <p>{l.map((x) => typeof x === 'string' ? x : <input class="item w-28 rounded-lg border border-gray-300 bg-white px-2 py-1 dark:border-gray-600 dark:bg-gray-900" data-answer={x.a} aria-label="blank" autocomplete="off" />)}</p>)}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="mt-10 text-lg font-semibold text-gray-900 dark:text-white">Sprechen</h3>
+      <p class="mt-2 text-gray-700 dark:text-gray-300">Wie heißt diese Person? Woher kommt diese Person? Sprechen und/oder schreiben Sie Sätze über jede Person.</p>
+      <ul class="mt-3 grid gap-3 sm:grid-cols-2">
+        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Name: Evi<br />Herkunft: Berlin</li>
+        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Name: Miriam<br />Herkunft: Münster</li>
+        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Name: Petra Buda<br />Herkunft: Ungarn</li>
+        <li class="rounded-xl bg-white p-4 shadow-sm dark:bg-gray-800">Name: Laura<br />Herkunft: Neuwied</li>
+      </ul>
+
       <aside class="mt-16 rounded-2xl border border-gray-200 p-6 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-400">
         <p>
-          This lesson is adapted from <a class="underline" href={`${base}/e1/l1/`}>Grenzenlos Deutsch</a>
-          by Macalester College and Central College, used under
-          <a class="underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
-          Changes: text and audio re-presented on this site; exercises embedded from the original. This page is shared under the same license.
-          Not for commercial use.
+          <strong>Source:</strong> <em>Grenzenlos Deutsch: an open-access curriculum for beginning German</em>, Einheit 1, Lektion 1 ("sich vorstellen"), grenzenlos-deutsch.com/familie/e1/l1/.
+          Licensed under <a class="underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+          Funding for the original was provided in part by the National Endowment for the Humanities and the Mansergh-Stuessy Fund for College Innovation.
+        </p>
+        <p class="mt-2">
+          Changes: the reading texts, audio and explanations are reproduced from the original. The interactive exercises were rebuilt as plain HTML with the same content so the page works offline; the lesson video and photographs are not included.
+          This page is shared under the same license. Not for commercial use.
         </p>
       </aside>
     </div>
   </section>
+
+  <style is:global>
+    .ex .word { cursor: pointer; border-radius: 4px; padding: 0 2px; }
+    .ex .word.sel { background: #fde68a; color: #111; }
+    .ex .ok { outline: 2px solid #16a34a; background-color: rgba(22,163,74,.12); }
+    .ex .bad { outline: 2px solid #dc2626; background-color: rgba(220,38,38,.12); }
+    .ex .actions button { border-radius: .5rem; padding: .4rem .9rem; font-size: .875rem; font-weight: 500; }
+    .ex .actions .primary { background: #0f766e; color: #fff; }
+    .ex .actions .secondary { background: #e5e7eb; color: #111; }
+    .ex .score { font-weight: 600; margin-left: .5rem; }
+  </style>
+  <script>
+    const norm = (s: string) => s.trim();
+    const ok = (given: string, answer: string) => answer.split('/').some((a) => norm(a) === norm(given));
+    document.querySelectorAll<HTMLElement>('.ex').forEach((ex) => {
+      const type = ex.dataset.type;
+      const bar = document.createElement('div');
+      bar.className = 'actions mt-4 flex flex-wrap items-center gap-2';
+      bar.innerHTML = '<button type="button" class="primary">Check</button><button type="button" class="secondary solution">Show solution</button><button type="button" class="secondary retry">Retry</button><span class="score" role="status" aria-live="polite"></span>';
+      ex.appendChild(bar);
+      const score = bar.querySelector('.score') as HTMLElement;
+      const clear = () => { ex.querySelectorAll('.ok,.bad').forEach((e) => e.classList.remove('ok', 'bad')); score.textContent = ''; };
+      const items = () => Array.from(ex.querySelectorAll<HTMLElement>(type === 'multi' ? '.item' : type === 'mark' ? '.word' : '.item'));
+      const evaluate = (el: HTMLElement): boolean => {
+        if (type === 'multi') { const c = el.querySelector('input') as HTMLInputElement; return c.checked === (c.dataset.correct === '1'); }
+        if (type === 'mark') return el.classList.contains('sel') === (el.dataset.correct === '1');
+        const v = (el as HTMLInputElement).value; return ok(v, el.dataset.answer || '');
+      };
+      bar.querySelector('.primary')!.addEventListener('click', () => {
+        clear(); let n = 0; const all = items();
+        all.forEach((el) => { const good = evaluate(el); if (good) n++; el.classList.add(good ? 'ok' : 'bad'); });
+        score.textContent = `You got ${n} of ${all.length} right.`;
+      });
+      bar.querySelector('.solution')!.addEventListener('click', () => {
+        clear();
+        items().forEach((el) => {
+          if (type === 'multi') (el.querySelector('input') as HTMLInputElement).checked = (el.querySelector('input') as HTMLInputElement).dataset.correct === '1';
+          else if (type === 'mark') el.classList.toggle('sel', el.dataset.correct === '1');
+          else (el as HTMLInputElement).value = (el.dataset.answer || '').split('/')[0];
+        });
+      });
+      bar.querySelector('.retry')!.addEventListener('click', () => {
+        clear();
+        items().forEach((el) => {
+          if (type === 'multi') (el.querySelector('input') as HTMLInputElement).checked = false;
+          else if (type === 'mark') el.classList.remove('sel');
+          else (el as HTMLInputElement).value = '';
+        });
+      });
+      if (type === 'mark') ex.querySelectorAll('.word').forEach((w) => w.addEventListener('click', () => { clear(); w.classList.toggle('sel'); }));
+    });
+  </script>
 </Base>

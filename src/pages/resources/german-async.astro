@@ -29,14 +29,6 @@ const units = [
   },
 ];
 
-const themes = [
-  { title: 'Einkaufen und Essen', href: `${root}/einkaufen/` },
-  { title: 'Reisen und Transport', href: `${root}/reisen/` },
-  { title: 'Ort: in der Stadt und auf dem Land', href: `${root}/ort/` },
-  { title: 'Umwelt und Nachhaltigkeit', href: `${root}/umwelt/` },
-  { title: 'Soziale Gerechtigkeit', href: `${root}/sozial/` },
-];
-
 const steps = [
   { title: 'Read and listen', text: 'Each lesson opens with short texts and audio. Read first, then listen as many times as you like.' },
   { title: 'Do the exercises', text: 'Interactive exercises give instant feedback and can be repeated. Nobody is marking them.' },
@@ -65,7 +57,7 @@ const steps = [
 
       <p class="text-lg text-gray-700 dark:text-gray-300">
         <em>Grenzenlos Deutsch</em> is a free, open-access German course with audio, video and interactive exercises. You can work through it
-        on your own schedule, with no login. Lessons open on the original site, so you always see the latest version.
+        on your own schedule, with no login. Lessons on this site are self-contained: the text, audio and exercises are hosted here, so they work without the original website.
       </p>
 
       <h2 class="mt-12 font-display text-2xl font-semibold text-gray-900 dark:text-white">How to use it</h2>
@@ -80,13 +72,13 @@ const steps = [
 
       <div class="mt-8 rounded-2xl border border-primary-200 bg-primary-50 p-5 dark:border-primary-800 dark:bg-primary-900/30">
         <p class="text-gray-800 dark:text-gray-200">
-          <strong>Try a lesson here first:</strong> Einheit 1, Lektion 1 is embedded on this site.
-          <a class="font-medium underline" href="/resources/grenzenlos-deutsch">Open Lektion 1 on Ramzunā</a>.
+          <strong>Start here:</strong> Einheit 1, Lektion 1 is ready.
+          <a class="font-medium underline" href="/resources/grenzenlos-deutsch">Open Lektion 1</a>.
         </p>
       </div>
 
       <h2 class="mt-14 font-display text-2xl font-semibold text-gray-900 dark:text-white">Familie und Freunde</h2>
-      <p class="mt-2 text-gray-600 dark:text-gray-400">Work through the units in order. Each lesson has an <em>Erweiterung</em> (extension) for extra practice.</p>
+      <p class="mt-2 text-gray-600 dark:text-gray-400">Work through the units in order. More lessons are being added.</p>
 
       {units.map((u) => (
         <details class="group mt-6 rounded-2xl bg-white shadow-sm dark:bg-gray-800" open={u.id === 'e1'}>
@@ -97,34 +89,22 @@ const steps = [
           <ul class="divide-y divide-gray-100 border-t border-gray-100 px-5 dark:divide-gray-700 dark:border-gray-700">
             {u.lessons.map((title, i) => (
               <li class="flex flex-wrap items-center justify-between gap-2 py-3">
-                <a class="font-medium text-primary-700 underline-offset-2 hover:underline dark:text-primary-300" href={`${fam}/${u.id}/l${i + 1}/`} target="_blank" rel="noopener">
-                  Lektion {i + 1}: {title}
-                </a>
-                <a class="text-sm text-gray-500 underline-offset-2 hover:underline dark:text-gray-400" href={`${fam}/${u.id}/l${i + 1}/erw/`} target="_blank" rel="noopener">
-                  Erweiterung
-                </a>
+                {u.id === 'e1' && i === 0 ? (
+                  <a class="font-medium text-primary-700 underline-offset-2 hover:underline dark:text-primary-300" href="/resources/grenzenlos-deutsch">
+                    Lektion 1: {title}
+                  </a>
+                ) : (
+                  <span class="text-gray-500 dark:text-gray-400">Lektion {i + 1}: {title}</span>
+                )}
+                <span class="text-sm text-gray-500 dark:text-gray-400">{u.id === 'e1' && i === 0 ? 'Available now' : 'Coming soon'}</span>
               </li>
             ))}
             {u.summary && (
-              <li class="py-3">
-                <a class="font-medium text-primary-700 underline-offset-2 hover:underline dark:text-primary-300" href={`${fam}/${u.id}/zus/`} target="_blank" rel="noopener">
-                  {u.title.split(':')[0]}: Zusammenfassung
-                </a>
-              </li>
+              <li class="py-3 text-gray-500 dark:text-gray-400">{u.title.split(':')[0]}: Zusammenfassung</li>
             )}
           </ul>
         </details>
       ))}
-
-      <h2 class="mt-14 font-display text-2xl font-semibold text-gray-900 dark:text-white">More themes</h2>
-      <p class="mt-2 text-gray-600 dark:text-gray-400">The Grenzenlos Deutsch curriculum has further thematic courses. Browse these once you are comfortable with the first units.</p>
-      <ul class="mt-4 grid gap-3 sm:grid-cols-2">
-        {themes.map((t) => (
-          <li>
-            <a class="block rounded-xl bg-white px-4 py-3 font-medium text-gray-900 shadow-sm hover:text-primary-700 dark:bg-gray-800 dark:text-white dark:hover:text-primary-300" href={t.href} target="_blank" rel="noopener">{t.title}</a>
-          </li>
-        ))}
-      </ul>
 
       <aside id="citation" class="mt-16 rounded-2xl border border-gray-200 p-6 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-400">
         <h2 class="text-base font-semibold text-gray-900 dark:text-white">Source and citation</h2>
@@ -135,7 +115,7 @@ const steps = [
           Funding for the original was provided in part by the National Endowment for the Humanities and the Mansergh-Stuessy Fund for College Innovation.
         </p>
         <p class="mt-2">
-          Ramzunā Languages links to the original lessons and has not changed their content. Ramzunā Languages is not affiliated with the Grenzenlos Deutsch authors.
+          Text, audio and explanations are reproduced from the original; the interactive exercises are rebuilt as plain HTML with the same content. Changes are noted on each lesson. Adaptations are shared under the same license, for non-commercial use. Ramzunā Languages is not affiliated with the Grenzenlos Deutsch authors.
         </p>
       </aside>
     </div>
