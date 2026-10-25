@@ -1,0 +1,108 @@
+---
+import Base from '@/layouts/Base.astro';
+
+const base = 'https://grenzenlos-deutsch.com/familie';
+const audio = (name: string) =>
+  `http://grenzenlos-deutsch.com/familie/wp-content/uploads/AUD_Familie_Einheit1_Lektion1_${name}.m4a`;
+
+const speakers = [
+  {
+    name: 'Yasmin',
+    audio: audio('Yasmin'),
+    text: 'Grüß Gott, ich heiße Yasmin. Ich bin 21 Jahre alt und komme aus München. Ich studiere an der Ludwig-Maximilians-Universität München. Ich bin Studentin. Als Hobby spiele ich gern Fußball und gehe gern Windsurfen.',
+  },
+  {
+    name: 'Johannes',
+    audio: audio('Johannes'),
+    text: 'Hallo! Mein Name ist Johannes. Ich bin 16 Jahre alt. Ich komme aus Stuttgart. Ich bin Schüler und lerne sehr viel für meine Tests. Mein Hobby ist Lesen.',
+  },
+  {
+    name: 'Max',
+    audio: audio('Max'),
+    text: 'Servus, mein Name ist Max und ich bin 34 Jahre alt. Ich komme aus New York, aber ich wohne jetzt in Wien. Ich arbeite bei einem Theater. Ich singe sehr gern als Hobby.',
+  },
+  {
+    name: 'Julia',
+    audio: audio('Julia'),
+    text: 'Guten Tag, ich heiße Julia und komme aus Hamburg. Ich bin 28 Jahre alt. Ich arbeite bei einer Computerfirma, aber in der Freizeit gehe ich gern in dem Park spazieren.',
+  },
+];
+
+// H5P exercise IDs from the original lesson
+const exercises = [
+  { id: 1, title: 'Greetings: wie sagt man "Hallo"?', height: 561 },
+  { id: 3, title: 'Herkunft: woher kommt diese Person', height: 297 },
+  { id: 6, title: 'Alter: wie alt ist diese Person?', height: 297 },
+  { id: 7, title: 'Hobbys', height: 497 },
+  { id: 8, title: 'Wer macht was?', height: 310 },
+];
+const h5p = (id: number) => `${base}/wp-admin/admin-ajax.php?action=h5p_embed&id=${id}`;
+---
+
+<Base title="Grenzenlos Deutsch: Einheit 1, Lektion 1" description="A free German lesson from the open Grenzenlos Deutsch curriculum: introducing yourself, with audio and interactive exercises.">
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Einheit 1, Lektion 1</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Sich vorstellen: introduce yourself in German (A1).</p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a><span>/</span>
+        <a href="/resources" class="transition-colors hover:text-white">Resources</a><span>/</span>
+        <span class="text-white">Grenzenlos Deutsch</span>
+      </nav>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20">
+    <div class="container mx-auto max-w-4xl px-4 lg:px-8">
+
+      <h2 class="font-display text-2xl font-semibold text-gray-900 dark:text-white">Sprechen</h2>
+      <p class="mt-3 text-gray-700 dark:text-gray-300">Sprechen Sie mit anderen. Lernen Sie die Namen von anderen Studenten.</p>
+
+      <h2 class="mt-12 font-display text-2xl font-semibold text-gray-900 dark:text-white">Lesen</h2>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2">
+        {speakers.map((s) => (
+          <div class="rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{s.name}</h3>
+            <p class="mt-2 text-gray-700 dark:text-gray-300">{s.text}</p>
+            <audio controls preload="none" class="mt-4 w-full" src={s.audio}>
+              <a href={s.audio}>Audio: {s.name}</a>
+            </audio>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="mt-12 font-display text-2xl font-semibold text-gray-900 dark:text-white">Übungen</h2>
+      <div class="mt-6 space-y-8">
+        {exercises.map((e) => (
+          <div>
+            <h3 class="mb-2 font-medium text-gray-900 dark:text-white">{e.title}</h3>
+            <iframe
+              src={h5p(e.id)}
+              width="100%"
+              height={e.height}
+              frameborder="0"
+              allowfullscreen
+              loading="lazy"
+              title={e.title}
+              class="w-full rounded-xl"></iframe>
+            <p class="mt-1 text-sm text-gray-500">
+              Not loading? <a class="underline" href={h5p(e.id)} target="_blank" rel="noopener">Open the exercise in a new tab</a>.
+            </p>
+          </div>
+        ))}
+      </div>
+      <script is:inline src="https://grenzenlos-deutsch.com/familie/wp-content/plugins/h5p/h5p-php-library/js/h5p-resizer.js" charset="UTF-8"></script>
+
+      <!-- Required CC BY-NC-SA 4.0 attribution -->
+      <aside class="mt-16 rounded-2xl border border-gray-200 p-6 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-400">
+        <p>
+          This lesson is adapted from <a class="underline" href={`${base}/e1/l1/`}>Grenzenlos Deutsch</a>
+          by Macalester College and Central College, used under
+          <a class="underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+          Changes: text and audio re-presented on this site; exercises embedded from the original. This page is shared under the same license.
+          Not for commercial use.
+        </p>
+      </aside>
+    </div>
+  </section>
+</Base>
