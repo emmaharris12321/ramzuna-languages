@@ -2,7 +2,12 @@
 import Base from '@/layouts/Base.astro';
 
 const root = 'https://grenzenlos-deutsch.com';
-const fam = `${root}/familie`;
+const translations = [
+  ['Introduce yourself', 'Count: part 1', 'Family', 'The alphabet', 'Count: part 2', 'Hobbies', 'Colours', 'Describe people', 'Friends', 'University studies'],
+  ['Family: a recap', 'Time with family', 'Blended families', 'Time with friends', 'Friendship', 'Friends and acquaintances', 'Vienna Pride'],
+  ['Birthdays', 'Spring holidays', 'May Day', 'Summer holidays', 'Autumn holidays'],
+];
+const unitNames = ['The foundations', 'Life together', 'Time to celebrate'];
 
 // Lesson titles and URLs follow the Grenzenlos Deutsch "Familie und Freunde" navigation.
 const units = [
@@ -37,75 +42,51 @@ const steps = [
 ];
 ---
 
-<Base title="German Asynchronous Resources" description="Free self-paced German lessons from the open Grenzenlos Deutsch curriculum, for Ramzunā Languages students to use between live sessions.">
-  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
-    <div class="container mx-auto px-4 text-center lg:px-8">
-      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">German Asynchronous Resources</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
-        Self-paced German (beginner, A1) for use between live sessions, built on the open Grenzenlos Deutsch curriculum.
-      </p>
-      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
-        <a href="/" class="transition-colors hover:text-white">Home</a><span>/</span>
-        <a href="/resources" class="transition-colors hover:text-white">Resources</a><span>/</span>
-        <span class="text-white">German Asynchronous</span>
-      </nav>
-    </div>
-  </section>
-
-  <section class="py-16 lg:py-20">
-    <div class="container mx-auto max-w-4xl px-4 lg:px-8">
-
-      <p class="text-lg text-gray-700 dark:text-gray-300">
-        <em>Grenzenlos Deutsch</em> is a free, open-access German course with audio, video and interactive exercises. You can work through it
-        on your own schedule, with no login. Lessons on this site are self-contained: the text, audio and exercises are hosted here, so they work without the original website.
-      </p>
-
-      <h2 class="mt-12 font-display text-2xl font-semibold text-gray-900 dark:text-white">How to use it</h2>
-      <ol class="mt-6 grid gap-4 sm:grid-cols-2">
-        {steps.map((s, i) => (
-          <li class="rounded-2xl bg-white p-5 shadow-sm dark:bg-gray-800">
-            <h3 class="font-semibold text-gray-900 dark:text-white">{i + 1}. {s.title}</h3>
-            <p class="mt-1 text-gray-600 dark:text-gray-400">{s.text}</p>
-          </li>
-        ))}
-      </ol>
-
-      <div class="mt-8 rounded-2xl border border-primary-200 bg-primary-50 p-5 dark:border-primary-800 dark:bg-primary-900/30">
-        <p class="text-gray-800 dark:text-gray-200">
-          <strong>Start here:</strong> Einheit 1, Lektion 1 is ready.
-          <a class="font-medium underline" href="/resources/grenzenlos-deutsch">Open Lektion 1</a>.
-        </p>
+<Base title="Your German learning path" description="A clear, self-paced path through beginner German. Start with introductions, explore the curriculum, and practise between live sessions.">
+  <div class="german-path">
+    <section class="path-hero">
+      <div class="path-wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/resources">Resources</a><span aria-hidden="true">/</span><span>German curriculum</span></nav>
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">GERMAN · BEGINNER A1</p>
+            <h1>A little German.<br /><em>A new connection.</em></h1>
+            <p class="hero-copy">Your learning path, one lesson at a time. Learn at your own pace and bring what you discover to your next live session.</p>
+            <div class="hero-tags"><span>Free to learn</span><span>No account needed</span><span>At your own pace</span></div>
+            <a class="text-link" href="#curriculum">Explore the curriculum <span aria-hidden="true">↓</span></a>
+          </div>
+          <article class="start-card" aria-labelledby="start-title">
+            <div class="card-top"><span class="pill">Available now</span><span>UNIT 01 / LESSON 01</span></div>
+            <div class="hello" lang="de">Hallo! <span aria-hidden="true">✳</span></div>
+            <h2 id="start-title">Start with an introduction.</h2>
+            <p>Learn to say your name, where you’re from, and what you enjoy.</p>
+            <ul class="lesson-features"><li>Read &amp; listen</li><li>Practise</li><li>Speak aloud</li></ul>
+            <a class="start-button" href="/resources/grenzenlos-deutsch">Start lesson 1 <span aria-hidden="true">↗</span></a>
+            <p class="card-note">New to German? This is your starting point.</p>
+          </article>
+        </div>
       </div>
-
-      <h2 class="mt-14 font-display text-2xl font-semibold text-gray-900 dark:text-white">Familie und Freunde</h2>
-      <p class="mt-2 text-gray-600 dark:text-gray-400">Work through the units in order. More lessons are being added.</p>
-
-      {units.map((u) => (
-        <details class="group mt-6 rounded-2xl bg-white shadow-sm dark:bg-gray-800" open={u.id === 'e1'}>
-          <summary class="cursor-pointer list-none rounded-2xl p-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-600">
-            <span class="block text-lg font-semibold text-gray-900 dark:text-white">{u.title}</span>
-            <span class="mt-1 block text-sm text-gray-600 dark:text-gray-400">{u.blurb}</span>
-          </summary>
-          <ul class="divide-y divide-gray-100 border-t border-gray-100 px-5 dark:divide-gray-700 dark:border-gray-700">
-            {u.lessons.map((title, i) => (
-              <li class="flex flex-wrap items-center justify-between gap-2 py-3">
-                {u.id === 'e1' && i === 0 ? (
-                  <a class="font-medium text-primary-700 underline-offset-2 hover:underline dark:text-primary-300" href="/resources/grenzenlos-deutsch">
-                    Lektion 1: {title}
-                  </a>
-                ) : (
-                  <span class="text-gray-500 dark:text-gray-400">Lektion {i + 1}: {title}</span>
-                )}
-                <span class="text-sm text-gray-500 dark:text-gray-400">{u.id === 'e1' && i === 0 ? 'Available now' : 'Coming soon'}</span>
-              </li>
-            ))}
-            {u.summary && (
-              <li class="py-3 text-gray-500 dark:text-gray-400">{u.title.split(':')[0]}: Zusammenfassung</li>
-            )}
-          </ul>
-        </details>
-      ))}
-
+    </section>
+    <section class="routine path-wrap" aria-labelledby="routine-heading">
+      <div class="section-intro"><p class="eyebrow">A SIMPLE ROUTINE</p><h2 id="routine-heading">Make each lesson your own.</h2><p>Try these steps. Repeat whenever you need to.</p></div>
+      <ol class="routine-grid">{steps.map((s,i) => <li><span class="step-number">0{i+1}</span><h3>{s.title}</h3><p>{s.text}</p></li>)}</ol>
+    </section>
+    <section id="curriculum" class="path-wrap curriculum" aria-labelledby="curriculum-heading">
+      <div class="curriculum-title"><div><p class="eyebrow">YOUR LEARNING PATH</p><h2 id="curriculum-heading" lang="de">Familie und Freunde</h2><p>Family and friends. Follow the units in order, starting with lesson 1.</p></div><span class="course-count">3 units · 22 lessons planned</span></div>
+      <nav class="unit-nav" aria-label="Jump to a curriculum unit">{units.map((u,i) => <a href={`#${u.id}`}><span>0{i+1}</span>{unitNames[i]}<span aria-hidden="true">↓</span></a>)}</nav>
+      <p class="availability-note">Lesson 1 is ready to explore. The remaining lessons are coming soon; they are shown here so you can see the path ahead.</p>
+      <div class="unit-list">{units.map((u,ui) => (
+        <section class="unit" id={u.id} aria-labelledby={`${u.id}-title`}>
+          <header class="unit-header"><span class="unit-number">0{ui+1}</span><div><p class="eyebrow">UNIT {ui+1} · {u.lessons.length} LESSONS</p><h3 id={`${u.id}-title`}>{unitNames[ui]}</h3><p lang="de" class="german-title">{u.title}</p><p>{u.blurb}</p></div></header>
+          <ol class="lesson-grid">{u.lessons.map((title,i) => (
+            <li class:list={['lesson-card', { available: ui === 0 && i === 0 }]}>
+              {ui === 0 && i === 0 ? <a href="/resources/grenzenlos-deutsch"><span class="lesson-meta">LESSON 01 <span class="lesson-state">Start here</span></span><h4 lang="de">{title}</h4><p>{translations[ui][i]}</p><span class="lesson-action">Open lesson <span aria-hidden="true">↗</span></span></a> : <div><span class="lesson-meta">LESSON {String(i+1).padStart(2,'0')} <span class="lesson-state">Coming soon</span></span><h4 lang="de">{title}</h4><p>{translations[ui][i]}</p></div>}
+            </li>
+          ))}</ol>
+          {u.summary && <p class="unit-review"><span aria-hidden="true">↺</span> Unit {ui+1} review <span>Zusammenfassung · Coming soon</span></p>}
+        </section>
+      ))}</div>
+      <aside class="offline-note"><span class="offline-symbol" aria-hidden="true">↓</span><div><h2>Learn wherever you are.</h2><p>Lesson 1 includes an option to save it for offline use. Open the lesson while connected, then choose “Save lesson for offline use”.</p></div><a href="/resources/grenzenlos-deutsch#offline-box">Offline options <span aria-hidden="true">↗</span></a></aside>
       <aside id="citation" class="mt-16 rounded-2xl border border-gray-200 p-6 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-400">
         <h2 class="text-base font-semibold text-gray-900 dark:text-white">Source and citation</h2>
         <p class="mt-2">
@@ -118,6 +99,14 @@ const steps = [
           Text, audio and explanations are reproduced from the original; the interactive exercises are rebuilt as plain HTML with the same content. Changes are noted on each lesson. Adaptations are shared under the same license, for non-commercial use. Ramzunā Languages is not affiliated with the Grenzenlos Deutsch authors.
         </p>
       </aside>
-    </div>
-  </section>
+
+    </section>
+  </div>
 </Base>
+<style>
+.german-path{--ink:#243d35;--muted:#58665d;--paper:#fffdf8;--line:#dce1d6;background:#f7f6ee;color:var(--ink);padding-bottom:5rem}.path-wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}.path-hero{background:#edf0e4;border-bottom:1px solid var(--line);padding:24px 0 64px}.breadcrumbs{display:flex;gap:12px;font-size:.8rem;color:var(--muted);margin-bottom:45px}.breadcrumbs a:hover{text-decoration:underline}.hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:70px;align-items:center}.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.15em;margin-bottom:14px}.german-path h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.6rem,4.8vw,4.1rem);line-height:1.12;letter-spacing:-.045em}.german-path h1 em{font-weight:500;color:#567047}.hero-copy{max-width:31rem;line-height:1.75;margin-top:24px;color:var(--muted)}.hero-tags{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.73rem;margin:22px 0}.hero-tags span:before{content:'✓';margin-right:6px;color:#577445}.text-link{display:inline-flex;gap:24px;font-weight:600;font-size:.85rem;padding:12px 0}.start-card{background:var(--paper);padding:32px;border:1px solid var(--line);border-radius:24px;box-shadow:0 16px 40px #253d3510}.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.6rem;letter-spacing:.08em;font-weight:600}.pill{background:#e5edda;color:#35502e;padding:7px 10px;border-radius:30px;letter-spacing:0;font-size:.68rem}.hello{font-family:'Playfair Display',Georgia,serif;font-size:3.3rem;margin:22px 0 12px;display:flex;align-items:center;justify-content:space-between}.hello span{color:#a45b3c;font-size:3.7rem}.start-card h2{font-size:1.3rem;font-weight:600}.start-card>p{color:var(--muted);line-height:1.6;margin-top:10px;font-size:.85rem}.lesson-features{display:flex;flex-wrap:wrap;gap:8px 18px;margin:22px 0;font-size:.72rem;color:var(--muted)}.start-button{background:#304e3d;color:white;border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;font-weight:600}.start-button:hover{background:#203d2d}.start-card .card-note{font-size:.7rem;text-align:center;margin-top:14px}.routine{padding-block:52px}.section-intro h2,.curriculum-title h2{font-family:'Playfair Display',Georgia,serif;font-size:1.9rem;line-height:1.2}.section-intro>p:last-child,.curriculum-title p:last-child{color:var(--muted);margin-top:12px;font-size:.85rem}.routine-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:28px}.routine-grid li{border-top:1px solid #cbd3c3;padding-top:18px}.step-number{font-size:.75rem;color:#8a4b32;font-weight:600}.routine-grid h3{font-weight:600;font-size:.9rem;margin:10px 0}.routine-grid p{color:var(--muted);font-size:.8rem;line-height:1.65}.curriculum{padding-top:12px}.curriculum-title{display:flex;align-items:center;justify-content:space-between;gap:24px}.course-count{white-space:nowrap;font-size:.7rem;border:1px solid var(--line);padding:9px 13px;border-radius:30px}.unit-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}.unit-nav a{border:1px solid var(--line);background:var(--paper);padding:15px 18px;border-radius:10px;display:flex;gap:12px;align-items:center;font-size:.8rem;font-weight:600}.unit-nav a span:first-child{color:#8a4b32}.unit-nav a span:last-child{margin-left:auto}.unit-nav a:hover{border-color:#567047}.availability-note{font-size:.75rem;color:var(--muted);margin:18px 0 32px;line-height:1.6}.unit{scroll-margin-top:110px;margin-top:32px;padding:30px;background:var(--paper);border:1px solid var(--line);border-radius:20px}.unit-header{display:flex;gap:22px;max-width:800px;margin-bottom:26px}.unit-number{font-family:Georgia,serif;font-size:2.5rem;color:#9b634a;line-height:1}.unit-header .eyebrow{margin-bottom:6px}.unit-header h3{font-family:'Playfair Display',Georgia,serif;font-size:1.6rem}.unit-header .german-title{font-size:.8rem;margin-top:6px}.unit-header p:last-child{color:var(--muted);font-size:.8rem;line-height:1.6;margin-top:8px}.lesson-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.lesson-card{border:1px solid var(--line);border-radius:12px;background:#f8f8f2;overflow:hidden}.lesson-card>div,.lesson-card>a{display:block;height:100%;padding:18px}.lesson-meta{display:flex;flex-wrap:wrap;gap:6px;justify-content:space-between;font-size:.58rem;letter-spacing:.06em;color:var(--muted)}.lesson-state{letter-spacing:0}.lesson-card h4{font-weight:600;font-size:.92rem;margin-top:20px;overflow-wrap:anywhere}.lesson-card p{font-size:.75rem;color:var(--muted);margin-top:5px}.lesson-card.available{background:#eaf0df;border-color:#9bb183}.lesson-card.available:hover{border-color:#304e3d;background:#e2ebd3}.available .lesson-state{color:#304e3d;font-weight:700}.lesson-action{display:flex;justify-content:space-between;margin-top:22px;font-weight:600;font-size:.75rem}.unit-review{display:flex;flex-wrap:wrap;gap:10px;font-size:.75rem;margin-top:20px;color:var(--muted)}.unit-review span:last-child{margin-left:auto}.offline-note{display:flex;align-items:center;gap:24px;border-radius:16px;background:#e9eddf;margin-top:36px;padding:25px}.offline-symbol{font-size:2rem}.offline-note h2{font-weight:600}.offline-note p{font-size:.8rem;line-height:1.6;color:var(--muted);max-width:650px;margin-top:6px}.offline-note a{font-size:.8rem;font-weight:600;white-space:nowrap;margin-left:auto;text-decoration:underline;text-underline-offset:4px}.german-path a:focus-visible{outline:3px solid #a45b3c;outline-offset:4px}#curriculum{scroll-margin-top:100px}
+:global(.dark) .german-path{--ink:#eef1e6;--muted:#bec9bb;--paper:#202d26;--line:#425146;background:#16241d}:global(.dark) .path-hero{background:#23372b}:global(.dark) .german-path h1 em{color:#b6cca1}:global(.dark) .lesson-card{background:#25352a}:global(.dark) .lesson-card.available{background:#344c30}:global(.dark) .available .lesson-state{color:#d5e6c5}:global(.dark) .offline-note{background:#2c3f2c}:global(.dark) .step-number,:global(.dark) .unit-number,:global(.dark) .unit-nav a span:first-child,:global(.dark) .hello span{color:#e3aa83}
+@media(max-width:900px){.hero-grid{gap:30px}.lesson-grid{grid-template-columns:repeat(2,1fr)}.routine-grid{grid-template-columns:repeat(2,1fr)}.curriculum-title{align-items:flex-start;flex-direction:column}.offline-note{flex-wrap:wrap}.offline-note a{margin-left:0}}
+@media(max-width:640px){.path-wrap{width:calc(100% - 32px)}.hero-grid{grid-template-columns:1fr;gap:30px}.path-hero{padding-bottom:32px}.breadcrumbs{margin-bottom:30px}.start-card{padding:24px}.routine{padding-block:38px}.routine-grid{gap:20px}.unit-nav{grid-template-columns:1fr;gap:8px}.unit{padding:20px 16px;margin-top:20px}.unit-header{gap:14px}.lesson-grid{grid-template-columns:1fr}.lesson-card>div,.lesson-card>a{padding:18px}.lesson-card h4{margin-top:12px}.unit-review span:last-child{margin-left:0}.offline-note{padding:20px;gap:12px}.offline-symbol{display:none}}
+@media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto}}
+</style>
