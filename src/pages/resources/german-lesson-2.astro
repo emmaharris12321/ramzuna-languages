@@ -1,9 +1,5 @@
 ---
 import Base from '@/layouts/Base.astro';
-const words = [
- ['der Beamer','die Beamer','projector'],['das Buch','die Bücher','book'],['der Computer','die Computer','computer'],['das Fenster','die Fenster','window'],['das Heft','die Hefte','exercise book'],['der Stift','die Stifte','pen'],['der Stuhl','die Stühle','chair'],['die Tafel','die Tafeln','board'],['der Tisch','die Tische','table'],['die Tür','die Türen','door'],['die Uhr','die Uhren','clock / watch'],['die Zahl','die Zahlen','number'],
-];
-const numbers = ['eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn','zwanzig'];
 const questions = [
  {prompt:'___ Buch (the book)',options:['der','die','das'],answer:'das',why:'Buch is neuter: das Buch.'},
  {prompt:'___ Tür (a door)',options:['ein','eine'],answer:'eine',why:'Tür is feminine: die Tür, eine Tür.'},
@@ -20,29 +16,20 @@ const questions = [
  <header class="lesson-hero"><div class="wrap">
   <a class="back" href="/resources/german-async#e1">← Back to your learning path</a>
   <p class="eyebrow">UNIT 01 · LESSON 02 · EXTENSION PRACTICE</p>
-  <h1>Small numbers.<br /><em>Everyday discoveries.</em></h1>
-  <p class="intro">Count to twenty, name the things around you, and say what you have.</p>
+  <h1>Put your German<br /><em>into practice.</em></h1>
+  <p class="intro">Finished lesson 2? Check what you remember, then use it to describe your own world.</p>
   <p class="context">This is the extension to <span lang="de">Lektion 2: zählen 1</span>. Review the <a href="/resources/german-lesson-2-main">main lesson</a> first if these topics are new to you.</p>
-  <nav aria-label="Lesson steps"><a href="#watch">01 Revisit</a><a href="#words">02 Review</a><a href="#practice">03 Practise</a><a href="#speak">04 Speak</a></nav>
+  <nav aria-label="Practice steps"><a href="#practice">01 Check your understanding</a><a href="#speak">02 Use it yourself</a></nav>
  </div></header>
  <div class="wrap lesson-body">
- <section id="watch" aria-labelledby="watch-title"><p class="eyebrow">01 / WATCH &amp; LISTEN</p><h2 id="watch-title">Revisit the numbers video.</h2><p>Already watched this in the main lesson? Move on to the vocabulary review, or replay it to practise the numbers again.</p>
- <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/qIGBan6NIl0?si=zIDIK9SJ2zCrztFX" title="Lesson 2 supporting video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
- <p class="small">Internet required. <a href="https://www.youtube.com/watch?v=qIGBan6NIl0">Watch on YouTube</a> if the player does not load.</p></section>
- <section id="words" aria-labelledby="words-title"><p class="eyebrow">02 / BUILD YOUR VOCABULARY</p><h2 id="words-title">The things around you.</h2><p>Say each noun with its article, then say its plural. Learn the three together.</p>
- <ul class="word-grid">{words.map(([noun,plural,english])=><li><span>{english}</span><h3 lang="de">{noun}</h3><p lang="de">{plural}</p></li>)}</ul>
- <h3 class="subheading">Count from 1 to 20.</h3><ol class="numbers">{numbers.map((word,i)=><li><span>{i+1}</span><strong lang="de">{word}</strong></li>)}</ol>
- <p class="tip">Try saying this practice phone number one digit at a time: <strong>6 – 5 – 1 – 2 – 7 – 2 – 9</strong>. Use an invented number when practising with others.</p></section>
- <section id="practice" aria-labelledby="practice-title"><p class="eyebrow">03 / UNDERSTAND &amp; PRACTISE</p><h2 id="practice-title">Put the pieces together.</h2>
- <div class="grammar-grid"><article><h3 lang="de">der, die, das</h3><p>In the nominative (the dictionary form), the article matches the noun’s gender. Learn it with the noun.</p><ul><li>Masculine: <strong lang="de">der Tisch · ein Tisch</strong></li><li>Feminine: <strong lang="de">die Tür · eine Tür</strong></li><li>Neuter: <strong lang="de">das Buch · ein Buch</strong></li><li>Plural: <strong lang="de">die Bücher</strong> (no plural of <em>ein</em>)</li></ul></article>
- <article><h3 lang="de">haben · to have</h3><p>Choose the form that matches the person.</p><ul lang="de"><li><strong>ich habe</strong> · I have</li><li><strong>du hast</strong> · you have (informal)</li><li><strong>er / sie / es hat</strong> · he / she / it has</li><li><strong>wir / sie / Sie haben</strong> · we / they / you (formal) have</li><li><strong>ihr habt</strong> · you (plural, informal) have</li></ul></article></div>
- <p class="tip">After <strong lang="de">haben</strong>, the thing you have is a direct object. Masculine <strong lang="de">ein</strong> becomes <strong lang="de">einen</strong>: <span lang="de">Ich habe einen Stift.</span> Feminine <strong>eine</strong> and neuter <strong>ein</strong> stay the same here.</p>
+ <section id="practice" aria-labelledby="practice-title"><p class="eyebrow">01 / CHECK YOUR UNDERSTANDING</p><h2 id="practice-title">Put the pieces together.</h2>
+ <p class="tip">Need a reminder? Review <a href="/resources/german-lesson-2-main#words">vocabulary and numbers</a> or <a href="/resources/german-lesson-2-main#practice">articles and <span lang="de">haben</span></a> in the main lesson, then return here.</p>
  <p>Choose one answer for each sentence, then check your work. You can change your answers and try again.</p>
  <form id="lesson-quiz">{questions.map((q,i)=><fieldset data-answer={q.answer} data-explanation={q.why}><legend><span>{String(i+1).padStart(2,'0')}</span> <span lang="de">{q.prompt}</span></legend><div class="choices">{q.options.map(option=><label><input type="radio" name={`q${i}`} value={option}/><span lang="de">{option}</span></label>)}</div><p class="feedback" aria-live="polite"></p></fieldset>)}<div class="quiz-actions"><button type="submit">Check my answers</button><button type="reset" class="secondary">Try again</button></div><p id="quiz-score" role="status"></p></form>
  <noscript><p>Interactive checking needs JavaScript. Answer key: {questions.map((q,i)=>`${i+1}. ${q.answer}`).join(' · ')}.</p></noscript>
  </section>
- <section id="speak" aria-labelledby="speak-title"><p class="eyebrow">04 / MAKE IT YOURS</p><h2 id="speak-title">Look around. What do you have?</h2><ol class="speaking"><li>Find objects at home and count them. Write three sentences using numbers.</li><li>Look up five more objects. Record each noun, its article and its plural.</li><li>Write five more sentences with these words, then say them aloud.</li></ol><p class="example" lang="de">Ich habe zu Hause 14 Bücher.</p><p>Bring your sentences and any questions to your next live session. If you are studying independently, record yourself and listen again.</p><a class="next" href="/resources/german-async#e1">Return to the curriculum →</a></section>
- <aside class="source"><h2>Source &amp; adaptation</h2><p>Adapted from <a href="https://grenzenlos-deutsch.com/familie/e1/l2/erw/">Grenzenlos Deutsch, Lektion 2: Erweiterung</a>, supplied as a web archive, under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. Vocabulary and learning tasks are drawn from the source. Explanations are condensed; this page’s multiple-choice practice replaces the original embedded activities. The supplied YouTube video is embedded separately and remains subject to its owner’s rights. This extension has no offline-saving feature.</p><p>Original funding: National Endowment for the Humanities and the Mansergh-Stuessy Fund for College Innovation. Ramzunā Languages is not affiliated with the original authors.</p></aside>
+ <section id="speak" aria-labelledby="speak-title"><p class="eyebrow">02 / MAKE IT YOURS</p><h2 id="speak-title">Look around. What do you have?</h2><ol class="speaking"><li>Find objects at home and count them. Write three sentences using numbers.</li><li>Look up five more objects. Record each noun, its article and its plural.</li><li>Write five more sentences with these words, then say them aloud.</li></ol><p class="example" lang="de">Ich habe zu Hause 14 Bücher.</p><p>Bring your sentences and any questions to your next live session. If you are studying independently, record yourself and listen again.</p><a class="next" href="/resources/german-async#e1">Return to the curriculum →</a></section>
+ <aside class="source"><h2>Source &amp; adaptation</h2><p>Adapted from <a href="https://grenzenlos-deutsch.com/familie/e1/l2/erw/">Grenzenlos Deutsch, Lektion 2: Erweiterung</a>, supplied as a web archive, under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. Independent learning tasks are drawn from the source; this page’s multiple-choice practice replaces the original embedded activities. Reference material and the video are kept in the main lesson to avoid duplication. This extension has no offline-saving feature.</p><p>Original funding: National Endowment for the Humanities and the Mansergh-Stuessy Fund for College Innovation. Ramzunā Languages is not affiliated with the original authors.</p></aside>
  </div>
 </div>
 </Base>

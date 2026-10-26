@@ -18,3 +18,21 @@ Added /resources/german-lesson-2 from the supplied extension archive, with the s
 
 ## Lesson 2 main lesson
 Added /resources/german-lesson-2-main using the supplied main-lesson ZIP. Curriculum now opens the main lesson and links onward to the existing extension. Includes video, numbers, vocabulary, adapted grammar explanations, eight text-based questions, original model dialogues and adapted speaking/culture tasks. Standalone source audio and original embedded exercises were not included as working assets because their required files were absent from the ZIP. Build passed for 70 routes; route links and quiz structure checked. Browser rendering and external playback remain unverified.
+
+## Remove repeated extension content
+Removed the repeated video, vocabulary cards, number list and grammar reference from the extension. It now contains only follow-up questions and independent writing/speaking tasks, with links back to the main lesson for reference. Build passed.
+
+## Lesson 3 extension
+Added Claudia and Anna readings, supplied Claudia audio, Anna image, supplied Vimeo embed, adapted grammar and eight practice questions, plus writing tasks. Main lesson 3 is not yet hosted. Anna audio is not included. Build and asset/link checks passed; browser playback not verified.
+
+## Lesson 3 main lesson
+Added Johannes and Julia readings and supplied audio, both supplied Vimeo videos, adapted grammar, eight practice questions, and writing tasks. Curriculum opens the main lesson, which leads to the extension. Shared grammar removed from extension and replaced by a review link. Build passed for 72 routes and media paths/navigation checked; playback remains unverified.
+
+## Lesson 4 alphabet
+Added full alphabet listing with 18 supplied recordings (A–P, R, S), native audio controls, individual downloads, spelling dialogue, speaking prompts, present-tense table and four practice questions. Missing recordings are labelled. Only one audio plays at a time. Build passed for 73 routes; media paths and counts verified. Browser playback remains unverified.
+
+## Additional alphabet recordings
+Added Q, T, U, V, W, Y, Z, Ä, Ö, Ü and ß. Alphabet now has 29 recordings; only X remains pending. Special-character filenames use explicit ASCII mappings. Production build and all 29 audio paths verified; playback remains unverified.
+
+## Lesson 4 extension and video
+Added supplied YouTube video to main lesson. Added separate extension with source-based ten-blank verb exercise, spelling tasks and useful phrases. Main lesson links to extension; recordings and video are not duplicated. Production build and page structure checks passed. Browser interaction and media playback remain unverified.
