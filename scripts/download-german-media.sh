@@ -7,7 +7,7 @@ U=https://grenzenlos-deutsch.com/familie/wp-content/uploads
 mkdir -p public/assets/german/audio public/assets/german/img public/assets/german/video
 
 for n in Yasmin Johannes Max Julia; do
-  curl -fL "$U/AUD_Familie_Einheit1_Lektion1_${n}.m4a" -o "public/assets/german/audio/AUD_Familie_Einheit1_Lektion1_${n}.m4a"
+  curl -fL "$U/AUD_Familie_Einheit1_Lektion1_${n}.mp4" -o "public/assets/german/audio/AUD_Familie_Einheit1_Lektion1_${n}.mp4"
 done
 
 for f in Yasmin-223x300.png Johannes.pgn_-211x300.png Max.pgn_-211x300.png Julia-251x300.png; do
