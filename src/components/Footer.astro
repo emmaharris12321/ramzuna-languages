@@ -7,21 +7,23 @@ const currentYear = new Date().getFullYear();
 
 const footerLinks = {
   explore: [
-    { text: 'Home', url: '/' },
     { text: 'About Us', url: '/about' },
-    { text: 'Our Name', url: '/our-name' },
-    { text: 'FAQs for Students', url: '/faq-students' },
-    { text: 'FAQs for Teachers', url: '/faq' },
+    { text: 'Programmes', url: '/services' },
+    { text: 'Palestinian Voices', url: '/palestinian-voices' },
     { text: 'Resources', url: '/resources' },
-    { text: 'Transparency', url: '/transparency' },
+    { text: 'Blog', url: '/blog' },
   ],
-  programmes: [
-    { text: 'Our Lessons', url: '/services' },
+  support: [
     { text: 'Study With Us', url: '/study-with-us' },
-    { text: 'Get Involved', url: '/teach-with-us' },
+    { text: 'Teach With Us', url: '/teach-with-us' },
     { text: 'Partner With Us', url: '/partners' },
     { text: 'Donate', url: '/donate' },
-    { text: 'Palestinian Voices', url: '/palestinian-voices' },
+  ],
+  information: [
+    { text: 'Student FAQs', url: '/faq-students' },
+    { text: 'Teacher FAQs', url: '/faq' },
+    { text: 'Transparency', url: '/transparency' },
+    { text: 'Contact', url: '/contact' },
   ],
 };
 
@@ -123,11 +125,11 @@ const socialLinks = [
         </div>
         <div>
           <h3 class="font-display text-sm font-semibold uppercase tracking-wider text-accent-200">
-            Our Programmes
+            Support
           </h3>
           <ul class="mt-4 space-y-3">
             {
-              footerLinks.programmes.map((link) => (
+              footerLinks.support.map((link) => (
                 <li>
                   <a href={link.url} class="text-accent-100 transition-colors hover:text-white">
                     {link.text}
@@ -138,30 +140,12 @@ const socialLinks = [
           </ul>
         </div>
         <div>
-          <h3 class="font-display text-sm font-semibold uppercase tracking-wider text-accent-200">
-            Contact &amp; Newsletter
-          </h3>
-          <p class="mt-4 text-accent-100">
-            Stories, programme updates, and ways to get involved; straight to your inbox.
-          </p>
-          <form
-            class="mt-4 flex flex-col gap-2 xs:flex-row"
-            onsubmit={`event.preventDefault(); const email = this.elements.email.value; window.location.href = 'mailto:${site.email}?subject=' + encodeURIComponent('Newsletter signup') + '&body=' + encodeURIComponent('Please add ' + email + ' to the newsletter list.');`}
-          >
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Your email"
-              class="w-full min-w-0 rounded-lg border border-white/25 bg-white/10 px-3 py-2.5 text-sm text-white placeholder-accent-200 focus:border-white/50 focus:outline-none"
-            />
-            <button
-              type="submit"
-              class="flex-shrink-0 rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
-            >
-              Subscribe
-            </button>
-          </form>
+          <h3 class="font-display text-sm font-semibold uppercase tracking-wider text-accent-200">Information</h3>
+          <ul class="mt-4 space-y-3">
+            {footerLinks.information.map((link) => (
+              <li><a href={link.url} class="text-accent-100 transition-colors hover:text-white">{link.text}</a></li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
@@ -174,7 +158,7 @@ const socialLinks = [
         &copy; {currentYear} {site.name}. All rights reserved. A volunteer-powered nonprofit. 
       </p>
 <p class= "text-sm text-accent-300">
-UK Registration Number: 17498643
+UK Company Number: 17498643
 </p>
       <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 sm:pr-16">
         <a href="/privacy" class="text-sm text-accent-300 transition-colors hover:text-white">Privacy Policy</a>

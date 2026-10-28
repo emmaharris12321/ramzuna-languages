@@ -34,7 +34,7 @@ social:
 header:
   darkMode: true
 
-# Navigation
+# Navigation — priority journeys are direct links; secondary information is grouped.
 nav:
   - text: About
     children:
@@ -46,37 +46,29 @@ nav:
         url: /our-approach
   - text: Programmes
     url: /services
+  - text: Study With Us
+    url: /study-with-us
   - text: Get Involved
     children:
-      - text: Study with Us
-        url: /study-with-us
-      - text: Teach with Us
+      - text: Teach With Us
         url: /teach-with-us
       - text: Become a Conversation Partner
         url: /become-a-conversation-partner
       - text: Partner With Us
         url: /partners
-      - text: Donate
-        url: /donate
   - text: Palestinian Voices
     url: /palestinian-voices
-  - text: Blog
-    url: /blog
   - text: Resources
     children:
+      - text: All Resources
+        url: /resources
       - text: Language Resources
         url: /resources/language-resources
-      - text: Mental Health Resources for Palestinians
+      - text: Mental Health Resources
         url: /resources/mental-health-resources
       - text: Palestine & Arabic Resources
         url: /resources/learning-about-palestine
-      - text: German Asynchronous Resources
+      - text: German Resources
         url: /resources/german-async
-  - text: FAQs
-    children:
-      - text: FAQs for Students
-        url: /faq-students
-      - text: FAQs for Teachers
-        url: /faq
-  - text: Contact
-    url: /contact
+      - text: Blog
+        url: /blog
