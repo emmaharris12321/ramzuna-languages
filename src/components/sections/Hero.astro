@@ -27,12 +27,12 @@ const {
 ---
 
 <section
-  class="relative overflow-hidden bg-gradient-to-b from-primary-50 to-white dark:from-gray-900 dark:to-gray-950"
+  class="ramzuna-editorial-hero relative overflow-hidden bg-gradient-to-b from-primary-50 to-white dark:from-gray-900 dark:to-gray-950"
 >
-  <div class="container mx-auto px-4 py-20 lg:px-8 lg:py-32">
-    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+  <div class="container mx-auto px-4 py-16 lg:px-8 lg:py-28">
+    <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-14">
       <!-- Content -->
-      <div>
+      <div class="lg:col-span-7">
         {
           badge && (
             <div
@@ -48,7 +48,7 @@ const {
         }
 
         <h1
-          class="font-display text-3xl font-semibold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white"
+          class="font-display text-4xl font-medium leading-[1.13] tracking-tight text-gray-900 sm:text-5xl lg:text-6xl xl:text-[4.35rem] dark:text-white"
           data-animate="fade-in-up"
           data-delay="100"
         >
@@ -64,7 +64,7 @@ const {
         </h1>
 
         <p
-          class="mt-6 max-w-xl text-lg text-gray-600 dark:text-gray-400"
+          class="mt-8 max-w-xl border-l-2 border-primary-500 pl-5 text-lg leading-8 text-gray-600 dark:text-gray-400"
           data-animate="fade-in-up"
           data-delay="200"
         >
@@ -168,20 +168,20 @@ const {
       {
         image && (
           <div
-            class="relative"
+            class="relative lg:col-span-5"
             data-animate="fade-in-up"
             data-delay="300"
           >
-            <div class="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-800">
+            <div class="relative overflow-hidden rounded-[2rem] shadow-xl ring-1 ring-gray-200 dark:ring-gray-800">
               <img
                 src={image}
                 alt="Students learning languages online with volunteer educators"
-                class="h-auto w-full object-cover"
+                class="aspect-[4/5] w-full object-cover"
                 loading="eager"
               />
             </div>
             <!-- Floating badge -->
-            <div class="absolute -bottom-4 -left-4 rounded-xl bg-white p-4 shadow-lg dark:bg-gray-800 sm:-bottom-6 sm:-left-6">
+            <div class="absolute -bottom-4 left-4 rounded-xl border border-gray-200 bg-white p-4 shadow-lg dark:border-gray-700 dark:bg-gray-800 sm:-bottom-6 sm:left-6">
               <div class="flex items-center gap-3">
                 <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900/50">
                   <svg class="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -200,3 +200,13 @@ const {
     </div>
   </div>
 </section>
+
+<style>
+  /* Stronger editorial composition, using the site's existing palette only. */
+  .ramzuna-editorial-hero { isolation: isolate; }
+  .ramzuna-editorial-hero::before {
+    content: ''; position: absolute; width: 38rem; height: 38rem; border-radius: 50%;
+    right: -21rem; top: -25rem; background: rgb(0 0 0 / 0.025); pointer-events: none;
+  }
+  @media (max-width: 1023px) { .ramzuna-editorial-hero::before { display: none; } }
+</style>

@@ -1,15 +1,18 @@
-# Ramzunā visual refinement (review version)
+# Ramzunā design refinement — version 2
 
-This is a conservative, reversible aesthetic update, based on the last agreed Learn With Us navigation.
+Visible changes compared with the previous ZIP:
+- Homepage hero uses a stronger editorial 7/5-column split, larger headings and a portrait-cropped image.
+- Introductory copy now has a left accent rule using the **existing** primary colour.
+- The floating “100% Free” badge is anchored within the image area.
+- The decorative wave below the hero is replaced by a clean fine divider.
+- Cards gain more defined but restrained hover treatment; section rhythm is more spacious.
+- The agreed Learn With Us menu and Donate action are preserved.
 
-- Existing colour tokens, logo, fonts, text and pages have been retained.
-- Stable base font size replaces desktop-wide scaling of every rem value.
-- Buttons have softer shadows and a consistent minimum touch height.
-- Cards have a subtle border and restrained shadow instead of heavy elevation.
-- Section vertical spacing has been made slightly tighter and more consistent.
-- Header background is more opaque for better legibility while scrolling.
-- Heading wrapping and reduced-motion preferences are improved.
+No palette values, brand fonts, logo, or page copy were changed.
+This is a source archive. Browser and build verification are still recommended before deployment.
 
-Files modified: src/css/input.css and src/components/Header.astro.
-
-Review on desktop and mobile before deployment; this archive has not been browser-tested.
+## V3 — Visible imagery and cultural detail
+- Added a prominent, two-image editorial feature on the homepage using existing local Ramzunā assets: `student-conversation-photo.jpg` and `ramzuna-heritage-banner.png`.
+- Images link to Study With Us and Palestinian Voices; responsive crops, accessible labels and keyboard focus states are included.
+- Added a restrained typographic eyebrow and decorative divider; no colour tokens or brand colours were changed.
+- No external stock photos or unverified participant images were introduced.

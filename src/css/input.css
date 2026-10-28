@@ -287,3 +287,11 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Visual refinement v2: stronger hierarchy while preserving all configured colours. */
+@layer components {
+  .section { @apply py-20 lg:py-28; }
+  .card { border-radius: 1.25rem; box-shadow: 0 3px 14px -8px rgb(0 0 0 / .13); }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -14px rgb(0 0 0 / .20); }
+}
+@media (prefers-reduced-motion: reduce) { .card:hover { transform: none; } }
