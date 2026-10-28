@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#234132"/>
+  <circle cx="60" cy="345" r="120" fill="white" opacity="0.06"/>
+  <circle cx="545" cy="55" r="110" fill="white" opacity="0.06"/>
+
+  <!-- Scales of justice -->
+  <g transform="translate(300,150)">
+    <!-- stand -->
+    <rect x="-6" y="0" width="12" height="150" rx="4" fill="#f3e6d0"/>
+    <ellipse cx="0" cy="152" rx="60" ry="12" fill="#f3e6d0"/>
+    <!-- beam -->
+    <rect x="-140" y="-6" width="280" height="10" rx="4" fill="#f3e6d0"/>
+    <circle cx="0" cy="-1" r="12" fill="#f3e6d0"/>
+
+    <!-- left pan -->
+    <line x1="-130" y1="0" x2="-150" y2="70" stroke="#f3e6d0" stroke-width="4"/>
+    <line x1="-130" y1="0" x2="-110" y2="70" stroke="#f3e6d0" stroke-width="4"/>
+    <path d="M-160 70 Q-130 105 -100 70 Z" fill="none" stroke="#e3bcbe" stroke-width="5"/>
+
+    <!-- right pan -->
+    <line x1="130" y1="0" x2="150" y2="70" stroke="#f3e6d0" stroke-width="4"/>
+    <line x1="130" y1="0" x2="110" y2="70" stroke="#f3e6d0" stroke-width="4"/>
+    <path d="M160 70 Q130 105 100 70 Z" fill="none" stroke="#e3bcbe" stroke-width="5"/>
+  </g>
+
+  <!-- Open book beneath the scales -->
+  <g transform="translate(300,300)">
+    <path d="M-110 -10 C-60 -28 -20 -28 0 -8 C20 -28 60 -28 110 -10 L110 22 C60 4 20 4 0 24 C-20 4 -60 4 -110 22 Z" fill="#f3e6d0"/>
+    <line x1="0" y1="-8" x2="0" y2="24" stroke="#38664f" stroke-width="3" opacity="0.5"/>
+    <g stroke="#38664f" stroke-width="2.5" opacity="0.45">
+      <line x1="-85" y1="-6" x2="-25" y2="-12"/>
+      <line x1="-85" y1="4" x2="-25" y2="-2"/>
+      <line x1="-85" y1="14" x2="-25" y2="8"/>
+      <line x1="85" y1="-6" x2="25" y2="-12"/>
+      <line x1="85" y1="4" x2="25" y2="-2"/>
+      <line x1="85" y1="14" x2="25" y2="8"/>
+    </g>
+  </g>
+
+  <!-- small stars -->
+  <g fill="#e3bcbe" opacity="0.85">
+    <path d="M110 90 l6 12 13 2 -9 9 2 13 -12 -6 -12 6 2 -13 -9 -9 13 -2 z"/>
+    <path d="M480 130 l5 10 11 1 -8 7 2 11 -10 -5 -10 5 2 -11 -8 -7 11 -1 z"/>
+  </g>
+</svg>

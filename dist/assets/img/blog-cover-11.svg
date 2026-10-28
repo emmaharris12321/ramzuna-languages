@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#234132"/>
+  <circle cx="60" cy="335" r="120" fill="white" opacity="0.06"/>
+  <circle cx="540" cy="55" r="100" fill="white" opacity="0.06"/>
+
+  <!-- Faint house outline -->
+  <g stroke="#f3e6d0" stroke-width="2.5" fill="none" opacity="0.22">
+    <path d="M215 235 L300 165 L385 235"/>
+    <rect x="235" y="235" width="130" height="95"/>
+    <rect x="278" y="270" width="30" height="60"/>
+  </g>
+
+  <!-- Key -->
+  <g transform="translate(300,205) rotate(-28)">
+    <circle cx="-125" cy="0" r="34" fill="none" stroke="#f3e6d0" stroke-width="14"/>
+    <rect x="-95" y="-7" width="200" height="14" fill="#f3e6d0"/>
+    <rect x="80" y="7" width="14" height="24" fill="#f3e6d0"/>
+    <rect x="55" y="7" width="14" height="34" fill="#f3e6d0"/>
+    <rect x="30" y="7" width="14" height="24" fill="#f3e6d0"/>
+  </g>
+
+  <!-- Small stars -->
+  <g fill="#e3bcbe" opacity="0.85">
+    <path d="M470 300 l6 12 13 2 -9 9 2 13 -12 -6 -12 6 2 -13 -9 -9 13 -2 z"/>
+    <path d="M120 80 l5 10 11 1 -8 7 2 11 -10 -5 -10 5 2 -11 -8 -7 11 -1 z"/>
+  </g>
+</svg>
