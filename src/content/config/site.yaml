@@ -48,6 +48,8 @@ nav:
     url: /services
   - text: Study With Us
     url: /study-with-us
+  - text: Self-Paced German Lessons
+    url: /resources/german-async
   - text: Get Involved
     children:
       - text: Teach With Us
@@ -68,7 +70,5 @@ nav:
         url: /resources/mental-health-resources
       - text: Palestine & Arabic Resources
         url: /resources/learning-about-palestine
-      - text: German Resources
-        url: /resources/german-async
       - text: Blog
         url: /blog
