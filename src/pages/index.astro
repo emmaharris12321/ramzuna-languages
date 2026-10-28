@@ -14,35 +14,13 @@ const page = await getHomepage();
 
 <Base title="Free English, French & German Lessons for Palestinian Students" description="Ramzunā Languages is dedicated to providing free and personalised English,French and German lessons to Palestinian students. Sign up to learn, or apply to teach Palestinian students today.">
   <Hero {...page.hero} />
-  <!-- Clean editorial transition instead of a decorative wave -->
-  <div class="mx-auto h-px max-w-6xl bg-primary-200/70 dark:bg-gray-800" aria-hidden="true"></div>
+  <!-- Wave Divider -->
+  <div class="relative -mt-1 text-gray-50 dark:text-gray-900">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" preserveAspectRatio="none">
+      <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="currentColor" />
+    </svg>
+  </div>
   <ProgrammesAndInvolved />
-
-  <!-- Editorial image feature: existing Ramzunā imagery, not generic stock photos. -->
-  <section class="ramzuna-image-feature py-16 lg:py-24" aria-labelledby="ramzuna-feature-title">
-    <div class="container mx-auto px-4 lg:px-8">
-      <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div class="max-w-2xl">
-          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary-700 dark:text-primary-300">Language · Community · Identity</p>
-          <h2 id="ramzuna-feature-title" class="font-display text-3xl leading-tight text-gray-900 dark:text-white sm:text-4xl">Learning is also a way of connecting.</h2>
-        </div>
-        <p class="max-w-sm text-base leading-relaxed text-gray-600 dark:text-gray-300">Explore the people, cultural context and educational opportunities at the heart of Ramzunā.</p>
-      </div>
-      <div class="grid gap-6 md:grid-cols-12">
-        <a href="/study-with-us" class="group relative block overflow-hidden rounded-2xl md:col-span-7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-600">
-          <img src="/assets/img/student-conversation-photo.jpg" alt="Language learning and conversation" loading="lazy" decoding="async" class="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] md:h-[420px]" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 p-7 text-white md:p-9"><span class="mb-2 block text-xs font-semibold uppercase tracking-[0.16em]">Education</span><h3 class="font-display text-2xl md:text-3xl">Study with us <span aria-hidden="true">↗</span></h3></div>
-        </a>
-        <a href="/palestinian-voices" class="group relative block overflow-hidden rounded-2xl md:col-span-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-600">
-          <img src="/assets/img/ramzuna-heritage-banner.png" alt="Ramzunā cultural heritage artwork" loading="lazy" decoding="async" class="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-[1.035] md:h-[420px]" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 p-7 text-white md:p-9"><span class="mb-2 block text-xs font-semibold uppercase tracking-[0.16em]">Culture & identity</span><h3 class="font-display text-2xl md:text-3xl">Palestinian voices <span aria-hidden="true">↗</span></h3></div>
-        </a>
-      </div>
-      <div class="mt-7 flex items-center gap-4" aria-hidden="true"><span class="h-px w-12 bg-primary-600"></span><span class="text-sm tracking-[0.3em] text-primary-700">✦</span><span class="h-px flex-1 bg-primary-200"></span></div>
-    </div>
-  </section>
 
   {page.howItWorks && <HowItWorks {...page.howItWorks} />}
   {page.terms && <Terms badge={page.terms.badge} title={page.terms.title} description={page.terms.description} terms={page.terms.items} />}
