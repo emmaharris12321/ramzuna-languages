@@ -32,7 +32,7 @@ interface NavItem {
   </div>
 </div>
 <header
-  class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur-md transition-all dark:border-gray-800 dark:bg-gray-950/80"
+  class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg transition-all dark:border-gray-800 dark:bg-gray-950/80"
   data-header
 >
   <div
@@ -57,7 +57,7 @@ interface NavItem {
 
     <!-- Desktop Navigation -->
     <nav
-      class="hidden lg:flex lg:items-center lg:gap-3 xl:gap-5"
+      class="hidden lg:flex lg:items-center lg:gap-4 xl:gap-6"
       aria-label="Main navigation"
     >
       {
@@ -79,7 +79,7 @@ interface NavItem {
                   i >= nav.length - 3 ? 'right-0' : 'left-0',
                 ]}
               >
-                <div class="rounded-xl border border-gray-200 bg-white py-2 shadow-md dark:border-gray-800 dark:bg-gray-900">
+                <div class="rounded-xl border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-800 dark:bg-gray-900">
                   {item.children.map((child) => (
                     <a
                       href={child.url}

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fefaf3"/>
+  <circle cx="400" cy="310" r="200" fill="#7a222b" opacity="0.1"/>
+  <circle cx="400" cy="310" r="150" fill="#38664f"/>
+
+  <!-- radiating opportunity lines -->
+  <g stroke="#7a222b" stroke-width="4" stroke-linecap="round" opacity="0.55">
+    <line x1="400" y1="120" x2="400" y2="90"/>
+    <line x1="540" y1="175" x2="562" y2="155"/>
+    <line x1="260" y1="175" x2="238" y2="155"/>
+    <line x1="596" y1="310" x2="626" y2="310"/>
+    <line x1="204" y1="310" x2="174" y2="310"/>
+  </g>
+
+  <!-- open book -->
+  <g transform="translate(300,270)">
+    <path d="M100 0 C 60 -18 20 -14 0 0 V120 C 20 106 60 102 100 120 Z" fill="white"/>
+    <path d="M100 0 C 140 -18 180 -14 200 0 V120 C 180 106 140 102 100 120 Z" fill="#f5e9e9"/>
+    <path d="M100 0 V120" stroke="#234132" stroke-width="4"/>
+    <g stroke="#38664f" stroke-width="3" opacity="0.7">
+      <line x1="18" y1="20" x2="80" y2="10"/>
+      <line x1="18" y1="42" x2="80" y2="34"/>
+      <line x1="18" y1="64" x2="80" y2="58"/>
+      <line x1="120" y1="10" x2="182" y2="20"/>
+      <line x1="120" y1="34" x2="182" y2="42"/>
+      <line x1="120" y1="58" x2="182" y2="64"/>
+    </g>
+  </g>
+
+  <!-- graduation cap above the book -->
+  <g transform="translate(340,180)">
+    <path d="M60 0 L120 24 L60 48 L0 24 Z" fill="#7a222b"/>
+    <path d="M30 34 V58 C30 70 90 70 90 58 V34" fill="none" stroke="#7a222b" stroke-width="5" stroke-linecap="round"/>
+    <line x1="120" y1="24" x2="120" y2="56" stroke="#234132" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="120" cy="60" r="5" fill="#234132"/>
+  </g>
+
+  <!-- small floating dots for "reach" -->
+  <circle cx="230" cy="420" r="8" fill="#7a222b" opacity="0.6"/>
+  <circle cx="580" cy="430" r="10" fill="#38664f" opacity="0.5"/>
+  <circle cx="600" cy="200" r="6" fill="#7a222b" opacity="0.5"/>
+</svg>

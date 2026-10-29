@@ -14,7 +14,11 @@
      titles look oversized. Desktop gets a small bump on top since it has
      more room. Threshold is 1280px (not the 1024px nav breakpoint) so the
      desktop nav still has room to lay out horizontally first. */
-  /* Keep a stable base size; responsive typography is handled by headings. */
+  @media (min-width: 1280px) {
+    html {
+      font-size: 18px;
+    }
+  }
 
   /* Outfit is the site's body font (Playfair Display is reserved for
      display headings via the font-display utility). Setting it here, once,
@@ -42,7 +46,7 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 bg-primary-600 text-white shadow-sm hover:bg-primary-700 hover:shadow-md focus:ring-primary-500;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 bg-primary-600 text-white shadow-lg shadow-primary-600/25 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-600/30 focus:ring-primary-500;
   }
 
   .btn-secondary {
@@ -50,22 +54,21 @@
   }
 
   .btn-accent {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 bg-accent-500 text-white shadow-sm hover:bg-accent-600 hover:shadow-md focus:ring-accent-500;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 bg-accent-500 text-white shadow-lg shadow-accent-500/25 hover:bg-accent-600 hover:shadow-xl hover:shadow-accent-500/30 focus:ring-accent-500;
   }
 
   /* Card */
   .card {
     @apply rounded-2xl bg-white p-6 transition-shadow dark:bg-gray-900;
-    border: 1px solid rgba(85, 85, 85, 0.10);
-    box-shadow: 0 2px 12px -5px rgba(0, 0, 0, 0.09);
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
   }
   .card:hover {
-    box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.14);
   }
 
   /* Section spacing */
   .section {
-    @apply py-16 lg:py-24;
+    @apply py-20 lg:py-28;
   }
 
   /* Container */
@@ -271,19 +274,4 @@
 
 .dark .prose hr {
   border-color: theme(colors.gray.800);
-}
-
-/* Editorial refinement: existing Tailwind colours and fonts remain untouched. */
-@layer base {
-  h1, h2, h3 { text-wrap: balance; }
-  p { text-wrap: pretty; }
-  ::selection { background: rgba(92, 132, 103, .24); }
-}
-@layer components {
-  .container-narrow { max-width: 68rem; }
-  .card { height: 100%; }
-  .btn, .btn-primary, .btn-secondary, .btn-accent { min-height: 2.75rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }

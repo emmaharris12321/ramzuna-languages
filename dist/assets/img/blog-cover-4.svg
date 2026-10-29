@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#e3bcbe"/>
+  <circle cx="500" cy="60" r="110" fill="white" opacity="0.25"/>
+  <circle cx="70" cy="345" r="130" fill="white" opacity="0.2"/>
+
+  <!-- Sun -->
+  <g transform="translate(455,95)">
+    <circle cx="0" cy="0" r="34" fill="#7a222b"/>
+    <g stroke="#7a222b" stroke-width="6" stroke-linecap="round">
+      <line x1="0" y1="-52" x2="0" y2="-68"/>
+      <line x1="0" y1="52" x2="0" y2="68"/>
+      <line x1="-52" y1="0" x2="-68" y2="0"/>
+      <line x1="52" y1="0" x2="68" y2="0"/>
+      <line x1="-37" y1="-37" x2="-48" y2="-48"/>
+      <line x1="37" y1="37" x2="48" y2="48"/>
+      <line x1="-37" y1="37" x2="-48" y2="48"/>
+      <line x1="37" y1="-37" x2="48" y2="-48"/>
+    </g>
+  </g>
+
+  <!-- Rising bar chart -->
+  <g transform="translate(160,320)">
+    <rect x="0" y="-40" width="46" height="40" rx="6" fill="#234132"/>
+    <rect x="60" y="-75" width="46" height="75" rx="6" fill="#234132"/>
+    <rect x="120" y="-118" width="46" height="118" rx="6" fill="#38664f"/>
+    <rect x="180" y="-160" width="46" height="160" rx="6" fill="#38664f"/>
+    <path d="M8 -48 L68 -85 L128 -128 L196 -178" stroke="#fefaf3" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <path d="M196 -178 l-22 4 8 20 z" fill="#fefaf3"/>
+  </g>
+</svg>
