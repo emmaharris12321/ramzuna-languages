@@ -18,7 +18,7 @@ logo:
 phone: "+1 (312) 555-0148"
 email: contacteam@ramzunalanguages.org
 address:
-  street: Remote & Online Programme
+  street: Remote Programme
   city: UK and Palestine
   state: ""
   zip: ""
@@ -47,10 +47,10 @@ nav:
 
   - text: Learn With Us
     children:
-      - text: Study With Us
-        url: /study-with-us
       - text: Our Programmes
         url: /services
+      - text: Study With Us
+        url: /study-with-us
       - text: Self-Paced German Lessons
         url: /resources/german-async
 
