@@ -44,12 +44,14 @@ nav:
         url: /our-name
       - text: Our Approach
         url: /our-approach
+
+  - text: Our Programmes
+    url: /services
+
   - text: Learn With Us
     children:
       - text: Study With Us
         url: /study-with-us
-      - text: Our Programmes
-        url: /services
       - text: Self-Paced German Lessons
         url: /resources/german-async
   - text: Get Involved
