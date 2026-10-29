@@ -72,5 +72,5 @@ nav:
         url: /resources/mental-health-resources
       - text: Palestine & Arabic Resources
         url: /resources/learning-about-palestine
-      - text: Blog
-        url: /blog
+   - text: Blog
+    url: /blog
