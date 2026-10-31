@@ -12,11 +12,19 @@
   "dependencies": {
     "@astrojs/mdx": "^7.0.5",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.2.2"
+    "astro": "^7.2.2",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "fflate": "^0.8.3",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "source-map-js": "^1.2.2",
+    "vite": "^8.3.3"
+  },
+  "overrides": {
+    "sharp": "$sharp",
+    "source-map-js": "$source-map-js",
+    "vite": "$vite"
   }
 }
