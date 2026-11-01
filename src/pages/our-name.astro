@@ -1,0 +1,396 @@
+---
+import Base from '@/layouts/Base.astro';
+
+const poemStanzas = [
+  {
+    en: `My homeland, My homeland
+Glory and beauty, Sublimity and splendor
+Are in your hills, Are in your hills
+Life and deliverance, Pleasure and hope
+Are in your air, Are in your air
+Will I see you? Will I see you?
+Safe and comforted, Sound and honored
+Will I see you in your eminence?
+Reaching to the stars, Reaching to the stars
+My homeland, My homeland`,
+    ar: `مَوْطِنِي مَوْطِنِي
+اَلْجَلَالُ وَالْجَمَالُ وَالسَّنَاءُ وَالْبَهَاءُ
+فِي رُبَاكْ فِي رُبَاكْ
+وَالْحَيَاةُ وَالنَّجَاةُ وَالْهَنَاءُ وَالرَّجَاءُ
+فِي هَوَاكْ فِي هَوَاكْ
+هَلْ أَرَاكْ هَلْ أَرَاكْ
+سَالِمًا مُنَعَّمًا وَغَانِمًا مُكَرَّمًا
+هَلْ أَرَاكْ فِي عُلَاكْ
+تَبْلُغُ السِّمَاكْ تَبْلُغُ السِّمَاكْ
+مَوْطِنِي مَوْطِنِي`,
+  },
+  {
+    en: `My homeland, My homeland
+The youth will not tire, 'till your independence
+Or they die, Or they die
+We will drink from death
+And will not be to our enemies
+Like slaves, Like slaves
+We do not want, We do not want
+An eternal humiliation
+Nor a miserable life
+We do not want
+But we will bring back
+Our storied glory, Our storied glory
+My homeland, My homeland`,
+    ar: `مَوْطِنِي مَوْطِنِي
+اَلشَّبَابُ لَنْ يَكِلَّ هَمُّهُ أَنْ يَسْتَقِلَّ
+أَوْ يَبِيدْ أَوْ يَبِيدْ
+نَسْتَقِي مِنَ الرَّدَىٰ وَلَنْ نَكُونَ لِلْعِدَىٰ
+كَالْعَبِيدْ كَالْعَبِيدْ
+لَا نُرِيدْ لَا نُرِيدْ
+ذُلَّنَا الْمُؤَبَّدَا وَعَيْشَنَا الْمُنَكَّدَا
+لَا نُرِيدْ بَلْ نُعِيدْ
+مَجْدَنَا التَّلِيدْ مَجْدَنَا التَّلِيدْ
+مَوْطِنِي مَوْطِنِي`,
+  },
+  {
+    en: `The sword and the pen
+Not the talk nor the quarrel
+[[Are our symbols, Are our symbols]]
+Our glory and our covenant
+And a duty to be faithful
+Moves us, moves us
+Our glory, Our glory
+Is an honorable cause
+And a waving standard
+O, behold you
+In your eminence
+Victorious over your enemies
+Victorious over your enemies
+My homeland, My homeland`,
+    ar: `اَلْحُسَامُ وَالْيَرَاعُ لَا الْكَلَامُ وَالنِّزَاعُ
+[[رَمْزُنَا رَمْزُنَا]]
+مَجْدُنَا وَعَهْدُنَا وَوَاجِبٌ مِنَ الْوَفَاء
+يَهُزُّنَا يَهُزُّنَا
+عِزُّنَا عِزُّنَا
+غَايَةٌ تُشَرِّفُ وَرَايَةٌ تُرَفْرِفُ
+يَا هَنَاكْ فِي عُلَاكْ
+قَاهِرًا عِدَاكْ قَاهِرًا عِدَاكْ
+مَوْطِنِي مَوْطِنِي`,
+  },
+];
+---
+
+<Base title="Our Name" description="The story behind the name Ramzunā and the poem that inspired it.">
+  <!-- Page Header -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Our Name</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        The story behind the name Ramzunā, and the poem that inspired it.
+      </p>
+      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <span>/</span>
+        <a href="/about" class="transition-colors hover:text-white">About</a>
+        <span>/</span>
+        <span class="text-white">Our Name</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Our Name: hero split -->
+  <section class="py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="order-2 text-center lg:order-1 lg:text-left">
+          <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
+            Our Name
+          </div>
+          <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+            Ramzunā
+          </h2>
+          <p class="mt-2 text-xl text-accent-600 dark:text-accent-400" lang="ar" dir="rtl">رَمْزُنَا</p>
+          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+            The name Ramzunā is rooted in the Arabic word <span class="font-semibold text-accent-600 dark:text-accent-400">Ramz</span> (symbol). It becomes &ldquo;Our Symbol&rdquo; by adding the suffix <span class="font-semibold text-accent-600 dark:text-accent-400">-nā</span>.
+          </p>
+          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+            It is a name we chose deliberately: a symbol of Palestinian identity, resilience, and the right to be heard &mdash; carried into every lesson we teach.
+          </p>
+        </div>
+        <div class="order-1 mx-auto flex aspect-square w-full max-w-sm items-center justify-center rounded-full bg-gradient-to-br from-primary-50 to-accent-50 lg:order-2 dark:from-gray-800 dark:to-gray-800/60">
+          <img
+            src="/assets/img/ramzuna-wordmark.png"
+            alt="The word Ramzunā written in Arabic calligraphy"
+            class="h-4/5 w-4/5 object-contain"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Pull-quote: the moment the word appears in the poem -->
+      <div class="mx-auto mt-14 max-w-3xl rounded-3xl bg-primary-800 px-6 py-10 text-center shadow-soft-lg sm:px-12 dark:bg-primary-900">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary-300">Where our name comes from</p>
+        <p class="mt-5 font-display text-2xl italic leading-relaxed text-white sm:text-3xl" lang="ar" dir="rtl">
+          رَمْزُنَا رَمْزُنَا
+        </p>
+        <p class="mt-3 font-display text-lg italic text-primary-100 sm:text-xl">
+          &ldquo;Our symbol, our symbol&rdquo;
+        </p>
+        <p class="mt-4 text-sm text-primary-200">
+          The refrain from the final stanza of <span class="font-semibold text-white">Mawtinī</span> &mdash; the line that gave Ramzunā Languages its name.
+        </p>
+      </div>
+
+      <div aria-hidden="true" class="my-14 text-center text-sm tracking-[0.6em] text-accent-400 dark:text-accent-500">
+        &#9670;&#9670;&#9670;
+      </div>
+
+      <!-- The Inspiration: text + poet portrait -->
+      <div class="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="text-center lg:text-left">
+          <h3 class="font-display text-2xl font-semibold text-accent-600 dark:text-accent-400">The Inspiration</h3>
+          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+            Our name is a tribute to the 1934 poem <span class="font-semibold text-gray-900 dark:text-white">Mawtinī</span> (&ldquo;My Homeland&rdquo;), by the Palestinian poet Ibrahim Tuqan.
+          </p>
+          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+            For decades, this poem served as the unofficial national anthem, preserved and sung as an affirmation of belonging in the face of displacement and erasure. In 2004 its melody was formally adopted as the national anthem of Iraq.
+          </p>
+          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+            Today, <span class="font-semibold text-gray-900 dark:text-white">Mawtinī</span> remains one of the most widely recited poems across the Arab world &mdash; taught to children, sung at gatherings, and carried by Palestinians wherever they are.
+          </p>
+        </div>
+        <div class="mx-auto flex w-full max-w-sm flex-col items-center gap-3 rounded-3xl bg-cream-100 p-6 text-center shadow-soft dark:bg-gray-800">
+          <img
+            src="/assets/img/ibrahim-tuqan.jpg"
+            alt="Portrait of Ibrahim Tuqan"
+            loading="lazy"
+            class="h-24 w-24 flex-shrink-0 rounded-full border-4 border-white object-cover object-[50%_15%] shadow-md dark:border-gray-700"
+          />
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-accent-600 dark:text-accent-400">The Poet</p>
+            <p class="mt-1 font-display text-lg font-semibold text-gray-900 dark:text-white">Ibrahim Tuqan</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Nablus, Palestine &middot; 1905&ndash;1941</p>
+          </div>
+          <p class="border-t border-gray-200 pt-3 text-sm leading-relaxed text-gray-500 dark:border-gray-700 dark:text-gray-400">
+            Tuqan taught Arabic literature in Nablus and Beirut before his words became a rallying cry for Palestinian identity &mdash; a fitting echo of our own mission.
+          </p>
+          <p class="text-xs text-gray-400 dark:text-gray-500">Public domain portrait, Wikimedia Commons</p>
+        </div>
+      </div>
+
+      <div aria-hidden="true" class="my-14 text-center text-sm tracking-[0.6em] text-accent-400 dark:text-accent-500">
+        &#9670;&#9670;&#9670;
+      </div>
+
+      <!-- What It Stands For -->
+      <div class="mx-auto max-w-xl text-center">
+        <h3 class="font-display text-2xl font-semibold text-primary-600 dark:text-primary-400">What It Stands For</h3>
+        <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+          In the verses of <span class="font-semibold text-gray-900 dark:text-white">Mawtinī</span>, we find the values that drive our mission:
+        </p>
+      </div>
+
+      <div class="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-3">
+        <div class="rounded-2xl border-t-4 border-accent-500 bg-white p-6 text-center shadow-sm transition-transform hover:-translate-y-1 dark:bg-gray-800">
+          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-100 text-accent-600 dark:bg-accent-900/50 dark:text-accent-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437 5.147-4.242" />
+            </svg>
+          </div>
+          <p class="font-semibold text-accent-600 dark:text-accent-400">Dignity &amp; Patience</p>
+          <p class="mt-2 text-gray-600 dark:text-gray-400">The resilience to keep learning.</p>
+        </div>
+        <div class="rounded-2xl border-t-4 border-primary-500 bg-white p-6 text-center shadow-sm transition-transform hover:-translate-y-1 dark:bg-gray-800">
+          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+            </svg>
+          </div>
+          <p class="font-semibold text-primary-600 dark:text-primary-400">Connection to Land</p>
+          <p class="mt-2 text-gray-600 dark:text-gray-400">Education as a form of sumud.</p>
+        </div>
+        <div class="rounded-2xl border-t-4 border-accent-500 bg-white p-6 text-center shadow-sm transition-transform hover:-translate-y-1 dark:bg-gray-800">
+          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-100 text-accent-600 dark:bg-accent-900/50 dark:text-accent-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+          </div>
+          <p class="font-semibold text-accent-600 dark:text-accent-400">Empowerment</p>
+          <p class="mt-2 text-gray-600 dark:text-gray-400">Language as a path towards self-determination.</p>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-10 max-w-xl text-center">
+        <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+          Ramzunā Languages draws on this cultural reference to fuel our commitment to education.
+        </p>
+
+        <!-- Accordion: the poem behind our name -->
+        <div class="mx-auto mt-10 max-w-2xl overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 text-left shadow-soft-lg dark:from-primary-800 dark:to-primary-900">
+          <button
+            type="button"
+            data-faq-toggle
+            class="flex w-full items-center gap-4 px-6 py-6 text-left"
+          >
+            <span class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-white/15 text-white">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+              </svg>
+            </span>
+            <span class="flex-1">
+              <span class="block text-lg font-semibold text-white">Read the Poem Behind Our Name</span>
+              <span class="mt-0.5 block text-sm text-primary-100">Mawtinī &mdash; in Arabic and English, by Ibrahim Tuqan</span>
+            </span>
+            <span
+              data-faq-icon
+              class="ml-2 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition-transform duration-200"
+            >
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12M6 12h12" />
+              </svg>
+            </span>
+          </button>
+          <div class="overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+            <div class="bg-primary-900/20 px-6 py-10 sm:px-10">
+              <div data-poem data-mode="ar" class="poem-block mt-0">
+                <div class="poem-langs">
+                  <button type="button" data-set-lang="ar" class="poem-lang-btn is-active" lang="ar">العربية</button>
+                  <button type="button" data-set-lang="both" class="poem-lang-btn">Both</button>
+                  <button type="button" data-set-lang="en" class="poem-lang-btn">English</button>
+                </div>
+
+                {poemStanzas.map((stanza) => (
+                  <div class="poem-pair">
+                    <div class="poem-col poem-en">
+                      <p class="poem-text">
+                        {stanza.en.split(/\[\[|\]\]/).map((part, i) =>
+                          i % 2 === 1 ? <span class="poem-highlight">{part}</span> : part
+                        )}
+                      </p>
+                    </div>
+                    <div class="poem-col poem-ar" lang="ar" dir="rtl">
+                      <p class="poem-text poem-text-ar">
+                        {stanza.ar.split(/\[\[|\]\]/).map((part, i) =>
+                          i % 2 === 1 ? <span class="poem-highlight">{part}</span> : part
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <p class="mx-auto mt-8 max-w-md text-center text-sm text-primary-200">
+                The poem&rsquo;s refrain &ldquo;Ramzunā&rdquo; &mdash; &ldquo;our symbol&rdquo; &mdash; is where our name comes from.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .poem-langs {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+      .poem-lang-btn {
+        font-family: inherit;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 9999px;
+        padding: 0.5rem 1.1rem;
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+      .poem-lang-btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .poem-lang-btn.is-active {
+        background: #fff;
+        color: #38664f;
+        border-color: #fff;
+      }
+      .poem-pair {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .poem-pair:last-child {
+        margin-bottom: 0;
+      }
+      @media (min-width: 640px) {
+        [data-mode='both'] .poem-pair {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .poem-text {
+        margin: 0;
+        white-space: pre-line;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-style: italic;
+        font-size: 0.9375rem;
+        line-height: 1.8;
+        color: #fff;
+      }
+      .poem-text-ar {
+        font-style: normal;
+        line-height: 2;
+      }
+      .poem-highlight {
+        border-radius: 0.25rem;
+        background: rgba(255, 255, 255, 0.18);
+        padding: 0 0.25rem;
+        font-weight: 600;
+      }
+      [data-mode='en'] .poem-ar {
+        display: none;
+      }
+      [data-mode='ar'] .poem-en {
+        display: none;
+      }
+    </style>
+
+    <script is:inline>
+      (() => {
+        document.querySelectorAll('[data-poem]').forEach((poem) => {
+          const buttons = poem.querySelectorAll('[data-set-lang]');
+          buttons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+              const mode = btn.getAttribute('data-set-lang');
+              poem.setAttribute('data-mode', mode || 'both');
+              buttons.forEach((b) => b.classList.toggle('is-active', b === btn));
+
+              // Recalculate the parent accordion's max-height so newly
+              // taller/shorter poem content is never clipped.
+              let node = poem.parentElement;
+              while (node && !node.style.maxHeight) node = node.parentElement;
+              if (node && node.style.maxHeight && node.style.maxHeight !== '0px') {
+                node.style.maxHeight = node.scrollHeight + 'px';
+              }
+            });
+          });
+        });
+      })();
+    </script>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">More About Ramzunā Languages</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        Learn more about our mission, our values, and the team behind our work.
+      </p>
+      <a href="/about" class="mt-8 inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-medium text-primary-600 shadow-lg transition-colors hover:bg-gray-100">
+        About Us
+      </a>
+    </div>
+  </section>
+</Base>

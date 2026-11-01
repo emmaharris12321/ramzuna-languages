@@ -1,0 +1,127 @@
+---
+interface Term {
+  name: string;
+  dates: string;
+  tbd?: boolean;
+}
+
+interface Props {
+  badge?: string;
+  title: string;
+  description: string;
+  terms: Term[];
+}
+
+const { badge, title, description, terms } = Astro.props;
+
+const icons = [
+  // Autumn: leaf
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.5-1.5-8-5.5-8-10.5C4 6 7 3 12 3s8 3 8 7.5c0 5-3.5 9-8 10.5Zm0 0V9m0 0c1.5-2 4-3 6-2m-6 2C10.5 7 8 6 6 7" />',
+  // Spring: flower / sprout
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-7m0 0c0-3 2-5.5 5-6m-5 6c0-3-2-5.5-5-6m5 6V9m0 0a3 3 0 100-6 3 3 0 000 6Z" />',
+  // Summer: sun
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-2.227-1.591 1.591M5.25 12H3m2.227-4.773L3.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />',
+];
+---
+
+<section id="terms" class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      {
+        badge && (
+          <div
+            class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300"
+            data-animate="fade-in-up"
+          >
+            {badge}
+          </div>
+        )
+      }
+      <h2
+        class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+        data-animate="fade-in-up"
+        data-delay="100"
+      >
+        {title}
+      </h2>
+      <p
+        class="mt-4 text-lg text-gray-600 dark:text-gray-400"
+        data-animate="fade-in-up"
+        data-delay="200"
+      >
+        {description}
+      </p>
+    </div>
+
+    <!-- Desktop: Horizontal timeline -->
+    <div class="mt-16 hidden lg:block" data-animate="fade-in-up" data-delay="300">
+      <div class="relative">
+        <div class="absolute left-0 right-0 top-8 h-0.5 bg-primary-200 dark:bg-primary-800" aria-hidden="true"></div>
+
+        <div class="relative grid grid-cols-3 gap-8">
+          {
+            terms.map((term, index) => (
+              <div class="relative text-center">
+                <div
+                  class:list={[
+                    'relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full text-white shadow-lg',
+                    term.tbd
+                      ? 'border-2 border-dashed border-gray-400 bg-white text-gray-400 shadow-none dark:bg-gray-800'
+                      : index % 2 === 0
+                        ? 'bg-primary-600 shadow-primary-600/30'
+                        : 'bg-accent-600 shadow-accent-600/30',
+                  ]}
+                >
+                  <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" set:html={icons[index % icons.length]} />
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{term.name}</h3>
+                <p class:list={['mt-2', term.tbd ? 'italic text-gray-400 dark:text-gray-500' : 'text-gray-600 dark:text-gray-400']}>
+                  {term.dates}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile: Vertical timeline -->
+    <div class="mt-12 lg:hidden">
+      <div class="relative">
+        {
+          terms.map((term, index) => (
+            <div
+              class="relative flex gap-6 pb-10 last:pb-0"
+              data-animate="fade-in-up"
+              data-delay={100 + index * 100}
+            >
+              {index < terms.length - 1 && (
+                <div class="absolute left-8 top-16 h-full w-0.5 -translate-x-1/2 bg-primary-200 dark:bg-primary-800" aria-hidden="true" />
+              )}
+
+              <div
+                class:list={[
+                  'relative z-10 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full text-white shadow-lg',
+                  term.tbd
+                    ? 'border-2 border-dashed border-gray-400 bg-white text-gray-400 shadow-none dark:bg-gray-800'
+                    : index % 2 === 0
+                      ? 'bg-primary-600 shadow-primary-600/30'
+                      : 'bg-accent-600 shadow-accent-600/30',
+                ]}
+              >
+                <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" set:html={icons[index % icons.length]} />
+              </div>
+
+              <div class="pt-3">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{term.name}</h3>
+                <p class:list={['mt-1', term.tbd ? 'italic text-gray-400 dark:text-gray-500' : 'text-gray-600 dark:text-gray-400']}>
+                  {term.dates}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
