@@ -20,9 +20,9 @@ const related = [...moreByAuthor, ...others].slice(0, 3);
 const cardTheme = poem.data.cardTheme ?? 'green';
 const cardGradientClasses =
   cardTheme === 'burgundy'
-    ? 'poem-burgundy-bg'
+    ? 'bg-gradient-to-r from-accent-600 to-accent-700 dark:from-accent-800 dark:to-accent-900'
     : 'bg-gradient-to-r from-primary-600 to-primary-700 dark:from-primary-800 dark:to-primary-900';
-const cardOverlayClass = cardTheme === 'burgundy' ? 'bg-accent-900/5 dark:bg-accent-900/10' : 'bg-primary-900/20';
+const cardOverlayClass = cardTheme === 'burgundy' ? 'bg-accent-900/20' : 'bg-primary-900/20';
 const cardSubtitleClass = cardTheme === 'burgundy' ? 'text-accent-100' : 'text-primary-100';
 const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
 ---
@@ -70,18 +70,21 @@ const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
     --poem-accent-color: #38664f;
   }
 
+  /* Lightened burgundy for poem cards only. Keep the darker burgundy
+     as the label color on white language-toggle buttons for contrast. */
   .poem-card[data-theme='burgundy'] {
     --poem-accent-color: #7a222b;
+    background: linear-gradient(100deg, #a54c58, #99424e);
   }
 
-  /* Lighter burgundy on Palestinian Voices poems and stories only.
-     The white poem text keeps at least 5:1 contrast against these shades. */
-  .poem-burgundy-bg {
-    background: linear-gradient(110deg, #a3505e 0%, #90414d 100%);
+  :global(.dark) .poem-card[data-theme='burgundy'] {
+    background: linear-gradient(100deg, #98414f, #8c3847);
   }
 
-  :global(.dark) .poem-burgundy-bg {
-    background: linear-gradient(110deg, #90414d 0%, #7a222b 100%);
+  /* A gentle shade behind the verse keeps it distinct from the header
+     without bringing back the previous dark burgundy. */
+  .poem-card[data-theme='burgundy'] > div:last-child {
+    background: rgba(122, 34, 43, 0.10);
   }
 
   .poem-frame {
