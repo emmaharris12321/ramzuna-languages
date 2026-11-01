@@ -37,7 +37,7 @@ const voices = defineCollection({
     excerpt: z.string().optional(),
     readTime: z.string().optional(),
     coverImage: z.string().optional(),
-    cardTheme: z.enum(['green', 'burgundy']).optional().default('green'),
+    cardTheme: z.enum(['green', 'sand']).optional().default('green'),
     frenchTitle: z.string().optional(),
     languagesLabel: z.string().optional(),
     draft: z.boolean().optional().default(false),

@@ -5,7 +5,7 @@ tag: "Chapter 2"
 bio: "Twenty-two-year-old Marah started writing during the war, focusing on her experiences of trying not just to survive but also to live with her family. Writing is not a choice to her — it is a way to survive."
 excerpt: "Who recognises other people's disasters can bear their own disasters more easily."
 readTime: "3 min read"
-cardTheme: burgundy
+cardTheme: sand
 languagesLabel: English
 ---
 

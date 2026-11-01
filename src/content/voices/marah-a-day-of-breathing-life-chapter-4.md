@@ -5,7 +5,7 @@ tag: "Chapter 4"
 bio: "Twenty-two-year-old Marah started writing during the war, focusing on her experiences of trying not just to survive but also to live with her family. Writing is not a choice to her — it is a way to survive."
 excerpt: "Still, it was the nicest traffic jam I had ever been stuck in. The noise that I truly loved."
 readTime: "4 min read"
-cardTheme: burgundy
+cardTheme: sand
 languagesLabel: English
 ---
 

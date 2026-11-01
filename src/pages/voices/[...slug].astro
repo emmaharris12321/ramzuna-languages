@@ -18,12 +18,16 @@ const others = allPoems.filter((p) => p.id !== poem.id && p.data.author !== poem
 const related = [...moreByAuthor, ...others].slice(0, 3);
 
 const cardTheme = poem.data.cardTheme ?? 'green';
-const cardGradientClasses =
-  cardTheme === 'burgundy'
-    ? 'bg-gradient-to-r from-accent-600 to-accent-700 dark:from-accent-800 dark:to-accent-900'
-    : 'bg-gradient-to-r from-primary-600 to-primary-700 dark:from-primary-800 dark:to-primary-900';
-const cardOverlayClass = cardTheme === 'burgundy' ? 'bg-accent-900/20' : 'bg-primary-900/20';
-const cardSubtitleClass = cardTheme === 'burgundy' ? 'text-accent-100' : 'text-primary-100';
+const isSand = cardTheme === 'sand';
+const cardGradientClasses = isSand
+  ? ''
+  : 'bg-gradient-to-r from-primary-600 to-primary-700 dark:from-primary-800 dark:to-primary-900';
+const cardOverlayClass = isSand ? '' : 'bg-primary-900/20';
+const cardSubtitleClass = isSand ? 'text-primary-700/80 dark:text-cream-100' : 'text-primary-100';
+const cardTitleClass = isSand ? 'text-primary-700 dark:text-cream-50' : 'text-white';
+const cardIconClass = isSand
+  ? 'bg-primary-700/10 text-primary-700 dark:bg-white/15 dark:text-white'
+  : 'bg-white/15 text-white';
 const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
 ---
 
@@ -70,21 +74,50 @@ const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
     --poem-accent-color: #38664f;
   }
 
-  /* Lightened burgundy for poem cards only. Keep the darker burgundy
-     as the label color on white language-toggle buttons for contrast. */
-  .poem-card[data-theme='burgundy'] {
-    --poem-accent-color: #7a222b;
-    background: linear-gradient(100deg, #a54c58, #99424e);
+  /* The site's own warm cream palette gives these poems a distinct,
+     quiet presentation beside the original forest-green cards. The dark
+     green ink provides strong contrast against the sand paper. */
+  .poem-card[data-theme='sand'] {
+    --poem-accent-color: #38664f;
+    --poem-card-text: #294936;
+    --poem-button-fg: #294936;
+    --poem-button-bg: rgba(56, 102, 79, 0.08);
+    --poem-button-border: rgba(56, 102, 79, 0.32);
+    --poem-button-hover: rgba(56, 102, 79, 0.16);
+    --poem-button-active-bg: #38664f;
+    --poem-button-active-text: #fff;
+    --poem-divider: rgba(56, 102, 79, 0.28);
+    background: #efe4cf; /* website cream-300 */
+    border: 1px solid rgba(56, 102, 79, 0.14);
   }
 
-  :global(.dark) .poem-card[data-theme='burgundy'] {
-    background: linear-gradient(100deg, #98414f, #8c3847);
+  .poem-card[data-theme='sand'] > div:first-child {
+    background: #e6d7b8;
   }
 
-  /* A gentle shade behind the verse keeps it distinct from the header
-     without bringing back the previous dark burgundy. */
-  .poem-card[data-theme='burgundy'] > div:last-child {
-    background: rgba(122, 34, 43, 0.10);
+  .poem-card[data-theme='sand'] > div:last-child {
+    background: #efe4cf;
+  }
+
+  :global(.dark) .poem-card[data-theme='sand'] {
+    --poem-card-text: #fdfbf7;
+    --poem-button-fg: #fdfbf7;
+    --poem-button-bg: rgba(255, 255, 255, 0.09);
+    --poem-button-border: rgba(255, 255, 255, 0.36);
+    --poem-button-hover: rgba(255, 255, 255, 0.18);
+    --poem-button-active-bg: #fdfbf7;
+    --poem-button-active-text: #294936;
+    --poem-divider: rgba(255, 255, 255, 0.26);
+    background: #465247;
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  :global(.dark) .poem-card[data-theme='sand'] > div:first-child {
+    background: #3c473e;
+  }
+
+  :global(.dark) .poem-card[data-theme='sand'] > div:last-child {
+    background: #465247;
   }
 
   .poem-frame {
@@ -108,9 +141,9 @@ const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: var(--poem-button-fg, #fff);
+    background: var(--poem-button-bg, rgba(255, 255, 255, 0.12));
+    border: 1px solid var(--poem-button-border, rgba(255, 255, 255, 0.35));
     border-radius: 9999px;
     padding: 0.5rem 1.1rem;
     cursor: pointer;
@@ -118,13 +151,13 @@ const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
   }
 
   .poem-content :global(.poem-lang-btn):hover {
-    background: rgba(255, 255, 255, 0.22);
+    background: var(--poem-button-hover, rgba(255, 255, 255, 0.22));
   }
 
   .poem-content :global(.poem-lang-btn.is-active) {
-    background: #fff;
-    color: var(--poem-accent-color, #38664f);
-    border-color: #fff;
+    background: var(--poem-button-active-bg, #fff);
+    color: var(--poem-button-active-text, var(--poem-accent-color, #38664f));
+    border-color: var(--poem-button-active-bg, #fff);
   }
 
   .poem-content :global(.poem-pair) {
@@ -179,7 +212,7 @@ const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
     font-style: italic;
     font-size: 0.9375rem;
     line-height: 1.8;
-    color: #fff;
+    color: var(--poem-card-text, #fff);
     margin: 0;
   }
 
@@ -217,7 +250,7 @@ const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
     font-weight: 600;
     font-size: 1.125rem;
     line-height: 1.4;
-    color: #fff;
+    color: var(--poem-card-text, #fff);
   }
 
   .poem-content :global(h2:first-child),
@@ -231,12 +264,12 @@ const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
   .poem-content :global(.poem-bio-fr) {
     margin-top: 2rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-top: 1px solid var(--poem-divider, rgba(255, 255, 255, 0.25));
     font-family: 'Playfair Display', Georgia, serif;
     font-style: normal;
     font-size: 0.9375rem;
     line-height: 2;
-    color: #fff;
+    color: var(--poem-card-text, #fff);
     opacity: 0.88;
   }
 
@@ -326,13 +359,13 @@ const languagesLabel = poem.data.languagesLabel ?? 'Arabic and English';
                Arabic and English switchable. -->
           <div class={`poem-card mt-10 overflow-hidden rounded-2xl shadow-soft-lg ${cardGradientClasses}`} data-theme={cardTheme}>
             <div class="flex items-center gap-4 px-6 py-6">
-              <span class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-white/15 text-white">
+              <span class={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full ${cardIconClass}`} >
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
                 </svg>
               </span>
               <span class="flex-1">
-                <span class="block text-lg font-semibold text-white">{poem.data.title}</span>
+                <span class={`block text-lg font-semibold ${cardTitleClass}`} >{poem.data.title}</span>
                 <span class={`mt-0.5 block text-sm ${cardSubtitleClass}`}>In {languagesLabel}, by {poem.data.author}</span>
               </span>
             </div>

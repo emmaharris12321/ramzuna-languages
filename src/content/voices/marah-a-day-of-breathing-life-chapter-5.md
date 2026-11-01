@@ -5,7 +5,7 @@ tag: "Chapter 5"
 bio: "Twenty-two-year-old Marah started writing during the war, focusing on her experiences of trying not just to survive but also to live with her family. Writing is not a choice to her — it is a way to survive."
 excerpt: "I wished I was at home to have the luxury of crying. I miss my university as a place for studying, not as a shelter."
 readTime: "4 min read"
-cardTheme: burgundy
+cardTheme: sand
 languagesLabel: English
 ---
 

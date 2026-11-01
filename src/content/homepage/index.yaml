@@ -18,9 +18,9 @@ hero:
     icon: false
   note: "Student enrolment and volunteer applications are currently closed for the autumn term. Thank you for your interest — explore our programmes, join our waiting list, or support our work with a donation."
   stats:
-    - value: "795"
+    - value: "855"
       label: Hours Delivered
-    - value: "530"
+    - value: "590"
       label: Lessons Delivered
     - value: "19"
       label: Nationalities

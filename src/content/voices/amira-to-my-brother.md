@@ -6,7 +6,7 @@ tag: Poem
 bio: "Amira is a Palestinian translation student and writer. She writes to document the genocide Palestinians have endured, and she translates her words so the story of Palestinians reaches the world, ensuring it is never forgotten."
 excerpt: "Didn't we always say, we either live together or die together?"
 readTime: "2 min read"
-cardTheme: burgundy
+cardTheme: sand
 ---
 
 <div data-poem data-mode="ar">

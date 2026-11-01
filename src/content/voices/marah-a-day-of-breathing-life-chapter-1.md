@@ -5,7 +5,7 @@ tag: "Chapter 1"
 bio: "Twenty-two-year-old Marah started writing during the war, focusing on her experiences of trying not just to survive but also to live with her family. Writing is not a choice to her — it is a way to survive."
 excerpt: "The fear that I might lose this sense was as painful as a knife in my ears."
 readTime: "3 min read"
-cardTheme: burgundy
+cardTheme: sand
 languagesLabel: English
 ---
 
