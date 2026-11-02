@@ -1,0 +1,146 @@
+---
+interface PlanFeature {
+  text: string;
+  included: boolean;
+}
+
+interface Plan {
+  name: string;
+  size: string;
+  price: string;
+  features: PlanFeature[];
+  popular?: boolean;
+}
+
+interface Props {
+  badge?: string;
+  title: string;
+  description: string;
+  plans: Plan[];
+  note?: string;
+}
+
+const { badge, title, description, plans, note } = Astro.props;
+---
+
+<section id="pricing" class="bg-white py-20 lg:py-28 dark:bg-gray-950">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      {
+        badge && (
+          <div
+            class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300"
+            data-animate="fade-in-up"
+          >
+            {badge}
+          </div>
+        )
+      }
+      <h2
+        class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+        data-animate="fade-in-up"
+        data-delay="100"
+      >
+        {title}
+      </h2>
+      <p
+        class="mt-4 text-lg text-gray-600 dark:text-gray-400"
+        data-animate="fade-in-up"
+        data-delay="200"
+      >
+        {description}
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-3">
+      {
+        plans.map((plan, index) => (
+          <div
+            class={`relative rounded-2xl p-8 shadow-soft transition-all hover:shadow-soft-lg ${plan.popular ? 'ring-2 ring-primary-600 bg-white dark:bg-gray-800' : 'bg-cream-100 dark:bg-gray-900'}`}
+            data-animate="fade-in-up"
+            data-delay={100 + index * 100}
+          >
+            {plan.popular && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary-600 px-4 py-1 text-sm font-medium text-white">
+                Most Popular
+              </div>
+            )}
+
+            <div class="text-center">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                {plan.name}
+              </h3>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                {plan.size}
+              </p>
+            </div>
+
+            <div class="mt-6 text-center">
+              <div class="flex items-baseline justify-center gap-1">
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">from</span>
+                <span class="text-5xl font-bold text-gray-900 dark:text-white">
+                  {plan.price}
+                </span>
+              </div>
+            </div>
+
+            <ul class="mt-8 space-y-4">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-3">
+                  <svg
+                    class={`h-5 w-5 flex-shrink-0 ${feature.included ? 'text-primary-600 dark:text-primary-400' : 'text-gray-400'}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    {feature.included ? (
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    ) : (
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    )}
+                  </svg>
+                  <span
+                    class={feature.included ? 'text-gray-700 dark:text-gray-300' : 'text-gray-500 dark:text-gray-600'}
+                  >
+                    {feature.text}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-8">
+              <a
+                href="/contact"
+                class={`block w-full rounded-lg py-3 text-center font-medium transition-colors ${plan.popular ? 'bg-primary-600 text-white hover:bg-primary-700' : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600'}`}
+              >
+                Get Started
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    {
+      note && (
+        <p
+          class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400"
+          data-animate="fade-in-up"
+          data-delay="400"
+        >
+          {note}
+        </p>
+      )
+    }
+  </div>
+</section>

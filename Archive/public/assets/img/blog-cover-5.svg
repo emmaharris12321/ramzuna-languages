@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#38664f"/>
+  <circle cx="500" cy="70" r="115" fill="white" opacity="0.08"/>
+  <circle cx="65" cy="345" r="130" fill="white" opacity="0.08"/>
+
+  <!-- Overlapping speech bubbles -->
+  <g transform="translate(240,190)">
+    <path d="M-110 -60 h190 a20 20 0 0 1 20 20 v70 a20 20 0 0 1 -20 20 h-140 l-35 30 8 -30 h-23 a20 20 0 0 1 -20 -20 v-70 a20 20 0 0 1 20 -20 z" fill="#fefaf3"/>
+    <circle cx="-55" cy="10" r="8" fill="#38664f"/>
+    <circle cx="-20" cy="10" r="8" fill="#38664f"/>
+    <circle cx="15" cy="10" r="8" fill="#38664f"/>
+  </g>
+  <g transform="translate(370,255)">
+    <path d="M-90 -50 h150 a18 18 0 0 1 18 18 v58 a18 18 0 0 1 -18 18 h-108 l-30 26 7 -26 h-19 a18 18 0 0 1 -18 -18 v-58 a18 18 0 0 1 18 -18 z" fill="#e3bcbe"/>
+    <circle cx="-45" cy="4" r="7" fill="#7a222b"/>
+    <circle cx="-15" cy="4" r="7" fill="#7a222b"/>
+    <circle cx="15" cy="4" r="7" fill="#7a222b"/>
+  </g>
+</svg>

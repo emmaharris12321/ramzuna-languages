@@ -1,0 +1,74 @@
+# ============================================
+# Site Configuration
+# Edit this file to change your site settings
+# ============================================
+
+# Site Identity
+name: Ramzunā Languages
+description: Connecting Palestinian students with volunteer educators for free, personalised English, French, and German lessons.
+url: /
+
+# Logo
+logo:
+  src: /assets/img/logo.png
+  srcLight: /assets/img/logo.png
+  alt: Ramzunā Languages
+
+# Contact Information
+phone: "+1 (312) 555-0148"
+email: contacteam@ramzunalanguages.org
+address:
+  street: Remote & Online Programme
+  city: UK and Palestine
+  state: ""
+  zip: ""
+
+# Social Media Profiles
+social:
+  facebook: https://www.facebook.com/profile.php?id=61584593229542
+  instagram: https://www.instagram.com/ramzuna.languages_4pal/
+  linkedin: https://www.linkedin.com/company/ramzuna-languages/
+  youtube: https://www.youtube.com/@RamzunāLanguages
+
+# Header Settings
+header:
+  darkMode: true
+
+# Navigation — priority journeys are direct links; secondary information is grouped.
+nav:
+  - text: About
+    children:
+      - text: About Us
+        url: /about
+      - text: Our Name
+        url: /our-name
+      - text: Our Approach
+        url: /our-approach
+  - text: Programmes
+    url: /services
+  - text: Study With Us
+    url: /study-with-us
+  - text: Get Involved
+    children:
+      - text: Teach With Us
+        url: /teach-with-us
+      - text: Become a Conversation Partner
+        url: /become-a-conversation-partner
+      - text: Partner With Us
+        url: /partners
+  - text: Palestinian Voices
+    url: /palestinian-voices
+  - text: Resources
+    children:
+      - text: All Resources
+        url: /resources
+      - text: Language Resources
+        url: /resources/language-resources
+      - text: Mental Health Resources
+        url: /resources/mental-health-resources
+      - text: Palestine & Arabic Resources
+        url: /resources/learning-about-palestine
+      - text: German Resources
+        url: /resources/german-async
+      - text: Blog
+        url: /blog

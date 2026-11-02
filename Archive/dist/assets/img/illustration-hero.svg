@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fefaf3"/>
+  <circle cx="400" cy="330" r="190" fill="#38664f" opacity="0.12"/>
+  <circle cx="400" cy="330" r="140" fill="#38664f"/>
+  <g stroke="white" stroke-width="3" fill="none" opacity="0.85">
+    <ellipse cx="400" cy="330" rx="140" ry="55"/>
+    <ellipse cx="400" cy="330" rx="140" ry="140" transform="rotate(60 400 330)"/>
+    <ellipse cx="400" cy="330" rx="140" ry="140" transform="rotate(120 400 330)"/>
+    <line x1="260" y1="330" x2="540" y2="330"/>
+  </g>
+  <g transform="translate(150,140)">
+    <rect x="0" y="0" width="150" height="95" rx="20" fill="white" stroke="#7a222b" stroke-width="4"/>
+    <rect x="18" y="-14" width="16" height="30" rx="4" fill="white" stroke="#7a222b" stroke-width="4" transform="rotate(30 18 -14)"/>
+    <text x="75" y="45" font-family="Outfit, system-ui, sans-serif" font-size="30" font-weight="700" fill="#7a222b" text-anchor="middle">EN</text>
+    <text x="75" y="72" font-family="Outfit, system-ui, sans-serif" font-size="13" fill="#234132" text-anchor="middle">Hello!</text>
+  </g>
+  <g transform="translate(520,110)">
+    <rect x="0" y="0" width="140" height="88" rx="20" fill="white" stroke="#38664f" stroke-width="4"/>
+    <rect x="90" y="70" width="16" height="26" rx="4" fill="white" stroke="#38664f" stroke-width="4" transform="rotate(-30 90 70)"/>
+    <text x="70" y="42" font-family="Outfit, system-ui, sans-serif" font-size="26" font-weight="700" fill="#38664f" text-anchor="middle">FR</text>
+    <text x="70" y="66" font-family="Outfit, system-ui, sans-serif" font-size="12" fill="#234132" text-anchor="middle">Bonjour!</text>
+  </g>
+  <g transform="translate(560,380)">
+    <rect x="0" y="0" width="140" height="88" rx="20" fill="white" stroke="#7a222b" stroke-width="4"/>
+    <rect x="10" y="70" width="16" height="26" rx="4" fill="white" stroke="#7a222b" stroke-width="4" transform="rotate(30 10 70)"/>
+    <text x="70" y="42" font-family="Outfit, system-ui, sans-serif" font-size="26" font-weight="700" fill="#7a222b" text-anchor="middle">DE</text>
+    <text x="70" y="66" font-family="Outfit, system-ui, sans-serif" font-size="12" fill="#234132" text-anchor="middle">Hallo!</text>
+  </g>
+  <g transform="translate(120,420)">
+    <rect x="0" y="10" width="120" height="90" rx="8" fill="white" stroke="#234132" stroke-width="4"/>
+    <line x1="60" y1="10" x2="60" y2="100" stroke="#234132" stroke-width="4"/>
+    <line x1="14" y1="34" x2="48" y2="34" stroke="#234132" stroke-width="3"/>
+    <line x1="14" y1="50" x2="48" y2="50" stroke="#234132" stroke-width="3"/>
+    <line x1="14" y1="66" x2="48" y2="66" stroke="#234132" stroke-width="3"/>
+    <line x1="72" y1="34" x2="106" y2="34" stroke="#234132" stroke-width="3"/>
+    <line x1="72" y1="50" x2="106" y2="50" stroke="#234132" stroke-width="3"/>
+    <line x1="72" y1="66" x2="106" y2="66" stroke="#234132" stroke-width="3"/>
+  </g>
+</svg>
