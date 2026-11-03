@@ -1,0 +1,71 @@
+---
+import Base from '@/layouts/Base.astro';
+import '@/styles/german-lesson-five.css';
+
+const conjugation = [
+  ['ich', 'bin', 'wir', 'sind'], ['du', 'bist', 'ihr', 'seid'],
+  ['er / sie / es', 'ist', 'sie (they)', 'sind'],
+  ['Sie (formal)', 'sind', 'Sie (formal plural)', 'sind'],
+];
+const questions = [
+  { prompt: 'Wie alt _____ du?', options: ['bin', 'bist', 'ist', 'sind', 'seid'], answer: 'bist', why: 'The form for du is bist.' },
+  { prompt: 'Ich _____ 19 Jahre alt.', options: ['bin', 'bist', 'ist', 'sind', 'seid'], answer: 'bin', why: 'The form for ich is bin.' },
+  { prompt: 'Und ihr zwei? Wie alt _____ ihr?', options: ['bin', 'bist', 'ist', 'sind', 'seid'], answer: 'seid', why: 'For ihr (informal plural), use seid.' },
+  { prompt: 'Wir _____ beide 20 Jahre alt.', options: ['bin', 'bist', 'ist', 'sind', 'seid'], answer: 'sind', why: 'The form for wir is sind.' },
+  { prompt: 'Und wie alt _____ die Person dort?', options: ['bin', 'bist', 'ist', 'sind', 'seid'], answer: 'ist', why: 'Die Person is singular third-person, so ist.' },
+];
+const dialogueBlanks = [
+  { before: 'Anna: Meine Freunde ', after: ' meine konstante Familie.', answer: 'sind' },
+  { before: 'InterviewerIn: ', after: ' ihr zwei immer noch gut befreundet?', answer: 'seid' },
+  { before: 'Anna: Ja. Die Tochter ', after: ' jetzt 11.', answer: 'ist' },
+  { before: 'Anna: Ich ', after: ' oft bei ihnen zu Hause.', answer: 'bin' },
+  { before: 'InterviewerIn: ', after: ' du mit dieser Situation zufrieden?', answer: 'bist' },
+];
+const numberedWriting = [
+  { word: 'achtzig', value: '80' }, { word: 'achtzehn', value: '18' },
+  { word: 'vierundsechzig', value: '64' }, { word: 'vierhundertsechsundsechzig', value: '466' },
+  { word: 'achthundertsechsundzwanzig', value: '826' }, { word: 'neunundzwanzig', value: '29' },
+  { word: 'fünfzig', value: '50' }, { word: 'tausendfünfzig', value: '1050' },
+  { word: 'tausendfünfhundert', value: '1500' }, { word: 'elf', value: '11' },
+];
+---
+<Base title="German Lesson 5 Extension: Zählen 2" description="Extension practice from Grenzenlos Deutsch Lesson 5: number recognition, writing personal information, and the irregular verb sein.">
+  <div class="lesson-five">
+    <header class="lesson-hero"><div class="wrap">
+      <a class="back" href="/resources/german-lesson-5">← Back to Lesson 5</a>
+      <p class="eyebrow">UNIT 01 · LESSON 05 · EXTENSION</p>
+      <h1 lang="de">Zählen 2: <em>Erweiterung.</em></h1>
+      <p class="intro">Practise hearing and writing bigger numbers, then test how well you know <em lang="de">sein</em>.</p>
+      <p class="context">This page follows the four sections of the original Lesson 5 extension: <em lang="de">Hören, Schreiben, Strukturen</em> and <em lang="de">Wortschatz</em>. Use the <a href="/resources/german-lesson-5">main lesson</a> for the full dialogue and video interview.</p>
+      <nav class="step-nav" aria-label="Extension sections"><a href="#hearing">01 Listening</a><a href="#writing">02 Writing</a><a href="#structures">03 Structures</a><a href="#vocabulary">04 Vocabulary</a></nav>
+    </div></header>
+    <div class="wrap lesson-body">
+      <section id="hearing" aria-labelledby="hearing-title"><p class="eyebrow">01 / HÖREN</p><h2 id="hearing-title">Numbers in context.</h2>
+        <p>Watch the numbers video again. Replay sections and say each number aloud until it becomes familiar.</p>
+        <div class="video"><iframe src="https://www.youtube.com/embed/TRjivsOxWZI?si=NSNRCus2aZJ2tLoJ" title="German numbers review: original extension video (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <p class="small">Internet required. This is the same video used by the source extension and main lesson. <a href="https://www.youtube.com/watch?v=TRjivsOxWZI">Watch on YouTube</a>.</p>
+        <h3 class="subheading">Arbeit mit dem Hören: write the numbers</h3><p>The original extension contains slide-based audio and ten listen-and-type questions. The saved pages do not include those audio/video assets, so this accessible replacement presents the original ten answers as written German number words for you to convert into digits.</p>
+        <form id="number-fill" class="fill-quiz"><ol class="fill-grid">{numberedWriting.map((item,i) => <li><label for={`digit-${i}`}><span lang="de">{item.word}</span></label><input id={`digit-${i}`} inputmode="numeric" type="text" autocomplete="off" spellcheck="false" data-answer={item.value} aria-describedby={`digit-feedback-${i}`} placeholder="Enter digits"/><span class="fill-feedback" id={`digit-feedback-${i}`} aria-live="polite"></span></li>)}</ol><div class="quiz-actions"><button type="submit">Check my answers</button><button type="reset" class="secondary">Try again</button></div><p class="quiz-score" role="status"></p></form>
+      </section>
+      <section id="writing" aria-labelledby="writing-title"><p class="eyebrow">02 / SCHREIBEN</p><h2 id="writing-title">Describe four people—and yourself.</h2>
+        <figure class="lesson-activity-image"><img src="/assets/german/lesson5-images/paper_activity_sm.jpg" alt="Pencil and paper symbol marking the original writing activity" loading="lazy" width="150" height="150"/><figcaption>Writing activity · original course artwork</figcaption></figure>
+        <p>Use the notes from the main lesson’s <a href="/resources/german-lesson-5#writing">Schreiben</a> activity. Write three sentences about each of four people you know or invented characters: their age, their address and their telephone number. Finish with the same three sentences about yourself. Change the verb form when writing in the first person.</p>
+        <div class="dialogue"><p><strong>Beispiel</strong></p><p lang="de">Yasmin ist 21 Jahre alt. Ihre Adresse ist Burggasse 34, 1070 Wien. Ihre Telefonnummer ist 0676 123 456.</p><p lang="de">Ich bin (…) Jahre alt. Meine Adresse ist (…). Meine Telefonnummer ist (…).</p></div><p class="tip">You can use invented addresses and phone numbers for this practice. Avoid sharing private contact details online.</p>
+      </section>
+      <section id="structures" aria-labelledby="structures-title"><p class="eyebrow">03 / STRUKTUREN</p><h2 id="structures-title">Review the verb <em lang="de">sein</em>.</h2>
+        <p>Look back at the forms and test yourself on the same five sentence completions used in the original extension.</p>
+        <div class="table-wrap"><table><caption>Present-tense conjugations of sein</caption><thead><tr><th scope="col">Singular</th><th scope="col">Form</th><th scope="col">Plural / formal</th><th scope="col">Form</th></tr></thead><tbody>{conjugation.map(row => <tr><th scope="row" lang="de">{row[0]}</th><td lang="de">{row[1]}</td><th scope="row" lang="de">{row[2]}</th><td lang="de">{row[3]}</td></tr>)}</tbody></table></div>
+        <form class="auto-quiz" id="sein-quiz"><div class="quiz-fields">{questions.map((q,i) => <fieldset data-answer={q.answer} data-explanation={q.why}><legend><span class="question-number">{String(i+1).padStart(2,'0')}</span> <span lang="de">{q.prompt}</span></legend><div class="choices">{q.options.map(o => <label><input type="radio" name={`sein-${i}`} value={o}/><span lang="de">{o}</span></label>)}</div><p class="feedback" aria-live="polite"></p></fieldset>)}</div><div class="quiz-actions"><button type="submit">Check my answers</button><button type="reset" class="secondary">Try again</button></div><p class="quiz-score" role="status"></p></form>
+        <h3 class="subheading">Fill the gaps: Anna speaks about her friends</h3><p>This dialogue is adapted from the original extension’s drag-and-drop task. Supply the correct form of <em lang="de">sein</em>.</p>
+        <form class="fill-quiz" id="dialogue-fill"><div class="fill-sentences" lang="de">{dialogueBlanks.map((p,i)=><p><span>{p.before}</span><label class="inline-answer"><span class="sr-only">Blank {i+1}: form of sein</span><input type="text" autocomplete="off" autocapitalize="none" spellcheck="false" data-answer={p.answer} aria-describedby={`dialogue-feedback-${i}`}/></label><span>{p.after}</span><span class="fill-feedback" id={`dialogue-feedback-${i}`} aria-live="polite"></span></p>)}</div><div class="quiz-actions"><button type="submit">Check my answers</button><button type="reset" class="secondary">Try again</button></div><p class="quiz-score" role="status"></p></form>
+      </section>
+      <section id="vocabulary" aria-labelledby="vocab-title"><p class="eyebrow">04 / WORTSCHATZ</p><h2 id="vocab-title">Words to remember.</h2>
+        <div class="grammar-grid"><article><h3>Nouns</h3><ul><li><span lang="de">die Nummer, -n</span> — number (e.g. telephone number)</li><li><span lang="de">die Zahl, -en</span> — number</li></ul><h3>Verb</h3><ul><li><span lang="de">zählen</span> — to count</li></ul></article><article><h3>Useful phrases</h3><ul><li><span lang="de">Wie alt bist du?</span> — How old are you?</li><li><span lang="de">Ich bin … Jahre alt.</span> — I am … years old.</li><li><span lang="de">Wie ist deine Telefonnummer?</span> — What’s your phone number?</li><li><span lang="de">Meine Telefonnummer ist …</span> — My number is …</li><li><span lang="de">Wie viele …?</span> — How many …?</li><li><span lang="de">die Zahlen 1–1000</span> — numbers 1–1,000</li></ul></article></div>
+        <p>Before moving on, say your age and spell out two numbers from this lesson. Then ask a partner <span lang="de">Wie alt bist du?</span></p>
+        <a class="next" href="/resources/german-lesson-6">Next: Lesson 6 →</a>
+      </section>
+      <aside class="source"><h2>Source &amp; adaptation</h2><p>Adapted from <a href="https://grenzenlos-deutsch.com/familie/e1/l5/erw/">Grenzenlos Deutsch, Lektion 5: Erweiterung</a>, supplied as a saved-page ZIP, under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0</a> licence. The four-part structure, source video, writing instructions, five multiple-choice verb prompts, dialogue and vocabulary are reproduced or adapted. The original slide audio and video quiz media were absent from the saved ZIP, so those exercises are replaced with written number recognition. Original funding: National Endowment for the Humanities and the Mansergh-Stuessy Fund for College Innovation. Ramzunā Languages is not affiliated with the original authors.</p> <img class="cc-license" src="/assets/german/lesson5-images/88x31.png" alt="Creative Commons BY-NC-SA badge" loading="lazy" width="88" height="31"/></aside>
+    </div>
+  </div>
+</Base>
+<script is:inline src="/assets/german/lesson-five-interactions.js"></script>

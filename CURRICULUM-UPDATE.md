@@ -36,3 +36,6 @@ Added Q, T, U, V, W, Y, Z, Ä, Ö, Ü and ß. Alphabet now has 29 recordings; on
 
 ## Lesson 4 extension and video
 Added supplied YouTube video to main lesson. Added separate extension with source-based ten-blank verb exercise, spelling tasks and useful phrases. Main lesson links to extension; recordings and video are not duplicated. Production build and page structure checks passed. Browser interaction and media playback remain unverified.
+
+## Lesson 5: Zählen 2 (main + extension)
+Recreated Lesson 5 and its extension from the user-supplied saved pages, with the same site layout and lesson progression as Lessons 1–4. Main lesson includes numbers up to 1,000, age, contact details, addresses and international dialling codes, university dialogue, cultural context, speaking and writing practice, listening comprehension, and conjugation of *sein*. Extension includes the original follow-up topics and interactive checks. Included the supplied YouTube and Vimeo embeds. The source pages did not contain all remote audio assets, so number recordings link to the source website, and any listening exercises requiring missing sound have text-based alternatives. Added local static HTML pages in dist for both routes. Astro package installation/build could not be rerun here; the static pages were generated and verified separately.

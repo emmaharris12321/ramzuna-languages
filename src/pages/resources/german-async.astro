@@ -14,7 +14,7 @@ const units = [
   {
     id: 'e1', title: 'Einheit 1: Einführung', blurb: 'Introductions, numbers, the alphabet, family, hobbies, colours and describing people.',
     lessons: [
-      'sich vorstellen', 'zählen 1', 'Familie', 'das Alphabet', 'zählen',
+      'sich vorstellen', 'zählen 1', 'Familie', 'das Alphabet', 'zählen 2',
       'Hobbys', 'Farben', 'Personen beschreiben', 'Freunde', 'Studium',
     ],
     summary: true,
@@ -74,7 +74,7 @@ const steps = [
     <section id="curriculum" class="path-wrap curriculum" aria-labelledby="curriculum-heading">
       <div class="curriculum-title"><div><p class="eyebrow">YOUR LEARNING PATH</p><h2 id="curriculum-heading" lang="de">Familie und Freunde</h2><p>Family and friends. Follow the units in order, starting with lesson 1.</p></div><span class="course-count">3 units · 22 lessons planned</span></div>
       <nav class="unit-nav" aria-label="Jump to a curriculum unit">{units.map((u,i) => <a href={`#${u.id}`}><span>0{i+1}</span>{unitNames[i]}<span aria-hidden="true">↓</span></a>)}</nav>
-      <p class="availability-note">Lessons 1–7 are ready. Lessons 2–4 also include follow-up extension practice. Lesson 4 includes 29 letter recordings; only X’s audio is still missing. Lessons 8 onward are coming soon.</p>
+      <p class="availability-note">Lessons 1–7 are ready. Lessons 2–5 also include follow-up extension practice. Lesson 4 includes 29 letter recordings; only X’s audio is still missing. Lessons 8 onward are coming soon.</p>
       <div class="unit-list">{units.map((u,ui) => (
         <section class="unit" id={u.id} aria-labelledby={`${u.id}-title`}>
           <header class="unit-header"><span class="unit-number">0{ui+1}</span><div><p class="eyebrow">UNIT {ui+1} · {u.lessons.length} LESSONS</p><h3 id={`${u.id}-title`}>{unitNames[ui]}</h3><p lang="de" class="german-title">{u.title}</p><p>{u.blurb}</p></div></header>

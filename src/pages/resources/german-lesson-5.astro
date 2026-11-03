@@ -1,4 +1,130 @@
 ---
 import Base from '@/layouts/Base.astro';
+import '@/styles/german-lesson-five.css';
+
+// Numbers and original audio filenames are transcribed from the supplied
+// Grenzenlos Deutsch Lektion 5 saved page. Audio is remotely hosted, not bundled.
+const numbers = [
+  { value: 20, word: 'zwanzig', file: 'NUM_zwanzig.mp3' },
+  { value: 21, word: 'einundzwanzig', file: 'NUM_einundzwanzig.mp3' },
+  { value: 22, word: 'zweiundzwanzig', file: 'NUM_zweiundzwanzig.mp3' },
+  { value: 23, word: 'dreiundzwanzig', file: 'NUM_dreiundzwanzig.mp3' },
+  { value: 24, word: 'vierundzwanzig', file: 'NUM_vierundzwanzig.mp3' },
+  { value: 25, word: 'fünfundzwanzig', file: 'NUM_fünfundzwanzig.mp3' },
+  { value: 26, word: 'sechsundzwanzig', file: 'NUM_sechsundzwanzig.mp3' },
+  { value: 27, word: 'siebenundzwanzig', file: 'NUM_siebenundzwanzig.mp3' },
+  { value: 28, word: 'achtundzwanzig', file: 'NUM_achtundzwanzig.mp3' },
+  { value: 29, word: 'neunundzwanzig', file: 'NUM_neunundzwanzig.mp3' },
+  { value: 30, word: 'dreißig', file: 'NUM_dreissig.mp3' },
+  { value: 40, word: 'vierzig', file: 'NUM_vierzig.mp3' },
+  { value: 50, word: 'fünfzig', file: 'NUM_fünfzig.mp3' },
+  { value: 60, word: 'sechzig', file: 'NUM_sechzig.mp3' },
+  { value: 70, word: 'siebzig', file: 'NUM_siebzig.mp3' },
+  { value: 80, word: 'achtzig', file: 'NUM_achtzig.mp3' },
+  { value: 90, word: 'neunzig', file: 'NUM_neunzig.mp3' },
+  { value: 100, word: 'hundert', file: 'NUM_hundert.mp3' },
+  { value: 1000, word: 'tausend', file: 'NUM_tausend.mp3' },
+];
+const countryCodes = [
+  ['+41', 'Switzerland'], ['+420', 'Czech Republic'], ['+421', 'Slovakia'],
+  ['+423', 'Liechtenstein'], ['+43', 'Austria'], ['+44', 'United Kingdom'],
+  ['+45', 'Denmark'], ['+46', 'Sweden'], ['+47', 'Norway'],
+  ['+48', 'Poland'], ['+49', 'Germany'],
+];
+const numberQuestions = [
+  { prompt: 'What number is zweiunddreißig?', options: ['23', '32', '22', '33'], answer: '32', why: 'The ones come first in German: zwei-und-dreißig = 32.' },
+  { prompt: 'What number is neunzehn?', options: ['9', '19', '90', '10'], answer: '19', why: 'Neunzehn means nineteen; neunzig means ninety.' },
+  { prompt: 'What number is siebenundsechzig?', options: ['76', '67', '66', '77'], answer: '67', why: 'Sieben (7) und sechzig (60) makes 67.' },
+  { prompt: 'What number is fünfundfünfzig?', options: ['45', '55', '54', '44'], answer: '55', why: 'Fünf-und-fünfzig means 55.' },
+  { prompt: 'What number is neununddreißig?', options: ['39', '93', '30', '90'], answer: '39', why: 'The number is 9 + 30 = 39.' },
+  { prompt: 'What number is zweihundertvierunddreißig?', options: ['243', '234', '324', '432'], answer: '234', why: 'Zweihundert = 200 and vierunddreißig = 34.' },
+];
+const listeningQuestions = [
+  { prompt: 'Woher kommt Sabine?', options: ['aus Wien', 'aus Berlin', 'aus Deutschland', 'aus Österreich'], answer: 'aus Österreich', why: 'The original listening exercise identifies Austria as Sabine’s home country.' },
+  { prompt: 'Woher kommt Susanne?', options: ['aus Berlin', 'aus München', 'aus Frankfurt', 'aus Wien'], answer: 'aus Wien', why: 'The original listening exercise identifies Vienna as Susanne’s home city.' },
+  { prompt: 'Wie alt ist Susanne?', options: ['26 Jahre', '43 Jahre', '48 Jahre'], answer: '43 Jahre', why: 'Susanne is 43 years old in the original follow-up activity.' },
+  { prompt: 'Wie alt ist Sabine?', options: ['43 Jahre', '48 Jahre', '26 Jahre'], answer: '48 Jahre', why: 'Sabine is 48 years old.' },
+  { prompt: 'Wie alt ist Tiradard?', options: ['26 Jahre', '43 Jahre', '48 Jahre'], answer: '26 Jahre', why: 'Tiradard is 26 years old.' },
+];
+const seinForms = [
+  ['ich', 'bin', 'wir', 'sind'],
+  ['du', 'bist', 'ihr', 'seid'],
+  ['er / sie / es', 'ist', 'sie (they)', 'sind'],
+  ['Sie (formal)', 'sind', 'Sie (formal plural)', 'sind'],
+];
 ---
-<Base title="German Lesson 5: Zählen" description="Self-paced beginner German lesson 5: Counting in German."><main class="lesson"><a class="back" href="/resources/german-async">← Back to the German learning path</a><p class="eyebrow">GERMAN · A1 · UNIT 1 · LESSON 05</p><h1 lang="de">Zählen</h1><p class="subtitle">Counting in German</p><p>Learn and practise numbers, listen to the examples, and test your understanding.</p><section class="panel"><h2>Watch and listen</h2><p>Use these videos to practise counting. Pause and repeat the numbers aloud.</p><div class="videos"><iframe src="https://www.youtube-nocookie.com/embed/TRjivsOxWZI" title="German counting video (YouTube)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe src="https://player.vimeo.com/video/288173497?h=43e121c9e4" title="German counting video (Vimeo)" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></section><section class="panel"><h2>Numbers 0–20</h2><p>null, eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn, elf, zwölf, dreizehn, vierzehn, fünfzehn, sechzehn, siebzehn, achtzehn, neunzehn, zwanzig.</p><p><strong>Tip:</strong> 16 is <em>sechzehn</em> and 17 is <em>siebzehn</em>.</p></section><section class="panel"><h2>Practise at your own pace</h2><ol><li>Count from zero to twenty, then backwards.</li><li>Say your age in German: Ich bin … Jahre alt.</li><li>Write the German words for 7, 12 and 19.</li></ol></section><nav class="lesson-nav"><a href="/resources/german-async">All lessons</a><a href="/resources/german-lesson-6">Next lesson →</a></nav></main></Base><style>.lesson{max-width:900px;margin:auto;padding:55px 24px 90px;color:#243d35}.back{font-size:.9rem;text-decoration:underline}.eyebrow{font-size:.75rem;letter-spacing:.12em;font-weight:700;margin-top:42px}h1{font-family:Georgia,serif;font-size:clamp(2.8rem,7vw,4.5rem);margin:12px 0}.subtitle{font-size:1.4rem;color:#567047}.lesson>p{line-height:1.7}.panel{margin-top:32px;background:#f7f6ee;border:1px solid #dce1d6;border-radius:20px;padding:28px}h2{font-size:1.35rem;font-weight:700;margin-bottom:16px}.videos{display:grid;gap:18px}iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px}.vocab{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.vocab li{padding:12px;background:white;border-radius:10px;display:flex;justify-content:space-between;gap:10px}ol{padding-left:22px;line-height:2}.lesson-nav{display:flex;justify-content:space-between;gap:20px;margin-top:30px}.lesson-nav a{color:#304e3d;text-decoration:underline}</style>
+<Base title="German Lesson 5: Zählen 2 | Numbers to 1,000" description="Grenzenlos Deutsch lesson 5: numbers to 1,000, age, addresses, phone numbers and the verb sein, with original dialogues and exercises.">
+  <div class="lesson-five">
+    <header class="lesson-hero">
+      <div class="wrap">
+        <a class="back" href="/resources/german-async#e1">← Back to your learning path</a>
+        <p class="eyebrow">UNIT 01 · LESSON 05 · MAIN LESSON</p>
+        <h1 lang="de">Zählen <em>2.</em></h1>
+        <p class="intro">Count to 1,000, talk about your age and contact details, and learn the verb <em lang="de">sein</em>.</p>
+        <p class="context">This follows <a href="/resources/german-lesson-2-main">Lesson 2: Zählen 1</a>. Work through the vocabulary, culture, speaking and listening activities, then continue to the <a href="/resources/german-lesson-5-extension">Lesson 5 extension</a>.</p>
+        <nav class="step-nav" aria-label="Lesson sections">
+          <a href="#vocabulary">01 Vocabulary</a><a href="#culture">02 Culture</a>
+          <a href="#speaking">03 Speaking</a><a href="#writing">04 Writing</a>
+          <a href="#listening">05 Listening</a><a href="#structures">06 Structures</a>
+        </nav>
+      </div>
+    </header>
+    <div class="wrap lesson-body">
+      <section id="vocabulary" aria-labelledby="vocab-title">
+        <p class="eyebrow">01 / WORTSCHATZ</p><h2 id="vocab-title">Numbers, from 20 to 1,000.</h2>
+        <p>Review the numbers you already know. Then practise the numbers from 20 to 1,000. German numbers from 21 to 99 usually say the ones before the tens: <em lang="de">ein-und-zwanzig</em> (21).</p>
+        <div class="video"><iframe src="https://www.youtube.com/embed/TRjivsOxWZI?si=NSNRCus2aZJ2tLoJ" title="German numbers: original lesson video (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <p class="small">Watch and repeat the numbers aloud. The video requires an internet connection. <a href="https://www.youtube.com/watch?v=TRjivsOxWZI">Open on YouTube</a>.</p>
+        <h3 class="subheading">Read and listen to each number</h3>
+        <p class="small">The original recordings are linked from Grenzenlos Deutsch and require internet. The saved-page ZIP did not contain the MP3 files, so playback depends on the source website.</p>
+        <ul class="number-grid">{numbers.map(n => <li class="number-card"><div class="number-label"><strong>{n.value.toLocaleString('en-GB')}</strong><span lang="de">{n.word}</span></div><audio controls preload="none" src={`https://grenzenlos-deutsch.com/familie/wp-content/uploads/${encodeURIComponent(n.file)}`} aria-label={`Listen to ${n.word}`}><a href={`https://grenzenlos-deutsch.com/familie/wp-content/uploads/${encodeURIComponent(n.file)}`}>Listen online to {n.word}</a></audio></li>)}</ul>
+        <div class="tip"><strong>Useful words:</strong> <span lang="de">die Nummer</span> and <span lang="de">die Zahl</span> both refer to a number; <span lang="de">zählen</span> means “to count.”</div>
+        <h3 class="subheading">Arbeit mit dem Wortschatz</h3>
+        <p>The source uses audio-based number quizzes. Since those exercise audio files were not included in the supplied archives, this version asks you to identify the written numbers instead.</p>
+        <form class="auto-quiz" id="number-quiz"><div class="quiz-fields">{numberQuestions.map((q,i) => <fieldset data-answer={q.answer} data-explanation={q.why}><legend><span class="question-number">{String(i+1).padStart(2,'0')}</span> <span lang="de">{q.prompt}</span></legend><div class="choices">{q.options.map(o => <label><input type="radio" name={`number-${i}`} value={o}/><span>{o}</span></label>)}</div><p class="feedback" aria-live="polite"></p></fieldset>)}</div><div class="quiz-actions"><button type="submit">Check my answers</button><button type="reset" class="secondary">Try again</button></div><p class="quiz-score" role="status"></p></form>
+        <h3 class="subheading">Dialog: An der Universität</h3>
+        <figure class="lesson-character"><img src="/assets/german/img/Yasmin-223x300.png" alt="Illustrated portrait of Yasmin, the person in the university dialogue" loading="lazy" width="223" height="300"/><figcaption>Yasmin · university dialogue</figcaption></figure>
+        <p>Read the exchange between a university staff member and Yasmin. Listen for her name, age, address and telephone number.</p>
+        <div class="dialogue" lang="de"><p><strong>MitarbeiterIn:</strong> Wie heißen Sie?</p><p><strong>Yasmin:</strong> Ich heiße Yasmin.</p><p><strong>MitarbeiterIn:</strong> Wie schreibt man das?</p><p><strong>Yasmin:</strong> Y-A-S-M-I-N.</p><p><strong>MitarbeiterIn:</strong> Wie alt sind Sie?</p><p><strong>Yasmin:</strong> Ich bin 21 Jahre alt.</p><p><strong>MitarbeiterIn:</strong> Wie ist Ihre Adresse?</p><p><strong>Yasmin:</strong> Meine Adresse ist Burggasse 34, 1070 Wien.</p><p><strong>MitarbeiterIn:</strong> Wie ist Ihre Telefonnummer?</p><p><strong>Yasmin:</strong> Meine Handynummer ist 0676 123 456.</p><p><strong>MitarbeiterIn:</strong> Danke!</p><p><strong>Yasmin:</strong> Bitte!</p></div>
+        <p class="small">Try the dialogue twice: first as the staff member, then as Yasmin. Practise the formal form <em lang="de">Sie</em> used in the exchange.</p>
+      </section>
+      <section id="culture" aria-labelledby="culture-title">
+        <p class="eyebrow">02 / KULTUR</p><h2 id="culture-title">Addresses and telephone numbers.</h2>
+        <div class="grammar-grid"><article><h3>Grouping numbers</h3><p>In German-speaking settings, larger numbers may be spoken in groups. The postcode <span lang="de">1070 Wien</span>, for example, may be read <span lang="de">zehn-siebzig Wien</span>. Telephone numbers may be given digit by digit or in groups of two or three.</p><p>For Yasmin’s example, practise <span lang="de">null – sechs – sieben – sechs / eins – zwei – drei / vier – fünf – sechs</span>, then practise the grouped version.</p></article><article><h3>International calling codes</h3><p>For calls to other countries, the relevant international country code is required. The lesson includes these nearby examples:</p><ul class="codes">{countryCodes.map(([code,country]) => <li><strong>{code}</strong><span>{country}</span></li>)}</ul></article></div>
+        <p class="small">Accuracy update to the source: Liechtenstein’s current code is +423, not +41. The source’s old +42 note refers to the former Czechoslovak numbering arrangement.</p>
+      </section>
+      <section id="speaking" aria-labelledby="speaking-title">
+        <p class="eyebrow">03 / SPRECHEN</p><h2 id="speaking-title">Interview: ask and answer.</h2>
+        <p>Practise these questions with a classmate or answer with imaginary details. Use <em lang="de">du</em> in informal conversation and <em lang="de">Sie</em> with someone you address formally.</p>
+        <ol class="speaking"><li><strong lang="de">Wie alt bist du? / Wie alt sind Sie?</strong><span lang="de">Ich bin 22 Jahre alt.</span></li><li><strong lang="de">In welcher Zimmernummer wohnst du?</strong><span lang="de">Ich wohne in Anderson Hall 305.</span></li><li><strong lang="de">Wie ist deine Adresse zu Hause?</strong><span lang="de">Meine Adresse ist 216 Cedar Ave, Nummer 457.</span></li></ol>
+      </section>
+      <section id="writing" aria-labelledby="writing-title">
+        <p class="eyebrow">04 / SCHREIBEN</p><h2 id="writing-title">Collect your interview notes.</h2>
+        <figure class="lesson-activity-image"><img src="/assets/german/lesson5-images/paper_activity_sm.jpg" alt="Pencil and paper symbol marking the original writing activity" loading="lazy" width="150" height="150"/><figcaption>Writing activity · original course artwork</figcaption></figure>
+        <p>Write the name, age, address and phone number for a few imaginary people or classmates who agree to share their details. Keep your notes for the extension’s writing activity.</p>
+        <div class="table-wrap"><table><caption>Model interview notes from the original lesson</caption><tbody><tr><th scope="row">Name</th><td>Yasmin</td></tr><tr><th scope="row">Alter</th><td>21</td></tr><tr><th scope="row">Adresse</th><td>Burggasse 34, 1070 Wien</td></tr><tr><th scope="row">Nummer</th><td>0676 123 456</td></tr></tbody></table></div>
+      </section>
+      <section id="listening" aria-labelledby="listening-title">
+        <p class="eyebrow">05 / HÖREN</p><h2 id="listening-title">Listen to Sabine, Susanne and Tiradard.</h2>
+        <p>Watch the interviews. Focus on how the speakers introduce themselves, where they are from and how old they are. You can replay the video before answering.</p>
+        <div class="video"><iframe title="Sabine, Susanne and Tiradard: original German listening video (Vimeo)" src="https://player.vimeo.com/video/288173497?h=43e121c9e4" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div>
+        <p class="small">Video requires internet. <a href="https://vimeo.com/288173497">Open the video separately on Vimeo</a>.</p>
+        <h3 class="subheading">Arbeit mit dem Hören</h3>
+        <p>The answers are drawn from the original lesson’s saved interactive questions and its age-matching task.</p>
+        <form class="auto-quiz" id="listening-quiz"><div class="quiz-fields">{listeningQuestions.map((q,i) => <fieldset data-answer={q.answer} data-explanation={q.why}><legend><span class="question-number">{String(i+1).padStart(2,'0')}</span> <span lang="de">{q.prompt}</span></legend><div class="choices">{q.options.map(o => <label><input type="radio" name={`listen-${i}`} value={o}/><span lang="de">{o}</span></label>)}</div><p class="feedback" aria-live="polite"></p></fieldset>)}</div><div class="quiz-actions"><button type="submit">Check my answers</button><button type="reset" class="secondary">Try again</button></div><p class="quiz-score" role="status"></p></form>
+        <h3 class="subheading">Sprechen: Rollenspiel</h3><p>Play the interviewer and then Sabine, Susanne or Tiradard. Ask questions and answer in the first person: <span lang="de">Wie heißen Sie? Woher kommen Sie? Wie alt sind Sie?</span></p>
+      </section>
+      <section id="structures" aria-labelledby="structures-title">
+        <p class="eyebrow">06 / STRUKTUREN</p><h2 id="structures-title">Das Verb <em lang="de">sein</em>.</h2>
+        <p>Like “to be” in English, <span lang="de">sein</span> is irregular. Learn these present-tense forms; notice the contrast between <span lang="de">du bist</span>, <span lang="de">ihr seid</span> and <span lang="de">Sie sind</span>.</p>
+        <div class="table-wrap"><table><caption>Present-tense conjugation of sein (“to be”)</caption><thead><tr><th scope="col">Singular</th><th scope="col">Form</th><th scope="col">Plural / formal</th><th scope="col">Form</th></tr></thead><tbody>{seinForms.map(row => <tr><th scope="row" lang="de">{row[0]}</th><td lang="de">{row[1]}</td><th scope="row" lang="de">{row[2]}</th><td lang="de">{row[3]}</td></tr>)}</tbody></table></div>
+        <h3 class="subheading">Find the forms of <em lang="de">sein</em></h3><p>This text is from Claudia’s family description in the original course. Select every conjugated form of <em lang="de">sein</em>—and none of the other verbs.</p>
+        <div class="word-mark" id="sein-mark"><p lang="de">Eine sehr interessante Familie <button type="button" class="mark-word" aria-pressed="false" data-correct="false">habe</button> ich. Meine Mutter <button type="button" class="mark-word" aria-pressed="false" data-correct="true">ist</button> Ägypterin und mein Vater <button type="button" class="mark-word" aria-pressed="false" data-correct="true">ist</button> Palästinenser—da fängt der Spaß an! Obwohl sie die gleiche Sprache <button type="button" class="mark-word" aria-pressed="false" data-correct="false">haben</button>, Arabisch, <button type="button" class="mark-word" aria-pressed="false" data-correct="true">ist</button> der Dialekt anders. Ich <button type="button" class="mark-word" aria-pressed="false" data-correct="false">habe</button> drei weitere Geschwister. Sie <button type="button" class="mark-word" aria-pressed="false" data-correct="true">sind</button> alle verheiratet und ich habe viele Nichten und Neffen. Sie haben mich eine stolze Tante gemacht! Wir <button type="button" class="mark-word" aria-pressed="false" data-correct="true">sind</button> super divers—eine Mischung haben wir in unserer Familie. Es <button type="button" class="mark-word" aria-pressed="false" data-correct="false">gibt</button> Leute aus Österreich, es gibt Leute aus Syrien, aus Ägypten, und die Kinder <button type="button" class="mark-word" aria-pressed="false" data-correct="true">sind</button> teilweise in Österreich geboren, andere <button type="button" class="mark-word" aria-pressed="false" data-correct="true">sind</button> in Deutschland geboren. Wir <button type="button" class="mark-word" aria-pressed="false" data-correct="false">haben</button> deutsche Kinder und österreichische Kinder auch von der Nationalität her. Ein Bruder von mir hat zwei Töchter, die eine <button type="button" class="mark-word" aria-pressed="false" data-correct="true">ist</button> Österreicherin, die andere <button type="button" class="mark-word" aria-pressed="false" data-correct="true">ist</button> Deutsche. Ein Teil von der Familie <button type="button" class="mark-word" aria-pressed="false" data-correct="false">wohnt</button> in Wien—in Österreich—und ein Teil wohnt in Deutschland.</p><div class="quiz-actions"><button type="button" id="check-sein">Check selections</button><button type="button" class="secondary" id="reset-sein">Try again</button></div><p id="sein-score" role="status"></p></div>
+        <h3 class="subheading">Schreiben</h3><p>Write sentences about the ages of several family members or friends using <span lang="de">sein</span>. For example, <strong lang="de">Meine Mutter ist 54 Jahre alt.</strong> Now make three sentences of your own.</p>
+        <a class="next" href="/resources/german-lesson-5-extension">Next: Lesson 5 extension →</a>
+      </section>
+      <aside class="source"><h2>Source &amp; adaptation</h2><p>Adapted from <a href="https://grenzenlos-deutsch.com/familie/e1/l5/">Grenzenlos Deutsch, Lektion 5: zählen 2</a>, supplied as a saved-page ZIP, under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0</a> licence. Original dialogue, vocabulary, interview and writing tasks, listening answers and Claudia’s text are retained; spelling, the Liechtenstein country code and explanations are corrected or clarified. The original H5P audio/video quiz assets were not included, so number questions were rebuilt as text exercises. Individual number MP3s and the two embedded videos require internet.</p><p>Original funding: National Endowment for the Humanities and the Mansergh-Stuessy Fund for College Innovation. Ramzunā Languages is not affiliated with the original authors.</p> <img class="cc-license" src="/assets/german/lesson5-images/88x31.png" alt="Creative Commons BY-NC-SA badge" loading="lazy" width="88" height="31"/></aside>
+    </div>
+  </div>
+</Base>
+<script is:inline src="/assets/german/lesson-five-interactions.js"></script>
