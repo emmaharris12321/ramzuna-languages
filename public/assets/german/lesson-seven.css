@@ -1,0 +1,14 @@
+/* Lessons 7-8 share the editorial lesson 5 theme. */
+.lesson-seven .colour-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin:24px 0;padding:0;list-style:none}
+.lesson-seven .colour-grid li{display:flex;align-items:center;gap:12px;padding:14px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+.lesson-seven .colour-grid li>div{display:flex;flex-direction:column;font-size:.87rem}
+.lesson-seven .colour-grid li>div span{color:var(--muted);font-size:.76rem}
+.lesson-seven .colour-swatch{display:block;background:var(--swatch);width:40px;height:40px;flex:0 0 40px;border-radius:50%;border:1px solid #929c97}
+.lesson-seven .translation{color:var(--muted);font-size:.83rem}
+.lesson-seven .nouns-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px;margin:22px 0}
+.lesson-seven .nouns-grid>div{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);padding:11px 13px;border-radius:10px;font-size:.83rem}
+.lesson-seven .nouns-grid span{color:var(--muted);font-size:.76rem}
+.lesson-seven .write-label{display:block;font-weight:650;margin:20px 0 8px}
+.lesson-seven textarea{background:var(--paper);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:16px;width:100%;font:inherit;line-height:1.75}
+.lesson-seven textarea:focus-visible{outline:3px solid #a45b3c;outline-offset:2px}
+.lesson-seven #study-resources{scroll-margin-top:85px}

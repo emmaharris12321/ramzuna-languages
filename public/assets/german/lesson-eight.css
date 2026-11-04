@@ -1,0 +1,16 @@
+.lesson-eight .profiles{display:grid;gap:20px;margin:26px 0}
+.lesson-eight .profile{display:flex;align-items:flex-start;gap:22px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px}
+.lesson-eight .profile>img{width:125px;height:180px;object-fit:contain;flex:0 0 125px;border-radius:12px;background:#e7e9e0}
+.lesson-eight .profile-text{min-width:0;flex:1}
+.lesson-eight .profile h3{font-size:1.5rem;font-weight:650;margin-bottom:12px}
+.lesson-eight .profile-eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.lesson-eight .profile-text p[lang=de]{font-size:.88rem;line-height:1.8}
+.lesson-eight .profile-text .translation{font-size:.82rem;color:var(--muted)}
+.lesson-eight .profile audio{display:block;width:100%;height:40px;margin:15px 0 8px}
+.lesson-eight .audio-link{color:var(--ink);font-size:.78rem;text-decoration:underline}
+.lesson-eight .qualities{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.lesson-eight .qualities>div{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:.81rem}
+.lesson-eight .qualities>div span{color:var(--muted)}
+.lesson-eight .video video{display:block;width:100%;height:100%;object-fit:contain}
+.lesson-eight #study-resources{scroll-margin-top:90px}
+@media(max-width:640px){.lesson-eight .profile{flex-direction:column}.lesson-eight .profile>img{width:105px;height:148px;flex-basis:auto}}

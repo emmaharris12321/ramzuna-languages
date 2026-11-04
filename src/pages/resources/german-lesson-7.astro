@@ -1,4 +1,81 @@
 ---
 import Base from '@/layouts/Base.astro';
+import PdfResources from '@/components/PdfResources.astro';
+import '@/styles/german-lesson-five.css';
+// This lesson adapts the user-supplied Creative Commons Grenzenlos Deutsch
+// Lektion 7: Farben source. Quizzes are accessible original adaptations,
+// not copies of missing embedded H5P packages.
+const colours = [
+  ['rot','red','#c83d45'], ['blau','blue','#3e7ec9'],
+  ['grün','green','#4b9165'], ['gelb','yellow','#edc447'],
+  ['schwarz','black','#2f3336'], ['weiß','white','#fafafa'],
+  ['orange','orange','#ed8848'], ['rosa','pink','#d88eaf'],
+  ['braun','brown','#8f674c'], ['lila','purple','#9b77bd'],
+  ['grau','grey','#8a9294']
+];
+const questions = [
+  {q:'Mein Buch ist ___. (red)',a:'rot',choices:['rot','blau','gelb']},
+  {q:'Der Himmel ist oft ___. (blue)',a:'blau',choices:['grün','blau','braun']},
+  {q:'Die Pflanzen sind ___. (green)',a:'grün',choices:['lila','grau','grün']},
+  {q:'Welche Farbe ist „weiß“?',a:'white',choices:['black','white','yellow']},
+];
+const pronouns = [
+  ['ich','mein','my'],['du','dein','your (informal singular)'],
+  ['er / es','sein','his / its'],['sie (sing.)','ihr','her'],
+  ['wir','unser','our'],['ihr','euer','your (informal plural)'],
+  ['sie (pl.)','ihr','their'],['Sie','Ihr','your (formal)']
+];
 ---
-<Base title="German Lesson 7: Farben" description="Self-paced beginner German lesson 7: Colours."><main class="lesson"><a class="back" href="/resources/german-async">← Back to the German learning path</a><p class="eyebrow">GERMAN · A1 · UNIT 1 · LESSON 07</p><h1 lang="de">Farben</h1><p class="subtitle">Colours</p><p>Learn common colour words and practise describing things around you.</p><section class="panel"><h2>Words and phrases</h2><ul class="vocab"><li><strong>rot</strong><span>red</span></li><li><strong>blau</strong><span>blue</span></li><li><strong>grün</strong><span>green</span></li><li><strong>gelb</strong><span>yellow</span></li><li><strong>schwarz</strong><span>black</span></li><li><strong>weiß</strong><span>white</span></li><li><strong>orange</strong><span>orange</span></li><li><strong>rosa</strong><span>pink</span></li><li><strong>braun</strong><span>brown</span></li><li><strong>lila</strong><span>purple</span></li></ul></section><section class="panel"><h2>Practise at your own pace</h2><ol><li>Name five colours you can see around you.</li><li>Describe three objects: <strong>Das Buch ist blau.</strong></li><li>Ask: <strong>Welche Farbe ist das?</strong></li></ol></section><nav class="lesson-nav"><a href="/resources/german-async">All lessons</a></nav></main></Base><style>.lesson{max-width:900px;margin:auto;padding:55px 24px 90px;color:#243d35}.back{font-size:.9rem;text-decoration:underline}.eyebrow{font-size:.75rem;letter-spacing:.12em;font-weight:700;margin-top:42px}h1{font-family:Georgia,serif;font-size:clamp(2.8rem,7vw,4.5rem);margin:12px 0}.subtitle{font-size:1.4rem;color:#567047}.lesson>p{line-height:1.7}.panel{margin-top:32px;background:#f7f6ee;border:1px solid #dce1d6;border-radius:20px;padding:28px}h2{font-size:1.35rem;font-weight:700;margin-bottom:16px}.videos{display:grid;gap:18px}iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px}.vocab{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.vocab li{padding:12px;background:white;border-radius:10px;display:flex;justify-content:space-between;gap:10px}ol{padding-left:22px;line-height:2}.lesson-nav{display:flex;justify-content:space-between;gap:20px;margin-top:30px}.lesson-nav a{color:#304e3d;text-decoration:underline}</style>
+<Base title="German Lesson 7: Farben | Colours and possessive adjectives" description="Learn colours, describe classroom objects and use German possessive adjectives with accessible self-check exercises and a downloadable study sheet.">
+  <link rel="stylesheet" href="/assets/german/lesson-seven.css" />
+  <div class="lesson-five lesson-seven">
+    <header class="lesson-hero"><div class="wrap">
+      <a class="back" href="/resources/german-async#e1">← Back to your learning path</a>
+      <p class="eyebrow">UNIT 01 · LESSON 07 · MAIN LESSON</p>
+      <h1 lang="de">Farben <em>&amp; Objekte.</em></h1>
+      <p class="intro">Learn the names of colours, describe objects around you, and say who those objects belong to.</p>
+      <p class="context">Adapted from the supplied <a href="https://grenzenlos-deutsch.com/familie/e1/l7/">Grenzenlos Deutsch, Lektion 7: Farben</a>. The main lesson follows the source’s progression: Wortschatz → Sprechen → Wortschatz → Strukturen → Sprechen.</p>
+      <nav class="step-nav" aria-label="Lesson sections"><a href="#colours">01 Colours</a><a href="#speaking-1">02 Speaking</a><a href="#objects">03 Objects</a><a href="#possessives">04 Possessives</a><a href="#speaking-2">05 Speaking</a><a href="#study-resources">06 PDF</a></nav>
+    </div></header>
+    <div class="wrap lesson-body">
+      <section id="colours" aria-labelledby="colours-title">
+        <p class="eyebrow">01 / WORTSCHATZ</p><h2 id="colours-title">What colour is it?</h2>
+        <p>Read the German colour word out loud, then cover the English translation and try to remember it. These colour cards replace an interactive source activity whose H5P media were not present in the uploaded archive.</p>
+        <ul class="colour-grid">{colours.map(([de,en,swatch]) => <li><span class="colour-swatch" style={`--swatch:${swatch}`} aria-hidden="true"></span><div><strong lang="de">{de}</strong><span>{en}</span></div></li>)}</ul>
+        <div class="tip"><strong>Useful patterns:</strong> <span lang="de">Welche Farbe ist das?</span> — What colour is that? <span lang="de">Das Buch ist blau.</span> — The book is blue.</div>
+        <h3 class="subheading">Check your colour vocabulary</h3>
+        <form class="auto-quiz quiz-form">{questions.map((q,i) => <fieldset data-answer={q.a}><legend>{String(i+1).padStart(2,'0')} · {q.q}</legend><div class="choices">{q.choices.map(c => <label><input type="radio" name={`colour${i}`} value={c}/>{c}</label>)}</div><p class="feedback" aria-live="polite"></p></fieldset>)}<div class="quiz-actions"><button type="submit">Check answers</button><button class="secondary" type="reset">Try again</button></div><p class="quiz-score" role="status"></p></form>
+      </section>
+      <section id="speaking-1" aria-labelledby="speaking-1-title">
+        <p class="eyebrow">02 / SPRECHEN</p><h2 id="speaking-1-title">Find colours in your classroom.</h2>
+        <ol class="speaking"><li><strong lang="de">Wo ist die Farbe blau, gelb, schwarz oder grün im Klassenzimmer?</strong><span>Find each colour around you. Point to an object and name it.</span></li><li><strong lang="de">Welche Farbe haben dein Buch, dein Heft, dein Stift und dein Computer?</strong><span>Describe at least four objects using <em>ist</em> or <em>sind</em> as appropriate.</span></li><li><strong lang="de">Was ist deine Lieblingsfarbe? Welche Farben findest du schön?</strong><span>Ask a partner what their favourite colour is and compare your answers.</span></li></ol>
+      </section>
+      <section id="objects" aria-labelledby="objects-title">
+        <p class="eyebrow">03 / WORTSCHATZ</p><h2 id="objects-title">The colours of everyday things.</h2>
+        <figure class="lesson-activity-image"><img src="/assets/german/lesson7-images/online_activity_sm.jpg" width="150" height="150" alt="Computer and online-search activity illustration from the original course" loading="lazy"/><figcaption>Original online vocabulary activity illustration.</figcaption></figure>
+        <p>Find or imagine these objects. Say what colour each is. Use <em lang="de">das</em>, <em lang="de">der</em> and <em lang="de">die</em> where shown in the noun phrase.</p>
+        <div class="grammar-grid"><article><h3>At home</h3><ul><li lang="de">das Bett — bed</li><li lang="de">das Haus — house</li><li lang="de">das Zimmer — room</li><li lang="de">der Boden — floor</li><li lang="de">der Teppich — rug</li><li lang="de">die Wand — wall</li><li lang="de">das Bild — picture</li></ul></article><article><h3>School and belongings</h3><ul><li lang="de">die Schule — school</li><li lang="de">die Universität — university</li><li lang="de">der Rucksack — backpack</li><li lang="de">die Tasche — bag</li><li lang="de">die Flasche — bottle</li><li lang="de">das Telefon / das Handy — phone</li><li lang="de">die Tasse — cup</li></ul></article></div>
+        <p class="tip"><strong>Partner interview:</strong> <span lang="de">Welche Objekte haben Sie? Welche Farbe haben Ihre Objekte?</span> Try asking the same questions using informal <em lang="de">du</em>.</p>
+      </section>
+      <section id="possessives" aria-labelledby="possessives-title">
+        <p class="eyebrow">04 / STRUKTUREN</p><h2 id="possessives-title">Possessive adjectives.</h2>
+        <p>Possessive adjectives indicate who owns or is associated with something. Like <em lang="de">ein</em>, they may take endings depending on the noun’s gender, number and grammatical case. Start by learning their base forms.</p>
+        <div class="table-wrap"><table><caption>Base possessive adjective forms</caption><thead><tr><th>Personal pronoun</th><th>Base form</th><th>English</th></tr></thead><tbody>{pronouns.map(([person,word,meaning]) => <tr><td lang="de">{person}</td><td lang="de">{word}</td><td>{meaning}</td></tr>)}</tbody></table></div>
+        <p class="small">The original lesson also introduces the non-binary pronouns <em lang="de">xier → xies</em> and <em lang="de">they → their</em>. These are emerging/nonstandard forms and are not part of conventional textbook German paradigms.</p>
+        <div class="dialogue"><p lang="de"><strong>Mein</strong> Buch ist rot. <span class="translation">— My book is red.</span></p><p lang="de"><strong>Meine</strong> Tasche ist blau. <span class="translation">— My bag is blue.</span></p><p lang="de"><strong>Sein</strong> Heft ist grau. <span class="translation">— His notebook is grey.</span></p><p lang="de"><strong>Ihr</strong> Computer ist schwarz. <span class="translation">— Her computer is black.</span></p></div>
+        <h3 class="subheading">Choose the correct possessive</h3>
+        <form class="auto-quiz quiz-form">
+          <fieldset data-answer="Mein"><legend>01 · I own a book: ___ Buch ist rot.</legend><div class="choices"><label><input type="radio" name="p1" value="Mein"/> Mein</label><label><input type="radio" name="p1" value="Dein"/> Dein</label><label><input type="radio" name="p1" value="Sein"/> Sein</label></div><p class="feedback" aria-live="polite"></p></fieldset>
+          <fieldset data-answer="Sein"><legend>02 · The book belongs to Max: ___ Buch ist blau.</legend><div class="choices"><label><input type="radio" name="p2" value="Ihr"/> Ihr</label><label><input type="radio" name="p2" value="Sein"/> Sein</label><label><input type="radio" name="p2" value="Unser"/> Unser</label></div><p class="feedback" aria-live="polite"></p></fieldset>
+          <fieldset data-answer="Meine"><legend>03 · I own a bag: ___ Tasche ist grün.</legend><div class="choices"><label><input type="radio" name="p3" value="Mein"/> Mein</label><label><input type="radio" name="p3" value="Meine"/> Meine</label><label><input type="radio" name="p3" value="Meinen"/> Meinen</label></div><p class="feedback" aria-live="polite"></p></fieldset>
+          <fieldset data-answer="Unsere"><legend>04 · We have a school: ___ Schule ist groß.</legend><div class="choices"><label><input type="radio" name="p4" value="Unser"/> Unser</label><label><input type="radio" name="p4" value="Unsere"/> Unsere</label><label><input type="radio" name="p4" value="Unseren"/> Unseren</label></div><p class="feedback" aria-live="polite"></p></fieldset>
+          <div class="quiz-actions"><button type="submit">Check answers</button><button class="secondary" type="reset">Try again</button></div><p class="quiz-score" role="status"></p>
+        </form>
+      </section>
+      <section id="speaking-2" aria-labelledby="speaking-2-title"><p class="eyebrow">05 / SPRECHEN</p><h2 id="speaking-2-title">Describe your classmates’ belongings.</h2><ol class="speaking"><li><strong lang="de">Sie heißt Emma. Ihr Buch ist rot.</strong><span>Describe a classmate and one object they own.</span></li><li><strong lang="de">Er heißt Steve. Sein Heft ist grau.</strong><span>Describe a different person and object.</span></li><li><strong lang="de">Mein Rucksack ist blau.</strong><span>Make three sentences using <em>mein / meine</em>, <em>dein / deine</em>, and <em>ihr / ihre</em>.</span></li></ol><a class="next" href="/resources/german-lesson-7-extension">Continue to Lesson 7 extension →</a></section>
+      <div id="study-resources"><PdfResources lessonNumbers={[7]} /></div>
+      <aside class="source"><h2>Source and licence</h2><p>Adapted from <a href="https://grenzenlos-deutsch.com/familie/e1/l7/">Grenzenlos Deutsch: Lektion 7, Farben</a> (CC BY-NC-SA 4.0). This page follows the source lesson order, retains its online-activity image and learning topics, and replaces unavailable H5P embeds with accessible original exercises. See also the <a href="/resources/german-lesson-7-extension">Lesson 7 extension</a>.</p></aside>
+    </div>
+  </div>
+</Base>
+<script is:inline src="/assets/german/lesson-seven-interactions.js"></script>

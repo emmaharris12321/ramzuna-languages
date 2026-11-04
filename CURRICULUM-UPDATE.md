@@ -56,3 +56,11 @@ Recreated Lesson 5 and its extension from the user-supplied saved pages, with th
   fallback, and appears on the learning path and on Lesson 5/6 pages.
 - Matching static files have been updated in `dist/`; a full Astro rebuild
   remains unverified because the dependency registry was unreachable.
+
+## Lesson 7 and Lesson 8 additions (2026-11-04)
+
+Lesson 7 follows the original sequence **Wortschatz, Sprechen, Wortschatz, Strukturen, Sprechen**, with a separate **Schreiben, Strukturen, Wortschatz** extension. The user-provided offline HTML includes the original illustrations but did not supply playable H5P packages. New accessible practice exercises are explicitly adaptations.
+
+Lesson 8 uses the original *Personen beschreiben* structure **Lesen, Sprechen, Hören, Strukturen** and externally streamed media links supplied by the user. It is an adaptation, not a verbatim page copy. The original extension for Lesson 8 is not included.
+
+Two new PDF study sheets (Lessons 7–8) are bundled; eight PDFs are referenced by `PdfResources.astro`. The progressive-enhancement asynchronous PDF handler is unchanged.

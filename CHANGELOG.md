@@ -32,3 +32,12 @@ _Post-release maintenance without a version bump: upgraded to Astro 6.0 (2026-03
   direct-link fallback. Linked it from the German learning path and lessons 5/6.
 - Patched the static `dist/` version and fixed a stale Lesson 5 stylesheet link.
 - External audio/video remain network-dependent. Full Astro rebuild not verified.
+
+## 2026-11-04 — Lessons 7–8; original media and PDF resources
+
+- Replaced the Lesson 7 placeholder with the main *Farben* page and a separate extension page, following the user-supplied Creative Commons source files.
+- Reused the two original Lesson 7 activity illustrations. Unavailable H5P embeds were adapted as original accessible quiz exercises.
+- Added Lesson 8 *Personen beschreiben* as an adapted page following the source reading, speaking, listening and possessive-adjective structure.
+- Added the original remote media URLs provided by the user: two M4A recordings (Yasmin and Max) and an MP4 interview. No audio or video bytes are bundled; the source host may restrict third-party playback.
+- Added downloadable PDF study sheets for Lessons 7 and 8; asynchronous download enhancement, progress, cancel and direct links remain unchanged.
+- Updated the German curriculum index; distributed editable `.astro` source files and assets only, without generated `dist/`.

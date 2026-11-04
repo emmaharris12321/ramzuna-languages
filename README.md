@@ -182,3 +182,13 @@ Browser-based acceptance testing was also blocked by a sandbox policy that
 prevents Chromium from navigating to local addresses. Review the pages on a
 real host and run `npm ci && npm run build` in a normal networked environment
 before treating a production build as verified.
+
+## Lessons 7 and 8 (November 2026)
+
+The editable source includes:
+
+- `src/pages/resources/german-lesson-7.astro` and `german-lesson-7-extension.astro`, following the uploaded CC source structure with new HTML exercises and local activity illustrations.
+- `src/pages/resources/german-lesson-8.astro`, an adaptation of the original Lesson 8 reading, speaking, listening and grammar sequence. The original external Max/Yasmin audio files and interview video are linked, not bundled or mirrored.
+- `public/resources/pdfs/german-lesson-{7,8}-study-sheet.pdf`, included alongside PDFs for Lessons 1–6. All PDF links use the existing asynchronously enhanced `PdfResources` component, with progress/cancel and direct fallback.
+
+Source-only archive: `src/`, `public/`, `scripts/` and project config are at archive root. Generated `dist/` and `node_modules/` are intentionally excluded. A production build was not possible in this environment and should be verified after `npm ci`.

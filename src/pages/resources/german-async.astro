@@ -75,13 +75,13 @@ const steps = [
     <section id="curriculum" class="path-wrap curriculum" aria-labelledby="curriculum-heading">
       <div class="curriculum-title"><div><p class="eyebrow">YOUR LEARNING PATH</p><h2 id="curriculum-heading" lang="de">Familie und Freunde</h2><p>Family and friends. Follow the units in order, starting with lesson 1.</p></div><span class="course-count">3 units · 22 lessons planned</span></div>
       <nav class="unit-nav" aria-label="Jump to a curriculum unit">{units.map((u,i) => <a href={`#${u.id}`}><span>0{i+1}</span>{unitNames[i]}<span aria-hidden="true">↓</span></a>)}</nav>
-      <p class="availability-note">Lessons 1–7 are ready. Printable PDF study sheets are available for Lessons 1–6. Lessons 2–5 also include follow-up extension practice. Lesson 4 includes 29 letter recordings; only X’s audio is still missing. Lessons 8 onward are coming soon.</p>
+      <p class="availability-note">Lessons 1–8 are available, with printable PDF study sheets for all eight. Lessons 2–5 and Lesson 7 include extension practice. Lesson 4 includes 29 letter recordings (X is unavailable). Lesson 8 streams audio and video from the source website. Lessons 9 onward are coming soon.</p>
       <div class="unit-list">{units.map((u,ui) => (
         <section class="unit" id={u.id} aria-labelledby={`${u.id}-title`}>
           <header class="unit-header"><span class="unit-number">0{ui+1}</span><div><p class="eyebrow">UNIT {ui+1} · {u.lessons.length} LESSONS</p><h3 id={`${u.id}-title`}>{unitNames[ui]}</h3><p lang="de" class="german-title">{u.title}</p><p>{u.blurb}</p></div></header>
           <ol class="lesson-grid">{u.lessons.map((title,i) => (
-            <li class:list={['lesson-card', { available: ui === 0 && i < 7 }]}>
-              {ui === 0 && i < 7 ? <a href={i === 0 ? "/resources/grenzenlos-deutsch" : i === 1 ? "/resources/german-lesson-2-main" : i === 2 ? "/resources/german-lesson-3-main" : i === 3 ? "/resources/german-lesson-4" : `/resources/german-lesson-${i+1}`}><span class="lesson-meta">LESSON {String(i+1).padStart(2,'0')} <span class="lesson-state">{i === 0 ? 'Start here' : i === 3 ? '29 recordings ready' : 'Available now'}</span></span><h4 lang="de">{title}</h4><p>{translations[ui][i]}</p><span class="lesson-action">{'Open lesson'} <span aria-hidden="true">↗</span></span></a> : <div><span class="lesson-meta">LESSON {String(i+1).padStart(2,'0')} <span class="lesson-state">Coming soon</span></span><h4 lang="de">{title}</h4><p>{translations[ui][i]}</p></div>}
+            <li class:list={['lesson-card', { available: ui === 0 && i < 8 }]}>
+              {ui === 0 && i < 8 ? <a href={i === 0 ? "/resources/grenzenlos-deutsch" : i === 1 ? "/resources/german-lesson-2-main" : i === 2 ? "/resources/german-lesson-3-main" : i === 3 ? "/resources/german-lesson-4" : `/resources/german-lesson-${i+1}`}><span class="lesson-meta">LESSON {String(i+1).padStart(2,'0')} <span class="lesson-state">{i === 0 ? 'Start here' : i === 3 ? '29 recordings ready' : 'Available now'}</span></span><h4 lang="de">{title}</h4><p>{translations[ui][i]}</p><span class="lesson-action">{'Open lesson'} <span aria-hidden="true">↗</span></span></a> : <div><span class="lesson-meta">LESSON {String(i+1).padStart(2,'0')} <span class="lesson-state">Coming soon</span></span><h4 lang="de">{title}</h4><p>{translations[ui][i]}</p></div>}
             </li>
           ))}</ol>
           {u.summary && <p class="unit-review"><span aria-hidden="true">↺</span> Unit {ui+1} review <span>Zusammenfassung · Coming soon</span></p>}
@@ -98,7 +98,7 @@ const steps = [
           Funding for the original was provided in part by the National Endowment for the Humanities and the Mansergh-Stuessy Fund for College Innovation.
         </p>
         <p class="mt-2">
-          Text, audio and explanations are reproduced from the original; the interactive exercises are rebuilt as plain HTML with the same content. Changes are noted on each lesson. Adaptations are shared under the same license, for non-commercial use. Ramzunā Languages is not affiliated with the Grenzenlos Deutsch authors.
+          Content for Lessons 1–8 is based on the original curriculum; adaptations and source materials vary by lesson. The original embedded H5P exercises are not fully included; some lessons provide newly authored HTML practice. Adaptations are shared under the same CC BY-NC-SA 4.0 license for non-commercial use. Ramzunā Languages is not affiliated with the Grenzenlos Deutsch authors.
         </p>
       </aside>
 
