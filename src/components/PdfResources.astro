@@ -3,7 +3,7 @@
  *  The optional script enhances same-origin PDF links with streaming progress/cancel.
  *  To add new PDFs, place the file in public/resources/pdfs/ and extend resources below. */
 interface Props { lessonNumbers?: number[]; }
-const { lessonNumbers = [1,2,3,4,5,6,7,8] } = Astro.props;
+const { lessonNumbers = [1,2,3,4,5,6,7,8,9,10] } = Astro.props;
 const resources = [
   { num: 1, title: 'Introductions', file: 'german-lesson-1-study-sheet.pdf' },
   { num: 2, title: 'Numbers 1–20', file: 'german-lesson-2-study-sheet.pdf' },
@@ -13,6 +13,8 @@ const resources = [
   { num: 6, title: 'Hobbies', file: 'german-lesson-6-study-sheet.pdf' },
   { num: 7, title: 'Colours and possessives', file: 'german-lesson-7-study-sheet.pdf' },
   { num: 8, title: 'Describing people', file: 'german-lesson-8-study-sheet.pdf' },
+  { num: 9, title: 'Friends and verb conjugation', file: 'german-lesson-9-study-sheet.pdf' },
+  { num: 10, title: 'University subjects and days', file: 'german-lesson-10-study-sheet.pdf' },
 ].filter(r => lessonNumbers.includes(r.num));
 ---
 <section class="pdf-resources" aria-label="Printable German study resources">

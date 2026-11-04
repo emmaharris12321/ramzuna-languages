@@ -1,0 +1,25 @@
+---
+import Base from '@/layouts/Base.astro';
+import PdfResources from '@/components/PdfResources.astro';
+import '@/styles/german-lesson-five.css';
+const tiradard = 'https://grenzenlos-deutsch.com/familie/wp-content/uploads/AUD_Familie_Einheit1_Lektion9_Erweiterung_Tiradard.m4a';
+const prompts = [
+  ['Wie heißt die Person?', 'What is the person’s name?'],
+  ['Was erfahren Sie über die Person oder ihre Freundschaften?', 'What do you learn about the person or their friendships?'],
+  ['Welche Aktivitäten oder Interessen werden genannt?', 'Which activities or interests are mentioned?']
+];
+---
+<Base title="German Lesson 9 Extension | Friends listening practice" description="Additional friends listening practice using the Tiradard recording from Grenzenlos Deutsch, with reflection and speaking prompts.">
+  <link rel="stylesheet" href="/assets/german/lesson-eight.css" />
+  <link rel="stylesheet" href="/assets/german/lesson-nine.css" />
+  <div class="lesson-five lesson-eight lesson-nine">
+    <header class="lesson-hero"><div class="wrap"><a class="back" href="/resources/german-lesson-9">← Return to Lesson 9</a><p class="eyebrow">UNIT 01 · LESSON 09 · EXTENSION</p><h1 lang="de">Freunde <em>vertiefen.</em></h1><p class="intro">Extra listening and speaking practice with the original Tiradard recording.</p><p class="context">Only the original main-lesson HTML was supplied; this extension’s guided questions are newly authored, not a reconstruction of missing H5P exercises. The Tiradard audio URL was supplied separately.</p><nav class="step-nav" aria-label="Extension sections"><a href="#listen">01 Listen</a><a href="#respond">02 Respond</a><a href="#speak">03 Speak</a><a href="#study-resources">04 PDF</a></nav></div></header>
+    <div class="wrap lesson-body">
+      <section id="listen"><p class="eyebrow">01 / HÖREN</p><h2>Listen to Tiradard.</h2><p>Listen once for the overall subject, then again for names and details. Do not worry if you cannot understand every word.</p><div class="dialogue"><p><strong>Original Lesson 9 extension recording</strong></p><audio controls preload="none" src={tiradard} aria-label="Listen to Tiradard from Lesson 9 extension">Your browser cannot play this recording.</audio><p class="small"><a href={tiradard} target="_blank" rel="noopener noreferrer">Open the original audio recording</a> if playback is blocked.</p></div></section>
+      <section id="respond"><p class="eyebrow">02 / VERSTEHEN</p><h2>What did you hear?</h2><p>These are open-ended study prompts, not claims about the content of the recording. Use them to practise listening and note-taking.</p><ol class="speaking">{prompts.map(([de,en]) => <li><strong lang="de">{de}</strong><span>{en}</span></li>)}</ol><div class="tip"><strong>Listening strategy:</strong> Write down any words you recognise, even if you cannot yet answer every question. Replay small sections as needed.</div></section>
+      <section id="speak"><p class="eyebrow">03 / SPRECHEN UND SCHREIBEN</p><h2>Talk about a friendship.</h2><div class="dialogue"><p lang="de">Meine beste Freundin heißt …</p><p lang="de">Wir kennen uns seit …</p><p lang="de">Wir machen gern … zusammen.</p><p lang="de">Ich finde sie / ihn …</p></div><p>Write a short four-sentence portrait of a friend, then say it aloud. Use verbs from the main lesson.</p><a class="next" href="/resources/german-lesson-10">Continue to Lesson 10 →</a></section>
+      <div id="study-resources"><PdfResources lessonNumbers={[9]} /></div>
+      <aside class="source"><h2>Source and licence</h2><p>Recording from the original <a href="https://grenzenlos-deutsch.com/familie/e1/l9/erw/">Grenzenlos Deutsch Lesson 9 extension</a>. The added practice prompts are newly created for this site. The media link is external. The source ZIPs supplied by the user are both for the main lesson; no original extension exercise text or H5P files were available. Educational adaptation is shared under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p></aside>
+    </div>
+  </div>
+</Base>

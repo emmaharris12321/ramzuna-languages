@@ -64,3 +64,7 @@ Lesson 7 follows the original sequence **Wortschatz, Sprechen, Wortschatz, Struk
 Lesson 8 uses the original *Personen beschreiben* structure **Lesen, Sprechen, Hören, Strukturen** and externally streamed media links supplied by the user. It is an adaptation, not a verbatim page copy. The original extension for Lesson 8 is not included.
 
 Two new PDF study sheets (Lessons 7–8) are bundled; eight PDFs are referenced by `PdfResources.astro`. The progressive-enhancement asynchronous PDF handler is unchanged.
+
+## Lesson 9 and 10 additions (2026-11-04)
+
+Lesson 9 follows the supplied original *Freunde* HTML and includes Yasmin/Max recordings, Vimeo interview, listening comprehension with original answer keys, the conjugation table and adapted interactive tasks. Two supplied archives labeled extension were byte-identical main-lesson exports; the Tiradard recording is presented on a separately labeled adapted extension page. Lesson 10 follows the published *Studium* lesson sequence and incorporates the user-provided Yasmin audio. Both have new locally included PDF study sheets, delivered through the existing asynchronous PDF component. The learning path now links to Lessons 1–10. Full build is not verified in this environment.

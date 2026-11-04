@@ -41,3 +41,7 @@ _Post-release maintenance without a version bump: upgraded to Astro 6.0 (2026-03
 - Added the original remote media URLs provided by the user: two M4A recordings (Yasmin and Max) and an MP4 interview. No audio or video bytes are bundled; the source host may restrict third-party playback.
 - Added downloadable PDF study sheets for Lessons 7 and 8; asynchronous download enhancement, progress, cancel and direct links remain unchanged.
 - Updated the German curriculum index; distributed editable `.astro` source files and assets only, without generated `dist/`.
+
+## 2026-11-04 — Lessons 9 and 10
+
+Added full editable Lesson 9 (Freunde) main, audio-guided Lesson 9 extension, and Lesson 10 (Studium) using the user-supplied media and verified original sequence. Added PDF study sheets 9–10; preserved asynchronous PDF downloads and updated curriculum navigation to all ten lessons. See `UPDATE-LESSONS-9-10.md`.

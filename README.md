@@ -192,3 +192,7 @@ The editable source includes:
 - `public/resources/pdfs/german-lesson-{7,8}-study-sheet.pdf`, included alongside PDFs for Lessons 1–6. All PDF links use the existing asynchronously enhanced `PdfResources` component, with progress/cancel and direct fallback.
 
 Source-only archive: `src/`, `public/`, `scripts/` and project config are at archive root. Generated `dist/` and `node_modules/` are intentionally excluded. A production build was not possible in this environment and should be verified after `npm ci`.
+
+## German lessons updated to Lesson 10
+
+The editable source project includes Lesson 9 (*Freunde*) and a distinct Lesson 9 listening extension, and Lesson 10 (*Studium*) with the supplied recordings and video, plus ten printable PDFs. See `UPDATE-LESSONS-9-10.md` and `OPEN-SOURCE-CODE-FIRST.md`. Audio/video links are externally hosted. The asynchronous PDF downloader remains at `public/assets/german/pdf-downloads.js`.

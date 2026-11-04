@@ -1,0 +1,108 @@
+---
+import Base from '@/layouts/Base.astro';
+import PdfResources from '@/components/PdfResources.astro';
+import '@/styles/german-lesson-five.css';
+
+// Lesson 9 follows the user's saved Grenzenlos Deutsch 'Lektion 9: Freunde' HTML.
+// Its filename contains '-erw', but the uploaded content is the MAIN lesson.
+// Recordings and Vimeo remain on their original hosts; no media files are bundled.
+const profiles = [
+  {
+    name: 'Yasmin', image: '/assets/german/img/Yasmin-223x300.png',
+    audio: 'https://grenzenlos-deutsch.com/familie/wp-content/uploads/AUD_Familie_Einheit1_Lektion9_Yamsin.m4a',
+    title: 'Mein bester Freund heißt Timo.',
+    text: `Grüß Gott, ich heiße Yasmin. Ich bin 21 Jahre alt und komme aus München. Ich studiere an der Ludwig-Maximilians-Universität München. Als Hobby spiele ich gern Fußball und gehe gern Windsurfen. Mein bester Freund heißt Timo. Er ist 23 Jahre alt und studiert Literatur — ich kenne ihn von der Uni, und er wohnt auch in München. Er ist klein und schlank und hat blonde Haare. Mit Timo gehe ich gern ins Kino oder ins Konzert, denn er weiß viel über Musik und Film. Wir diskutieren gern miteinander. Timos andere Hobbys sind Skifahren und Fahrradfahren. Obwohl Timo klein ist, ist er sportlich.`,
+    summary: 'Yasmin introduces Timo, a fellow student in Munich. They enjoy cinema and concerts together.'
+  },
+  {
+    name: 'Max', image: '/assets/german/img/Max.pgn_-211x300.png',
+    audio: 'https://grenzenlos-deutsch.com/familie/wp-content/uploads/AUD_Familie_Einheit1_Lektion9_Max.m4a',
+    title: 'Eine meiner besten Freundinnen ist Meike.',
+    text: `Servus, mein Name ist Max und ich bin 34 Jahre alt. Ich komme aus New York, aber ich wohne jetzt in Wien. Ich arbeite bei einem Theater. Ich singe sehr gern als Hobby. Ich habe viele Freunde, aber eine meiner besten Freundinnen ist Meike. Meike lernte ich durch meinen Chor kennen, weil sie auch sehr gern singt. Außerdem reist sie gern und hat schon viele Länder besucht, wie die USA (und New York, natürlich!), Kanada, Neuseeland, China, Ägypten und viele Länder in Europa. Manchmal zeigt Meike mir Fotos von ihren vielen Reisen, und ich finde ihre Fotos interessant, weil Meike so kreativ ist. Wir möchten mal zusammen nach Südafrika reisen.`,
+    summary: 'Max introduces Meike, whom he met through his choir. She sings, travels, and takes photos.'
+  }
+];
+const reading = [
+  {q: 'Woher kommt Yasmin?', a: 'München', options: ['Wien','München','New York']},
+  {q: 'Woher kennen sich Yasmin und Timo?', a: 'von der Uni', options: ['von der Uni','vom Chor','aus der Schule']},
+  {q: 'Wie hat Max Meike kennengelernt?', a: 'durch seinen Chor', options: ['beim Skifahren','durch seinen Chor','an der Universität']},
+  {q: 'Wohin möchten Max und Meike zusammen reisen?', a: 'nach Südafrika', options: ['nach Südafrika','nach China','nach Kanada']}
+];
+const listening = [
+  ['Wir spielen Badminton oder Tischtennis zusammen.','Mathilde'],
+  ['Wir verstehen uns sehr gut, weil wir denselben Humor haben.','Karl'],
+  ['Sie hat viele soziale Kontakte, viele interessante Ideen.','Petra'],
+  ['Wir finden dieselben Dinge lustig, dieselben Menschen lustig.','Karl'],
+  ['Wir haben uns während des Studiums kennengelernt.','Karl'],
+  ['Man kann mit ihr über Probleme reden.','Petra'],
+  ['Wir machen sehr gerne Sport miteinander.','Mathilde'],
+  ['Sie ist eine sehr lebendige Person.','Petra'],
+  ['Wir sind zusammen in die Schule gegangen von 14 bis 19.','Mathilde']
+];
+const conjugations = [
+  ['ich','spiele','wir','spielen'], ['du','spielst','ihr','spielt'],
+  ['er/sie/es','spielt','sie/Sie','spielen']
+];
+const verbPractice = [
+  ['Timo und ich ___ gern ins Kino. (gehen)','gehen'],
+  ['Mathilde ___ Tischtennis. (spielen)','spielt'],
+  ['Ich ___ Karls Humor sehr lustig. (finden)','finde'],
+  ['___ du auch in München? (wohnen)','Wohnst'],
+  ['Das ist mein Freund Max. Er ___ bei einem Theater in Wien. (arbeiten)','arbeitet'],
+  ['Max und seine beste Freundin ___ gern zusammen. (reisen)','reisen'],
+  ['Frau Stratmann, was ___ Sie gern in Ihrer Freizeit? (machen)','machen'],
+  ['Meike, ___ du mir deine Fotos aus Ägypten? (zeigen)','zeigst'],
+  ['Timo ___ gern mit Yasmin. (diskutieren)','diskutiert'],
+  ['Max und Meike ___ zusammen in einem Chor. (singen)','singen']
+];
+---
+<Base title="German Lesson 9: Freunde | Reading, listening and verb practice" description="Learn to talk about friendship in German. Read Yasmin and Max's stories, watch the original video, practise regular verbs, and download a free worksheet.">
+  <link rel="stylesheet" href="/assets/german/lesson-eight.css" />
+  <link rel="stylesheet" href="/assets/german/lesson-nine.css" />
+  <div class="lesson-five lesson-eight lesson-nine">
+    <header class="lesson-hero"><div class="wrap">
+      <a class="back" href="/resources/german-async#e1">← Back to your learning path</a>
+      <p class="eyebrow">UNIT 01 · LESSON 09 · MAIN LESSON</p><h1 lang="de">Freunde <em>und Freundinnen.</em></h1>
+      <p class="intro">Describe your friends and the things you enjoy together. Read and listen to Yasmin and Max, discuss friendship, watch authentic interviews and review German verb endings.</p>
+      <p class="context">Adapted from <a href="https://grenzenlos-deutsch.com/familie/e1/l9/">Grenzenlos Deutsch, Lektion 9: Freunde</a>, following its Lesen → Sprechen → Hören → Strukturen sequence. Original audio and Vimeo are streamed from the source websites.</p>
+      <nav class="step-nav" aria-label="Lesson sections"><a href="#read">01 Reading</a><a href="#speak">02 Speaking</a><a href="#listen">03 Listening</a><a href="#grammar">04 Grammar</a><a href="#study-resources">05 PDF</a></nav>
+    </div></header>
+    <div class="wrap lesson-body">
+      <section id="read" aria-labelledby="read-title">
+        <p class="eyebrow">01 / LESEN UND HÖREN</p><h2 id="read-title">Meet Yasmin’s and Max’s friends.</h2>
+        <p>Read both accounts, then play each original German recording. Notice the different ways they explain where they met their friends and what they do together.</p>
+        <div class="profiles">{profiles.map(person => <article class="profile">
+          <img src={person.image} width="223" height="300" alt={`Illustration of ${person.name} from the original German course`} loading="lazy" />
+          <div class="profile-text"><p class="profile-eyebrow">{person.name} · Original reading</p><h3 lang="de">{person.title}</h3><p lang="de">{person.text}</p><p class="translation">{person.summary}</p>
+            <audio controls preload="none" src={person.audio} aria-label={`${person.name} describes a friend in German`}>Your browser does not support audio.</audio>
+            <a class="audio-link" href={person.audio} target="_blank" rel="noopener noreferrer">Open original {person.name} recording</a>
+          </div>
+        </article>)}</div>
+        <h3 class="subheading">Arbeit mit dem Text · Reading check</h3>
+        <form class="auto-quiz quiz-form" data-mode="radio">{reading.map((q,i) => <fieldset data-answer={q.a}>
+          <legend>{String(i+1).padStart(2,'0')} · {q.q}</legend><div class="choices">{q.options.map(choice => <label><input type="radio" name={`reading-${i}`} value={choice} /> {choice}</label>)}</div><p class="feedback" aria-live="polite"></p>
+        </fieldset>)}<div class="quiz-actions"><button type="submit">Check answers</button><button type="reset" class="secondary">Try again</button></div><p class="quiz-score" role="status"></p></form>
+        <h3 class="subheading">Rollenspiel</h3><ol class="speaking"><li><strong>Play Yasmin or Max.</strong><span>Introduce your friend in the third person: <em lang="de">Das ist Timo. Er ist ...</em></span></li><li><strong>Play Timo or Meike.</strong><span>Introduce yourself in the first person: <em lang="de">Ich heiße Meike. Ich ...</em></span></li></ol>
+      </section>
+      <section id="speak" aria-labelledby="speak-title"><p class="eyebrow">02 / SPRECHEN</p><h2 id="speak-title">Interview a partner about a friend.</h2><p>Use the original lesson’s questions. Respond in full sentences, then introduce your partner’s friend to the class.</p>
+        <ol class="speaking"><li><strong lang="de">Wie heißt Ihre beste Freundin oder Ihr bester Freund?</strong><span>What is your best friend's name?</span></li><li><strong lang="de">Wie alt ist diese Person?</strong><span>How old are they?</span></li><li><strong lang="de">Wie lange kennen Sie diese Person?</strong><span>How long have you known each other?</span></li><li><strong lang="de">Was machen Sie gern mit dieser Person?</strong><span>What do you enjoy doing together?</span></li><li><strong lang="de">Wie ist das Aussehen von dieser Person?</strong><span>What does this person look like?</span></li></ol>
+      </section>
+      <section id="listen" aria-labelledby="listen-title"><p class="eyebrow">03 / HÖREN</p><h2 id="listen-title">Friendship in the original interviews.</h2><p>Watch the interview with Mathilde, Karl and Petra. Listen for activities, shared humour, meeting at school or university, and someone you can talk to about problems.</p>
+        <div class="video"><iframe title="Grenzenlos Deutsch Lesson 9 friendship interviews" src="https://player.vimeo.com/video/288175858?h=05d4c0d6d1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div>
+        <p class="small">The embedded Vimeo video requires internet access. <a href="https://vimeo.com/288175858" target="_blank" rel="noopener noreferrer">Open it on Vimeo</a> if embedding is unavailable.</p>
+        <h3 class="subheading">Arbeit mit dem Hören · Who said it?</h3><form class="auto-quiz quiz-form" data-mode="radio">{listening.map(([statement,answer],i) => <fieldset data-answer={answer}><legend>{String(i+1).padStart(2,'0')} · <span lang="de">{statement}</span></legend><div class="choices">{['Mathilde','Karl','Petra'].map(name => <label><input type="radio" name={`listening-${i}`} value={name} /> {name}</label>)}</div><p class="feedback" aria-live="polite"></p></fieldset>)}<div class="quiz-actions"><button type="submit">Check listening answers</button><button class="secondary" type="reset">Try again</button></div><p class="quiz-score" role="status"></p></form>
+        <h3 class="subheading">After listening</h3><ol class="speaking"><li><strong lang="de">Welche „beste Freundin“ finden Sie am besten?</strong><span>Whose friendship sounds most appealing, and why?</span></li><li><strong lang="de">Rollenspiel</strong><span>Play Petra, Karl or Mathilde and introduce your friend in the first person.</span></li></ol>
+      </section>
+      <section id="grammar" aria-labelledby="grammar-title"><p class="eyebrow">04 / STRUKTUREN</p><h2 id="grammar-title">Review regular verb conjugation.</h2><p>For many regular German verbs, remove <em>-en</em> from the infinitive and add an ending. For <em lang="de">spielen</em>, the stem is <em>spiel-</em>.</p>
+        <div class="table-wrap"><table><caption>Present tense of spielen</caption><thead><tr><th>Singular pronoun</th><th>Form</th><th>Plural pronoun</th><th>Form</th></tr></thead><tbody>{conjugations.map(row => <tr>{row.map((v,i) => <td lang="de">{v}</td>)}</tr>)}</tbody></table></div>
+        <p class="tip"><strong>Remember:</strong> The verb follows its subject: <span lang="de">ich spiele</span>, <span lang="de">du spielst</span>, <span lang="de">er spielt</span>, <span lang="de">wir spielen</span>. Some other verbs have spelling changes, so learn them individually.</p>
+        <h3 class="subheading">Complete the sentences</h3><p>Use the infinitive in parentheses to supply the correctly conjugated present-tense form. The source lesson's ten sentences and answer key are retained.</p>
+        <form class="auto-quiz fill-quiz" data-mode="text"><ol class="fill-grid">{verbPractice.map(([prompt,answer],i) => <li><label for={`verb9-${i}`} lang="de">{prompt}</label><input id={`verb9-${i}`} type="text" autocomplete="off" data-answer={answer} aria-label={`Verb form for sentence ${i+1}`} /><span class="fill-feedback" aria-live="polite"></span></li>)}</ol><div class="quiz-actions"><button type="submit">Check verb forms</button><button class="secondary" type="reset">Try again</button></div><p class="quiz-score" role="status"></p></form>
+        <a class="next" href="/resources/german-lesson-9-extension">Continue to Lesson 9 extension →</a>
+      </section>
+      <div id="study-resources"><PdfResources lessonNumbers={[9]} /></div>
+      <aside class="source"><h2>Source and licence</h2><p>Lesson sequence, reading material, and original exercise answer keys are from <a href="https://grenzenlos-deutsch.com/familie/e1/l9/">Grenzenlos Deutsch, Lektion 9: Freunde</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>). The two supplied ZIPs both contained the main lesson, not the extension. The self-check HTML interactions are newly implemented. The original external media are not included in the downloaded source code.</p></aside>
+    </div>
+  </div>
+</Base>
+<script is:inline src="/assets/german/lesson-nine-interactions.js"></script>

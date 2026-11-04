@@ -1,0 +1,73 @@
+---
+import Base from '@/layouts/Base.astro';
+import PdfResources from '@/components/PdfResources.astro';
+import '@/styles/german-lesson-five.css';
+
+// Adapted from the public Grenzenlos Deutsch Lesson 10: Studium page.
+// The user supplied Yasmin's audio URL; the source page confirms its role.
+const audio = 'https://grenzenlos-deutsch.com/familie/wp-content/uploads/AUD_Familie_Einheit1_Lektion10_Yasmin.m4a';
+const subjects = [
+  ['die Psychologie','psychology'], ['die Biologie','biology'], ['die Chemie','chemistry'],
+  ['die Physik','physics'], ['die Mathematik','mathematics'], ['die Geologie','geology'],
+  ['die Geographie','geography'], ['die Geschichte','history'], ['die Informatik','computer science'],
+  ['die Musik','music'], ['die Kunst','art'], ['die Kunstgeschichte','art history'],
+  ['die Literatur','literature'], ['die Fremdsprache','foreign language'], ['die Linguistik','linguistics'],
+  ['die Politikwissenschaft','political science'], ['die Wirtschaftswissenschaft','economics / business studies'],
+  ['die internationalen Beziehungen','international relations'], ['die Philosophie','philosophy'], ['die Soziologie','sociology']
+];
+const days = [
+  ['Montag','Monday'], ['Dienstag','Tuesday'], ['Mittwoch','Wednesday'],
+  ['Donnerstag','Thursday'], ['Freitag','Friday'], ['Samstag / Sonnabend','Saturday'], ['Sonntag','Sunday']
+];
+const readingQuestions = [
+  {q: 'Was studiert Yasmin als Hauptfach?', a: 'Politikwissenschaft', choices: ['Politikwissenschaft','Germanistik','Kunstgeschichte']},
+  {q: 'Was ist Yasmins Nebenfach?', a: 'Wirtschaftswissenschaft', choices: ['Biologie','Wirtschaftswissenschaft','Mathematik']},
+  {q: 'Was ist Yasmins Lieblingskurs?', a: 'Mathematik', choices: ['Mathematik','Politische Theorie','Literatur']},
+  {q: 'Was studiert Timo?', a: 'Germanistik', choices: ['Chemie','Germanistik','Informatik']},
+  {q: 'Welchen Kurs findet Timo schwer, aber interessant?', a: 'politische Theorie', choices: ['politische Theorie','Makroökonomie','Statistik']}
+];
+const daysQuestions = [
+  {q:'On Monday',a:'am Montag',choices:['montags','am Montag','an Montag']},
+  {q:'Every Monday',a:'montags',choices:['am Montag','montags','Montags']},
+  {q:'On Friday',a:'am Freitag',choices:['am Freitag','freitags','der Freitag']},
+  {q:'Every Wednesday',a:'mittwochs',choices:['Mittwochs','am Mittwoch','mittwochs']}
+];
+---
+<Base title="German Lesson 10: Studium | Yasmin audio and university vocabulary" description="Explore German university subjects and the days of the week in Lesson 10, with Yasmin's original listening recording and a printable PDF study sheet.">
+  <link rel="stylesheet" href="/assets/german/lesson-eight.css" />
+  <link rel="stylesheet" href="/assets/german/lesson-nine.css" />
+  <div class="lesson-five lesson-eight lesson-nine lesson-ten">
+    <header class="lesson-hero"><div class="wrap">
+      <a class="back" href="/resources/german-async#e1">← Back to your learning path</a>
+      <p class="eyebrow">UNIT 01 · LESSON 10 · MAIN LESSON</p><h1 lang="de">Studium <em>und Universität.</em></h1>
+      <p class="intro">Talk about your major, your classes and your favourite subject. Listen to Yasmin, practise university vocabulary, then learn how to say when your classes meet.</p>
+      <p class="context">Following <a href="https://grenzenlos-deutsch.com/familie/e1/l10/">Grenzenlos Deutsch, Lektion 10: Studium</a>: reading → vocabulary → speaking → cultural note → days of the week. The Yasmin audio was provided by the user and plays from the original website.</p>
+      <nav class="step-nav" aria-label="Lesson sections"><a href="#read">01 Reading</a><a href="#subjects">02 Vocabulary</a><a href="#speaking">03 Speaking</a><a href="#culture">04 Culture</a><a href="#days">05 Grammar</a><a href="#study-resources">06 PDF</a></nav>
+    </div></header>
+    <div class="wrap lesson-body">
+      <section id="read"><p class="eyebrow">01 / LESEN UND HÖREN</p><h2>Yasmin and Timo at university.</h2><p>Read the adapted text first, then listen to Yasmin’s original full recording.</p>
+        <article class="profile"><img src="/assets/german/img/Yasmin-223x300.png" alt="Yasmin illustration from Grenzenlos Deutsch" width="223" height="300" loading="lazy" /><div class="profile-text"><p class="profile-eyebrow">Yasmin · Universität München</p><h3 lang="de">Was studierst du?</h3>
+          <p lang="de">Hallo, ich bin Yasmin. Ich studiere an der Ludwig-Maximilians-Universität München. Mein Hauptfach ist Politikwissenschaft, und mein Nebenfach ist Wirtschaftswissenschaft. Dieses Semester belege ich Mathematik, Nachhaltigkeit und Wirtschaft, internationale Politik und Makroökonomie. Mathematik ist mein Lieblingskurs, weil Statistik interessant und praktisch ist.</p>
+          <p lang="de">Mein Freund Timo studiert Germanistik. Sein Nebenfach ist Kommunikationswissenschaft. Er belegt einen Kurs über politische Theorie und findet ihn schwer, aber interessant. Wir diskutieren gern über Filme, Bücher und Politik.</p>
+          <p class="translation">This is an abridged adaptation of the source reading, not a verbatim transcript of the audio.</p><audio controls preload="none" src={audio} aria-label="Listen to Yasmin discussing university and courses">Your browser cannot play this audio.</audio><a class="audio-link" href={audio} target="_blank" rel="noopener noreferrer">Open original Yasmin recording</a>
+        </div></article>
+        <h3 class="subheading">Arbeit mit dem Lesen</h3><form class="auto-quiz quiz-form" data-mode="radio">{readingQuestions.map((q,i) => <fieldset data-answer={q.a}><legend>{String(i+1).padStart(2,'0')} · {q.q}</legend><div class="choices">{q.choices.map(choice => <label><input type="radio" name={`read10-${i}`} value={choice} /> {choice}</label>)}</div><p class="feedback" aria-live="polite"></p></fieldset>)}<div class="quiz-actions"><button type="submit">Check answers</button><button class="secondary" type="reset">Try again</button></div><p class="quiz-score" role="status"></p></form>
+      </section>
+      <section id="subjects"><p class="eyebrow">02 / WORTSCHATZ</p><h2>Studienfächer · Fields of study.</h2><p>German and English share many subject names. Which ones can you recognise before looking at the translations?</p>
+        <div class="qualities">{subjects.map(([de,en]) => <div><strong lang="de">{de}</strong><span>{en}</span></div>)}</div>
+        <div class="tip"><strong>Key phrases:</strong> <span lang="de">Mein Hauptfach ist ...</span> (My major is ...); <span lang="de">Mein Nebenfach ist ...</span> (My minor is ...); <span lang="de">Ich belege einen Kurs in ...</span> (I am taking a class in ...).</div>
+      </section>
+      <section id="speaking"><p class="eyebrow">03 / SPRECHEN</p><h2>Interview a fellow student.</h2><ol class="speaking"><li><strong lang="de">Was studierst du?</strong><span>What do you study?</span></li><li><strong lang="de">Welche Kurse belegst du jetzt?</strong><span>Which courses are you taking now?</span></li><li><strong lang="de">Was ist dein Lieblingskurs? Warum?</strong><span>What is your favourite course and why?</span></li></ol><p class="tip">Try a short class survey: find someone studying biology, art, chemistry, history, maths or computer science. Introduce their course choices to another learner.</p></section>
+      <section id="culture"><p class="eyebrow">04 / KULTUR</p><h2>What does <em lang="de">-wissenschaft</em> mean?</h2><p>The German word <em lang="de">Wissenschaft</em> means systematic scholarly study, more broadly than the natural-sciences sense of English “science.” It appears in course names such as <em lang="de">Politikwissenschaft</em>, <em lang="de">Literaturwissenschaft</em>, <em lang="de">Kommunikationswissenschaft</em> and <em lang="de">Wirtschaftswissenschaft</em>. Biology, physics and chemistry belong to the <em lang="de">Naturwissenschaften</em>.</p><p>Look at the <a href="https://www.lmu.de/" target="_blank" rel="noopener noreferrer">Ludwig-Maximilians-Universität München</a> and see how many German course names you can understand.</p></section>
+      <section id="days"><p class="eyebrow">05 / STRUKTUREN</p><h2>Days of the week.</h2><p>Use <em lang="de">am Montag</em> when talking about a specific Monday or something scheduled on Monday, and lowercase <em lang="de">montags</em> for “on Mondays / every Monday.” The names of weekdays are masculine nouns.</p>
+        <div class="table-wrap"><table><caption>German days of the week</caption><thead><tr><th lang="de">Deutsch</th><th>English</th><th lang="de">On ...</th><th lang="de">Every ...</th></tr></thead><tbody>{days.map(([de,en],i) => <tr><td lang="de">{de}</td><td>{en}</td><td lang="de">am {de.split(' / ')[0]}</td><td lang="de">{['montags','dienstags','mittwochs','donnerstags','freitags','samstags','sonntags'][i]}</td></tr>)}</tbody></table></div>
+        <div class="dialogue"><p lang="de">Am Montag habe ich Deutsch.</p><p lang="de">Dienstags habe ich Mathematik.</p><p lang="de">Am Freitag treffe ich meine Freunde.</p></div>
+        <h3 class="subheading">Time expressions · Quick check</h3><form class="auto-quiz quiz-form" data-mode="radio">{daysQuestions.map((q,i) => <fieldset data-answer={q.a}><legend>{String(i+1).padStart(2,'0')} · {q.q}</legend><div class="choices">{q.choices.map(choice => <label><input type="radio" name={`day10-${i}`} value={choice} /> <span lang="de">{choice}</span></label>)}</div><p class="feedback" aria-live="polite"></p></fieldset>)}<div class="quiz-actions"><button type="submit">Check answers</button><button class="secondary" type="reset">Try again</button></div><p class="quiz-score" role="status"></p></form>
+        <h3 class="subheading">Practice speaking</h3><ol class="speaking"><li><strong lang="de">Welche Kurse hast du? An welchem Tag hast du diese Kurse?</strong><span>Describe your timetable to a partner.</span></li><li><strong lang="de">Wann machst du ein Hobby?</strong><span>Ask about weekly activities and report back: <em>Montags spielt Hanna Basketball.</em></span></li></ol><a class="next" href="/resources/german-async#e1">Return to the learning path →</a>
+      </section>
+      <div id="study-resources"><PdfResources lessonNumbers={[10]} /></div>
+      <aside class="source"><h2>Source and licence</h2><p>Adapted from <a href="https://grenzenlos-deutsch.com/familie/e1/l10/">Grenzenlos Deutsch: Lektion 10, Studium</a>, <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. The original course provides the reading, subject vocabulary, culture explanation and days-of-the-week lesson. This site's abridged reading, translations and interactive self-checks are adaptations. The user provided the Yasmin audio URL; it is externally hosted and was not downloaded into this project.</p></aside>
+    </div>
+  </div>
+</Base>
+<script is:inline src="/assets/german/lesson-nine-interactions.js"></script>

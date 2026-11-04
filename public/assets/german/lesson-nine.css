@@ -1,0 +1,9 @@
+.lesson-nine .profiles{margin-top:24px}
+.lesson-nine .profile-text h3{font-size:1.32rem}
+.lesson-nine .profile-text p[lang=de]{line-height:1.78}
+.lesson-nine .video{margin-top:24px}
+.lesson-nine .dialogue audio{display:block;width:100%;margin:18px 0 6px}
+.lesson-nine #study-resources{scroll-margin-top:90px}
+.lesson-nine .fill-grid li{padding:17px}
+.lesson-nine .fill-grid input{width:100%;margin-top:8px}
+@media (max-width:700px){.lesson-nine .fill-grid{grid-template-columns:1fr}}

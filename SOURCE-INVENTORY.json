@@ -1,37 +1,26 @@
 {
-  "type": "astro-editable-source",
-  "source_files": 114,
-  "public_files": 121,
-  "scripts_files": 3,
-  "includes_prebuilt_dist": false,
-  "lesson_pages": [
-    "src/pages/resources/german-lesson-2-main.astro",
-    "src/pages/resources/german-lesson-2.astro",
-    "src/pages/resources/german-lesson-3-extension.astro",
-    "src/pages/resources/german-lesson-3-main.astro",
-    "src/pages/resources/german-lesson-4-extension.astro",
-    "src/pages/resources/german-lesson-4.astro",
-    "src/pages/resources/german-lesson-5-extension.astro",
-    "src/pages/resources/german-lesson-5.astro",
-    "src/pages/resources/german-lesson-6.astro",
-    "src/pages/resources/german-lesson-7-extension.astro",
-    "src/pages/resources/german-lesson-7.astro",
-    "src/pages/resources/german-lesson-8.astro"
+  "kind": "editable Astro source (not compiled output)",
+  "updated": "2026-11-04",
+  "lessons_available": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
   ],
-  "pdf_files": [
-    "public/resources/pdfs/german-lesson-1-study-sheet.pdf",
-    "public/resources/pdfs/german-lesson-2-study-sheet.pdf",
-    "public/resources/pdfs/german-lesson-3-study-sheet.pdf",
-    "public/resources/pdfs/german-lesson-4-study-sheet.pdf",
-    "public/resources/pdfs/german-lesson-5-study-sheet.pdf",
-    "public/resources/pdfs/german-lesson-6-study-sheet.pdf",
-    "public/resources/pdfs/german-lesson-7-study-sheet.pdf",
-    "public/resources/pdfs/german-lesson-8-study-sheet.pdf"
-  ],
-  "media_streams_external": true,
-  "notes": [
-    "Lesson 7 main and extension adapted from user-provided source.",
-    "Lesson 8 adapted from original course page and user-provided media links.",
-    "Astro production build not tested here."
-  ]
+  "lesson_9_extension": "adapted from audio; original extension H5P not supplied",
+  "external_media": "links require internet",
+  "build_verified": false,
+  "notes": "See UPDATE-LESSONS-9-10.md",
+  "counts": {
+    "astro_source_files": 71,
+    "pdf_resources": 10,
+    "all_project_files": 257,
+    "static_assets": 125
+  }
 }
