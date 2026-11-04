@@ -1,0 +1,38 @@
+---
+/** Downloadable resources remain ordinary links if JS is unavailable.
+ *  The optional script enhances same-origin PDF links with streaming progress/cancel.
+ *  To add new PDFs, place the file in public/resources/pdfs/ and extend resources below. */
+interface Props { lessonNumbers?: number[]; }
+const { lessonNumbers = [1,2,3,4,5,6] } = Astro.props;
+const resources = [
+  { num: 1, title: 'Introductions', file: 'german-lesson-1-study-sheet.pdf' },
+  { num: 2, title: 'Numbers 1–20', file: 'german-lesson-2-study-sheet.pdf' },
+  { num: 3, title: 'Family', file: 'german-lesson-3-study-sheet.pdf' },
+  { num: 4, title: 'The alphabet', file: 'german-lesson-4-study-sheet.pdf' },
+  { num: 5, title: 'Numbers and sein', file: 'german-lesson-5-study-sheet.pdf' },
+  { num: 6, title: 'Hobbies', file: 'german-lesson-6-study-sheet.pdf' },
+].filter(r => lessonNumbers.includes(r.num));
+---
+<section class="pdf-resources" aria-label="Printable German study resources">
+  <div class="pdf-resources-heading">
+    <p class="pdf-eyebrow">PRINTABLE PDF RESOURCES</p>
+    <h2>Take your learning with you.</h2>
+    <p>Free PDF study sheets to review offline. Downloads run independently of the lesson, with progress and a cancel option when supported. Every PDF also has a standard direct link.</p>
+  </div>
+  <ul class="pdf-items">
+    {resources.map((resource) => {
+      const path = `/resources/pdfs/${resource.file}`;
+      return <li class="pdf-item" data-pdf-resource>
+        <div class="pdf-info"><span class="pdf-num">LESSON {String(resource.num).padStart(2,'0')}</span><strong>{resource.title}</strong></div>
+        <div class="pdf-actions">
+          <a class="pdf-primary" data-async-pdf href={path} download={resource.file}>Download PDF</a>
+          <button class="pdf-cancel" type="button" data-pdf-cancel hidden>Cancel</button>
+          <a class="pdf-direct" href={path} download={resource.file}>Direct PDF link</a>
+          <span class="pdf-status" data-pdf-status role="status" aria-live="polite" aria-atomic="true"></span>
+        </div>
+      </li>;
+    })}
+  </ul>
+</section>
+<script is:inline src="/assets/german/pdf-downloads.js"></script>
+<link rel="stylesheet" href="/assets/german/pdf-resources.css" />

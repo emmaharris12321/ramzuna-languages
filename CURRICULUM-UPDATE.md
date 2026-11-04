@@ -39,3 +39,20 @@ Added supplied YouTube video to main lesson. Added separate extension with sourc
 
 ## Lesson 5: Zählen 2 (main + extension)
 Recreated Lesson 5 and its extension from the user-supplied saved pages, with the same site layout and lesson progression as Lessons 1–4. Main lesson includes numbers up to 1,000, age, contact details, addresses and international dialling codes, university dialogue, cultural context, speaking and writing practice, listening comprehension, and conjugation of *sein*. Extension includes the original follow-up topics and interactive checks. Included the supplied YouTube and Vimeo embeds. The source pages did not contain all remote audio assets, so number recordings link to the source website, and any listening exercises requiring missing sound have text-based alternatives. Added local static HTML pages in dist for both routes. Astro package installation/build could not be rerun here; the static pages were generated and verified separately.
+
+## 2026-11-04 follow-up: Lesson 6 and printable PDFs
+
+- The existing Lesson 6 placeholder has been replaced with a complete Hobbys
+  lesson page, retaining the original course's order: reading/listening,
+  vocabulary, structures, listening video and speaking.
+- The four M4A links supplied by the user are embedded as individual audio
+  elements, alongside existing local portraits for Yasmin, Max, Johannes and
+  Julia. The user's Vimeo URL is included in the listening section.
+- These remote audio/video files are linked, not bundled: network access and
+  original host permissions are required; stream availability was not verified.
+- Lessons 1–6 have original Ramzunā printable PDF study sheets under
+  `public/resources/pdfs/`. The reusable `PdfResources.astro` component
+  provides non-blocking, cancellable downloads and a native direct-link
+  fallback, and appears on the learning path and on Lesson 5/6 pages.
+- Matching static files have been updated in `dist/`; a full Astro rebuild
+  remains unverified because the dependency registry was unreachable.

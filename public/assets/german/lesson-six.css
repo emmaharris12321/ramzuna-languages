@@ -1,0 +1,16 @@
+/* Lesson 6: complementary styles to the shared Lesson 5 editorial system. */
+.lesson-six .people-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:26px 0}
+.lesson-six .person-card{background:var(--paper);border:1px solid var(--line);border-radius:17px;overflow:hidden;display:flex;gap:16px;padding:18px;min-width:0}
+.lesson-six .person-card img{width:115px;height:153px;object-fit:contain;object-position:top center;flex:0 0 auto;border-radius:9px;background:#e7e9e0}
+.lesson-six .person-copy{min-width:0;flex:1}
+.lesson-six .person-copy h3{font-family:'Playfair Display',Georgia,serif;font-size:1.45rem;font-weight:650;margin:0 0 2px}
+.lesson-six .person-copy .person-meta{font-size:.72rem;color:var(--muted);margin-bottom:10px}
+.lesson-six .person-copy p[lang=de]{font-size:.83rem;line-height:1.75;min-height:122px}
+.lesson-six .person-copy audio{display:block;width:100%;max-width:100%;height:38px;margin:14px 0 9px}
+.lesson-six .audio-source{font-size:.75rem;line-height:1.5;display:inline-block;text-decoration:underline;color:var(--ink)}
+.lesson-six .translation{color:var(--muted);font-size:.85rem}
+.lesson-six #study-resources .pdf-resources{margin-top:45px}
+.lesson-six #study-resources{scroll-margin-top:95px}
+.lesson-six .auto-quiz fieldset{min-width:0}
+@media(max-width:840px){.lesson-six .people-grid{grid-template-columns:1fr}.lesson-six .person-copy p[lang=de]{min-height:0}}
+@media(max-width:480px){.lesson-six .person-card{flex-direction:column}.lesson-six .person-card img{width:100px;height:135px}.lesson-six .person-copy p[lang=de]{min-height:0}}

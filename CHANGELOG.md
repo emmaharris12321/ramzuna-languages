@@ -20,3 +20,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - Initial release, built with Astro and Tailwind CSS 4.
 
 _Post-release maintenance without a version bump: upgraded to Astro 6.0 (2026-03-10) and refreshed all dependencies to Astro 6.2 / Tailwind CSS 4.2 (2026-05-03)._
+
+
+## 2026-11-04 — Lesson 6 media and asynchronous PDFs
+
+- Rebuilt Lesson 6 Hobbys according to the original Creative Commons lesson
+  outline, using the four user-provided `.m4a` recordings and Vimeo embed.
+- Retained existing portraits; added two sets of self-check exercises.
+- Added six printable PDF study sheets for German Lessons 1–6.
+- Added a reusable streaming/cancellable PDF download component with native
+  direct-link fallback. Linked it from the German learning path and lessons 5/6.
+- Patched the static `dist/` version and fixed a stale Lesson 5 stylesheet link.
+- External audio/video remain network-dependent. Full Astro rebuild not verified.

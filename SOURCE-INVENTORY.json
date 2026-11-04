@@ -1,0 +1,27 @@
+{
+  "type": "astro-editable-source",
+  "source_files": 112,
+  "public_files": 113,
+  "scripts_files": 3,
+  "includes_prebuilt_dist": false,
+  "lesson_pages": [
+    "src/pages/resources/german-lesson-2-main.astro",
+    "src/pages/resources/german-lesson-2.astro",
+    "src/pages/resources/german-lesson-3-extension.astro",
+    "src/pages/resources/german-lesson-3-main.astro",
+    "src/pages/resources/german-lesson-4-extension.astro",
+    "src/pages/resources/german-lesson-4.astro",
+    "src/pages/resources/german-lesson-5-extension.astro",
+    "src/pages/resources/german-lesson-5.astro",
+    "src/pages/resources/german-lesson-6.astro",
+    "src/pages/resources/german-lesson-7.astro"
+  ],
+  "pdf_files": [
+    "public/resources/pdfs/german-lesson-1-study-sheet.pdf",
+    "public/resources/pdfs/german-lesson-2-study-sheet.pdf",
+    "public/resources/pdfs/german-lesson-3-study-sheet.pdf",
+    "public/resources/pdfs/german-lesson-4-study-sheet.pdf",
+    "public/resources/pdfs/german-lesson-5-study-sheet.pdf",
+    "public/resources/pdfs/german-lesson-6-study-sheet.pdf"
+  ]
+}
