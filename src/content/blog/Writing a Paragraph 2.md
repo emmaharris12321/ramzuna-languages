@@ -90,7 +90,7 @@ Suppose your topic sentence is: <em>To improve their language skills, students m
 ## Why each one works
 
 <ul style="text-align: justify;">
-  <li><strong>The fact</strong> The fact is about language learners, showing that the ones making the most progress are the those who practice for just 15 minutes every single day .</li>
+  <li><strong>The fact</strong>is about language learners, showing that the ones making the most progress are the those who practice for just 15 minutes every single day .</li>
   <li><strong>The logic</strong> is not something you can look up, but the reasoning makes sense to your audience. Of course someone who practices every day can correct mistakes and makes progress faster, and that gives the reader a reason to believe the topic sentence.</li>
   <li><strong>The expert opinion</strong> works because Psychologist Hermann Ebbinghaus is an  German psychologist, so we can assume he knows what he is talking about. He is a good authority on what it takes to retain information.</li>
 </ul>
