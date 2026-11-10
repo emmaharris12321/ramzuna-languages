@@ -3,7 +3,7 @@ title: "Humanitarian Situation: Heavy Rains in the Gaza Strip."
 description: "Humanitarian update on the current situation"
 date: "November 9, 2026"
 category: "Humanitarian Situation"
-image: "/assets/img/Rainfall.JPG"
+image: "/assets/img/Rainfall.jpg"
 readTime: "4 min read"
 author:
   name: "Ramzunā Languages Team"
@@ -12,7 +12,7 @@ author:
 ---
 
 
-## Three Children were killed with their mother
+## Four Children were killed with their mother
 
 <p style="text-align: justify;">
 Four children, aged four, five and eight, were tragically killed with their mother in Deir al-Balah due to heavy rainfall.  This catastrophe occurs amidst the ongoing displacement crisis, with over 1.7 million Palestinians still living in tents, damaged buildings or shelters vulnerable to flooding, cold and collapse.
