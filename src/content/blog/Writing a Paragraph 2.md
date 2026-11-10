@@ -66,9 +66,9 @@ Suppose your topic sentence is: <em>To improve their language skills, students m
 <text x="284" y="202">sense that persuade.</text>
 <text x="284" y="242" font-size="11.5" fill-opacity="0.7">Example</text>
 <text x="284" y="262">Daily exposure keeps</text>
-<text x="284" y="278">the brain's language processing centers</text>
-<text x="284" y="294">continuously engaged, ;loving from short-term memory</text>
-<text x="284" y="310">into long-term fluency.</text>
+<text x="284" y="278">the brain's language processing</text>
+<text x="284" y="294">centers continuously engaged,</text>
+<text x="284" y="310">improving long-term retention.</text>
 </g>
 <g>
 <rect x="512" y="140" width="224" height="212" rx="8" fill="none" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.25"/>
@@ -78,11 +78,10 @@ Suppose your topic sentence is: <em>To improve their language skills, students m
 <text x="528" y="202">a relevant field.</text>
 <text x="528" y="242" font-size="11.5" fill-opacity="0.7">Example</text>
 <text x="528" y="262">Ebbinghaus, a German psychologist</text>
-<text x="528" y="278">proved that the human brain naturally dumps up to 80%</text>
-<text x="528" y="294">of new data within 48 hours</text>
-<text x="528" y="310">unless it is actively refreshed</text>
-<text x="528" y="326">He proved that short daily sessions.</text>
-<text x="528" y="338">force information into long-term retention.</text>
+<text x="528" y="278">proved that the human brain</text>
+<text x="528" y="294">naturally dumps up to 80%</text>
+<text x="528" y="310">of new data within 48 hours</text>
+<text x="528" y="326">unless it is actively refreshed.</text>
 </g>
 </svg>
 <figcaption style="font-size: 0.9em; opacity: 0.75; margin-top: 0.5rem;">Three types of supporting detail for one topic sentence.</figcaption>
