@@ -52,11 +52,11 @@ Suppose your topic sentence is: <em>To improve their language skills, students m
 <text x="40" y="164" font-weight="600">Fact</text>
 <text x="40" y="186">Evidence that is true.</text>
 <text x="40" y="242" font-size="11.5" fill-opacity="0.7">Example</text>
-<text x="40" y="262">Recent global and academic surveys highlight that</text>
-<text x="40" y="278">language students who make the most rapid, measurable progress are those</text>
-<text x="40" y="294">who commit to</text>
-<text x="40" y="310">15 minutes of practice</text>
-<text x="40" y="326">every single day.</text>
+<text x="40" y="262">Academic surveys highlight that</text>
+<text x="40" y="278">language students who make</text>
+<text x="40" y="294">the most rapid progress are</text>
+<text x="40" y="310">those who commit to 15-minute</text>
+<text x="40" y="326">of practice every single day</text>
 </g>
 <g>
 <rect x="268" y="140" width="224" height="212" rx="8" fill="none" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.25"/>
