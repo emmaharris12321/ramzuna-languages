@@ -3,7 +3,7 @@ title: "Writing Across Academic Cultures: How to Use Supporting Details"
 description: "Supporting details are the evidence that makes your paragraph persuasive or informative. Learn the three main types: facts, logic and expert opinions."
 date: "November 10, 2026"
 category: "Education"
-image: "/assets/img/writing,jpg"
+image: "/assets/img/writing.jpg"
 readTime: "4 min read"
 author:
   name: "Ramzunā Languages Team"
