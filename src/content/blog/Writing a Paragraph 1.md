@@ -3,7 +3,7 @@ title: "Writing Across Academic Cultures: How to Write a Strong Topic Sentence"
 description: "A topic sentence tells the reader what a body paragraph is about and how it supports your thesis. Learn its two jobs, see an example and use the checklist."
 date: "November 10, 2026"
 category: "Education"
-image: "/assets/img/academic.svg"
+image: "/assets/img/writing1.jpg"
 readTime: "4 min read"
 author:
   name: "Ramzunā Languages Team"
