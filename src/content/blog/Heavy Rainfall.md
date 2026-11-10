@@ -25,5 +25,6 @@ Around 70,000 tents providing shelter for an estimated 350,000 Palestinians incl
 
 ## Many Palestinians reside in flood-prone areas
 
+<p style="text-align: justify;">
 Furthermore, 950,000 displaced Palestinians reside in flood-prone areas.  Without adequate shelter working water and sanitation systems, tents, and essential restoration equipment, the risk of further loss of life, particularly among children, remains high.  This is especially concerning given the already tragic loss of 11 children last winter due to cold. This exacerbates the suffering of the civilian population still facing military attacks despite a year-old ceasefire. 
-
+</p>
