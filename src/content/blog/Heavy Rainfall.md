@@ -1,5 +1,6 @@
 ---
 title: "Humanitarian Situation: Heavy Rains in the Gaza Strip."
+description: "Humanitarian update on the current situation"
 date: "November 9, 2026"
 category: "Humanitarian Situation"
 image: "/assets/img/rainfall.jpg"
