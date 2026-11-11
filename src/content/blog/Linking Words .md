@@ -14,7 +14,7 @@ author:
 
 ## Giving opinions
 
-<p style="text-align: justify;">
+<ul style="text-align: justify;">
 <li>In my opinion<li/>
 <li>Personally, I think<li/>
 <li>From my point of view,<li/>
@@ -23,10 +23,10 @@ author:
 <li>It seems to me that<li/>
 <li>Many people believe that<li/>
 <li>Some people argue that<li/>
-</p>
+</ul>
 
 ## Adding Ideas
-<p style="text-align: justify;">
+<ul style="text-align: justify;">
 <li>Also<li/>
 <li>In addition,<li/>
 <li>Moreover,<li/>
@@ -36,13 +36,15 @@ author:
 </p>
 
 ## Sequencing
+<ul style="text-align: justify;">
 <li>Firstly,<li/>
 <li>Secondly,<li/>
 <li>Thirdly,<li/>
+</ul>
 
 ## Contrasting Ideas
 
-<p style="text-align: justify;">
+<ul style="text-align: justify;">
 <li>However,<li/>
 <li>Nonetheless,<li/>
 <li>Nevertheless,<li/>
@@ -55,8 +57,10 @@ author:
 <li>While....,<li/>
 <li>Whereas....,<li/> 
 <li>In spite of...<li/>
+</ul>
 
 ## Sounding more advanced
+<ul style="text-align: justify;">
 <li>Nowadays<li/>
 <li>It is clear that<li/>
 <li>There is no doubt that<li/>
@@ -64,10 +68,11 @@ author:
 <li>It is important to bear in mind that<li/>
 <li>One of the main problems is<li/>
 <li>More and more people</li>
-
+</ul>
 
 
 ## Analysing results
+<ul style="text-align: justify;">
 <li>This is because<li/>
 <li>The main reason is<li/>
 <li>Due to<li/>
@@ -80,26 +85,32 @@ author:
 <li>Thus,<li/>
 <li>Hence,<li/>
 <li>Owing to...<li/>
+</ul>
 
 
 ## Giving Examples
-<li>For example<li/>
-<li>For instance<li/>
-<li>Such as<li/>
-<li>Namely<li/>
-<li>A good example of this is<li/> 
-<li>To illustrate<li/>
-<li>As exemplified by<li/>
-<li>Notably<li/>
-<li>Particularly<li/>
+<ul style="text-align: justify;">
+<li>For example,<li/>
+<li>For instance,<li/>
+<li>Such as,<li/>
+<li>Namely,<li/>
+<li>A good example of this is...<li/> 
+<li>To illustrate,<li/>
+<li>As exemplified by...<li/>
+<li>Notably,<li/>
+<li>Particularly,<li/>
+</ul>
 
 ## Rephrasing
+<ul style="text-align: justify;">
 <li>That is,<li/>
 <li>Namely,<li/>
 <li>In other words,<li/>
 <li>In other terms,<li/>
+</ul>
 
 ## Concluding
+<ul style="text-align: justify;">
 <li>To sum up,<li/>
 <li>To conclude,<li/>
 <li>In conclusion,<li/>
@@ -109,8 +120,10 @@ author:
 <li>Finally,<li/>
 <li>Overall,<li/>
 <li>Therefore,<li/>
+</ul>
 
 ## Phrases to elevate your writing
+<ul style="text-align: justify;">
 <li>It was a once-in-a-lifetime opportunity,<li/>
 <li>I would definitely recommend it<li/>
 <li>It was worth it<li/>
@@ -121,9 +134,11 @@ author:
 <li>One possible solution would be...<li/>
 <li>The problem is that...<li/>
 <li>On the whole,....<li/>
+</ul>
 
 ## Structures to elevate your writing
+<ul style="text-align: justify;">
 <li>Although it was difficult,....<li/>
 <li>Not only, but also<li/>
 <li>If I had the opportunity, I would<li/>
-
+</ul>
