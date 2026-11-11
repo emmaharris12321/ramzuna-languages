@@ -1,6 +1,6 @@
 ---
-title: "USEFUL PHRASES TO IMPROVE YOUR WRITING AND YOUR SPEECH"
-description: "LINKING WORDS"
+title: "Useful Phrases to Elevate your Speech and Writing"
+description: A wealth of linking words to enhance the structure of your speech and writing.
 date: "November 11, 2026"
 category: "Writing"
 image: "/assets/img/WritingElevate.jpg"
