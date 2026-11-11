@@ -33,7 +33,7 @@ author:
 <li>Furthermore,</li>
 <li>Besides,</li>
 <li>Not only, but also</li>
-</p>
+</ul>
 
 ## Sequencing
 <ul style="text-align: justify;">
@@ -128,7 +128,7 @@ author:
 <li>I would definitely recommend it</li>
 <li>It was worth it</li>
 <li>The best/worst part was....</li>
-<li>I realised that<li/>
+<li>I realised that</li>
 <li>It had a positive impact on</li>
 <li>It was detrimental</li>
 <li>One possible solution would be...</li>
