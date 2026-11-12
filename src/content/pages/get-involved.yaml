@@ -64,10 +64,10 @@ pricing:
 # CTA Section
 cta:
   title: Enrolment and Volunteer Applications Are Currently Closed for the Autumn Term
-  description: "Join the waiting list to be notified when they reopen, or explore our programmes in the meantime."
+  description: "Student enrolment and volunteer applications are currently closed. Explore our programmes to learn more, or support our work while applications are paused."
   primaryCta:
     text: Our Programmes
     url: "/services"
   secondaryCta:
-    text: Join the Waiting List
-    url: https://forms.gle/r9dahwJBcRy9Dcym9
+    text: Support Our Work
+    url: "/donate"

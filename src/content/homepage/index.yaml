@@ -13,10 +13,10 @@ hero:
     text: Our Programmes
     url: "/services"
   secondaryCta:
-    text: "Our Waiting List"
-    url: "https://forms.gle/r9dahwJBcRy9Dcym9"
+    text: "Free Learning Resources"
+    url: "/resources"
     icon: false
-  note: "Student enrolment and volunteer applications are currently closed for the autumn term. Thank you for your interest — explore our programmes, join our waiting list, or support our work with a donation."
+  note: "Student enrolment and volunteer applications are currently closed for the autumn term. We are not accepting new student applications at present; please check our website for future enrolment announcements."
   stats:
     - value: "855"
       label: Hours Delivered
@@ -241,10 +241,10 @@ faq:
 # CTA Section
 cta:
   title: Applications Are Currently Closed for the Autumn Term
-  description: "Student enrolment and volunteer applications are currently closed for the autumn term. In the meantime, join our waiting list, explore our programmes, or support our work with a donation."
+  description: "Student enrolment and volunteer applications are currently closed for the autumn term. Please check our website for future enrolment updates. In the meantime, explore our programmes and free learning resources."
   primaryCta:
-    text: Join the Waiting List
-    url: "https://forms.gle/r9dahwJBcRy9Dcym9"
+    text: Free Learning Resources
+    url: "/resources"
   secondaryCta:
     text: Our Programmes
     url: "/services"
