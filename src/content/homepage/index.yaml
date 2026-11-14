@@ -20,7 +20,7 @@ hero:
   stats:
     - value: "930"
       label: Hours Delivered
-    - value: "610"
+    - value: "620"
       label: Lessons Delivered
     - value: "19"
       label: Nationalities
@@ -49,8 +49,7 @@ services:
       description: Asynchronous learning for students whose internet does not enable them to join live lessons.
       highlight: true
       links:
-        - text: Conversation Sessions
-          url: /services
+       
         - text: Asynchronous Learning
           url: /services
         - text: Resources

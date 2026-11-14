@@ -52,8 +52,6 @@ nav:
     children:
       - text: Teach With Us
         url: /teach-with-us
-      - text: Become a Conversation Partner
-        url: /become-a-conversation-partner
       - text: Partner With Us
         url: /partners
   - text: Palestinian Voices

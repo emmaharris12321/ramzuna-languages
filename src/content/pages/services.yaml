@@ -17,16 +17,15 @@ servicesGrid:
       features:
         - Five CEFR levels, A1 to C1
         - Small group by default (2-3 students); one-to-one for exam prep or special needs
-        - 60- or 90-minute weekly lessons, or fully asynchronous
+        - 90-minute weekly lessons, or fully asynchronous
         - Flexible scheduling around your week
-        - Learning materials included
     - icon: longDistance
       title: French Lessons
       description: "Structured French instruction from first words (A1) to near-native mastery (C1), taught by native and fluent volunteer speakers."
       features:
         - Five CEFR levels, A1 to C1
         - Small group by default (2-3 students); one-to-one for exam prep or special needs
-        - 60- or 90-minute weekly lessons, or fully asynchronous
+        - 90-minute weekly lessons, or fully asynchronous
         - Grammar, vocabulary & real conversation
         - DELF/DALF exam preparation available
     - icon: commercial
@@ -35,7 +34,7 @@ servicesGrid:
       features:
         - Five CEFR levels, A1 to C1
         - Small group by default (2-3 students); one-to-one for exam prep or special needs
-        - 60- or 90-minute weekly lessons, or fully asynchronous
+        - 90-minute weekly lessons, or fully asynchronous
         - Speaking-focused, structured curriculum
         - Goethe-Institut exam preparation available
     - icon: storage
@@ -47,14 +46,6 @@ servicesGrid:
         - Speaking circles — respond by voice message, on your schedule
         - Available in English, French, and German
     - icon: packing
-      title: Conversation Partners
-      description: "Weekly, low-pressure conversation practice in English, French or German — built to grow fluency and confidence through real conversation, not textbook drills."
-      features:
-        - One 60-minute video call each week
-        - No homework, no grading, no fixed curriculum
-        - You and your partner choose the topics together
-        - Ideal for students who already know the basics and want to speak more
-    - icon: specialty
       title: Exam Preparation
       description: "Focused, one-on-one coaching to prepare for IELTS, TOEFL, DELF, DALF, and Goethe-Institut certification exams."
       features:
