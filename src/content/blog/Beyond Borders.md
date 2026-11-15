@@ -1,9 +1,9 @@
 ---
 title: "Beyond Borders: A Voice for Palestinian Independence 🇵🇸"
 description: "A beautiful text from one of our brilliant student, Saja, on what independence means to her."
-date: "Oct 15, 2026"
+date: "Nov 15, 2026"
 category: "Independence"
-image: "/assets/img/independence.png"
+image: "/assets/img/Independence.jpg"
 readTime: "5 min read"
 author:
   name: "Saja M. Hamad"
