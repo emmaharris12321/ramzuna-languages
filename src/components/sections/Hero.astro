@@ -10,6 +10,7 @@ interface Props {
   stats?: { value: string; label: string }[];
   image?: string;
   note?: string;
+  showFreeBadge?: boolean;
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   stats,
   image,
   note,
+  showFreeBadge = true,
 } = Astro.props;
 ---
 
@@ -72,7 +74,7 @@ const {
         </p>
 
         <div
-          class="mt-10 flex flex-col gap-4 sm:flex-row"
+          class="hero-actions mt-10 flex flex-col gap-4 sm:flex-row"
           data-animate="fade-in-up"
           data-delay="300"
         >
@@ -145,7 +147,7 @@ const {
         {
           stats && stats.length > 0 && (
             <div
-              class="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4"
+              class="hero-stats mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4"
               data-animate="fade-in-up"
               data-delay="400"
             >
@@ -181,7 +183,7 @@ const {
               />
             </div>
             <!-- Floating badge -->
-            <div class="absolute -bottom-4 -left-4 rounded-xl bg-white p-4 shadow-lg dark:bg-gray-800 sm:-bottom-6 sm:-left-6">
+            {showFreeBadge && <div class="absolute -bottom-4 -left-4 rounded-xl bg-white p-4 shadow-lg dark:bg-gray-800 sm:-bottom-6 sm:-left-6">
               <div class="flex items-center gap-3">
                 <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900/50">
                   <svg class="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -193,7 +195,7 @@ const {
                   <div class="text-xs text-gray-500 dark:text-gray-400">No cost to students, ever</div>
                 </div>
               </div>
-            </div>
+            </div>}
           </div>
         )
       }

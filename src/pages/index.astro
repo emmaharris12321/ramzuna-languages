@@ -12,21 +12,22 @@ import { getHomepage } from '@/data/site';
 const page = await getHomepage();
 ---
 
-<Base title="Free English, French & German Lessons for Palestinian Students" description="Ramzunā Languages is dedicated to providing free and personalised English,French and German lessons to Palestinian students. Sign up to learn, or apply to teach Palestinian students today.">
-  <Hero {...page.hero} />
+<Base title="Free English, French & German Lessons for Palestinian Students" description="Ramzunā Languages is dedicated to providing free and personalised English, French and German lessons to Palestinian students. Explore our programmes and free learning resources.">
+  <div class="ramzuna-home">
+  <div class="home-hero"><Hero {...page.hero} showFreeBadge={false} /></div>
   <!-- Wave Divider -->
-  <div class="relative -mt-1 text-gray-50 dark:text-gray-900">
+  <div class="home-wave relative -mt-1 text-cream-200 dark:text-gray-950">
     <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" preserveAspectRatio="none">
       <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="currentColor" />
     </svg>
   </div>
-  <ProgrammesAndInvolved />
+  <div class="home-programmes"><ProgrammesAndInvolved /></div>
 
-  {page.howItWorks && <HowItWorks {...page.howItWorks} />}
-  {page.terms && <Terms badge={page.terms.badge} title={page.terms.title} description={page.terms.description} terms={page.terms.items} />}
-  <TestimonialsCarousel />
-  <BlogTeaser />
-  {page.cta && <CTA {...page.cta} />}
+  {page.howItWorks && <div class="home-information"><HowItWorks {...page.howItWorks} /></div>}
+  {page.terms && <div class="home-information"><Terms badge={page.terms.badge} title={page.terms.title} description={page.terms.description} terms={page.terms.items} /></div>}
+  <div class="home-testimonials"><TestimonialsCarousel /></div>
+  <div class="home-information home-blog"><BlogTeaser /></div>
+  {page.cta && <div class="home-cta"><CTA {...page.cta} /></div>}
 
   <!-- Closing Quote -->
   <section class="quote-section-photo py-12 lg:py-16">
@@ -40,6 +41,7 @@ const page = await getHomepage();
       </div>
     </div>
   </section>
+  </div>
 </Base>
 
 <style>
@@ -62,5 +64,111 @@ const page = await getHomepage();
 
   .quote-glyph-photo {
     color: rgba(255, 255, 255, 0.75);
+  }
+</style>
+
+
+<!-- Homepage-only refinements. Shared components and other pages keep their layout. -->
+<style is:global>
+  .ramzuna-home {
+    --home-width: 1240px;
+    --home-gutter: clamp(16px, 3vw, 32px);
+    --home-section-space: clamp(48px, 6vw, 80px);
+  }
+
+  /* One alignment grid across sections; preserve narrower reading measures. */
+  .ramzuna-home .container,
+  .ramzuna-home .ramzuna-programmes {
+    width: 100%;
+    max-width: var(--home-width);
+    margin-inline: auto;
+    padding-inline: var(--home-gutter);
+  }
+  .ramzuna-home .home-hero > section > .container {
+    padding-block: clamp(56px, 6vw, 96px);
+  }
+  .ramzuna-home .home-hero h1 { line-height: 1.13; }
+  .ramzuna-home .home-hero h1 + p { margin-top: 1.15rem; }
+  .ramzuna-home .home-hero .hero-actions { margin-top: 1.5rem; }
+  .ramzuna-home .home-hero .hero-stats {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    gap: 1rem;
+    border-top: 1px solid #d9e6da;
+  }
+  .ramzuna-home .home-hero .hero-stats > div > div:first-child {
+    color: #7a222b;
+    font-variant-numeric: tabular-nums;
+  }
+  .dark .ramzuna-home .home-hero .hero-stats { border-color: #374151; }
+  .dark .ramzuna-home .home-hero .hero-stats > div > div:first-child { color: #e3bcbe; }
+
+  .ramzuna-home .home-wave svg { display: block; height: clamp(32px, 5vw, 64px); }
+  .ramzuna-home .home-programmes .rz-section {
+    padding-block: calc(var(--home-section-space) * .72);
+  }
+  .ramzuna-home .home-programmes .rz-head { margin-bottom: 28px; }
+  .ramzuna-home .home-programmes .ramzuna-programmes .rz-section .rz-card {
+    min-height: 0;
+    padding: clamp(22px, 2.5vw, 30px);
+    border-radius: 16px;
+  }
+  .ramzuna-home .home-programmes .rz-grid {
+    gap: clamp(16px, 2vw, 24px);
+  }
+  .ramzuna-home .home-programmes .rz-description { font-size: 17px; line-height: 1.6; }
+  .ramzuna-home .home-programmes .rz-links::before { margin-bottom: 6px; }
+  .ramzuna-home .home-programmes .rz-link { min-height: 44px; padding-block: 8px; }
+  .ramzuna-home .home-programmes .rz-closed-note { display: none; }
+
+  /* Match the existing programme heading style in the informational sections. */
+  .ramzuna-home .home-information > section,
+  .ramzuna-home .home-cta > section { padding-block: var(--home-section-space); }
+  .ramzuna-home .home-information h2,
+  .ramzuna-home .home-programmes .rz-head h2,
+  .ramzuna-home .home-testimonials .tm-head h2 {
+    color: #38664f;
+    font-size: clamp(1.75rem, 2.8vw, 2.25rem);
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -.015em;
+  }
+  .ramzuna-home .home-information h2 { margin-top: 0; }
+  .ramzuna-home .home-information h2::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 2px;
+    background: #7a222b;
+    opacity: .35;
+    margin: 18px auto 0;
+  }
+  .ramzuna-home .home-information [data-animate] > .rounded-full,
+  .ramzuna-home .home-information .mx-auto > .rounded-full {
+    margin-bottom: 16px;
+  }
+  .ramzuna-home .home-information #how-it-works .mt-16,
+  .ramzuna-home .home-information #terms .mt-16 { margin-top: 2.5rem; }
+  .ramzuna-home .home-blog .mt-12 { margin-top: 2rem; }
+  .ramzuna-home .home-testimonials .tm-section {
+    padding-block: var(--home-section-space);
+  }
+  .ramzuna-home .home-testimonials .tm-wrap { max-width: 760px; }
+  .ramzuna-home .home-testimonials .tm-head { margin-bottom: 28px; }
+  .ramzuna-home .home-testimonials .tm-quote { line-height: 1.7; }
+
+  /* Keep the existing warm palette in dark mode without a cream block. */
+  .dark .ramzuna-home .home-information h2,
+  .dark .ramzuna-home .home-programmes .rz-head h2,
+  .dark .ramzuna-home .home-testimonials .tm-head h2 { color: #b3cdb8; }
+  .dark .ramzuna-home .home-programmes .ramzuna-programmes { background: transparent; }
+  .dark .ramzuna-home .home-testimonials .tm-section { background: #111827; }
+  .dark .ramzuna-home .home-testimonials .tm-count { color: #d1d5db; }
+  .dark .ramzuna-home .home-testimonials .tm-play { color: #e3bcbe; }
+
+  @media (max-width: 639px) {
+    .ramzuna-home .home-hero > section > .container { padding-block: 44px; }
+    .ramzuna-home .home-programmes .rz-section { padding-block: 32px; }
+    .ramzuna-home .home-programmes .ramzuna-programmes .rz-section .rz-card { padding: 24px 20px; }
   }
 </style>
