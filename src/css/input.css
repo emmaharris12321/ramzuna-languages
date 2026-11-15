@@ -9,17 +9,7 @@
     scroll-behavior: smooth;
   }
 
-  /* Root font-size left at the browser default everywhere — bumping it
-     scales every rem-based Tailwind size (including headings), which made
-     titles look oversized. Desktop gets a small bump on top since it has
-     more room. Threshold is 1280px (not the 1024px nav breakpoint) so the
-     desktop nav still has room to lay out horizontally first. */
-  @media (min-width: 1280px) {
-    html {
-      font-size: 18px;
-    }
-  }
-
+  /* Keep browser text sizing consistent across viewport widths. */
   /* Outfit is the site's body font (Playfair Display is reserved for
      display headings via the font-display utility). Setting it here, once,
      on body means every page and component inherits it by default — a few

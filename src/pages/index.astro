@@ -12,14 +12,8 @@ import { getHomepage } from '@/data/site';
 const page = await getHomepage();
 ---
 
-<Base title="Free English, French & German Lessons for Palestinian Students" description="Ramzunā Languages is dedicated to providing free and personalised English, French and German lessons to Palestinian students. Sign up to learn, or apply to teach Palestinian students today.">
+<Base title="Free English, French & German Lessons for Palestinian Students" description="Ramzunā Languages is dedicated to providing free and personalised English, French and German lessons to Palestinian students. Explore our programmes and free learning resources.">
   <Hero {...page.hero} />
-  <!-- Wave Divider -->
-  <div class="relative -mt-1 text-gray-50 dark:text-gray-900">
-    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" preserveAspectRatio="none">
-      <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="currentColor" />
-    </svg>
-  </div>
   <ProgrammesAndInvolved />
 
   {page.howItWorks && <HowItWorks {...page.howItWorks} />}
