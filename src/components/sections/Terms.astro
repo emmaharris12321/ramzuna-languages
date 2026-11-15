@@ -24,7 +24,7 @@ const icons = [
 ];
 ---
 
-<section id="terms" class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+<section id="terms" class="bg-cream-100 py-14 lg:py-20 dark:bg-gray-900">
   <div class="container mx-auto px-4 lg:px-8">
     <div class="mx-auto max-w-3xl text-center">
       {
@@ -54,7 +54,7 @@ const icons = [
     </div>
 
     <!-- Desktop: Horizontal timeline -->
-    <div class="mt-16 hidden lg:block" data-animate="fade-in-up" data-delay="300">
+    <div class="mt-10 hidden lg:block" data-animate="fade-in-up" data-delay="300">
       <div class="relative">
         <div class="absolute left-0 right-0 top-8 h-0.5 bg-primary-200 dark:bg-primary-800" aria-hidden="true"></div>
 
@@ -86,12 +86,12 @@ const icons = [
     </div>
 
     <!-- Mobile: Vertical timeline -->
-    <div class="mt-12 lg:hidden">
+    <div class="mt-8 lg:hidden">
       <div class="relative">
         {
           terms.map((term, index) => (
             <div
-              class="relative flex gap-6 pb-10 last:pb-0"
+              class="relative flex gap-6 pb-7 last:pb-0"
               data-animate="fade-in-up"
               data-delay={100 + index * 100}
             >

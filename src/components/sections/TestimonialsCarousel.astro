@@ -9,7 +9,7 @@
 
   .tm-section {
     width: 100%;
-    padding: clamp(24px, 3.5vw, 44px) clamp(16px, 3vw, 36px);
+    padding: clamp(40px, 5vw, 64px) clamp(16px, 3vw, 36px);
     background: linear-gradient(180deg, #f7f1e8, #fbf8f3);
     color: #2a2622;
     font-family: 'Outfit', system-ui, sans-serif;
@@ -331,6 +331,15 @@
       font-size: 14px;
     }
   }
+  :global(.dark) .tm-section { background: #202923; color: #f7f1e8; }
+  :global(.dark) .tm-section .tm-head h2 { color: #f7f1e8; }
+  :global(.dark) .tm-section .tm-card:not(.tm-card--maroon) { background: #293a30; border-color: #45594a; color: #f7f1e8; }
+  :global(.dark) .tm-section .tm-card:not(.tm-card--maroon) .tm-name,
+  :global(.dark) .tm-section .tm-card:not(.tm-card--maroon) .tm-quote-mark { color: #b7d7bd; }
+  :global(.dark) .tm-section .tm-card:not(.tm-card--maroon) .tm-role,
+  :global(.dark) .tm-section .tm-count,
+  :global(.dark) .tm-section .tm-play { color: #e3e7e2; }
+  :global(.dark) .tm-section .tm-dot[aria-current="true"]::before { background: #e8b7bd; }
 </style>
 
 <section class="tm-section" data-testimonials aria-label="What our community says">

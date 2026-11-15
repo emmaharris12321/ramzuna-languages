@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
+import Stats from '@/components/sections/Stats.astro';
 import Hero from '@/components/sections/Hero.astro';
 import ProgrammesAndInvolved from '@/components/sections/ProgrammesAndInvolved.astro';
 import HowItWorks from '@/components/sections/HowItWorks.astro';
@@ -12,22 +13,41 @@ import { getHomepage } from '@/data/site';
 const page = await getHomepage();
 ---
 
-<Base title="Free English, French & German Lessons for Palestinian Students" description="Ramzunā Languages is dedicated to providing free and personalised English, French and German lessons to Palestinian students. Explore our programmes and free learning resources.">
-  <div class="ramzuna-home">
-  <div class="home-hero"><Hero {...page.hero} showFreeBadge={false} /></div>
-  <!-- Wave Divider -->
-  <div class="home-wave relative -mt-1 text-cream-200 dark:text-gray-950">
-    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" preserveAspectRatio="none">
-      <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="currentColor" />
-    </svg>
-  </div>
-  <div class="home-programmes"><ProgrammesAndInvolved /></div>
-
-  {page.howItWorks && <div class="home-information"><HowItWorks {...page.howItWorks} /></div>}
-  {page.terms && <div class="home-information"><Terms badge={page.terms.badge} title={page.terms.title} description={page.terms.description} terms={page.terms.items} /></div>}
-  <div class="home-testimonials"><TestimonialsCarousel /></div>
-  <div class="home-information home-blog"><BlogTeaser /></div>
-  {page.cta && <div class="home-cta"><CTA {...page.cta} /></div>}
+<Base title="Free English, French & German Lessons for Palestinian Students" description="Ramzunā Languages provides free, personalised English, French and German lessons to Palestinian students. Explore our programmes, learning resources and ways to support our work.">
+  <Hero {...page.hero} stats={undefined} />
+  {page.hero.stats?.length > 0 && <Stats stats={page.hero.stats} />}
+  <ProgrammesAndInvolved showInvolved={false} homepage />
+  <TestimonialsCarousel />
+  {page.howItWorks && <HowItWorks {...page.howItWorks} />}
+  {page.terms && <Terms badge={page.terms.badge} title={page.terms.title} description={page.terms.description} terms={page.terms.items} />}
+  <ProgrammesAndInvolved showTeach={false} homepage enrolmentNote={page.hero.note} />
+  <section aria-labelledby="commitment-title" class="bg-white py-14 dark:bg-gray-950 lg:py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-5xl">
+        <h2 id="commitment-title" class="text-center font-display text-3xl font-semibold text-primary-700 dark:text-white sm:text-4xl">Our Commitment</h2>
+        <p class="mt-4 text-center text-gray-600 dark:text-gray-300">Free education, student wellbeing and accountability are at the heart of our work.</p>
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <article class="rounded-xl border border-gray-200 p-6 dark:border-gray-700">
+            <h3 class="font-semibold text-lg">Volunteer-powered education</h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300">A non-profit organisation providing free language learning for Palestinian students. UK company number: 17498643.</p>
+            <a href="/about" class="mt-3 inline-flex min-h-11 items-center font-semibold text-primary-700 underline dark:text-gray-200">About us</a>
+          </article>
+          <article class="rounded-xl border border-gray-200 p-6 dark:border-gray-700">
+            <h3 class="font-semibold text-lg">Safeguarding</h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300">Learn about our safeguarding policy and how to report a concern.</p>
+            <a href="/safeguarding" class="mt-3 inline-flex min-h-11 items-center font-semibold text-primary-700 underline dark:text-gray-200">Safeguarding policy</a>
+          </article>
+          <article class="rounded-xl border border-gray-200 p-6 dark:border-gray-700">
+            <h3 class="font-semibold text-lg">Transparency</h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300">Find out more about our organisation and its commitment to transparency.</p>
+            <a href="/transparency" class="mt-3 inline-flex min-h-11 items-center font-semibold text-primary-700 underline dark:text-gray-200">Transparency</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <BlogTeaser />
+  {page.cta && <CTA {...page.cta} description={`${page.hero.note} ${page.cta.description}`} />}
 
   <!-- Closing Quote -->
   <section class="quote-section-photo py-12 lg:py-16">
@@ -41,7 +61,6 @@ const page = await getHomepage();
       </div>
     </div>
   </section>
-  </div>
 </Base>
 
 <style>
@@ -64,111 +83,5 @@ const page = await getHomepage();
 
   .quote-glyph-photo {
     color: rgba(255, 255, 255, 0.75);
-  }
-</style>
-
-
-<!-- Homepage-only refinements. Shared components and other pages keep their layout. -->
-<style is:global>
-  .ramzuna-home {
-    --home-width: 1240px;
-    --home-gutter: clamp(16px, 3vw, 32px);
-    --home-section-space: clamp(48px, 6vw, 80px);
-  }
-
-  /* One alignment grid across sections; preserve narrower reading measures. */
-  .ramzuna-home .container,
-  .ramzuna-home .ramzuna-programmes {
-    width: 100%;
-    max-width: var(--home-width);
-    margin-inline: auto;
-    padding-inline: var(--home-gutter);
-  }
-  .ramzuna-home .home-hero > section > .container {
-    padding-block: clamp(56px, 6vw, 96px);
-  }
-  .ramzuna-home .home-hero h1 { line-height: 1.13; }
-  .ramzuna-home .home-hero h1 + p { margin-top: 1.15rem; }
-  .ramzuna-home .home-hero .hero-actions { margin-top: 1.5rem; }
-  .ramzuna-home .home-hero .hero-stats {
-    margin-top: 1.75rem;
-    padding-top: 1.25rem;
-    gap: 1rem;
-    border-top: 1px solid #d9e6da;
-  }
-  .ramzuna-home .home-hero .hero-stats > div > div:first-child {
-    color: #7a222b;
-    font-variant-numeric: tabular-nums;
-  }
-  .dark .ramzuna-home .home-hero .hero-stats { border-color: #374151; }
-  .dark .ramzuna-home .home-hero .hero-stats > div > div:first-child { color: #e3bcbe; }
-
-  .ramzuna-home .home-wave svg { display: block; height: clamp(32px, 5vw, 64px); }
-  .ramzuna-home .home-programmes .rz-section {
-    padding-block: calc(var(--home-section-space) * .72);
-  }
-  .ramzuna-home .home-programmes .rz-head { margin-bottom: 28px; }
-  .ramzuna-home .home-programmes .ramzuna-programmes .rz-section .rz-card {
-    min-height: 0;
-    padding: clamp(22px, 2.5vw, 30px);
-    border-radius: 16px;
-  }
-  .ramzuna-home .home-programmes .rz-grid {
-    gap: clamp(16px, 2vw, 24px);
-  }
-  .ramzuna-home .home-programmes .rz-description { font-size: 17px; line-height: 1.6; }
-  .ramzuna-home .home-programmes .rz-links::before { margin-bottom: 6px; }
-  .ramzuna-home .home-programmes .rz-link { min-height: 44px; padding-block: 8px; }
-  .ramzuna-home .home-programmes .rz-closed-note { display: none; }
-
-  /* Match the existing programme heading style in the informational sections. */
-  .ramzuna-home .home-information > section,
-  .ramzuna-home .home-cta > section { padding-block: var(--home-section-space); }
-  .ramzuna-home .home-information h2,
-  .ramzuna-home .home-programmes .rz-head h2,
-  .ramzuna-home .home-testimonials .tm-head h2 {
-    color: #38664f;
-    font-size: clamp(1.75rem, 2.8vw, 2.25rem);
-    line-height: 1.25;
-    font-weight: 600;
-    letter-spacing: -.015em;
-  }
-  .ramzuna-home .home-information h2 { margin-top: 0; }
-  .ramzuna-home .home-information h2::after {
-    content: "";
-    display: block;
-    width: 42px;
-    height: 2px;
-    background: #7a222b;
-    opacity: .35;
-    margin: 18px auto 0;
-  }
-  .ramzuna-home .home-information [data-animate] > .rounded-full,
-  .ramzuna-home .home-information .mx-auto > .rounded-full {
-    margin-bottom: 16px;
-  }
-  .ramzuna-home .home-information #how-it-works .mt-16,
-  .ramzuna-home .home-information #terms .mt-16 { margin-top: 2.5rem; }
-  .ramzuna-home .home-blog .mt-12 { margin-top: 2rem; }
-  .ramzuna-home .home-testimonials .tm-section {
-    padding-block: var(--home-section-space);
-  }
-  .ramzuna-home .home-testimonials .tm-wrap { max-width: 760px; }
-  .ramzuna-home .home-testimonials .tm-head { margin-bottom: 28px; }
-  .ramzuna-home .home-testimonials .tm-quote { line-height: 1.7; }
-
-  /* Keep the existing warm palette in dark mode without a cream block. */
-  .dark .ramzuna-home .home-information h2,
-  .dark .ramzuna-home .home-programmes .rz-head h2,
-  .dark .ramzuna-home .home-testimonials .tm-head h2 { color: #b3cdb8; }
-  .dark .ramzuna-home .home-programmes .ramzuna-programmes { background: transparent; }
-  .dark .ramzuna-home .home-testimonials .tm-section { background: #111827; }
-  .dark .ramzuna-home .home-testimonials .tm-count { color: #d1d5db; }
-  .dark .ramzuna-home .home-testimonials .tm-play { color: #e3bcbe; }
-
-  @media (max-width: 639px) {
-    .ramzuna-home .home-hero > section > .container { padding-block: 44px; }
-    .ramzuna-home .home-programmes .rz-section { padding-block: 32px; }
-    .ramzuna-home .home-programmes .ramzuna-programmes .rz-section .rz-card { padding: 24px 20px; }
   }
 </style>

@@ -9,8 +9,8 @@ interface Props {
   secondaryCta?: { text: string; url: string; icon?: boolean };
   stats?: { value: string; label: string }[];
   image?: string;
+  imageAlt?: string;
   note?: string;
-  showFreeBadge?: boolean;
 }
 
 const {
@@ -23,16 +23,16 @@ const {
   secondaryCta,
   stats,
   image,
+  imageAlt = "",
   note,
-  showFreeBadge = true,
 } = Astro.props;
 ---
 
 <section
-  class="relative overflow-hidden bg-gradient-to-b from-primary-50 to-white dark:from-gray-900 dark:to-gray-950"
+  class="relative overflow-hidden bg-cream-200 dark:bg-gray-950"
 >
-  <div class="container mx-auto px-4 py-20 lg:px-8 lg:py-32">
-    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+  <div class="container mx-auto px-4 py-12 lg:px-8 lg:py-20">
+    <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
       <!-- Content -->
       <div>
         {
@@ -50,7 +50,7 @@ const {
         }
 
         <h1
-          class="font-display text-3xl font-semibold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white"
+          class="font-display text-3xl font-semibold text-primary-700 sm:text-4xl lg:text-5xl dark:text-white"
           data-animate="fade-in-up"
           data-delay="100"
         >
@@ -74,7 +74,7 @@ const {
         </p>
 
         <div
-          class="hero-actions mt-10 flex flex-col gap-4 sm:flex-row"
+          class="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
           data-animate="fade-in-up"
           data-delay="300"
         >
@@ -135,7 +135,7 @@ const {
         {
           note && (
             <p
-              class="mt-4 text-sm text-gray-500 dark:text-gray-500"
+              class="mt-4 text-sm text-accent-700 dark:text-gray-300"
               data-animate="fade-in-up"
               data-delay="350"
             >
@@ -147,7 +147,7 @@ const {
         {
           stats && stats.length > 0 && (
             <div
-              class="hero-stats mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4"
+              class="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4"
               data-animate="fade-in-up"
               data-delay="400"
             >
@@ -177,25 +177,14 @@ const {
             <div class="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-800">
               <img
                 src={image}
-                alt="Students learning languages online with volunteer educators"
+                alt={imageAlt}
                 class="h-auto w-full object-cover"
                 loading="eager"
+                width="1000"
+                height="731"
+                fetchpriority="high"
               />
             </div>
-            <!-- Floating badge -->
-            {showFreeBadge && <div class="absolute -bottom-4 -left-4 rounded-xl bg-white p-4 shadow-lg dark:bg-gray-800 sm:-bottom-6 sm:-left-6">
-              <div class="flex items-center gap-3">
-                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900/50">
-                  <svg class="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <div class="text-sm font-semibold text-gray-900 dark:text-white">100% Free</div>
-                  <div class="text-xs text-gray-500 dark:text-gray-400">No cost to students, ever</div>
-                </div>
-              </div>
-            </div>}
           </div>
         )
       }
