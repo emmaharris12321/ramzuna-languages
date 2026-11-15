@@ -1,227 +1,379 @@
 ---
 import Base from '@/layouts/Base.astro';
 
-interface Resource {
-  title: string;
-  url: string;
-  category: string;
-  lang: string;
-}
+const collections = ['English', 'IELTS', 'French', 'German', 'Italian'] as const;
+type Collection = (typeof collections)[number];
+type Format = 'Website' | 'Video' | 'Podcast' | 'PDF' | 'Document';
+type Single = [title: string, url: string, format?: Format];
+type Provider = { name: string; links: [title: string, url: string, objective: string | null, format: Format | null][] };
+type Entry = Single | Provider;
 
-const categories = ['English', 'IELTS General', 'IELTS Listening', 'IELTS Writing', 'French', 'German', 'Italian'];
-
-const categoryIcon: Record<string, string> = {
-  English: '📖',
-  'IELTS General': '📝',
-  'IELTS Listening': '🎧',
-  'IELTS Writing': '✍️',
-  French: '🇫🇷',
-  German: '🇩🇪',
-  Italian: '🇮🇹',
+// Collection and objective are inherited from the enclosing group.
+const directory: Record<Collection, Record<string, Entry[]>> = {
+  "English": {
+    "Courses & general learning": [
+      { name: "BBC Learning English", links: [
+        ["Main website","https://www.bbc.co.uk/learningenglish/english/home",null,null],
+        ["News English","https://www.bbc.co.uk/learningenglish/news_english","Reading & news",null],
+        ["6 Minute English","https://www.bbc.co.uk/learningenglish/english/features/6-minute-english","Listening & podcasts",null],
+        ["6 Minute Grammar","https://www.youtube.com/playlist?list=PLcetZ6gSk96_zHuVg6Ecy2F7j4Aq4valQ","Grammar & writing","Video"],
+        ["Everyday Phrases","https://www.youtube.com/playlist?list=PLcetZ6gSk9692RVJgFx4JXwFG4mWK0XGj","Speaking & everyday English","Video"],
+      ] },
+      { name: "British Council", links: [
+        ["Learn English","https://learnenglish.britishcouncil.org",null,null],
+        ["Palestine – Digital Catalogues","https://www.britishcouncil.ps/en/programmes/english-palestine-digital-catalogues",null,null],
+      ] },
+      { name: "Cambridge English", links: [
+        ["Learning resources","https://www.cambridgeenglish.org/learners/",null,null],
+        ["Write & Improve","https://writeandimprove.com","Grammar & writing",null],
+      ] },
+      ["Rong-Chang English","https://www.rong-chang.com/"],
+      ["engVid","https://www.engvid.com"],
+    ],
+    "Reading & news": [
+      ["VOA Learning English","https://learningenglish.voanews.com"],
+      ["News in Levels","https://www.newsinlevels.com"],
+      ["Breaking News English","https://breakingnewsenglish.com"],
+      ["Engoo","https://yvoronoy.github.io/awesome-english/go/engoo/"],
+    ],
+    "Listening & podcasts": [
+      ["Spotlight English","https://spotlightenglish.com"],
+      ["Luke's English Podcast","https://www.youtube.com/@LukesEnglishPodcast","Video"],
+      ["Elephant English Podcasts","https://www.youtube.com/@elephantenglishpodcasts","Video"],
+      ["ELLLO","https://www.elllo.org"],
+      ["ESL Lab","https://www.esl-lab.com"],
+    ],
+    "Speaking & everyday English": [
+      ["TED-Ed","https://ed.ted.com"],
+      ["English with Lucy","https://www.youtube.com/@EnglishwithLucy","Video"],
+      ["English with Ronnie – EnglishLessons4U","https://www.youtube.com/user/EnglishLessons4U","Video"],
+      ["Let's Talk – Free English Lessons","https://www.youtube.com/user/learnexmumbai","Video"],
+      ["RealLife English","https://www.youtube.com/@RealLifeEnglish1","Video"],
+      ["Learn English With TV Series","https://www.youtube.com/@LearnEnglishWithTVSeries","Video"],
+    ],
+    "Grammar & writing": [
+      ["Anglo-Link","https://www.youtube.com/user/MinooAngloLink","Video"],
+    ],
+  },
+  "IELTS": {
+    "Shared study materials": [
+      { name: "Shared IELTS materials", links: [
+        ["Document 1","https://drive.google.com/file/d/1_goP0MMEEhNM9W4rdkuyUG_yJLKX-0Gy/view",null,"Document"],
+        ["Document 2","https://drive.google.com/file/d/1_R4QYfW6dq6shzLXW3PxoLA-wCUORwDE/view",null,"Document"],
+        ["Document 3","https://drive.google.com/file/d/1d6aFC2bn7UmalW5KXvwVv1JATBzs0FdA/view",null,"Document"],
+      ] },
+    ],
+    "General preparation": [
+      ["IELTS Liz","https://ieltsliz.com"],
+      ["IELTS.org – Sample Test Questions","https://ielts.org/take-a-test/preparation-resources/sample-test-questions"],
+      ["IELTS-Up","https://ielts-up.com/index.html"],
+      ["YouTube – IELTS Prep Channel","https://www.youtube.com/channel/UCglDIsg_Z9mE2oT9hsrbzFA","Video"],
+      ["Magoosh IELTS","https://magoosh.com/ielts/ielts-resources/"],
+      ["IELTS etc.","https://ieltsetc.com/resources/"],
+      ["IELTS Practice Hub","https://ieltspracticehub.ai/?sso=anon"],
+    ],
+    "Listening": [
+      ["IELTS Podcast","https://www.ieltspodcast.com","Podcast"],
+      ["Mini IELTS – Listening","http://mini-ielts.com/listening"],
+      ["Practice PTE Online – IELTS Listening","https://practicepteonline.com/ielts-listening-tests-ielts-listening-practice-test-ielts-listening-pdf-ielts-cambridge-test/"],
+    ],
+    "Writing": [
+      ["IELTS-Writing.info","https://www.ielts-writing.info/EXAM/Download-free-IELTS-resources.htm"],
+      ["IELTS Mentor – Writing Task 2","https://www.ielts-mentor.com/writing-sample/writing-task-2"],
+      ["Writing9 – IELTS Writing Task 2","https://writing9.com/ielts-writing-task-2-topics"],
+      ["IELTS Buddy – Writing Task 1","https://www.ieltsbuddy.com/ielts-writing-task-1.html"],
+    ],
+  },
+  "French": {
+    "Speaking & pronunciation": [
+      { name: "Easy French", links: [
+        ["Main channel","https://www.youtube.com/@easyfrench",null,"Video"],
+        ["Super Easy French","https://www.youtube.com/playlist?list=PLA5UIoabheFMChKPAUUNNEOd7BobVJVoQ","Courses & grammar","Video"],
+      ] },
+      ["French Pronunciation with Nastya","https://www.youtube.com/@french.pronunciation","Video"],
+    ],
+    "Listening & podcasts": [
+      { name: "Français Authentique", links: [
+        ["Video channel","https://www.youtube.com/@francaisauthentique",null,"Video"],
+        ["Podcasts","https://www.francaisauthentique.com/podcasts/",null,"Podcast"],
+      ] },
+      ["RFI Savoirs – Français Facile","https://francaisfacile.rfi.fr/fr/"],
+      ["Coffee Break French","https://coffeebreaklanguages.com/coffeebreakfrench/","Podcast"],
+      ["innerFrench Podcast","https://innerfrench.com/podcast/","Podcast"],
+      ["LanguaTalk Slow French","https://languatalk.com/blog/podcast/french","Podcast"],
+      ["Oh, la Frenchie!","https://podcasters.spotify.com/pod/show/oh-la-frenchie","Podcast"],
+      ["France Bienvenue","https://francebienvenue1.fr/"],
+      ["Podcast Français Facile","https://www.podcastfrancaisfacile.com/","Podcast"],
+    ],
+    "Courses & grammar": [
+      ["TV5Monde","https://www.tv5monde.com"],
+      ["Lawless French","https://www.lawlessfrench.com"],
+      ["French Mornings with Elisa","https://www.youtube.com/@FrenchmorningswithElisa","Video"],
+      ["Maintenant ou Jamais","https://www.youtube.com/@Maintenant_ou_jamais","Video"],
+      ["Français avec Pierre","https://www.youtube.com/@francaisavecpierre","Video"],
+      ["Parlez-vous French","https://www.youtube.com/@parlezvousfrench","Video"],
+      ["Tex's French Grammar – UT Austin","https://www.laits.utexas.edu/tex/index.html"],
+    ],
+    "Exam preparation": [
+      ["DELF DALF – Official Site","http://www.delfdalf.fr/index-en.html"],
+    ],
+  },
+  "German": {
+    "Courses & grammar": [
+      { name: "Deutsche Welle", links: [
+        ["Learn German","https://learngerman.dw.com/en/learn-german/s-9528",null,null],
+        ["German news","https://www.dw.com/de/","Reading & news",null],
+      ] },
+      { name: "Goethe-Institut", links: [
+        ["Deutsch für dich","https://www.goethe.de/prj/dfd/en/home.cfm",null,null],
+        ["Exams","https://www.goethe.de/ins/mm/en/spr/prf.html","Exam preparation",null],
+      ] },
+      ["VHS Lernportal","https://www.vhs-lernportal.de/wws/9.php"],
+      ["Pressbooks – German 101","https://una.pressbooks.pub/gr101/chapter/section-1-1/"],
+      ["Mein Deutschbuch","https://mein-deutschbuch.de/"],
+      ["German Is Easy","https://www.germanveryeasy.com/"],
+      ["Lingolia Deutsch","https://deutsch.lingolia.com/"],
+      ["Learn German with Anja","https://www.youtube.com/c/LearnGermanwithAnja","Video"],
+      ["Learn German Original – A1 Course","https://www.youtube.com/watch?v=RuGmc662HDg&list=PLF9mJC4RrjIhS4MMm0x72-qWEn1LRvPuW","Video"],
+    ],
+    "Speaking & videos": [
+      ["YouTube – German Learning Channel","https://www.youtube.com/channel/UCbxb2fqe9oNgglAoYqsYOtQ","Video"],
+      ["GermanTalks","https://www.youtube.com/@TalksGerman","Video"],
+      ["Daily Deutsch","https://www.youtube.com/@Daily_Deutsch","Video"],
+      ["DialogDE","https://www.youtube.com/@DialogDE-j8j","Video"],
+    ],
+    "Listening & podcasts": [
+      ["Coffee Break German","https://coffeebreaklanguages.com/coffeebreakgerman/","Podcast"],
+      ["Slow German","https://www.slowgerman.com/","Podcast"],
+      ["News in Slow German","https://www.newsinslowgerman.com/","Podcast"],
+      ["GermanPod101","https://www.youtube.com/channel/UCTobWZV_HWGSoaRrhHyrJ-A","Video"],
+    ],
+    "Reading & news": [
+      ["StoryLearning German","https://www.storylearning.com/"],
+      ["Learn Out Live","https://learnoutlive.com/"],
+      ["EasyReaders.eu","https://www.easyreaders.eu/"],
+      ["Nachrichten Leicht","https://www.nachrichtenleicht.de/"],
+      ["Project Gutenberg","https://www.gutenberg.org/"],
+    ],
+  },
+  "Italian": {
+    "Listening & podcasts": [
+      ["Coffee Break Italian","https://coffeebreaklanguages.com/coffeebreakitalian/","Podcast"],
+      ["Joy of Languages – Italian Podcast","https://joyoflanguages.com/italianpodcast/","Podcast"],
+      ["ItalianPod101","https://www.italianpod101.com/"],
+    ],
+    "Courses & study materials": [
+      ["LearnAmo","https://learnamo.com"],
+      ["Online Italian Club – A1 Checklist","https://onlineitalianclub.com/wp-content/uploads/2026/01/checklist-A1-version-2.0.pdf","PDF"],
+    ],
+    "Speaking & videos": [
+      ["Easy Italian","https://www.youtube.com/@EasyItalian","Video"],
+    ],
+  },
 };
 
-const resources: Resource[] = [
-  // English
-  { title: 'British Council – Learn English', url: 'https://learnenglish.britishcouncil.org', category: 'English', lang: 'English' },
-  { title: 'British Council Palestine – Digital Catalogues', url: 'https://www.britishcouncil.ps/en/programmes/english-palestine-digital-catalogues', category: 'English', lang: 'English' },
-  { title: 'VOA Learning English', url: 'https://learningenglish.voanews.com', category: 'English', lang: 'English' },
-  { title: 'Spotlight English', url: 'https://spotlightenglish.com', category: 'English', lang: 'English' },
-  { title: 'BBC Learning English', url: 'https://www.bbc.co.uk/learningenglish/english/home', category: 'English', lang: 'English' },
-  { title: 'TED-Ed', url: 'https://ed.ted.com', category: 'English', lang: 'English' },
-  { title: 'BBC Learning English – News English', url: 'https://www.bbc.co.uk/learningenglish/news_english', category: 'English', lang: 'English' },
-  { title: "Luke's English Podcast", url: 'https://www.youtube.com/@LukesEnglishPodcast', category: 'English', lang: 'English' },
-  { title: 'BBC 6 Minute English', url: 'https://www.bbc.co.uk/learningenglish/english/features/6-minute-english', category: 'English', lang: 'English' },
-  { title: 'Elephant English Podcasts', url: 'https://www.youtube.com/@elephantenglishpodcasts', category: 'English', lang: 'English' },
-  { title: 'News in Levels', url: 'https://www.newsinlevels.com', category: 'English', lang: 'English' },
-  { title: 'ELLLO', url: 'https://www.elllo.org', category: 'English', lang: 'English' },
-  { title: 'Breaking News English', url: 'https://breakingnewsenglish.com', category: 'English', lang: 'English' },
-  { title: 'Cambridge English', url: 'https://www.cambridgeenglish.org/learners/', category: 'English', lang: 'English' },
-  { title: 'Rong-Chang English', url: 'https://www.rong-chang.com/', category: 'English', lang: 'English' },
-  { title: 'Write & Improve', url: 'https://writeandimprove.com', category: 'English', lang: 'English' },
-  { title: 'Ramzuna Languages – Padlet', url: 'https://padlet.com/RamzunaLang/ramzuna-languages-3zub7vag84jcw9ad/wish/O7A9Qmw39K0JW6x3', category: 'English', lang: 'English' },
-  { title: 'ESL Lab', url: 'https://www.esl-lab.com', category: 'English', lang: 'English' },
-  { title: 'engVid', url: 'https://www.engvid.com', category: 'English', lang: 'English' },
-  { title: 'English with Lucy', url: 'https://www.youtube.com/@EnglishwithLucy', category: 'English', lang: 'English' },
-  { title: 'English with Ronnie – EnglishLessons4U', url: 'https://www.youtube.com/user/EnglishLessons4U', category: 'English', lang: 'English' },
-  { title: 'BBC Learning English – 6 Minute Grammar', url: 'https://www.youtube.com/playlist?list=PLcetZ6gSk96_zHuVg6Ecy2F7j4Aq4valQ', category: 'English', lang: 'English' },
-  { title: 'BBC Learning English – Everyday Phrases', url: 'https://www.youtube.com/playlist?list=PLcetZ6gSk9692RVJgFx4JXwFG4mWK0XGj', category: 'English', lang: 'English' },
-  { title: 'Anglo-Link', url: 'https://www.youtube.com/user/MinooAngloLink', category: 'English', lang: 'English' },
-  { title: "Let's Talk – Free English Lessons", url: 'https://www.youtube.com/user/learnexmumbai', category: 'English', lang: 'English' },
-  { title: 'RealLife English', url: 'https://www.youtube.com/@RealLifeEnglish1', category: 'English', lang: 'English' },
-  { title: 'Learn English With TV Series', url: 'https://www.youtube.com/@LearnEnglishWithTVSeries', category: 'English', lang: 'English' },
-  { title: 'Engoo', url: 'https://yvoronoy.github.io/awesome-english/go/engoo/', category: 'English', lang: 'English' },
+const sections = collections.map(collection => ({
+  collection,
+  groups: Object.entries(directory[collection]).map(([name, entries]) => ({
+    name,
+    entries: entries.map(entry => Array.isArray(entry)
+      ? { name: '', links: [{ title: entry[0], url: entry[1], group: name, format: entry[2] ?? 'Website' }] }
+      : { name: entry.name, links: entry.links.map(([title, url, goal, format]) => ({
+          title, url, group: goal ?? name, format: format ?? 'Website',
+        })) })
+      .sort((a, b) => (a.name || a.links[0].title).localeCompare(b.name || b.links[0].title)),
+  })),
+}));
+const resources = sections.flatMap(section => section.groups.flatMap(group =>
+  group.entries.flatMap(entry => entry.links.map(link => ({ ...link, collection: section.collection })))
+));
 
-  // IELTS General
-  { title: 'IELTS Liz', url: 'https://ieltsliz.com', category: 'IELTS General', lang: 'English' },
-  { title: 'IELTS.org – Sample Test Questions', url: 'https://ielts.org/take-a-test/preparation-resources/sample-test-questions', category: 'IELTS General', lang: 'English' },
-  { title: 'IELTS-Up', url: 'https://ielts-up.com/index.html', category: 'IELTS General', lang: 'English' },
-  { title: 'YouTube – IELTS Prep Channel', url: 'https://www.youtube.com/channel/UCglDIsg_Z9mE2oT9hsrbzFA', category: 'IELTS General', lang: 'English' },
-  { title: 'Magoosh IELTS', url: 'https://magoosh.com/ielts/ielts-resources/', category: 'IELTS General', lang: 'English' },
-  { title: 'IELTS etc.', url: 'https://ieltsetc.com/resources/', category: 'IELTS General', lang: 'English' },
-  { title: 'IELTS Practice Hub', url: 'https://ieltspracticehub.ai/?sso=anon', category: 'IELTS General', lang: 'English' },
-  { title: 'Shared IELTS Resource 1', url: 'https://drive.google.com/file/d/1_goP0MMEEhNM9W4rdkuyUG_yJLKX-0Gy/view', category: 'IELTS General', lang: 'English' },
-  { title: 'Shared IELTS Resource 2', url: 'https://drive.google.com/file/d/1_R4QYfW6dq6shzLXW3PxoLA-wCUORwDE/view', category: 'IELTS General', lang: 'English' },
-  { title: 'Shared IELTS Resource 3', url: 'https://drive.google.com/file/d/1d6aFC2bn7UmalW5KXvwVv1JATBzs0FdA/view', category: 'IELTS General', lang: 'English' },
-
-  // IELTS Listening
-  { title: 'IELTS Podcast', url: 'https://www.ieltspodcast.com', category: 'IELTS Listening', lang: 'English' },
-  { title: 'Mini IELTS – Listening', url: 'http://mini-ielts.com/listening', category: 'IELTS Listening', lang: 'English' },
-  { title: 'Practice PTE Online – IELTS Listening', url: 'https://practicepteonline.com/ielts-listening-tests-ielts-listening-practice-test-ielts-listening-pdf-ielts-cambridge-test/', category: 'IELTS Listening', lang: 'English' },
-
-  // IELTS Writing
-  { title: 'IELTS-Writing.info', url: 'https://www.ielts-writing.info/EXAM/Download-free-IELTS-resources.htm', category: 'IELTS Writing', lang: 'English' },
-  { title: 'IELTS Mentor – Writing Task 2', url: 'https://www.ielts-mentor.com/writing-sample/writing-task-2', category: 'IELTS Writing', lang: 'English' },
-  { title: 'Writing9 – IELTS Writing Task 2', url: 'https://writing9.com/ielts-writing-task-2-topics', category: 'IELTS Writing', lang: 'English' },
-  { title: 'IELTS Buddy – Writing Task 1', url: 'https://www.ieltsbuddy.com/ielts-writing-task-1.html', category: 'IELTS Writing', lang: 'English' },
-
-  // French
-  { title: 'TV5Monde', url: 'https://www.tv5monde.com', category: 'French', lang: 'French' },
-  { title: 'RFI Savoirs – Français Facile', url: 'https://francaisfacile.rfi.fr/fr/', category: 'French', lang: 'French' },
-  { title: 'Lawless French', url: 'https://www.lawlessfrench.com', category: 'French', lang: 'French' },
-  { title: 'Coffee Break French', url: 'https://coffeebreaklanguages.com/coffeebreakfrench/', category: 'French', lang: 'French' },
-  { title: 'DELF DALF – Official Site', url: 'http://www.delfdalf.fr/index-en.html', category: 'French', lang: 'French' },
-  { title: 'Easy French', url: 'https://www.youtube.com/@easyfrench', category: 'French', lang: 'French' },
-  { title: 'Super Easy French', url: 'https://www.youtube.com/playlist?list=PLA5UIoabheFMChKPAUUNNEOd7BobVJVoQ', category: 'French', lang: 'French' },
-  { title: 'French Mornings with Elisa', url: 'https://www.youtube.com/@FrenchmorningswithElisa', category: 'French', lang: 'French' },
-  { title: 'Maintenant ou Jamais', url: 'https://www.youtube.com/@Maintenant_ou_jamais', category: 'French', lang: 'French' },
-  { title: 'Français Authentique', url: 'https://www.youtube.com/@francaisauthentique', category: 'French', lang: 'French' },
-  { title: 'Français avec Pierre', url: 'https://www.youtube.com/@francaisavecpierre', category: 'French', lang: 'French' },
-  { title: 'Parlez-vous French', url: 'https://www.youtube.com/@parlezvousfrench', category: 'French', lang: 'French' },
-  { title: 'French Pronunciation with Nastya', url: 'https://www.youtube.com/@french.pronunciation', category: 'French', lang: 'French' },
-  { title: 'innerFrench Podcast', url: 'https://innerfrench.com/podcast/', category: 'French', lang: 'French' },
-  { title: 'LanguaTalk Slow French', url: 'https://languatalk.com/blog/podcast/french', category: 'French', lang: 'French' },
-  { title: 'Français Authentique – Podcasts', url: 'https://www.francaisauthentique.com/podcasts/', category: 'French', lang: 'French' },
-  { title: 'Oh, la Frenchie!', url: 'https://podcasters.spotify.com/pod/show/oh-la-frenchie', category: 'French', lang: 'French' },
-  { title: 'France Bienvenue', url: 'https://francebienvenue1.fr/', category: 'French', lang: 'French' },
-  { title: "Tex's French Grammar – UT Austin", url: 'https://www.laits.utexas.edu/tex/index.html', category: 'French', lang: 'French' },
-  { title: 'Podcast Français Facile', url: 'https://www.podcastfrancaisfacile.com/', category: 'French', lang: 'French' },
-
-  // German
-  { title: 'Deutsche Welle – Learn German', url: 'https://learngerman.dw.com/en/learn-german/s-9528', category: 'German', lang: 'German' },
-  { title: 'Goethe-Institut – Deutsch für dich', url: 'https://www.goethe.de/prj/dfd/en/home.cfm', category: 'German', lang: 'German' },
-  { title: 'Goethe-Institut – Exams', url: 'https://www.goethe.de/ins/mm/en/spr/prf.html', category: 'German', lang: 'German' },
-  { title: 'YouTube – German Learning Channel', url: 'https://www.youtube.com/channel/UCbxb2fqe9oNgglAoYqsYOtQ', category: 'German', lang: 'German' },
-  { title: 'VHS Lernportal', url: 'https://www.vhs-lernportal.de/wws/9.php', category: 'German', lang: 'German' },
-  { title: 'Pressbooks – German 101', url: 'https://una.pressbooks.pub/gr101/chapter/section-1-1/', category: 'German', lang: 'German' },
-  { title: 'Coffee Break German', url: 'https://coffeebreaklanguages.com/coffeebreakgerman/', category: 'German', lang: 'German' },
-  { title: 'Mein Deutschbuch', url: 'https://mein-deutschbuch.de/', category: 'German', lang: 'German' },
-  { title: 'German Is Easy', url: 'https://www.germanveryeasy.com/', category: 'German', lang: 'German' },
-  { title: 'Lingolia Deutsch', url: 'https://deutsch.lingolia.com/', category: 'German', lang: 'German' },
-  { title: 'Learn German with Anja', url: 'https://www.youtube.com/c/LearnGermanwithAnja', category: 'German', lang: 'German' },
-  { title: 'StoryLearning German', url: 'https://www.storylearning.com/', category: 'German', lang: 'German' },
-  { title: 'Learn Out Live', url: 'https://learnoutlive.com/', category: 'German', lang: 'German' },
-  { title: 'EasyReaders.eu', url: 'https://www.easyreaders.eu/', category: 'German', lang: 'German' },
-  { title: 'Nachrichten Leicht', url: 'https://www.nachrichtenleicht.de/', category: 'German', lang: 'German' },
-  { title: 'Deutsche Welle', url: 'https://www.dw.com/de/', category: 'German', lang: 'German' },
-  { title: 'Project Gutenberg', url: 'https://www.gutenberg.org/', category: 'German', lang: 'German' },
-  { title: 'Slow German', url: 'https://www.slowgerman.com/', category: 'German', lang: 'German' },
-  { title: 'News in Slow German', url: 'https://www.newsinslowgerman.com/', category: 'German', lang: 'German' },
-  { title: 'Learn German Original – A1 Course', url: 'https://www.youtube.com/watch?v=RuGmc662HDg&list=PLF9mJC4RrjIhS4MMm0x72-qWEn1LRvPuW', category: 'German', lang: 'German' },
-  { title: 'GermanPod101', url: 'https://www.youtube.com/channel/UCTobWZV_HWGSoaRrhHyrJ-A', category: 'German', lang: 'German' },
-  { title: 'GermanTalks', url: 'https://www.youtube.com/@TalksGerman', category: 'German', lang: 'German' },
-  { title: 'Daily Deutsch', url: 'https://www.youtube.com/@Daily_Deutsch', category: 'German', lang: 'German' },
-  { title: 'DialogDE', url: 'https://www.youtube.com/@DialogDE-j8j', category: 'German', lang: 'German' },
-
-  // Italian
-  { title: 'Coffee Break Italian', url: 'https://coffeebreaklanguages.com/coffeebreakitalian/', category: 'Italian', lang: 'Italian' },
-  { title: 'Joy of Languages – Italian Podcast', url: 'https://joyoflanguages.com/italianpodcast/', category: 'Italian', lang: 'Italian' },
-  { title: 'ItalianPod101', url: 'https://www.italianpod101.com/', category: 'Italian', lang: 'Italian' },
-  { title: 'LearnAmo', url: 'https://learnamo.com', category: 'Italian', lang: 'Italian' },
-  { title: 'Online Italian Club – A1 Checklist', url: 'https://onlineitalianclub.com/wp-content/uploads/2026/01/checklist-A1-version-2.0.pdf', category: 'Italian', lang: 'Italian' },
-  { title: 'Easy Italian', url: 'https://www.youtube.com/@EasyItalian', category: 'Italian', lang: 'Italian' },
-];
 ---
 
-<Base title="Language Resources" description="A searchable directory of free resources to study and teach English, French, German and Italian.">
-  <!-- Page Header -->
-  <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
-    <div class="container mx-auto px-4 text-center lg:px-8">
-      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Language Resources</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
-        {resources.length} free resources to study and teach English, French, German and Italian.
-      </p>
-      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
-        <a href="/" class="transition-colors hover:text-white">Home</a>
-        <span>/</span>
-        <a href="/resources" class="transition-colors hover:text-white">Resources</a>
-        <span>/</span>
-        <span class="text-white">Language Resources</span>
+<Base title="Language Resources" description="Browse language learning and IELTS preparation resources by subject and format.">
+  <section class="bg-primary-600 py-10 dark:bg-primary-900 lg:py-14">
+    <div class="container mx-auto px-4 lg:px-8">
+      <nav aria-label="Breadcrumb" class="mb-4 flex flex-wrap gap-2 text-sm text-primary-100">
+        <a href="/" class="hover:text-white">Home</a><span aria-hidden="true">/</span>
+        <a href="/resources" class="hover:text-white">Resources</a><span aria-hidden="true">/</span>
+        <span aria-current="page" class="text-white">Languages</span>
       </nav>
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl">Language Resources</h1>
+      <p class="mt-3 max-w-2xl text-primary-100">
+        Explore {resources.length} resources for language learning, teaching and IELTS preparation.
+      </p>
     </div>
   </section>
 
-  <section class="py-20 lg:py-28">
-    <div class="container mx-auto px-4 lg:px-8">
-      <!-- Search -->
-      <div class="mx-auto max-w-2xl">
-        <div class="relative">
-          <svg
-            class="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
-          </svg>
-          <input
-            type="search"
-            data-blog-search
-            placeholder="Search this collection..."
-            class="w-full rounded-lg border border-gray-300 bg-white py-3 pl-12 pr-4 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
-          />
-        </div>
-
-        <!-- Category Filters -->
-        <div class="mt-6 flex flex-wrap justify-center gap-3" data-blog-filters>
-          <button type="button" data-filter="all" class="rounded-full bg-primary-600 px-4 py-2 text-sm font-medium text-white transition-colors">
-            All
+  <section data-language-directory class="py-8 lg:py-12">
+    <div class="container mx-auto max-w-5xl px-4 lg:px-8">
+      <div class="mb-6">
+        <label for="resource-search" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Find a resource</label>
+        <input id="resource-search" data-search type="search" placeholder="Search titles, skills or formats..."
+          class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
+      </div>
+      <div aria-label="Resource collections" class="flex flex-wrap gap-2 border-b border-gray-200 pb-4 dark:border-gray-700">
+        {['All', ...collections].map(collection => (
+          <button type="button" data-collection-filter={collection} aria-pressed={collection === 'English'}
+            class="collection-filter rounded-lg px-4 py-2 text-sm font-medium transition-colors">
+            {collection}
+            <span class="ml-1 text-xs opacity-75">{collection === 'All' ? resources.length : resources.filter(r => r.collection === collection).length}</span>
           </button>
-          {
-            categories.map((cat) => (
-              <button
-                type="button"
-                data-filter={cat}
-                class="rounded-full bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors dark:bg-gray-700 dark:text-gray-300"
-              >
-                {cat}
-              </button>
-            ))
-          }
+        ))}
+      </div>
+      <div class="my-5 flex flex-wrap items-end gap-3">
+        <div>
+          <label for="resource-group" class="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-300">Learning objective</label>
+          <select id="resource-group" data-group-filter class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+            <option value="All">All objectives</option>
+            {[...new Set(resources.map(r => r.group))].sort().map(group => <option value={group}>{group}</option>)}
+          </select>
         </div>
+        <div>
+          <label for="resource-format" class="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-300">Format</label>
+          <select id="resource-format" data-format-filter class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+            <option value="All">All formats</option>
+            {[...new Set(resources.map(r => r.format))].sort().map(format => <option value={format}>{format}</option>)}
+          </select>
+        </div>
+        <button type="button" data-reset class="rounded-lg px-3 py-2 text-sm font-medium text-primary-700 hover:underline dark:text-primary-300">Reset filters</button>
+        <p data-result-count role="status" class="ml-auto py-2 text-sm text-gray-500 dark:text-gray-400">{resources.length} resources</p>
       </div>
 
-      <!-- Resource Grid -->
-      <div class="mt-16 grid gap-6 sm:grid-cols-2">
-        {
-          resources.map((res) => (
-            <article
-              data-category={res.category}
-              class="group flex flex-col rounded-2xl bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800"
-            >
-              <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent-100 text-lg dark:bg-accent-900/50">
-                {categoryIcon[res.category]}
-              </div>
-              <span class="mb-2 inline-flex w-fit items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
-                {res.category}
-              </span>
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                <a href={res.url} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-primary-600 dark:hover:text-primary-400">
-                  {res.title}
-                </a>
-              </h3>
-              <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{res.lang}</p>
-              <a
-                href={res.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="mt-4 inline-flex w-fit items-center gap-1 text-sm font-medium text-accent-600 transition-colors hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
-              >
-                Open resource <span aria-hidden="true">↗</span>
-              </a>
-            </article>
-          ))
-        }
+      <div class="space-y-10">
+        {sections.map(section => (
+          <section data-collection={section.collection} class="space-y-5">
+            <h2 data-collection-heading class="font-display text-2xl font-semibold text-gray-900 dark:text-white">{section.collection}</h2>
+            {section.groups.map(group => (
+              <section data-group-section={group.name}>
+                <div class="mb-2 flex items-center justify-between gap-2">
+                  <h3 class="font-semibold text-gray-800 dark:text-gray-200">{group.name}</h3>
+                </div>
+                <ul class="divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-200 bg-white dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800">
+                  {group.entries.map(entry => (
+                    <li data-entry>
+                      {entry.name && <h4 class="px-4 pt-3 text-sm font-semibold text-gray-900 dark:text-white">{entry.name}</h4>}
+                      <ul>
+                        {entry.links.map(resource => (
+                          <li data-resource data-group={resource.group} data-format={resource.format}
+                            data-search-text={`${entry.name} ${resource.title} ${section.collection} ${resource.group} ${resource.format}`.toLowerCase()}>
+                            <a href={resource.url} target="_blank" rel="noopener noreferrer"
+                              class:list={["group flex items-center gap-3 px-4 text-sm transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary-500 dark:hover:bg-gray-700/50", entry.name ? "py-1.5 pl-6 text-gray-600 dark:text-gray-300" : "py-3 font-medium text-gray-900 dark:text-white"]}>
+                              <span class="min-w-0 flex-1 group-hover:text-primary-700 dark:group-hover:text-primary-300">{resource.title}</span>
+                              <span aria-hidden="true" class="shrink-0 text-gray-400">↗</span>
+                              <span class="sr-only">(opens in a new tab)</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </section>
+        ))}
+      </div>
+      <div data-empty hidden class="rounded-lg border border-dashed border-gray-300 p-8 text-center text-gray-500 dark:border-gray-700 dark:text-gray-400">
+        No resources match your filters. Try another search or reset the filters.
       </div>
     </div>
   </section>
 </Base>
+
+<style>
+  [data-language-directory] [hidden] { display: none !important; }
+  .collection-filter { color: #6b7280; }
+  .collection-filter:hover { background: rgb(128 128 128 / 0.12); }
+  .collection-filter[aria-pressed="true"] {
+    background: #e5e7eb;
+    color: #111827;
+  }
+  :global(.dark) .collection-filter { color: #d1d5db; }
+  :global(.dark) .collection-filter[aria-pressed="true"] { background: #374151; color: white; }
+</style>
+
+<script>
+  function initialiseDirectory(root: HTMLElement) {
+    if (root.dataset.initialised) return;
+    root.dataset.initialised = 'true';
+
+    const search = root.querySelector<HTMLInputElement>('[data-search]')!;
+    const objective = root.querySelector<HTMLSelectElement>('[data-group-filter]')!;
+    const format = root.querySelector<HTMLSelectElement>('[data-format-filter]')!;
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-collection-filter]')];
+    const sections = [...root.querySelectorAll<HTMLElement>('[data-collection]')];
+    const resultCount = root.querySelector<HTMLElement>('[data-result-count]')!;
+    const empty = root.querySelector<HTMLElement>('[data-empty]')!;
+    let active = 'English';
+
+    function updateObjectives() {
+      const available = new Set(sections
+        .filter(section => active === 'All' || section.dataset.collection === active)
+        .flatMap(section => [...section.querySelectorAll<HTMLElement>('[data-resource]')]
+          .map(item => item.dataset.group!)));
+      for (const option of Array.from(objective.options)) {
+        option.hidden = option.value !== 'All' && !available.has(option.value);
+        option.disabled = option.hidden;
+      }
+      if (objective.selectedOptions[0]?.disabled) objective.value = 'All';
+    }
+
+    function update() {
+      const terms = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      let total = 0;
+      for (const section of sections) {
+        let sectionCount = 0;
+        const collectionMatches = active === 'All' || section.dataset.collection === active;
+        for (const group of section.querySelectorAll<HTMLElement>('[data-group-section]')) {
+          let groupCount = 0;
+          for (const item of group.querySelectorAll<HTMLElement>('[data-resource]')) {
+            const matches = collectionMatches
+              && (objective.value === 'All' || item.dataset.group === objective.value)
+              && (format.value === 'All' || item.dataset.format === format.value)
+              && terms.every(term => item.dataset.searchText?.includes(term));
+            item.hidden = !matches;
+            if (matches) groupCount++;
+          }
+          group.hidden = groupCount === 0;
+          for (const entry of group.querySelectorAll<HTMLElement>('[data-entry]')) {
+            entry.hidden = !entry.querySelector('[data-resource]:not([hidden])');
+          }
+          sectionCount += groupCount;
+        }
+        section.hidden = sectionCount === 0;
+        section.querySelector<HTMLElement>('[data-collection-heading]')!.hidden = active !== 'All';
+        total += sectionCount;
+      }
+      buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.collectionFilter === active)));
+      resultCount.textContent = `${total} resource${total === 1 ? '' : 's'}`;
+      empty.hidden = total !== 0;
+    }
+
+    buttons.forEach(button => button.addEventListener('click', () => {
+      active = button.dataset.collectionFilter!;
+      objective.value = 'All';
+      updateObjectives();
+      update();
+    }));
+    search.addEventListener('input', update);
+    objective.addEventListener('change', update);
+    format.addEventListener('change', update);
+    root.querySelector('[data-reset]')?.addEventListener('click', () => {
+      active = 'All';
+      search.value = '';
+      objective.value = 'All';
+      format.value = 'All';
+      updateObjectives();
+      update();
+    });
+    updateObjectives();
+    update();
+  }
+
+  const init = () => document.querySelectorAll<HTMLElement>('[data-language-directory]').forEach(initialiseDirectory);
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>
+
+
