@@ -1,0 +1,84 @@
+/* Ramzunā homepage redesign. Original palette and typefaces; scoped to homepage. */
+.rz-home-redesign {
+  --rd-green: #38664f; --rd-wine: #7a222b; --rd-cream: #f7f1e8;
+  --rd-paper: #fdfbf7; --rd-ink: #2a2622; --rd-muted: #514b44;
+  --rd-rule: #d9e6da; --rd-display: 'Playfair Display', Georgia, serif;
+  color: var(--rd-ink); background: var(--rd-cream);
+}
+.rz-home-redesign .rd-shell { width: min(100% - 2rem, 1200px); margin-inline: auto; }
+.rz-home-redesign .rd-hero { padding-block: clamp(2.5rem, 5.5vw, 5rem); }
+.rz-home-redesign .rd-hero-grid { display: grid; align-items: center; gap: clamp(2rem, 4.5vw, 4.4rem); grid-template-columns: 1fr; }
+.rz-home-redesign .rd-kicker { display: flex; align-items: center; gap: .65rem; margin: 0 0 1.25rem; color: var(--rd-wine); font-size: .75rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.rz-home-redesign .rd-kicker > span { width: 1.7rem; height: 2px; background: currentColor; flex: none; }
+.rz-home-redesign .rd-intro h1 { font-family: var(--rd-display); font-size: clamp(2.65rem, 5.1vw, 4.5rem); font-weight: 600; letter-spacing: -.045em; line-height: 1.07; color: var(--rd-green); text-wrap: balance; margin: 0; }
+.rz-home-redesign .rd-intro h1 em { display: block; color: var(--rd-wine); font-style: italic; font-weight: 500; }
+.rz-home-redesign .rd-lead { font-size: clamp(1.03rem, 1.4vw, 1.2rem); line-height: 1.65; max-width: 34rem; margin: 1.35rem 0 0; color: var(--rd-muted); }
+.rz-home-redesign .rd-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.65rem; }
+.rz-home-redesign .rd-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 48px; padding: .8rem 1rem; border: 1px solid transparent; border-radius: 5px; font-size: .88rem; font-weight: 600; line-height: 1.3; text-decoration: none; transition: transform .15s ease, background-color .15s ease; }
+.rz-home-redesign .rd-button > span { font-size: 1.25em; flex: none; }
+.rz-home-redesign .rd-primary { background: var(--rd-wine); color: white; }
+.rz-home-redesign .rd-outline { border-color: var(--rd-green); color: var(--rd-green); }
+.rz-home-redesign .rd-button:hover { transform: translateY(-2px); text-decoration: underline; text-underline-offset: 4px; }
+.rz-home-redesign .rd-note { display: flex; gap: .6rem; align-items: baseline; border-top: 1px solid var(--rd-rule); margin-top: 1.5rem; padding-top: .9rem; font-size: .82rem; line-height: 1.55; color: var(--rd-muted); max-width: 34rem; }
+.rz-home-redesign .rd-note > span { flex: none; width: .4rem; height: .4rem; background: var(--rd-wine); border-radius: 50%; }
+.rz-home-redesign .rd-hero-figure { margin: 0; position: relative; min-width: 0; }
+.rz-home-redesign .rd-photo { border-radius: 48% 48% 5px 5px / 23% 23% 5px 5px; overflow: hidden; background: var(--rd-rule); border: 6px solid var(--rd-paper); outline: 1px solid var(--rd-green); }
+.rz-home-redesign .rd-photo img { width: 100%; height: auto; display: block; aspect-ratio: 1000/731; object-fit: contain; object-position: center; }
+.rz-home-redesign .rd-hero-figure figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem 1rem; border-bottom: 1px solid var(--rd-rule); padding: .8rem 0; font-size: .73rem; color: var(--rd-green); }
+.rz-home-redesign .rd-hero-figure figcaption span:first-child { font-weight: 700; }
+.rz-home-redesign .rd-impact { background: var(--rd-green); color: white; padding: clamp(1.6rem, 3vw, 2.5rem) 0; }
+.rz-home-redesign .rd-impact-grid { display: grid; gap: 1.4rem; align-items: center; }
+.rz-home-redesign .rd-impact h2 { font-family: var(--rd-display); font-size: clamp(1.6rem, 2.5vw, 2.1rem); line-height: 1.18; font-weight: 600; margin: 0; }
+.rz-home-redesign .rd-impact h2 em { color: #d9e6da; font-weight: 500; }
+.rz-home-redesign .rd-impact dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.15rem 0; margin: 0; }
+.rz-home-redesign .rd-impact dl > div { display: flex; flex-direction: column-reverse; border-left: 1px solid #ffffff4d; padding-left: 1rem; gap: .3rem; }
+.rz-home-redesign .rd-impact dt { font-size: .78rem; color: #eef5f0; }
+.rz-home-redesign .rd-impact dd { font-family: var(--rd-display); font-size: clamp(2rem,3.5vw,3rem); font-weight: 600; line-height: 1.1; margin: 0; font-variant-numeric: tabular-nums; }
+.rz-home-redesign .rd-programmes { background: var(--rd-paper); }
+.rz-home-redesign .ramzuna-programmes .rz-section { padding-block: clamp(2.75rem, 5vw, 4.4rem); }
+.rz-home-redesign .ramzuna-programmes .rz-head { text-align: left; margin-bottom: 1.7rem; }
+.rz-home-redesign .ramzuna-programmes .rz-head::after { margin-left: 0; }
+.rz-home-redesign .ramzuna-programmes .rz-eyebrow,
+.rz-home-redesign .tm-section .tm-eyebrow { background: transparent; padding: 0; border-radius: 0; color: var(--rd-wine); text-transform: uppercase; font-weight: 700; letter-spacing: .12em; font-size: .72rem; }
+.rz-home-redesign .ramzuna-programmes .rz-card { box-shadow: none; border-radius: 5px; border-top: 3px solid var(--rz-accent); }
+.rz-home-redesign .ramzuna-programmes .rz-card .rz-icon { border-radius: 50%; }
+.rz-home-redesign .ramzuna-programmes .rz-card h3 { font-family: var(--rd-display); font-size: 1.35rem; line-height: 1.25; }
+.rz-home-redesign .rd-voices { padding: clamp(1.75rem, 5vw, 4rem) 0; background: var(--rd-cream); }
+.rz-home-redesign .rd-voices-grid { display: grid; background: var(--rd-wine); color: white; border-radius: 6px; overflow: hidden; }
+.rz-home-redesign .rd-voices-image { min-height: 210px; max-height: 360px; overflow: hidden; }
+.rz-home-redesign .rd-voices-image img { width: 100%; height: 100%; max-height: 360px; object-fit: cover; object-position: center 40%; display: block; }
+.rz-home-redesign .rd-voices-copy { align-self: center; padding: clamp(1.5rem,4.5vw,3.6rem); }
+.rz-home-redesign .rd-voices-copy .rd-kicker { color: #f5e9e9; }
+.rz-home-redesign .rd-voices-copy h2 { font: 600 clamp(2rem,4vw,3.4rem)/1.13 var(--rd-display); margin: 0; }
+.rz-home-redesign .rd-voices-copy p:not(.rd-kicker) { font-size: 1.05rem; line-height: 1.65; color: #f5e9e9; margin: 1rem 0 1.4rem; }
+.rz-home-redesign .rd-light { background: var(--rd-paper); color: #7a222b; }
+.rz-home-redesign .rd-journey h2, .rz-home-redesign #commitment-title { color: var(--rd-green); }
+.rz-home-redesign .tm-section { border-block: 1px solid var(--rd-rule); background: var(--rd-paper); }
+.rz-home-redesign .tm-section .tm-wrap { max-width: 850px; }
+.rz-home-redesign .tm-section .tm-card { border-radius: 6px; }
+.rz-home-redesign .tm-section .tm-quote { font-size: clamp(1rem,2vw,1.25rem); line-height: 1.65; }
+.rz-home-redesign .rd-involved { background: var(--rd-cream); }
+.rz-home-redesign #commitment-title ~ div article { border-radius: 5px; border-top: 3px solid var(--rd-green); }
+.dark .rz-home-redesign { --rd-cream: #202923; --rd-paper: #18221c; --rd-ink: #f7f1e8; --rd-muted: #e3e7e2; --rd-green: #b7d7bd; --rd-wine: #e8b7bd; --rd-rule: #45594a; }
+.dark .rz-home-redesign .rd-primary, .dark .rz-home-redesign .rd-voices { color: white; }
+.dark .rz-home-redesign .rd-primary, .dark .rz-home-redesign .rd-voices-grid { background: #7a222b; }
+.dark .rz-home-redesign .rd-impact { background: #38664f; }
+.dark .rz-home-redesign .rd-voices-copy .rd-kicker { color: #f5e9e9; }
+.dark .rz-home-redesign .rd-light { background: #fdfbf7; color: #7a222b; }
+.dark .rz-home-redesign .rd-journey h2, .dark .rz-home-redesign #commitment-title { color: #f7f1e8; }
+@media (min-width: 740px) {
+  .rz-home-redesign .rd-shell { width: min(100% - 4rem,1200px); }
+  .rz-home-redesign .rd-hero-grid { grid-template-columns: minmax(0,1.07fr) minmax(0,1fr); }
+  .rz-home-redesign .rd-impact-grid { grid-template-columns: minmax(150px,.8fr) 3fr; }
+  .rz-home-redesign .rd-impact dl { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  .rz-home-redesign .rd-voices-grid { grid-template-columns:  .85fr 1.15fr; }
+  .rz-home-redesign .rd-voices-image { max-height: none; }
+  .rz-home-redesign .rd-voices-image img { height: 100%; max-height: 420px; }
+}
+@media (max-width: 420px) {
+  .rz-home-redesign .rd-actions .rd-button { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rz-home-redesign .rd-button { transition: none; }
+  .rz-home-redesign .rd-button:hover { transform: none; }
+}
