@@ -9,7 +9,7 @@
 
   .tm-section {
     width: 100%;
-    padding: 48px 24px;
+    padding: clamp(24px, 3.5vw, 44px) clamp(16px, 3vw, 36px);
     background: linear-gradient(180deg, #f7f1e8, #fbf8f3);
     color: #2a2622;
     font-family: 'Outfit', system-ui, sans-serif;
@@ -18,7 +18,7 @@
 
   .tm-section .tm-wrap {
     width: 100%;
-    max-width: 720px;
+    max-width: 580px;
     margin: 0 auto;
   }
 
@@ -30,14 +30,12 @@
   .tm-section .tm-eyebrow {
     display: inline-flex;
     align-items: center;
-    margin: 0 0 10px;
-    padding: 0;
+    margin: 0 0 16px;
+    padding: 4px 12px;
     border-radius: 9999px;
-    background: transparent;
+    background: #d9e6da;
     color: #38664f;
-    font-size: 11px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.5;
   }
@@ -54,8 +52,18 @@
 
   @media (min-width: 640px) {
     .tm-section .tm-head h2 {
-      font-size: 2rem;
+      font-size: 2.25rem;
     }
+  }
+
+  .tm-section .tm-head::after {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 2px;
+    margin: 14px auto 0;
+    background: #7a222b;
+    opacity: 0.35;
   }
 
   .tm-section .tm-slides {
@@ -71,7 +79,7 @@
     margin: 0;
     padding: clamp(18px, 3vw, 28px);
     border: 1px solid #d3dfd3;
-    border-radius: 10px;
+    border-radius: 16px;
     background: #eaf0e9;
     color: #2a2622;
   }

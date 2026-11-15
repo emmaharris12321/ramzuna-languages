@@ -6,9 +6,9 @@
 # Hero Section
 hero:
   badge: 100% Free, Always
-  title: "Language access should"
-  titleHighlight: "cross every border."
-  description: "Free, personalised English, French and German lessons for Palestinian students, taught online by volunteer educators."
+  title: "Ramzunā Languages"
+  titleHighlight: "Language Access Should Cross Every Border"
+  description: "Ramzunā Languages is a non-profit that is dedicated to providing free and personalised English,French and German lessons to Palestinian students."
   primaryCta:
     text: Our Programmes
     url: "/services"
@@ -16,7 +16,7 @@ hero:
     text: "Free Learning Resources"
     url: "/resources"
     icon: false
-  note: "Student enrolment and volunteer applications are closed for the autumn term. Free learning resources remain available."
+  note: "Student enrolment and volunteer applications are currently closed for the autumn term. We are not accepting new student applications at present; please check our website for future enrolment announcements."
   stats:
     - value: "930"
       label: Hours Delivered
@@ -66,8 +66,8 @@ services:
 # How It Works Section
 howItWorks:
   badge: How It Works
-  title: How learning with us works
-  description: When enrolment opens, these are the steps to joining our lessons.
+  title: From Sign-Up to Fluency in 4 Steps
+  description: We have made it simple to start learning — or to start teaching.
   steps:
     - number: "01"
       title: Sign Up Free
@@ -85,7 +85,7 @@ howItWorks:
 # Terms Section
 terms:
   badge: Academic Calendar
-  title: Our teaching year
+  title: We Teach Across Three Terms a Year
   description: Lessons run in structured terms, so students and volunteer educators always know what to expect.
   items:
     - name: Autumn Term
@@ -239,8 +239,8 @@ faq:
 
 # CTA Section
 cta:
-  title: Keep learning at your own pace
-  description: "Explore free lessons, study guides and language resources, wherever you are learning from."
+  title: Applications Are Currently Closed for the Autumn Term
+  description: "Student enrolment and volunteer applications are currently closed for the autumn term. Please check our website for future enrolment updates. In the meantime, explore our programmes and free learning resources."
   primaryCta:
     text: Free Learning Resources
     url: "/resources"

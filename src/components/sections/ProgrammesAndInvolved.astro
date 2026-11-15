@@ -8,14 +8,38 @@ const { showTeach = true, showInvolved = true } = Astro.props;
 ---
 
 <style>
+  /* How We Teach: three vertical cards on wider screens */
+  @container (min-width: 880px) {
+    .ramzuna-programmes .rz-section:first-child .rz-card {
+      min-height: 440px;
+      padding: 28px 36px;
+    }
+
+    .ramzuna-programmes .rz-section:first-child .rz-icon {
+      width: 56px;
+      height: 56px;
+      font-size: 30px;
+      margin-bottom: 18px;
+    }
+
+    .ramzuna-programmes .rz-section:first-child h3 {
+      font-size: 1.375rem;
+      margin-bottom: 14px;
+    }
+
+    .ramzuna-programmes .rz-section:first-child .rz-description {
+      font-size: 18px;
+    }
+  }
+
   .ramzuna-programmes,
   .ramzuna-programmes * {
     box-sizing: border-box;
   }
 
   .ramzuna-programmes {
-    width: min(1120px, calc(100% - 48px));
-    max-width: 1120px;
+    width: 100%;
+    max-width: 960px;
     margin: 0 auto;
     background: #f7f1e8;
     color: #2a2622;
@@ -26,7 +50,7 @@ const { showTeach = true, showInvolved = true } = Astro.props;
 
   .ramzuna-programmes .rz-section {
     width: 100%;
-    padding: 48px 0;
+    padding: 36px 0;
   }
 
   .ramzuna-programmes .rz-wrap {
@@ -42,14 +66,12 @@ const { showTeach = true, showInvolved = true } = Astro.props;
   .ramzuna-programmes .rz-eyebrow {
     display: inline-flex;
     align-items: center;
-    margin: 0 0 10px;
-    padding: 0;
+    margin: 0 0 16px;
+    padding: 4px 12px;
     border-radius: 9999px;
-    background: transparent;
+    background: #d9e6da;
     color: #38664f;
-    font-size: 11px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.5;
   }
@@ -65,7 +87,7 @@ const { showTeach = true, showInvolved = true } = Astro.props;
 
   @media (min-width: 640px) {
     .ramzuna-programmes .rz-head h2 {
-      font-size: 2rem;
+      font-size: 2.25rem;
     }
   }
 
@@ -74,6 +96,16 @@ const { showTeach = true, showInvolved = true } = Astro.props;
     color: #7a222b;
     font-size: 14px;
     font-weight: 600;
+  }
+
+  .ramzuna-programmes .rz-head::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 2px;
+    margin: 18px auto 0;
+    background: #7a222b;
+    opacity: 0.35;
   }
 
   .ramzuna-programmes .rz-grid {
@@ -90,9 +122,9 @@ const { showTeach = true, showInvolved = true } = Astro.props;
     flex-direction: column;
     min-width: 0;
     margin: 0;
-    padding: 24px;
+    padding: 26px;
     border: 1px solid rgba(122, 34, 43, 0.12);
-    border-radius: 10px;
+    border-radius: 16px;
     background: #fffdfa;
     box-shadow: 0 4px 14px rgba(42, 38, 34, 0.035);
   }
@@ -123,7 +155,7 @@ const { showTeach = true, showInvolved = true } = Astro.props;
   .ramzuna-programmes .rz-description {
     margin: 0 0 20px;
     color: #514b44;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.65;
     overflow-wrap: anywhere;
   }
@@ -280,13 +312,38 @@ const { showTeach = true, showInvolved = true } = Astro.props;
     }
   }
 
-  :global(.dark) .ramzuna-programmes { background: #030712; color: #e5e7eb; }
-  :global(.dark) .ramzuna-programmes .rz-card { background: #18251e; border-color: #34473a; }
-  :global(.dark) .ramzuna-programmes :is(h3, .rz-link, .rz-eyebrow, .rz-head h2) { color: #afcdb4; }
-  :global(.dark) .ramzuna-programmes .rz-description { color: #c2cdc4; }
-  :global(.dark) .ramzuna-programmes .rz-maroon { background: #64232a; }
-  .ramzuna-programmes .rz-icon { color: var(--rz-accent); }
-  .ramzuna-programmes .rz-maroon .rz-icon { color: white; }
+  /* Bigger, roomier cards on desktop — mobile stays exactly as-is */
+  @media (min-width: 1280px) {
+    .ramzuna-programmes {
+      max-width: 1200px;
+    }
+
+    .ramzuna-programmes .rz-card {
+      padding: 34px 30px;
+      border-radius: 20px;
+    }
+
+    .ramzuna-programmes .rz-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      font-size: 26px;
+    }
+
+    .ramzuna-programmes .rz-card h3 {
+      font-size: 1.3rem;
+    }
+
+    .ramzuna-programmes .rz-description {
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .ramzuna-programmes .rz-link,
+    .ramzuna-programmes .rz-button {
+      font-size: 15px;
+    }
+  }
 </style>
 
 <div class="ramzuna-programmes">
@@ -300,7 +357,7 @@ const { showTeach = true, showInvolved = true } = Astro.props;
 
         <div class="rz-grid">
           <article class="rz-card">
-            <div class="rz-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-5 9 5-9 5-9-5Zm4 3v5c3 3 7 3 10 0v-5M21 9v7" /></svg></div>
+            <div class="rz-icon" aria-hidden="true">🎓</div>
             <h3>Language Lessons & Conversations</h3>
             <p class="rz-description">
               Empowering Palestinian students through general, conversation, academic
@@ -324,7 +381,7 @@ const { showTeach = true, showInvolved = true } = Astro.props;
 
       
           <article class="rz-card rz-green">
-            <div class="rz-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-6 3V6a2 2 0 0 1 2-2Z" /></svg></div>
+            <div class="rz-icon" aria-hidden="true">💬</div>
             <h3>Asynchronous Learning</h3>
             <p class="rz-description">
               Self-paced asynchronous learning for students whose internet
@@ -343,7 +400,7 @@ const { showTeach = true, showInvolved = true } = Astro.props;
           </article>
 
           <article class="rz-card">
-            <div class="rz-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h4l10 5V5L8 10H4Zm4 4 2 6h3l-2-5M21 9v6" /></svg></div>
+            <div class="rz-icon" aria-hidden="true">📢</div>
             <h3>Palestinian Poetry &amp; Storytelling</h3>
             <p class="rz-description">
               Publishing Palestinian literature, poetry and art from
@@ -367,12 +424,12 @@ const { showTeach = true, showInvolved = true } = Astro.props;
         <header class="rz-head">
           <p class="rz-eyebrow">Join the effort</p>
           <h2>Get Involved</h2>
-          
+          <p class="rz-closed-note">Student enrolment and volunteer applications are currently closed for the autumn term.</p>
         </header>
 
         <div class="rz-grid">
           <article class="rz-card">
-            <div class="rz-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M17 4a4 4 0 0 1 0 8M22 21v-2a4 4 0 0 0-3-4" /></svg></div>
+            <div class="rz-icon" aria-hidden="true">👥</div>
             <h3>Teach with Us</h3>
             <p class="rz-description">
               Share your knowledge and teach English, French or German
@@ -380,26 +437,26 @@ const { showTeach = true, showInvolved = true } = Astro.props;
               autumn term — read about the role for when they reopen.
             </p>
             <a href="/teach-with-us" class="rz-button">
-              Explore Teaching
+              Learn More
               <span class="rz-arrow" aria-hidden="true">→</span>
             </a>
           </article>
 
           <article class="rz-card rz-green">
-            <div class="rz-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-5 9 5-9 5-9-5Zm4 3v5c3 3 7 3 10 0v-5M21 9v7" /></svg></div>
+            <div class="rz-icon" aria-hidden="true">🎓</div>
             <h3>Get your Work Published</h3>
             <p class="rz-description">
               Send us your art pieces, articles, poems, essays and we will publish them on our     
               website and social media channels.
             </p>
             <a href="/palestinian-voices" class="rz-button">
-              Explore Palestinian Voices
+              Learn More
               <span class="rz-arrow" aria-hidden="true">→</span>
             </a>
           </article>
 
           <article class="rz-card rz-maroon">
-            <div class="rz-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5c-2-2-5-1-8 2-3-3-6-4-8-2-4 4 2 10 8 14 6-4 12-10 8-14Z" /></svg></div>
+            <div class="rz-icon" aria-hidden="true">🤝</div>
             <h3>Make a Donation</h3>
             <p class="rz-description">
               Help us continue our work and reach more students.
