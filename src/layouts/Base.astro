@@ -55,11 +55,9 @@ const { title, description = site.description } = Astro.props;
     <!-- Dark mode script (prevent flash) -->
     <script is:inline>
       function applyTheme() {
-        if (
-          localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches)
-        ) {
+        let theme;
+        try { theme = localStorage.getItem('theme'); } catch {}
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');
@@ -92,7 +90,7 @@ const { title, description = site.description } = Astro.props;
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded-lg focus:bg-primary-600 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:shadow-lg">Skip to content</a>
     <div id="scroll-progress" class="fixed top-0 left-0 z-[60] h-0.5 bg-primary-600 transition-none" style="width: 0%;"></div>
     <Header />
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <Footer />
@@ -138,7 +136,7 @@ const { title, description = site.description } = Astro.props;
     <button
       type="button"
       id="back-to-top"
-      class="fixed bottom-24 right-4 z-50 lg:bottom-6 lg:right-6 flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg shadow-primary-600/25 transition-all duration-300 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-600/30 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+      class="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg shadow-primary-600/25 transition-all duration-300 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-600/30 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
       style="opacity: 0; pointer-events: none; transform: translateY(16px);"
       aria-label="Back to top"
     >

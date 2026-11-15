@@ -275,3 +275,21 @@
 .dark .prose hr {
   border-color: theme(colors.gray.800);
 }
+
+/* Keep fixed mobile actions clear of page content and device safe areas. */
+@media (max-width: 1023px) {
+  body { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+  #mobile-cta { padding-bottom: calc(0.75rem + env(safe-area-inset-bottom)); }
+  #back-to-top { bottom: calc(6rem + env(safe-area-inset-bottom)); }
+  [data-mobile-menu] { max-height: calc(100dvh - 9rem); overflow-y: auto; }
+}
+#back-to-top[hidden] { display: none; }
+#cookie-consent { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
