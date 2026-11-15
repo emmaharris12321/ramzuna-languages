@@ -5,469 +5,215 @@ interface Props {
 }
 
 const { showTeach = true, showInvolved = true } = Astro.props;
+
+// Outline icons (24x24, stroke) — replace the previous emoji so every card
+// icon shares one visual language with the rest of the site.
+const icons = {
+  academic:
+    'M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5',
+  chat: 'M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155',
+  book: 'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
+  group:
+    'M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z',
+  pencil:
+    'M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10',
+  heart:
+    'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z',
+};
+
+type Tone = 'plain' | 'green' | 'maroon';
+
+// Per-tone classes. Written out in full so Tailwind can detect them.
+const tone: Record<Tone, { card: string; icon: string; title: string; text: string; rule: string; link: string; button: string }> = {
+  plain: {
+    card: 'border-accent-500/15 bg-cream-50 dark:border-white/10 dark:bg-gray-900',
+    icon: 'bg-accent-500/10 text-accent-500 dark:bg-accent-500/25 dark:text-accent-200',
+    title: 'text-accent-500 dark:text-accent-200',
+    text: 'text-gray-700 dark:text-gray-300',
+    rule: 'border-accent-500/15 dark:border-white/10',
+    link: 'text-accent-500 hover:text-accent-700 dark:text-accent-200 dark:hover:text-white',
+    button: 'bg-accent-500 text-white hover:bg-accent-600 focus-visible:outline-accent-500',
+  },
+  green: {
+    card: 'border-primary-200 bg-[#eaf0e9] dark:border-primary-800 dark:bg-primary-900/30',
+    icon: 'bg-primary-100 text-primary-600 dark:bg-primary-900/60 dark:text-primary-200',
+    title: 'text-primary-600 dark:text-primary-200',
+    text: 'text-gray-700 dark:text-gray-300',
+    rule: 'border-primary-200 dark:border-primary-800',
+    link: 'text-primary-600 hover:text-primary-800 dark:text-primary-200 dark:hover:text-white',
+    button: 'bg-primary-600 text-white hover:bg-primary-700 focus-visible:outline-primary-600',
+  },
+  maroon: {
+    card: 'border-accent-500 bg-accent-500 dark:border-accent-500 dark:bg-accent-500',
+    icon: 'bg-white/15 text-white',
+    title: 'text-white',
+    text: 'text-accent-100',
+    rule: 'border-white/20',
+    link: 'text-white hover:text-accent-100',
+    button: 'bg-cream-50 text-accent-500 hover:bg-white focus-visible:outline-white',
+  },
+};
+
+const teach: { icon: keyof typeof icons; tone: Tone; title: string; description: string; links: { text: string; url: string }[] }[] = [
+  {
+    icon: 'academic',
+    tone: 'plain',
+    title: 'Language Lessons & Conversations',
+    description: 'Empowering Palestinian students through general, conversation, academic and business language lessons.',
+    links: [
+      { text: 'English Classes', url: '/english-classes' },
+      { text: 'French Classes', url: '/french-classes' },
+      { text: 'German Classes', url: '/german-classes' },
+    ],
+  },
+  {
+    icon: 'chat',
+    tone: 'green',
+    title: 'Asynchronous Learning',
+    description: 'Self-paced asynchronous learning for students whose internet does not enable them to join live lessons.',
+    links: [
+      { text: 'Asynchronous Learning', url: '/services' },
+      { text: 'Resources', url: '/resources' },
+    ],
+  },
+  {
+    icon: 'book',
+    tone: 'plain',
+    title: 'Palestinian Poetry & Storytelling',
+    description: 'Publishing Palestinian literature, poetry and art from our students and wider community.',
+    links: [{ text: 'Palestinian Voices', url: '/palestinian-voices' }],
+  },
+];
+
+const involved: { icon: keyof typeof icons; tone: Tone; title: string; description: string; cta: { text: string; url: string } }[] = [
+  {
+    icon: 'group',
+    tone: 'plain',
+    title: 'Teach with Us',
+    description:
+      'Share your knowledge and teach English, French or German to Palestinian students. Applications are closed for the autumn term — read about the role for when they reopen.',
+    cta: { text: 'Learn More', url: '/teach-with-us' },
+  },
+  {
+    icon: 'pencil',
+    tone: 'green',
+    title: 'Get your Work Published',
+    description:
+      'Send us your art pieces, articles, poems, essays and we will publish them on our website and social media channels.',
+    cta: { text: 'Learn More', url: '/palestinian-voices' },
+  },
+  {
+    icon: 'heart',
+    tone: 'maroon',
+    title: 'Make a Donation',
+    description: 'Help us continue our work and reach more students.',
+    cta: { text: 'Donate Now', url: '/donate' },
+  },
+];
+
+const cardBase =
+  'group flex h-full flex-col rounded-2xl border p-7 shadow-soft-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-soft-lg lg:p-8';
 ---
 
-<style>
-  /* How We Teach: three vertical cards on wider screens */
-  @container (min-width: 880px) {
-    .ramzuna-programmes .rz-section:first-child .rz-card {
-      min-height: 440px;
-      padding: 28px 36px;
-    }
-
-    .ramzuna-programmes .rz-section:first-child .rz-icon {
-      width: 56px;
-      height: 56px;
-      font-size: 30px;
-      margin-bottom: 18px;
-    }
-
-    .ramzuna-programmes .rz-section:first-child h3 {
-      font-size: 1.375rem;
-      margin-bottom: 14px;
-    }
-
-    .ramzuna-programmes .rz-section:first-child .rz-description {
-      font-size: 18px;
-    }
-  }
-
-  .ramzuna-programmes,
-  .ramzuna-programmes * {
-    box-sizing: border-box;
-  }
-
-  .ramzuna-programmes {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    background: #f7f1e8;
-    color: #2a2622;
-    font-family: 'Outfit', system-ui, sans-serif;
-    -webkit-text-size-adjust: 100%;
-    container-type: inline-size;
-  }
-
-  .ramzuna-programmes .rz-section {
-    width: 100%;
-    padding: 36px 0;
-  }
-
-  .ramzuna-programmes .rz-wrap {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .ramzuna-programmes .rz-head {
-    margin: 0 0 28px;
-    text-align: center;
-  }
-
-  .ramzuna-programmes .rz-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    margin: 0 0 16px;
-    padding: 4px 12px;
-    border-radius: 9999px;
-    background: #d9e6da;
-    color: #38664f;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.5;
-  }
-
-  .ramzuna-programmes .rz-head h2 {
-    margin: 0;
-    color: #38664f;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.875rem;
-    font-weight: 600;
-    line-height: 1.25;
-  }
-
-  @media (min-width: 640px) {
-    .ramzuna-programmes .rz-head h2 {
-      font-size: 2.25rem;
-    }
-  }
-
-  .ramzuna-programmes .rz-closed-note {
-    margin: 10px 0 0;
-    color: #7a222b;
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  .ramzuna-programmes .rz-head::after {
-    content: "";
-    display: block;
-    width: 42px;
-    height: 2px;
-    margin: 18px auto 0;
-    background: #7a222b;
-    opacity: 0.35;
-  }
-
-  .ramzuna-programmes .rz-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: stretch;
-    gap: 20px;
-    width: 100%;
-  }
-
-  .ramzuna-programmes .rz-card {
-    --rz-accent: #7a222b;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    margin: 0;
-    padding: 26px;
-    border: 1px solid rgba(122, 34, 43, 0.12);
-    border-radius: 16px;
-    background: #fffdfa;
-    box-shadow: 0 4px 14px rgba(42, 38, 34, 0.035);
-  }
-
-  .ramzuna-programmes .rz-icon {
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    width: 42px;
-    height: 42px;
-    margin-bottom: 16px;
-    border-radius: 12px;
-    background: rgba(122, 34, 43, 0.08);
-    font-size: 23px;
-    line-height: 1;
-  }
-
-  .ramzuna-programmes .rz-card h3 {
-    margin: 0 0 12px;
-    color: var(--rz-accent);
-    font-family: 'Outfit', system-ui, sans-serif;
-    font-size: 1.125rem;
-    font-weight: 600;
-    line-height: 1.35;
-    overflow-wrap: anywhere;
-  }
-
-  .ramzuna-programmes .rz-description {
-    margin: 0 0 20px;
-    color: #514b44;
-    font-size: 17px;
-    line-height: 1.65;
-    overflow-wrap: anywhere;
-  }
-
-  .ramzuna-programmes .rz-links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: auto;
-  }
-
-  .ramzuna-programmes .rz-links::before {
-    content: "";
-    display: block;
-    width: 36px;
-    height: 2px;
-    margin-bottom: 10px;
-    background: var(--rz-accent);
-    opacity: 0.35;
-  }
-
-  .ramzuna-programmes .rz-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 9px;
-    width: fit-content;
-    min-height: 44px;
-    padding: 10px 0;
-    color: var(--rz-accent);
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1.5;
-    text-decoration: none;
-    touch-action: manipulation;
-  }
-
-  .ramzuna-programmes .rz-link-label {
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-
-  .ramzuna-programmes .rz-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    align-self: flex-start;
-    gap: 9px;
-    width: fit-content;
-    max-width: 100%;
-    min-height: 44px;
-    margin-top: auto;
-    padding: 10px 15px;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    background: var(--rz-accent);
-    color: #fff;
-    font-family: 'Outfit', system-ui, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1.5;
-    text-decoration: none;
-    touch-action: manipulation;
-    overflow-wrap: anywhere;
-  }
-
-  .ramzuna-programmes .rz-arrow {
-    flex-shrink: 0;
-    font-size: 19px;
-    line-height: 1;
-  }
-
-  .ramzuna-programmes .rz-link:focus-visible,
-  .ramzuna-programmes .rz-button:focus-visible {
-    outline: 3px solid var(--rz-accent);
-    outline-offset: 4px;
-  }
-
-  .ramzuna-programmes .rz-green {
-    --rz-accent: #38664f;
-    background: #eaf0e9;
-    border-color: #d3dfd3;
-  }
-
-  .ramzuna-programmes .rz-green .rz-icon {
-    background: #d9e6da;
-  }
-
-  .ramzuna-programmes .rz-maroon {
-    background: #7a222b;
-    border-color: #7a222b;
-  }
-
-  .ramzuna-programmes .rz-maroon .rz-icon {
-    background: rgba(255, 255, 255, 0.12);
-  }
-
-  .ramzuna-programmes .rz-maroon h3 {
-    color: #fff;
-  }
-
-  .ramzuna-programmes .rz-maroon .rz-description {
-    color: #f5e9e9;
-  }
-
-  .ramzuna-programmes .rz-maroon .rz-button {
-    background: #fffdfa;
-    color: #7a222b;
-  }
-
-  .ramzuna-programmes .rz-maroon .rz-button:focus-visible {
-    outline-color: #fff;
-  }
-
-  @container (max-width: 879px) {
-    .ramzuna-programmes .rz-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .ramzuna-programmes .rz-card {
-      padding: 24px 20px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .ramzuna-programmes .rz-section {
-      padding: 30px 0;
-    }
-
-    .ramzuna-programmes .rz-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .ramzuna-programmes .rz-card {
-      padding: 24px 20px;
-    }
-  }
-
-  @supports not (container-type: inline-size) {
-    @media (max-width: 960px) {
-      .ramzuna-programmes .rz-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .ramzuna-programmes .rz-link:hover,
-    .ramzuna-programmes .rz-button:hover {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-  }
-
-  /* Bigger, roomier cards on desktop — mobile stays exactly as-is */
-  @media (min-width: 1280px) {
-    .ramzuna-programmes {
-      max-width: 1200px;
-    }
-
-    .ramzuna-programmes .rz-card {
-      padding: 34px 30px;
-      border-radius: 20px;
-    }
-
-    .ramzuna-programmes .rz-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      font-size: 26px;
-    }
-
-    .ramzuna-programmes .rz-card h3 {
-      font-size: 1.3rem;
-    }
-
-    .ramzuna-programmes .rz-description {
-      font-size: 17px;
-      line-height: 1.7;
-    }
-
-    .ramzuna-programmes .rz-link,
-    .ramzuna-programmes .rz-button {
-      font-size: 15px;
-    }
-  }
-</style>
-
-<div class="ramzuna-programmes">
-  {showTeach && (
-    <section class="rz-section" aria-label="How we teach">
-      <div class="rz-wrap">
-        <header class="rz-head">
-          <p class="rz-eyebrow">Language Lab</p>
-          <h2>How We Teach</h2>
+{
+  showTeach && (
+    <section class="bg-cream-200 py-16 lg:py-24 dark:bg-gray-950" aria-labelledby="how-we-teach-title">
+      <div class="container mx-auto px-4 lg:px-8">
+        <header class="mx-auto max-w-2xl text-center" data-animate="fade-in-up">
+          <span class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
+            Language Lab
+          </span>
+          <h2
+            id="how-we-teach-title"
+            class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+          >
+            How We Teach
+          </h2>
         </header>
 
-        <div class="rz-grid">
-          <article class="rz-card">
-            <div class="rz-icon" aria-hidden="true">🎓</div>
-            <h3>Language Lessons & Conversations</h3>
-            <p class="rz-description">
-              Empowering Palestinian students through general, conversation, academic
-              and business language lessons.
-            </p>
-            <div class="rz-links">
-              <a href="/english-classes" class="rz-link">
-                <span class="rz-link-label">English Classes</span>
-                <span class="rz-arrow" aria-hidden="true">→</span>
-              </a>
-              <a href="/french-classes" class="rz-link">
-                <span class="rz-link-label">French Classes</span>
-                <span class="rz-arrow" aria-hidden="true">→</span>
-              </a>
-              <a href="/german-classes" class="rz-link">
-                <span class="rz-link-label">German Classes</span>
-                <span class="rz-arrow" aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
-
-      
-          <article class="rz-card rz-green">
-            <div class="rz-icon" aria-hidden="true">💬</div>
-            <h3>Asynchronous Learning</h3>
-            <p class="rz-description">
-              Self-paced asynchronous learning for students whose internet
-              does not enable them to join live lessons.
-            </p>
-            <div class="rz-links">
-              <a href="/services" class="rz-link">
-                <span class="rz-link-label">Asynchronous Learning</span>
-                <span class="rz-arrow" aria-hidden="true">→</span>
-              </a>
-              <a href="/resources" class="rz-link">
-                <span class="rz-link-label">Resources</span>
-                <span class="rz-arrow" aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="rz-card">
-            <div class="rz-icon" aria-hidden="true">📢</div>
-            <h3>Palestinian Poetry &amp; Storytelling</h3>
-            <p class="rz-description">
-              Publishing Palestinian literature, poetry and art from
-              our students and wider community.
-            </p>
-            <div class="rz-links">
-              <a href="/palestinian-voices" class="rz-link">
-                <span class="rz-link-label">Palestinian Voices</span>
-                <span class="rz-arrow" aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
+        <div class="mt-12 grid gap-6 lg:mt-14 lg:grid-cols-3 lg:gap-8">
+          {teach.map((c, i) => (
+            <article class:list={[cardBase, tone[c.tone].card]} data-animate="fade-in-up" data-delay={100 + i * 80}>
+              <div class:list={['mb-5 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl', tone[c.tone].icon]} aria-hidden="true">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={icons[c.icon]} />
+                </svg>
+              </div>
+              <h3 class:list={['text-xl font-semibold leading-snug', tone[c.tone].title]}>{c.title}</h3>
+              <p class:list={['mt-3 leading-relaxed', tone[c.tone].text]}>{c.description}</p>
+              <div class="mt-auto pt-6">
+                <div class:list={['flex flex-col items-start border-t pt-3', tone[c.tone].rule]}>
+                  {c.links.map((l) => (
+                    <a href={l.url} class:list={['group/link inline-flex min-h-[44px] items-center gap-2 text-[0.9375rem] font-semibold transition-colors', tone[c.tone].link]}>
+                      {l.text}
+                      <svg class="h-4 w-4 transition-transform group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
-  )}
+  )
+}
 
-  {showInvolved && (
-    <section class="rz-section" aria-label="Get involved">
-      <div class="rz-wrap">
-        <header class="rz-head">
-          <p class="rz-eyebrow">Join the effort</p>
-          <h2>Get Involved</h2>
-          <p class="rz-closed-note">Student enrolment and volunteer applications are currently closed for the autumn term.</p>
+{
+  showInvolved && (
+    <section class="bg-white py-16 lg:py-24 dark:bg-gray-900" aria-labelledby="get-involved-title">
+      <div class="container mx-auto px-4 lg:px-8">
+        <header class="mx-auto max-w-2xl text-center" data-animate="fade-in-up">
+          <span class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
+            Join the effort
+          </span>
+          <h2
+            id="get-involved-title"
+            class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+          >
+            Get Involved
+          </h2>
+          <p
+            class="mx-auto mt-5 flex max-w-xl items-start justify-center gap-2 rounded-xl border border-accent-200 bg-accent-50 px-4 py-2.5 text-left text-sm font-medium text-accent-600 sm:items-center sm:text-center dark:border-accent-900/60 dark:bg-accent-900/20 dark:text-accent-200"
+            role="note"
+          >
+            <svg class="mt-0.5 h-4 w-4 flex-shrink-0 sm:mt-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Student enrolment and volunteer applications are currently closed for the autumn term.</span>
+          </p>
         </header>
 
-        <div class="rz-grid">
-          <article class="rz-card">
-            <div class="rz-icon" aria-hidden="true">👥</div>
-            <h3>Teach with Us</h3>
-            <p class="rz-description">
-              Share your knowledge and teach English, French or German
-              to Palestinian students. Applications are closed for the
-              autumn term — read about the role for when they reopen.
-            </p>
-            <a href="/teach-with-us" class="rz-button">
-              Learn More
-              <span class="rz-arrow" aria-hidden="true">→</span>
-            </a>
-          </article>
-
-          <article class="rz-card rz-green">
-            <div class="rz-icon" aria-hidden="true">🎓</div>
-            <h3>Get your Work Published</h3>
-            <p class="rz-description">
-              Send us your art pieces, articles, poems, essays and we will publish them on our     
-              website and social media channels.
-            </p>
-            <a href="/palestinian-voices" class="rz-button">
-              Learn More
-              <span class="rz-arrow" aria-hidden="true">→</span>
-            </a>
-          </article>
-
-          <article class="rz-card rz-maroon">
-            <div class="rz-icon" aria-hidden="true">🤝</div>
-            <h3>Make a Donation</h3>
-            <p class="rz-description">
-              Help us continue our work and reach more students.
-            </p>
-            <a href="/donate" class="rz-button">
-              Donate Now
-              <span class="rz-arrow" aria-hidden="true">→</span>
-            </a>
-          </article>
+        <div class="mt-12 grid gap-6 lg:mt-14 lg:grid-cols-3 lg:gap-8">
+          {involved.map((c, i) => (
+            <article class:list={[cardBase, tone[c.tone].card]} data-animate="fade-in-up" data-delay={100 + i * 80}>
+              <div class:list={['mb-5 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl', tone[c.tone].icon]} aria-hidden="true">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={icons[c.icon]} />
+                </svg>
+              </div>
+              <h3 class:list={['text-xl font-semibold leading-snug', tone[c.tone].title]}>{c.title}</h3>
+              <p class:list={['mt-3 leading-relaxed', tone[c.tone].text]}>{c.description}</p>
+              <div class="mt-auto pt-8">
+                <a
+                  href={c.cta.url}
+                  class:list={[
+                    'group/btn inline-flex min-h-[44px] items-center gap-2 rounded-lg px-5 py-2.5 text-[0.9375rem] font-semibold shadow-sm transition-all',
+                    tone[c.tone].button,
+                  ]}
+                >
+                  {c.cta.text}
+                  <svg class="h-4 w-4 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
-  )}
-</div>
+  )
+}
