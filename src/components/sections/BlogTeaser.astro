@@ -16,7 +16,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
 {
   posts.length > 0 && (
-    <section class="bg-white py-10 lg:py-14 dark:bg-gray-900">
+    <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-800/50">
       <div class="container mx-auto px-4 lg:px-8">
         <div class="mx-auto max-w-2xl text-center" data-animate="fade-in-up">
           <span class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
@@ -26,15 +26,15 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">{description}</p>
         </div>
 
-        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, index) => (
             <article
-              class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-soft-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-soft-lg dark:border-gray-800 dark:bg-gray-950"
+              class="group overflow-hidden rounded-2xl bg-white shadow-soft transition-all hover:shadow-soft-lg dark:bg-gray-900"
               data-animate="fade-in-up"
               data-delay={100 + index * 50}
             >
               <a href={`/blog/${post.id}/`} class="block">
-                <div class="aspect-[3/2] overflow-hidden bg-cream-200 dark:bg-gray-800">
+                <div class="aspect-[3/2] overflow-hidden">
                   <img
                     src={post.data.image}
                     alt={post.data.title}
@@ -56,10 +56,10 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           ))}
         </div>
 
-        <div class="mt-8 text-center">
+        <div class="mt-12 text-center">
           <a
             href="/blog"
-            class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition-all hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
+            class="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800"
           >
             Read All Stories
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

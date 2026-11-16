@@ -8,7 +8,7 @@ hero:
   badge: 100% Free, Always
   title: "Ramzunā Languages"
   titleHighlight: "Language Access Should Cross Every Border"
-  description: "Ramzunā Languages is a non-profit that is dedicated to providing free and personalised English, French and German lessons to Palestinian students."
+  description: "Ramzunā Languages is a non-profit that is dedicated to providing free and personalised English,French and German lessons to Palestinian students."
   primaryCta:
     text: Our Programmes
     url: "/services"
@@ -17,33 +17,16 @@ hero:
     url: "/resources"
     icon: false
   note: "Student enrolment and volunteer applications are currently closed for the autumn term. We are not accepting new student applications at present; please check our website for future enrolment announcements."
-  image: "/assets/img/illustration-hero.svg"
-
-# Impact numbers band (shown directly under the hero)
-impact:
-  badge: Our Impact
-  title: Free Lessons, Real Numbers
-  description: Every figure below is a lesson taught by a volunteer to a Palestinian student, at no cost to them.
-  items:
+  stats:
     - value: "930"
       label: Hours Delivered
-      note: Of free teaching by volunteer educators
-      icon: clock
     - value: "620"
       label: Lessons Delivered
-      note: Free lessons, taught one session at a time
-      icon: book
     - value: "19"
       label: Nationalities
-      note: Represented in our community
-      icon: globe
     - value: "1:4"
       label: Teacher-Student Ratio
-      note: Small groups, so every student is heard
-      icon: group
-  link:
-    text: Read what 700+ hours really means
-    url: /blog/more-than-a-number---what-700-hours-of-lessons-actually-means
+  image: "/assets/img/illustration-hero.svg"
 
 # How We Teach Section
 services:

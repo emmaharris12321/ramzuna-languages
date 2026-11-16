@@ -15,7 +15,7 @@ interface Props {
 const { badge, title, description, steps } = Astro.props;
 ---
 
-<section id="how-it-works" class="bg-cream-100 py-10 lg:py-14 dark:bg-gray-950">
+<section id="how-it-works" class="bg-white py-20 lg:py-28 dark:bg-gray-950">
   <div class="container mx-auto px-4 lg:px-8">
     <div class="mx-auto max-w-3xl text-center">
       {
@@ -45,23 +45,23 @@ const { badge, title, description, steps } = Astro.props;
     </div>
 
     <!-- Desktop: Horizontal timeline -->
-    <div class="mt-10 hidden lg:block" data-animate="fade-in-up" data-delay="300">
+    <div class="mt-16 hidden lg:block" data-animate="fade-in-up" data-delay="300">
       <div class="relative">
         <!-- Timeline line -->
-        <div class="absolute left-[12.5%] right-[12.5%] top-8 h-0.5 bg-primary-200 dark:bg-primary-800" aria-hidden="true"></div>
+        <div class="absolute left-0 right-0 top-8 h-0.5 bg-primary-200 dark:bg-primary-800" aria-hidden="true"></div>
 
         <div class="relative grid grid-cols-4 gap-8">
           {
             steps.map((step, index) => (
               <div class="relative text-center">
                 <!-- Step number circle -->
-                <div class="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary-600 text-xl font-bold text-white shadow-lg shadow-primary-600/30 ring-8 ring-cream-100 dark:ring-gray-950">
+                <div class="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary-600 text-xl font-bold text-white shadow-lg shadow-primary-600/30">
                   {step.number}
                 </div>
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                   {step.title}
                 </h3>
-                <p class="mx-auto mt-2 max-w-[17rem] leading-relaxed text-gray-600 dark:text-gray-400">
+                <p class="mt-2 text-gray-600 dark:text-gray-400">
                   {step.description}
                 </p>
               </div>
@@ -72,7 +72,7 @@ const { badge, title, description, steps } = Astro.props;
     </div>
 
     <!-- Mobile: Vertical timeline -->
-    <div class="mt-8 lg:hidden">
+    <div class="mt-12 lg:hidden">
       <div class="relative">
         {
           steps.map((step, index) => (
