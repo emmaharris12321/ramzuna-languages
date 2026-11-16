@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Hero from '@/components/sections/Hero.astro';
+import ImpactStats from '@/components/sections/ImpactStats.astro';
 import ProgrammesAndInvolved from '@/components/sections/ProgrammesAndInvolved.astro';
 import HowItWorks from '@/components/sections/HowItWorks.astro';
 import Terms from '@/components/sections/Terms.astro';
@@ -14,6 +15,7 @@ const page = await getHomepage();
 
 <Base title="Free English, French & German Lessons for Palestinian Students" description="Ramzunā Languages is dedicated to providing free and personalised English, French and German lessons to Palestinian students. Sign up to learn, or apply to teach Palestinian students today.">
   <Hero {...page.hero} />
+  {page.impact && <ImpactStats {...page.impact} />}
   <ProgrammesAndInvolved />
 
   {page.howItWorks && <HowItWorks {...page.howItWorks} />}
