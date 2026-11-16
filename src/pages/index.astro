@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Hero from '@/components/sections/Hero.astro';
+import ImpactStats from '@/components/sections/ImpactStats.astro';
 import ProgrammesAndInvolved from '@/components/sections/ProgrammesAndInvolved.astro';
 import HowItWorks from '@/components/sections/HowItWorks.astro';
 import Terms from '@/components/sections/Terms.astro';
@@ -14,12 +15,7 @@ const page = await getHomepage();
 
 <Base title="Free English, French & German Lessons for Palestinian Students" description="Ramzunā Languages is dedicated to providing free and personalised English, French and German lessons to Palestinian students. Sign up to learn, or apply to teach Palestinian students today.">
   <Hero {...page.hero} />
-  <!-- Wave Divider -->
-  <div class="relative -mt-1 text-gray-50 dark:text-gray-900">
-    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" preserveAspectRatio="none">
-      <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="currentColor" />
-    </svg>
-  </div>
+  {page.impact && <ImpactStats {...page.impact} />}
   <ProgrammesAndInvolved />
 
   {page.howItWorks && <HowItWorks {...page.howItWorks} />}
@@ -29,7 +25,7 @@ const page = await getHomepage();
   {page.cta && <CTA {...page.cta} />}
 
   <!-- Closing Quote -->
-  <section class="quote-section-photo py-12 lg:py-16">
+  <section class="quote-section-photo py-8 lg:py-10">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto max-w-2xl text-center">
         <span class="quote-glyph quote-glyph-photo" aria-hidden="true">&ldquo;</span>
