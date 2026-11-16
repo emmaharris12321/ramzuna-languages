@@ -40,18 +40,13 @@ servicesGrid:
     - icon: storage
       title: Asynchronous Lessons
       description: "For students without reliable internet for live classes, or when live courses are fully booked — engaging, flexible lessons on your own schedule."
-      features:
-        - Compressed, low-bandwidth PDFs and audio exercises
-        - Personalised feedback in a dedicated group chat
-        - Speaking circles — respond by voice message, on your schedule
-        - Available in English, French, and German
+   
     - icon: packing
       title: Exam Preparation
       description: "Focused, one-on-one coaching to prepare for IELTS, TOEFL, DELF, DALF, and Goethe-Institut certification exams."
       features:
-        - Practice tests included
-        - Experienced exam tutors
-        - Personalised study plan
+        - Practice tests 
+        - Experienced teachers
         - Available from Intermediate (B1) level upward
 
 # Process Section
@@ -61,7 +56,7 @@ process:
   steps:
     - number: "1"
       title: Sign Up Free
-      description: "Tell us your language, level, and availability — it only takes a few minutes."
+      description: "Tell us your language, level, and availability."
     - number: "2"
       title: Get Matched
       description: We pair you with a vetted volunteer educator who fits your goals and schedule.
@@ -70,7 +65,7 @@ process:
       description: Meet online for regular lessons, at a pace that works for you.
     - number: "4"
       title: Grow Your Fluency
-      description: "Build real, lasting language skills with consistent support along the way."
+      description: "Build language skills."
 
 # CTA Section
 cta:

@@ -21,8 +21,6 @@ pricing:
           included: true
         - text: Weekly small-group lessons (one-to-one for exam prep)
           included: true
-        - text: Learning materials included
-          included: true
         - text: Flexible online scheduling
           included: true
         - text: Progress check-ins
@@ -36,7 +34,7 @@ pricing:
       features:
         - text: Fluent or native in English, French, or German
           included: true
-        - text: As little as 1 hour a week
+        - text: As little as 90 minutes a week
           included: true
         - text: Free onboarding & training
           included: true
