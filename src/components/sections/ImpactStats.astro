@@ -33,7 +33,7 @@ const parse = (v: string) => {
 };
 ---
 
-<section id="impact" class="impact-band relative overflow-hidden py-12 text-white lg:py-16" aria-labelledby="impact-title">
+<section id="impact" class="impact-band relative overflow-hidden py-10 text-white lg:py-12" aria-labelledby="impact-title">
   <div class="container relative mx-auto px-4 lg:px-8">
     {
       (badge || title || description) && (
@@ -44,22 +44,22 @@ const parse = (v: string) => {
             </div>
           )}
           {title && (
-            <h2 id="impact-title" class="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 id="impact-title" class="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
               {title}
             </h2>
           )}
-          {description && <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/85">{description}</p>}
+          {description && <p class="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-white/85">{description}</p>}
         </div>
       )
     }
 
-    <ul class="mt-10 grid grid-cols-2 gap-4 sm:gap-5 lg:mt-12 lg:grid-cols-4">
+    <ul class="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:mt-8 lg:grid-cols-4">
       {
         items.map((item, i) => {
           const parsed = parse(item.value);
           return (
             <li
-              class="impact-card group relative flex flex-col rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm sm:p-6"
+              class="impact-card group relative flex flex-col rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm sm:p-5"
               data-animate="fade-in-up"
               data-delay={i * 100}
             >
@@ -70,16 +70,16 @@ const parse = (v: string) => {
                   </svg>
                 </span>
               )}
-              <p class="order-1 font-display text-4xl font-semibold leading-none tracking-tight text-white sm:text-5xl">
+              <p class="order-1 font-display text-3xl font-semibold leading-none tracking-tight text-white sm:text-4xl">
                 {parsed ? (
                   <span data-impact-count={parsed.n} data-suffix={parsed.suffix}>{item.value}</span>
                 ) : (
                   <span>{item.value}</span>
                 )}
               </p>
-              <p class="order-2 mt-2.5 text-base font-semibold text-white">{item.label}</p>
-              {item.note && <p class="order-3 mt-1.5 text-sm leading-snug text-white/75">{item.note}</p>}
-              <span class="order-4 mt-4 block h-1 w-10 rounded-full bg-accent-300 transition-all group-hover:w-16" aria-hidden="true" />
+              <p class="order-2 mt-2 text-sm font-semibold text-white sm:text-base">{item.label}</p>
+              {item.note && <p class="order-3 mt-1 text-xs leading-snug text-white/75 sm:text-sm">{item.note}</p>}
+              <span class="order-4 mt-3 block h-1 w-8 rounded-full bg-accent-300 transition-all group-hover:w-16" aria-hidden="true" />
             </li>
           );
         })
@@ -88,7 +88,7 @@ const parse = (v: string) => {
 
     {
       link && (
-        <p class="mt-10 text-center">
+        <p class="mt-7 text-center">
           <a href={link.url} class="inline-flex items-center gap-2 rounded-lg border border-white/30 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10">
             {link.text} <span aria-hidden="true">→</span>
           </a>
