@@ -45,8 +45,3 @@ _Post-release maintenance without a version bump: upgraded to Astro 6.0 (2026-03
 ## 2026-11-04 — Lessons 9 and 10
 
 Added full editable Lesson 9 (Freunde) main, audio-guided Lesson 9 extension, and Lesson 10 (Studium) using the user-supplied media and verified original sequence. Added PDF study sheets 9–10; preserved asynchronous PDF downloads and updated curriculum navigation to all ten lessons. See `UPDATE-LESSONS-9-10.md`.
-
-## Impact numbers, Voices, Study and Teach pages
-- Homepage: new full-width green "Our Impact" band (src/components/sections/ImpactStats.astro) directly under the hero, with large animated numbers. Content lives in `impact:` in src/content/homepage/index.yaml; the small stats row was removed from the hero.
-- Palestinian Voices: new intro with at-a-glance totals, "In Their Own Words" pull-quotes (taken from each piece's excerpt), writer jump-links, stronger writer cards; heritage gallery moved below the writers.
-- Study with Us / Teach with Us: quick-facts strip, icon lists, language tiles, comparison-style lesson formats, timelines, real student/educator quotes from the homepage content, teacher map.

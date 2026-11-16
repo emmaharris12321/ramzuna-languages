@@ -16,3 +16,13 @@ Validation: npm ci and npm run build succeeded; 89 pages generated. Browser visu
 Changed source files: src/layouts/Base.astro, src/components/Header.astro, src/scripts/main.ts, src/css/input.css, src/pages/index.astro.
 
 Run locally: npm ci, then npm run dev. Production: npm run build.
+
+---
+
+# Round 2: consistent text size, readable poems, clearer language resources
+
+- **Font size:** removed the rule in `src/css/input.css` that raised the root font size to 18px on screens 1280px and wider. The root is now 16px on every device. Poem text (`src/pages/voices/[...slug].astro`), programme descriptions and testimonial quotes now use 16px body text.
+- **Palestinian Voices (`src/pages/palestinian-voices.astro`):** the writers section is now laid out like the blog. Each writer has a heading with their bio, and every poem or chapter is a card with its title, Arabic title, excerpt and reading time. There is a search box and writer filter buttons (deep links such as `/palestinian-voices#noor` work). Poems are read automatically from `src/content/voices/*.md`, so a new poem for an existing writer needs no edit to the page. A brand-new writer needs one line in the `writers` list.
+- **Language Resources (`src/pages/resources/language-resources.astro`):** added a "How to use this page" box and numbered steps (choose a language, narrow it down, open a resource). Added a "Not sure where to start?" suggestion per language (editable in the `startHere` list), a clear selected state for the language buttons, a format badge on every link (Website, Video, Podcast, PDF, Document) and plain-language filter labels. "Clear filters" keeps the chosen language.
+
+Validation: `npm ci` and `npm run build` succeeded (89 pages). Checked in a headless browser at 1440px wide: root and body font size are 16px; writer filter, search, deep links and language filters work with no script errors.
