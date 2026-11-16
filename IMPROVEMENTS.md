@@ -16,3 +16,8 @@ Validation: npm ci and npm run build succeeded; 89 pages generated. Browser visu
 Changed source files: src/layouts/Base.astro, src/components/Header.astro, src/scripts/main.ts, src/css/input.css, src/pages/index.astro.
 
 Run locally: npm ci, then npm run dev. Production: npm run build.
+
+## Professional polish pass
+- Desktop root font-size reduced from 18px to the 16px default; headings, lead text and section spacing tightened on screens 1024px and up (src/css/input.css). Mobile/tablet unchanged.
+- Study with Us: removed the live-lesson photo. Teach with Us: removed the teacher nationality map; the lesson-resources preview image is kept.
+- Resources: index, YouTube and Mental Health pages use clean line icons instead of emoji; Language Resources now has a language summary, format filters (Website/Video/Podcast/PDF/Document), a two-column card grid, coloured format tags and visible domains.
