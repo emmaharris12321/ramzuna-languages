@@ -148,14 +148,10 @@ const toneClass = {
           <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/90 lg:mx-0 sm:text-xl">
             Poems and stories written in Gaza and across Palestine, in the writers’ own words. Pick one and read — {quick} of {pieces.length} take two minutes or less.
           </p>
-          <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-            <a href={`/voices/${featured.slug}`} class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-primary-700 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-cream-50 sm:w-auto">
+          <div class="mt-8 flex justify-center lg:justify-start">
+            <a href={`/voices/${featured.slug}`} class="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-7 py-3.5 text-base font-semibold text-primary-700 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-cream-50">
               Start reading <span aria-hidden="true">→</span>
             </a>
-            <button type="button" data-js-only hidden data-random={JSON.stringify(pieces.map((x) => x.slug))} class="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/10 sm:w-auto">
-              Surprise me
-            </button>
-            <a href="#browse" class="text-sm font-semibold text-white/90 underline-offset-4 hover:underline sm:ml-2">Browse all {pieces.length}</a>
           </div>
         </div>
 
@@ -174,69 +170,60 @@ const toneClass = {
     </div>
   </section>
 
-  <!-- Browse pieces -->
-  <section id="browse" data-voices class="scroll-mt-20 py-14 lg:py-20">
+  <!-- All writing: one calm, uniform grid -->
+  <section id="browse" class="scroll-mt-20 py-14 lg:py-20">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Choose something to read</h2>
-        <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Each piece opens in Arabic and English, so you can read in either language, or both side by side.</p>
-        <div data-js-only hidden aria-label="Filter by writer" class="mt-7 flex flex-wrap items-center justify-center gap-2">
-          <button type="button" data-writer="All" aria-pressed="true" class="writer-chip">All <span class="opacity-70">{pieces.length}</span></button>
-          {authors.map((a) => <button type="button" data-writer={a.name} aria-pressed="false" class="writer-chip">{a.name} <span class="opacity-70">{countBy(a.name)}</span></button>)}
-        </div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">All writing</h2>
+        <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Every piece can be read in Arabic, English, or both side by side.</p>
       </div>
-
-      <ul class="mx-auto mt-10 max-w-6xl gap-5 [column-fill:_balance] sm:columns-2 lg:columns-3">
-        {pieces.map((piece, i) => {
-          const tone = cardTone[i % 3];
-          const dark = tone !== 'paper';
-          return (
-            <li data-piece data-author={piece.author} class="mb-5 break-inside-avoid">
-              <a href={`/voices/${piece.slug}`} class:list={['group flex flex-col rounded-2xl border p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg sm:p-7', toneClass[tone]]}>
-                <span aria-hidden="true" class:list={['block font-display text-5xl leading-none', dark ? 'text-white/45' : 'text-accent-300 dark:text-accent-700']}>&ldquo;</span>
-                <p class="mt-1 line-clamp-6 font-display text-xl italic leading-relaxed sm:text-[1.35rem]">{piece.excerpt}</p>
-                <div class:list={['mt-6 border-t pt-4', dark ? 'border-white/25' : 'border-gray-100 dark:border-gray-700']}>
-                  <h3 class="font-display text-lg font-semibold leading-snug">
-                    {piece.title}
-                    {piece.arabicTitle && <span lang="ar" dir="rtl" class:list={['mr-0 block text-base font-normal', dark ? 'text-white/80' : 'text-gray-500 dark:text-gray-400']}>{piece.arabicTitle}</span>}
-                  </h3>
-                  <div class:list={['mt-2 flex items-center justify-between gap-3 text-sm', dark ? 'text-white/85' : 'text-gray-600 dark:text-gray-400']}>
-                    <span>by <span class="font-semibold">{piece.author}</span> · {piece.chapters ? `${piece.chapters} chapters` : piece.readTime}</span>
-                    <span aria-hidden="true" class="font-bold transition-transform group-hover:translate-x-1">Read →</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  </section>
-
-  <!-- Writers -->
-  <section id="the-writers" class="scroll-mt-20 bg-cream-100 py-16 lg:py-24 dark:bg-gray-900">
-    <div class="container mx-auto px-4 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">The people behind the words</h2>
-        <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Students and young writers from Palestine. Tap a name to read their work.</p>
-      </div>
-      <ul class="mx-auto mt-10 grid max-w-6xl items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {authors.map((a, i) => (
-          <li class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-gray-800 dark:ring-white/10">
-            <div class="flex items-center gap-4">
-              <span class:list={['flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full font-display text-xl font-semibold text-white', i % 2 === 0 ? 'bg-primary-600' : 'bg-accent-500']}>{a.name.charAt(0)}</span>
-              <div>
-                <h3 class="font-display text-xl font-semibold text-gray-900 dark:text-white">{a.name}</h3>
-                <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{countBy(a.name) === 1 ? '1 piece' : `${countBy(a.name)} pieces`}</p>
-              </div>
-            </div>
-            <p class="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{a.bio}</p>
-            <a href="#browse" data-writer-link={a.name} class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent-600 hover:underline dark:text-accent-300">
-              Read {a.name}’s work <span aria-hidden="true">→</span>
+      <ul class="mx-auto mt-10 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {pieces.map((piece) => (
+          <li>
+            <a href={`/voices/${piece.slug}`} class="group flex h-full flex-col rounded-2xl border border-gray-200 border-t-4 border-t-primary-600 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:border-gray-700 dark:border-t-primary-500 dark:bg-gray-800">
+              <span class="text-xs font-bold uppercase tracking-wider text-accent-600 dark:text-accent-300">{piece.chapters ? `Story · ${piece.chapters} chapters` : 'Poem'}</span>
+              <span class="mt-3 line-clamp-4 font-display text-xl italic leading-relaxed text-gray-900 dark:text-white">&ldquo;{piece.excerpt}&rdquo;</span>
+              <span class="mt-auto block pt-6">
+                <span class="block font-semibold text-gray-900 group-hover:text-primary-700 dark:text-white dark:group-hover:text-primary-300">{piece.title}</span>
+                <span class="mt-0.5 block text-sm text-gray-500 dark:text-gray-400">{piece.author}{!piece.chapters && piece.readTime ? ` · ${piece.readTime}` : ''}</span>
+              </span>
             </a>
           </li>
         ))}
       </ul>
+    </div>
+  </section>
+
+  <!-- Writers: collapsed list -->
+  <section id="the-writers" class="scroll-mt-20 bg-cream-100 py-14 lg:py-20 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">The writers</h2>
+        <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Students and young writers from Palestine. Tap a name to read about them.</p>
+      </div>
+      <div class="mx-auto mt-10 max-w-3xl divide-y divide-gray-200 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800">
+        {authors.map((a) => (
+          <details class="group">
+            <summary class="flex cursor-pointer list-none items-center gap-4 px-5 py-4 transition-colors hover:bg-cream-50 dark:hover:bg-gray-700/40 [&::-webkit-details-marker]:hidden">
+              <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 font-display text-lg font-semibold text-white">{a.name.charAt(0)}</span>
+              <span class="flex-1">
+                <span class="block font-semibold text-gray-900 dark:text-white">{a.name}</span>
+                <span class="block text-sm text-gray-500 dark:text-gray-400">{countBy(a.name) === 1 ? '1 piece' : `${countBy(a.name)} pieces`}</span>
+              </span>
+              <svg class="h-5 w-5 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-5 pb-5 pl-[4.75rem]">
+              <p class="leading-relaxed text-gray-600 dark:text-gray-400">{a.bio}</p>
+              <p class="mt-3 text-sm">
+                <span class="font-semibold text-gray-900 dark:text-white">Read: </span>
+                {pieces.filter((x) => x.author === a.name).map((x, i) => (
+                  <>{i > 0 && ' · '}<a href={`/voices/${x.slug}`} class="font-medium text-primary-700 hover:underline dark:text-primary-300">{x.title}</a></>
+                ))}
+              </p>
+            </div>
+          </details>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -345,42 +332,5 @@ const toneClass = {
     font-size: 3rem;
   }
 
-  [data-js-only][hidden] { display: none !important; }
-  .writer-chip {
-    border: 1px solid #d1d5db;
-    background: #fff;
-    color: #374151;
-    border-radius: 9999px;
-    padding: 0.4rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
-  }
-  .writer-chip:hover { border-color: #38664f; color: #38664f; }
-  .writer-chip[aria-pressed="true"] { background: #38664f; border-color: #38664f; color: #fff; }
-  :global(.dark) .writer-chip { background: #1f2937; border-color: #374151; color: #d1d5db; }
-  :global(.dark) .writer-chip[aria-pressed="true"] { background: #38664f; border-color: #4b7d65; color: #fff; }
 </style>
 
-<script>
-  const root = document.querySelector<HTMLElement>('[data-voices]');
-  document.querySelectorAll<HTMLElement>('[data-js-only]').forEach((el) => (el.hidden = false));
-
-  if (root) {
-    const chips = [...root.querySelectorAll<HTMLButtonElement>('[data-writer]')];
-    const items = [...root.querySelectorAll<HTMLElement>('[data-piece]')];
-    const apply = (writer: string) => {
-      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.writer === writer)));
-      items.forEach((li) => (li.hidden = writer !== 'All' && li.dataset.author !== writer));
-    };
-    chips.forEach((c) => c.addEventListener('click', () => apply(c.dataset.writer!)));
-    document.querySelectorAll<HTMLElement>('[data-writer-link]').forEach((a) =>
-      a.addEventListener('click', () => apply(a.dataset.writerLink!))
-    );
-  }
-
-  document.querySelector<HTMLElement>('[data-random]')?.addEventListener('click', (e) => {
-    const slugs: string[] = JSON.parse((e.currentTarget as HTMLElement).dataset.random || '[]');
-    if (slugs.length) window.location.href = '/voices/' + slugs[Math.floor(Math.random() * slugs.length)];
-  });
-</script>

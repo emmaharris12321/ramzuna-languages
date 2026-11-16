@@ -56,3 +56,7 @@ Added full editable Lesson 9 (Freunde) main, audio-guided Lesson 9 extension, an
 
 ## Palestinian Voices — reading-first redesign
 - Page now leads with the writing: hero with a featured line, "Start reading" and "Surprise me" buttons; a masonry grid of one card per piece (excerpt, title in English and Arabic, writer, read time) with writer filter chips; writers' bios moved lower. Marah's six chapters are a single card. Stats band removed.
+
+## Simplification pass: Language Resources and Palestinian Voices
+- Language Resources: one choice up front (language tabs), optional "Jump to" sidebar, one search box (searches all languages), uniform list rows. Removed the skill/format dropdowns, tile row, badges on every row and the mixed card shapes.
+- Palestinian Voices: one "Start reading" action, one uniform grid of all pieces, writers collapsed into an expandable list. Removed filter chips, the Surprise-me button, coloured card rotation and Arabic titles on cards.
