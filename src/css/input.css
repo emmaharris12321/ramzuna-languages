@@ -3,6 +3,20 @@
 /* Import config */
 @config '../../tailwind.config.js';
 
+/* Shared site typography. Sizes are rem-based and preserve browser zoom. */
+:root {
+  --rz-font-body: 'Outfit', 'Noto Sans Arabic', system-ui, sans-serif;
+  --rz-font-heading: 'Playfair Display', 'Noto Sans Arabic', Georgia, serif;
+  --rz-text-small: 0.875rem;
+  --rz-text-body: 1rem;
+  --rz-text-card: 1.25rem;
+  --rz-text-subheading: 1.5rem;
+  --rz-text-heading: 1.875rem;
+  --rz-text-title: 2.25rem;
+  --rz-text-hero: 3rem;
+}
+
+
 /* Custom base styles */
 @layer base {
   html {
@@ -29,8 +43,16 @@
      font), but this is the single source of truth going forward. */
   body {
     @apply bg-cream-200 text-gray-900 antialiased font-sans dark:bg-gray-950 dark:text-gray-100;
-    font-size: 1rem;
+    font-size: var(--rz-text-body);
     line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--rz-font-heading);
+  }
+
+  button, input, select, textarea {
+    font-family: var(--rz-font-body);
   }
 
   /* Focus styles */
@@ -141,7 +163,7 @@
   --tw-prose-pre-code: theme(colors.gray.200);
   color: var(--tw-prose-body);
   max-width: 65ch;
-  font-size: 1rem;
+  font-size: var(--rz-text-body);
   line-height: 1.75;
 }
 
@@ -153,9 +175,9 @@
   margin-bottom: 0.75em;
 }
 
-.prose h1 { font-size: 2.25em; margin-top: 0; }
-.prose h2 { font-size: 1.5em; }
-.prose h3 { font-size: 1.25em; }
+.prose h1 { font-size: var(--rz-text-title); margin-top: 0; }
+.prose h2 { font-size: var(--rz-text-subheading); }
+.prose h3 { font-size: var(--rz-text-card); }
 
 .prose p {
   margin-top: 1.25em;
@@ -198,7 +220,7 @@
 
 .prose code {
   color: var(--tw-prose-code);
-  font-size: 0.875em;
+  font-size: var(--rz-text-body);
   font-weight: 600;
 }
 
@@ -211,7 +233,7 @@
   background-color: var(--tw-prose-pre-bg);
   color: var(--tw-prose-pre-code);
   overflow-x: auto;
-  font-size: 0.875em;
+  font-size: var(--rz-text-body);
   line-height: 1.7;
   margin-top: 1.5em;
   margin-bottom: 1.5em;

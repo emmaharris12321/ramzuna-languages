@@ -82,7 +82,7 @@ My homeland, My homeland`,
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
       <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Our Name</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+      <p class="mx-auto mt-4 max-w-2xl text-base text-primary-100">
         The story behind the name Ramzunā, and the poem that inspired it.
       </p>
       <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
@@ -106,11 +106,11 @@ My homeland, My homeland`,
           <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             Ramzunā
           </h2>
-          <p class="mt-2 text-xl text-accent-600 dark:text-accent-400" lang="ar" dir="rtl">رَمْزُنَا</p>
-          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+          <p class="mt-2 text-base text-accent-600 dark:text-accent-400" lang="ar" dir="rtl">رَمْزُنَا</p>
+          <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
             The name Ramzunā is rooted in the Arabic word <span class="font-semibold text-accent-600 dark:text-accent-400">Ramz</span> (symbol). It becomes &ldquo;Our Symbol&rdquo; by adding the suffix <span class="font-semibold text-accent-600 dark:text-accent-400">-nā</span>.
           </p>
-          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+          <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
             It is a name we chose deliberately: a symbol of Palestinian identity, resilience, and the right to be heard &mdash; carried into every lesson we teach.
           </p>
         </div>
@@ -146,13 +146,13 @@ My homeland, My homeland`,
       <div class="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div class="text-center lg:text-left">
           <h3 class="font-display text-2xl font-semibold text-accent-600 dark:text-accent-400">The Inspiration</h3>
-          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+          <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
             Our name is a tribute to the 1934 poem <span class="font-semibold text-gray-900 dark:text-white">Mawtinī</span> (&ldquo;My Homeland&rdquo;), by the Palestinian poet Ibrahim Tuqan.
           </p>
-          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+          <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
             For decades, this poem served as the unofficial national anthem, preserved and sung as an affirmation of belonging in the face of displacement and erasure. In 2004 its melody was formally adopted as the national anthem of Iraq.
           </p>
-          <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
+          <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0">
             Today, <span class="font-semibold text-gray-900 dark:text-white">Mawtinī</span> remains one of the most widely recited poems across the Arab world &mdash; taught to children, sung at gatherings, and carried by Palestinians wherever they are.
           </p>
         </div>
@@ -182,7 +182,7 @@ My homeland, My homeland`,
       <!-- What It Stands For -->
       <div class="mx-auto max-w-xl text-center">
         <h3 class="font-display text-2xl font-semibold text-primary-600 dark:text-primary-400">What It Stands For</h3>
-        <p class="mx-auto mt-4 max-w-md text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+        <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-gray-600 dark:text-gray-400">
           In the verses of <span class="font-semibold text-gray-900 dark:text-white">Mawtinī</span>, we find the values that drive our mission:
         </p>
       </div>
@@ -219,7 +219,7 @@ My homeland, My homeland`,
       </div>
 
       <div class="mx-auto mt-10 max-w-xl text-center">
-        <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+        <p class="text-base leading-relaxed text-gray-600 dark:text-gray-400">
           Ramzunā Languages draws on this cultural reference to fuel our commitment to education.
         </p>
 
@@ -296,7 +296,7 @@ My homeland, My homeland`,
       }
       .poem-lang-btn {
         font-family: inherit;
-        font-size: 0.75rem;
+        font-size: var(--rz-text-body);
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -333,9 +333,9 @@ My homeland, My homeland`,
       .poem-text {
         margin: 0;
         white-space: pre-line;
-        font-family: 'Playfair Display', Georgia, serif;
+        font-family: var(--rz-font-heading);
         font-style: italic;
-        font-size: 0.9375rem;
+        font-size: var(--rz-text-body);
         line-height: 1.8;
         color: #fff;
       }
@@ -385,7 +385,7 @@ My homeland, My homeland`,
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
       <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">More About Ramzunā Languages</h2>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+      <p class="mx-auto mt-4 max-w-2xl text-base text-primary-100">
         Learn more about our mission, our values, and the team behind our work.
       </p>
       <a href="/about" class="mt-8 inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-medium text-primary-600 shadow-lg transition-colors hover:bg-gray-100">

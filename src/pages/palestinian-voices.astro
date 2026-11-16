@@ -46,7 +46,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
       <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Palestinian Voices</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Poetry &amp; prose from Gaza, the West Bank, and displaced Palestinian writers.</p>
+      <p class="mx-auto mt-4 max-w-2xl text-base text-primary-100">Poetry &amp; prose from Gaza, the West Bank, and displaced Palestinian writers.</p>
       <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
         <a href="/" class="transition-colors hover:text-white">Home</a>
         <span>/</span>
@@ -68,7 +68,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
         <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           A living collection of writing
         </h2>
-        <p class="mx-auto mt-4 max-w-md leading-relaxed text-lg text-gray-600 dark:text-gray-400">
+        <p class="mx-auto mt-4 max-w-md leading-relaxed text-base text-gray-600 dark:text-gray-400">
           Sharing what survival, memory, and hope sound like in the words of Palestinian students and writers. Every piece written here is an act of sumud — proof that Palestinian culture, thought, and feeling endure.
         </p>
         <p class="mt-6 text-sm font-medium uppercase tracking-wider text-gray-400 dark:text-gray-500">
@@ -88,7 +88,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
         <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           Stories Told Through Art
         </h2>
-        <p class="mx-auto mt-4 max-w-md leading-relaxed text-lg text-gray-600 dark:text-gray-400">
+        <p class="mx-auto mt-4 max-w-md leading-relaxed text-base text-gray-600 dark:text-gray-400">
           Palestinian identity, memory and belonging, shared through the visual culture of our community.
         </p>
       </div>
@@ -124,7 +124,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Choose a writer</h2>
-        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+        <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
           Select a writer to read their poems and stories.
         </p>
       </div>
@@ -242,7 +242,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
       <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Have something to share?</h2>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+      <p class="mx-auto mt-4 max-w-2xl text-base text-primary-100">
         If you are a Palestinian writer with a poem, story, or letter you would like included here, we would love to hear from you. We publish both the Arabic and English/French/German versions.
       </p>
       <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -274,7 +274,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
 <style>
   .quote-glyph {
     display: block;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--rz-font-heading);
     font-size: 4rem;
     line-height: 0.5;
     color: rgba(122, 34, 43, 0.35);
@@ -335,7 +335,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
     left: 1.5rem;
     border-radius: 9999px;
     padding: 0.2rem 0.75rem;
-    font-size: 0.75rem;
+    font-size: var(--rz-text-small);
     font-weight: 600;
     letter-spacing: 0.04em;
     background: rgba(255, 255, 255, 0.18);
@@ -345,15 +345,15 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
     position: absolute;
     top: 0.25rem;
     right: 1.25rem;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--rz-font-heading);
     font-size: 6rem;
     line-height: 1;
     opacity: 0.2;
   }
   .voice-panel-title {
     position: relative;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.75rem;
+    font-family: var(--rz-font-heading);
+    font-size: var(--rz-text-subheading);
     font-weight: 600;
     line-height: 1.35;
   }
@@ -374,13 +374,13 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
     background: #e5e7eb;
     color: #374151;
     padding: 0.5rem 1rem;
-    font-size: 0.875rem;
+    font-size: var(--rz-text-body);
     font-weight: 500;
     transition: background-color 0.15s ease, color 0.15s ease;
   }
   .voices-chip:hover { background: #d1d5db; }
   .voices-chip[aria-pressed='true'] { background: #38664f; color: #fff; }
-  .voices-chip-count { font-size: 0.75rem; opacity: 0.75; }
+  .voices-chip-count { font-size: var(--rz-text-small); opacity: 0.75; }
   :global(.dark) .voices-chip { background: #374151; color: #d1d5db; }
   :global(.dark) .voices-chip:hover { background: #4b5563; }
   :global(.dark) .voices-chip[aria-pressed='true'] { background: #38664f; color: #fff; }

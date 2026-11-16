@@ -1,5 +1,5 @@
 .lesson-nine .profiles{margin-top:24px}
-.lesson-nine .profile-text h3{font-size:1.32rem}
+.lesson-nine .profile-text h3{font-size: var(--rz-text-card)}
 .lesson-nine .profile-text p[lang=de]{line-height:1.78}
 .lesson-nine .video{margin-top:24px}
 .lesson-nine .dialogue audio{display:block;width:100%;margin:18px 0 6px}

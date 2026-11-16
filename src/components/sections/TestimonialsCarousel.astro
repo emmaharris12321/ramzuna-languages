@@ -12,7 +12,7 @@
     padding: clamp(24px, 3.5vw, 44px) clamp(16px, 3vw, 36px);
     background: linear-gradient(180deg, #f7f1e8, #fbf8f3);
     color: #2a2622;
-    font-family: 'Outfit', system-ui, sans-serif;
+    font-family: var(--rz-font-body);
     -webkit-text-size-adjust: 100%;
   }
 
@@ -35,7 +35,7 @@
     border-radius: 9999px;
     background: #d9e6da;
     color: #38664f;
-    font-size: 15px;
+    font-size: var(--rz-text-small);
     font-weight: 500;
     line-height: 1.5;
   }
@@ -43,8 +43,8 @@
   .tm-section .tm-head h2 {
     margin: 0;
     color: #38664f;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.875rem;
+    font-family: var(--rz-font-heading);
+    font-size: var(--rz-text-heading);
     font-weight: 600;
     line-height: 1.25;
     text-wrap: balance;
@@ -52,7 +52,7 @@
 
   @media (min-width: 640px) {
     .tm-section .tm-head h2 {
-      font-size: 2.25rem;
+      font-size: var(--rz-text-title);
     }
   }
 
@@ -105,8 +105,8 @@
   .tm-section .tm-quote-mark {
     margin-bottom: 2px;
     color: #38664f;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 36px;
+    font-family: var(--rz-font-heading);
+    font-size: var(--rz-text-title);
     line-height: 0.9;
   }
 
@@ -114,8 +114,8 @@
     flex: 1;
     margin: 0 0 16px;
     color: inherit;
-    font-family: 'Outfit', system-ui, sans-serif;
-    font-size: 16px;
+    font-family: var(--rz-font-body);
+    font-size: var(--rz-text-body);
     font-style: normal;
     font-weight: 400;
     line-height: 1.65;
@@ -139,7 +139,7 @@
     border-radius: 50%;
     background: #d9e6da;
     color: #38664f;
-    font-size: 13px;
+    font-size: var(--rz-text-body);
     font-weight: 700;
   }
 
@@ -152,7 +152,7 @@
     display: block;
     margin-bottom: 4px;
     color: #38664f;
-    font-size: 16px;
+    font-size: var(--rz-text-body);
     font-weight: 700;
     line-height: 1.4;
   }
@@ -160,7 +160,7 @@
   .tm-section .tm-role {
     display: block;
     color: #514b44;
-    font-size: 14px;
+    font-size: var(--rz-text-small);
     line-height: 1.5;
   }
 
@@ -225,7 +225,7 @@
   .tm-section .tm-count {
     min-width: 64px;
     color: #514b44;
-    font-size: 15px;
+    font-size: var(--rz-text-body);
   }
 
   .tm-section .tm-dots {
@@ -309,26 +309,26 @@
     }
 
     .tm-section .tm-quote-mark {
-      font-size: 48px;
+      font-size: var(--rz-text-hero);
     }
 
     .tm-section .tm-quote {
-      font-size: 16px;
+      font-size: var(--rz-text-body);
       line-height: 1.75;
     }
 
     .tm-section .tm-avatar {
       width: 44px;
       height: 44px;
-      font-size: 14px;
+      font-size: var(--rz-text-body);
     }
 
     .tm-section .tm-name {
-      font-size: 16px;
+      font-size: var(--rz-text-body);
     }
 
     .tm-section .tm-role {
-      font-size: 14px;
+      font-size: var(--rz-text-small);
     }
   }
 </style>

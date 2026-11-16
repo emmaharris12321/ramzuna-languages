@@ -84,7 +84,7 @@ const shuffle = (a: string[]) => [...a].sort((x, y) => (x.length + x.charCodeAt(
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
       <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Einheit 1, Lektion 1: sich vorstellen</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Introduce yourself in German (A1).</p>
+      <p class="mx-auto mt-4 max-w-2xl text-base text-primary-100">Introduce yourself in German (A1).</p>
       <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
         <a href="/" class="transition-colors hover:text-white">Home</a><span>/</span>
         <a href="/resources" class="transition-colors hover:text-white">Resources</a><span>/</span>
@@ -353,7 +353,7 @@ const shuffle = (a: string[]) => [...a].sort((x, y) => (x.length + x.charCodeAt(
     .ex .word.sel { background: #fde68a; color: #111; }
     .ex .ok { outline: 2px solid #16a34a; background-color: rgba(22,163,74,.12); }
     .ex .bad { outline: 2px solid #dc2626; background-color: rgba(220,38,38,.12); }
-    .ex .actions button { border-radius: .5rem; padding: .4rem .9rem; font-size: .875rem; font-weight: 500; }
+    .ex .actions button { border-radius: .5rem; padding: .4rem .9rem; font-size: var(--rz-text-body); font-weight: 500; }
     .ex .actions .primary { background: #0f766e; color: #fff; }
     .ex .actions .secondary { background: #e5e7eb; color: #111; }
     .ex .score { font-weight: 600; margin-left: .5rem; }

@@ -8,6 +8,11 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      fontSize: {
+        xs: ['0.875rem', { lineHeight: '1.5' }],
+        sm: ['0.875rem', { lineHeight: '1.5' }],
+        base: ['1rem', { lineHeight: '1.6' }],
+      },
       colors: {
         gray: {
           '50': '#f9fafb',
@@ -315,8 +320,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Outfit', 'system-ui', 'sans-serif'],
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['var(--rz-font-body)'],
+        display: ['var(--rz-font-heading)'],
       },
     },
   },
