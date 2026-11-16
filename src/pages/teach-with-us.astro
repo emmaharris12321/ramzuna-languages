@@ -108,18 +108,18 @@ const library = ['Error correction', 'Grammar and skills lessons', 'Listening, r
   </section>
 
   <!-- Why Teach With Us -->
-  <section class="pb-20 pt-24 lg:pb-20 lg:pt-24">
+  <section class="pb-20 pt-24 lg:pb-28 lg:pt-32">
     <div class="container mx-auto px-4 lg:px-8">
-      <div class="mx-auto max-w-5xl">
+      <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div>
           <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Why Teach With Us</div>
           <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             Teaching that <em class="not-italic text-primary-600 dark:text-primary-400">works for you</em>
           </h2>
-          <ul class="mt-8 grid gap-x-10 gap-y-6 md:grid-cols-2">
+          <ul class="mt-10 divide-y divide-gray-200 dark:divide-gray-800">
             {
               perks.map((perk) => (
-                <li class="flex gap-4 border-t border-gray-200 pt-6 dark:border-gray-800">
+                <li class="flex gap-5 py-6 first:pt-0 last:pb-0">
                   <span class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-300">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={icon[perk.icon as keyof typeof icon]} /></svg>
                   </span>
@@ -132,6 +132,16 @@ const library = ['Error correction', 'Grammar and skills lessons', 'Listening, r
             }
           </ul>
         </div>
+
+        <figure class="mx-auto w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-soft-lg ring-1 ring-black/5 lg:max-w-none dark:bg-gray-800 dark:ring-white/10">
+          <img
+            src="/assets/img/teacher-nationality-map.png"
+            alt="World map of the 2026 Ramzunā teaching team, covering 15 countries, with flags and percentages: the UK 27.1%, the USA 15.68%, and Palestine and Egypt 11.54% each, among others"
+            class="h-auto w-full"
+            loading="lazy"
+          />
+          <figcaption class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400">Our 2026 volunteer teachers come from 15 countries.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -157,7 +167,7 @@ const library = ['Error correction', 'Grammar and skills lessons', 'Listening, r
   </section>
 
   <!-- Getting Started: timeline -->
-  <section class="bg-cream-100 py-20 lg:py-20 dark:bg-gray-900">
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
         <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Getting Started</div>
@@ -184,7 +194,7 @@ const library = ['Error correction', 'Grammar and skills lessons', 'Listening, r
   </section>
 
   <!-- Teaching Resources -->
-  <section class="py-20 lg:py-20">
+  <section class="py-20 lg:py-28">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div class="mx-auto w-full max-w-md overflow-hidden rounded-2xl shadow-soft-lg ring-1 ring-black/5 lg:order-2 dark:ring-white/10">
@@ -214,7 +224,7 @@ const library = ['Error correction', 'Grammar and skills lessons', 'Listening, r
   <!-- Educator voices -->
   {
     educatorVoices.length > 0 && (
-      <section class="bg-cream-100 py-20 lg:py-20 dark:bg-gray-900" aria-labelledby="educator-voices">
+      <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900" aria-labelledby="educator-voices">
         <div class="container mx-auto px-4 lg:px-8">
           <div class="mx-auto max-w-3xl text-center">
             <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/50 dark:text-accent-300">Educator Stories</div>
@@ -238,7 +248,7 @@ const library = ['Error correction', 'Grammar and skills lessons', 'Listening, r
   }
 
   <!-- What We Look For -->
-  <section class="py-20 lg:py-20">
+  <section class="py-20 lg:py-28">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div class="text-center lg:text-left">

@@ -2,58 +2,120 @@
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 
-const posts = await getCollection('voices', ({ data }) => !data.draft);
+const voicePosts = await getCollection('voices', ({ data }) => !data.draft);
+const excerptBySlug = new Map(voicePosts.map((v) => [v.id, v.data.excerpt]));
 
-// One card per piece. A multi-chapter story (tag "Chapter N") is a single card
-// that opens at chapter 1.
-interface Piece {
-  slug: string;
+interface Poem {
   title: string;
-  arabicTitle?: string;
-  author: string;
-  excerpt: string;
-  readTime?: string;
   tag: string;
-  chapters?: number;
+  slug?: string;
 }
 
-const byAuthor = new Map<string, Piece[]>();
-const sorted = [...posts].sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
-for (const post of sorted) {
-  const d = post.data;
-  const list = byAuthor.get(d.author) ?? [];
-  const isChapter = /^chapter\s*\d+/i.test(d.tag);
-  const existing = isChapter ? list.find((p) => p.title === d.title && p.chapters) : undefined;
-  if (existing) {
-    existing.chapters = (existing.chapters ?? 1) + 1;
-  } else {
-    list.push({
-      slug: post.id,
-      title: d.title,
-      arabicTitle: d.arabicTitle,
-      author: d.author,
-      excerpt: (d.excerpt ?? '').replace(/\s+/g, ' ').trim(),
-      readTime: d.readTime,
-      tag: d.tag,
-      chapters: isChapter ? 1 : undefined,
-    });
-  }
-  byAuthor.set(d.author, list);
+interface Author {
+  name: string;
+  bio: string;
+  poems: Poem[];
 }
 
-const writers = [...byAuthor.keys()].sort((a, b) => a.localeCompare(b));
+const authors: Author[] = [
+  {
+    name: 'Amira',
+    bio: 'Amira is a Palestinian translation student and writer. She writes to document the genocide Palestinians have endured, and she translates her words so the story of Palestinians reaches the world, ensuring it is never forgotten.',
+    poems: [{ title: 'To My Brother', tag: 'Poem', slug: 'amira-to-my-brother' }],
+  },
+  {
+    name: 'Arwa',
+    bio: 'Arwa is a junior student at the Islamic University of Gaza, majoring in English translation and Literature. She turns to poetry and prose to translate silence into language and pain into meaning, believing that words are powerful tools of resistance, awareness, and transformation.',
+    poems: [{ title: 'Kindle the Spark: Echoes', tag: 'Poem', slug: 'arwa-kindle-the-spark-echoes' }],
+  },
+  {
+    name: 'Mais',
+    bio: 'Mais is only fourteen, yet her dreams far exceed her years. Mais believes learning is a never-ending journey. She dreams of becoming someone of value and influence who leaves a positive mark on her community and is remembered for her kindness and achievements.',
+    poems: [
+      { title: 'Meeting My New Self', tag: 'Poem', slug: 'mais-meeting-my-new-self' },
+      { title: 'I Am Still Here', tag: 'Poem', slug: 'mais-i-am-still-here' },
+    ],
+  },
+  {
+    name: 'Marah',
+    bio: 'Twenty-two-year-old Marah started writing during the war, focusing on her experiences of trying not just to survive but also to live with her family. Writing is not a choice to her — it is a way to survive.',
+    poems: [
+      { title: 'A Day of Breathing Life', tag: 'Chapter 1', slug: 'marah-a-day-of-breathing-life-chapter-1' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 2', slug: 'marah-a-day-of-breathing-life-chapter-2' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 3', slug: 'marah-a-day-of-breathing-life-chapter-3' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 4', slug: 'marah-a-day-of-breathing-life-chapter-4' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 5', slug: 'marah-a-day-of-breathing-life-chapter-5'},
+      { title: 'A Day of Breathing Life', tag: 'Chapter 6', slug: 'marah-a-day-of-breathing-life-chapter-6' },
+    ],
+  },
+  {
+    name: 'Noor',
+    bio: 'Noor is a student in English Literature and Translation who is passionate about writing. She aims to use her craft to share the voice of Gaza with the world.',
+    poems: [
+      { title: 'Between North and South', tag: 'Poem', slug: 'noor-between-north-and-south' },
+      { title: 'To My Beloved Home', tag: 'Poem', slug: 'noor-to-my-beloved-home' },
+      { title: 'Just Write', tag: 'Poem', slug: 'noor-just-write' },
+      { title: 'Grey', tag: 'Poem', slug: 'noor-grey' },
+      { title: 'Midnight', tag: 'Poem', slug: 'noor-midnight' },
+      { title: 'A Letter From Gaza to Santa Claus', tag: 'Poem', slug: 'noor-a-letter-from-gaza-to-santa-claus' },
+    ],
+  },
+  {
+    name: 'Shams',
+    bio: 'Shams has a bachelor’s degree in English Language and Teaching Methods from Al-Aqsa University in Gaza. She is passionate about creative writing and translation, believing in the power of words to express resilience and hope.',
+    poems: [
+      { title: 'The Sun of Hope', tag: 'Poem', slug: 'shams-the-sun-of-hope' },
+      { title: 'A Spring in Autumn', tag: 'Poem', slug: 'shams-a-spring-in-autumn' },
+    ],
+  },
+  {
+    name: 'Shahed',
+    bio: 'Shahed is a Palestinian poet who writes from the heart of lived experience. Even when life shuts the door, she finds ways to reach out through her letters, believing that true connection cannot be measured by maps or blocked by walls.',
+    poems: [
+      { title: 'The Door I No Longer Knock On', tag: 'Poem', slug: 'shahed-the-door-i-no-longer-knock-on' },
+      { title: 'Ash', tag: 'Poem', slug: 'shahed-ash' },
+    ],
+  },
+  {
+    name: 'Aya',
+    bio: 'Aya Rezeq Aldeeb is a voice from Gaza, writing to be heard.',
+    poems: [{ title: 'Obsessions', tag: 'Poem', slug: 'aya-obsessions' }],
+  },
+  {
+    name: 'Menna',
+    bio: 'Born in 2004, Menna is a translator, audio content presenter, podcaster, aspiring writer, and poet. Through her work, she brings life to her voice and to those the world has forgotten. Menna believes the genocide in Gaza has produced a new generation of writers. She writes many short texts you may find published on her Instagram page, and she also enjoys voice-over presentations and her latest work Roam the Streets and Collect Street Sayings, narrates colloquial Arabic street sayings alongside their English translations.',
+    poems: [{ title: 'Street Suffering', tag: 'Poem', slug: 'menna-street-suffering' }],
+  },
+];
 
+const totalPoems = authors.reduce((sum, a) => sum + a.poems.length, 0);
+const totalSeries = authors.filter((a) => a.poems.length > 1 && a.poems.every((p) => p.title === a.poems[0].title)).length;
+const writerId = (name: string) => `writer-${name.toLowerCase()}`;
+
+// Pull-quotes shown near the top. The line itself comes from each piece's
+// own `excerpt` in src/content/voices, so it always matches the real text.
+const featuredSlugs: { slug: string; author: string; title: string }[] = [
+  { slug: 'shams-the-sun-of-hope', author: 'Shams', title: 'The Sun of Hope' },
+  { slug: 'mais-i-am-still-here', author: 'Mais', title: 'I Am Still Here' },
+  { slug: 'noor-to-my-beloved-home', author: 'Noor', title: 'To My Beloved Home' },
+];
+const featured = featuredSlugs.filter((f) => excerptBySlug.get(f.slug));
+
+function isSeries(author: Author): boolean {
+  return (
+    author.poems.length > 1 &&
+    author.poems.every((p) => p.tag.startsWith('Chapter')) &&
+    author.poems.every((p) => p.title === author.poems[0].title)
+  );
+}
 ---
 
-<Base title="Palestinian Voices" description="Poems and stories written by Palestinian students, in Arabic and English.">
+<Base title="Palestinian Voices" description="Poetry and prose from Palestinian students and writers, published by Ramzunā Languages.">
   <!-- Page Header -->
   <section class="page-hero py-16 lg:py-24">
     <div class="container mx-auto px-4 text-center lg:px-8">
-      <p dir="rtl" lang="ar" class="font-display text-2xl text-primary-100 sm:text-3xl">أصوات فلسطينية</p>
-      <h1 class="mt-1 font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Palestinian Voices</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
-        Poems and stories by Palestinian students, in Arabic and English.
-      </p>
+      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Palestinian Voices</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Poetry &amp; prose from Gaza, the West Bank, and displaced Palestinian writers.</p>
       <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
         <a href="/" class="transition-colors hover:text-white">Home</a>
         <span>/</span>
@@ -64,39 +126,266 @@ const writers = [...byAuthor.keys()].sort((a, b) => a.localeCompare(b));
     </div>
   </section>
 
-  <section class="collection-shell" data-voices-library>
-    <div class="collection-intro">
-      <div><p class="collection-eyebrow">Writing from Palestine</p><h2>Explore the collection</h2><p>Poetry, letters and stories, organised by writer. Multi-chapter works are collected in one place.</p></div>
-      <p class="collection-meta">{writers.length} writers · {[...byAuthor.values()].reduce((n, items) => n + items.length, 0)} works</p>
-    </div>
-    <div class="collection-toolbar collection-panel">
-      <div class="collection-field"><label for="voices-search">Search the collection</label><input id="voices-search" type="search" placeholder="Title, writer or words from a piece" data-voices-search /></div>
-      <div class="collection-field"><label for="voices-writer">Writer</label><select id="voices-writer" data-writer><option value="">All writers</option>{writers.map(writer => <option value={writer}>{writer}</option>)}</select></div>
-      <div class="collection-field"><label for="voices-kind">Collection</label><select id="voices-kind" data-kind><option value="">All works</option><option value="short">Poems & short pieces</option><option value="story">Chaptered stories</option></select></div>
-    </div>
-    <p class="collection-meta" data-voices-count role="status" aria-live="polite"></p>
-    {writers.map(writer => (
-      <section class="writer-section" data-writer-section>
-        <div class="writer-heading"><h2>{writer}</h2><p>{byAuthor.get(writer)!.length} {byAuthor.get(writer)!.length === 1 ? 'work' : 'works'}</p></div>
-        <div class="writing-list collection-panel">
-          {byAuthor.get(writer)!.sort((a,b) => a.title.localeCompare(b.title)).map(piece => (
-            <article class="writing-entry" data-writing data-author={writer} data-kind={piece.chapters ? 'story' : 'short'} data-search={`${piece.title} ${piece.arabicTitle ?? ''} ${writer} ${piece.excerpt}`.toLowerCase()}>
-              <a href={`/voices/${piece.slug}`}>
-                <p class="collection-meta">{piece.chapters ? `Story · ${piece.chapters} chapters` : piece.tag}{piece.readTime && !piece.chapters ? ` · ${piece.readTime}` : ''}</p>
-                <h3>{piece.title}</h3>
-                {piece.arabicTitle && <p class="writing-arabic" lang="ar" dir="rtl">{piece.arabicTitle}</p>}
-                <p class="writing-excerpt">{piece.excerpt}</p>
-                <span class="writing-link">{piece.chapters ? 'Read the story' : 'Read this piece'} <span aria-hidden="true">→</span></span>
-              </a>
-            </article>
-          ))}
+  <!-- Intro -->
+  <section class="py-16 lg:py-24">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto grid max-w-5xl items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
+        <div class="text-center lg:text-left">
+          <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/50 dark:text-accent-300">
+            Poetry &amp; Prose
+          </div>
+          <p dir="rtl" lang="ar" class="font-display text-3xl text-primary-600 sm:text-4xl dark:text-primary-400">أصوات فلسطينية</p>
+          <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+            A living collection of writing
+          </h2>
+          <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-gray-600 lg:mx-0 dark:text-gray-400">
+            Sharing what survival, memory, and hope sound like in the words of Palestinian students and writers. Every piece written here is an act of sumud — proof that Palestinian culture, thought, and feeling endure.
+          </p>
+          <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
+            <a href="#the-writers" class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-500/25 transition-all hover:-translate-y-0.5 hover:bg-accent-600">
+              Meet the writers <span aria-hidden="true">↓</span>
+            </a>
+            <a href="https://ee-eu.kobotoolbox.org/x/IJHWeAbH" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-800 transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
+              Submit your writing
+            </a>
+          </div>
         </div>
-      </section>
-    ))}
-    <p class="collection-empty" data-voices-empty hidden>No works match these filters. Try another writer or search term.</p>
+
+        <!-- Collection at a glance -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 lg:grid-cols-1">
+          <div class="rounded-2xl bg-primary-600 p-5 text-center text-white shadow-soft-lg lg:flex lg:items-center lg:gap-5 lg:p-6 lg:text-left">
+            <p class="font-display text-4xl font-semibold leading-none sm:text-5xl lg:text-6xl">{authors.length}</p>
+            <p class="mt-2 text-sm font-medium text-white/85 lg:mt-0 lg:text-base">writers from Palestine</p>
+          </div>
+          <div class="rounded-2xl bg-accent-500 p-5 text-center text-white shadow-soft-lg lg:flex lg:items-center lg:gap-5 lg:p-6 lg:text-left">
+            <p class="font-display text-4xl font-semibold leading-none sm:text-5xl lg:text-6xl">{totalPoems}</p>
+            <p class="mt-2 text-sm font-medium text-white/85 lg:mt-0 lg:text-base">poems &amp; chapters</p>
+          </div>
+          <div class="rounded-2xl border border-primary-200 bg-cream-50 p-5 text-center shadow-sm lg:flex lg:items-center lg:gap-5 lg:p-6 lg:text-left dark:border-primary-800 dark:bg-gray-900">
+            <p class="font-display text-4xl font-semibold leading-none text-primary-600 sm:text-5xl lg:text-6xl dark:text-primary-300">{totalSeries}</p>
+            <p class="mt-2 text-sm font-medium text-gray-700 lg:mt-0 lg:text-base dark:text-gray-300">serialised {totalSeries === 1 ? 'story' : 'stories'}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Submit -->
+  <!-- In their words -->
+  {
+    featured.length > 0 && (
+      <section class="bg-cream-100 py-16 lg:py-24 dark:bg-gray-900" aria-labelledby="in-their-words">
+        <div class="container mx-auto px-4 lg:px-8">
+          <div class="mx-auto max-w-3xl text-center">
+            <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Start Here</div>
+            <h2 id="in-their-words" class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">In Their Own Words</h2>
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">A line from each piece to begin with — tap one to read the full work.</p>
+          </div>
+          <div class="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-3">
+            {featured.map((f, i) => (
+              <a
+                href={`/voices/${f.slug}`}
+                class="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800"
+              >
+                <span aria-hidden="true" class:list={['absolute inset-x-0 top-0 h-1.5', i % 2 === 0 ? 'bg-primary-600' : 'bg-accent-500']} />
+                <span
+                  aria-hidden="true"
+                  class:list={['block font-display text-6xl leading-none', i % 2 === 0 ? 'text-primary-200 dark:text-primary-800' : 'text-accent-200 dark:text-accent-800']}
+                >&ldquo;</span>
+                <p class="mt-2 font-display text-xl italic leading-relaxed text-gray-900 dark:text-white">{excerptBySlug.get(f.slug)}</p>
+                <div class="mt-6 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-gray-700">
+                  <div>
+                    <p class="font-semibold text-gray-900 dark:text-white">{f.author}</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">{f.title}</p>
+                  </div>
+                  <span class="text-sm font-bold text-accent-500 transition-transform group-hover:translate-x-1 dark:text-accent-200" aria-hidden="true">Read →</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Authors -->
+  <section id="the-writers" class="scroll-mt-24 py-20 lg:py-28">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/50 dark:text-accent-300">The Writers</div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Meet the Poets and Storytellers</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Click through to read each writer's work in full.</p>
+        <nav aria-label="Jump to a writer" class="mt-8 flex flex-wrap items-center justify-center gap-2">
+          {authors.map((a, i) => (
+            <a
+              href={`#${writerId(a.name)}`}
+              class:list={[
+                'rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors',
+                i % 2 === 0
+                  ? 'border-accent-200 text-accent-700 hover:bg-accent-500 hover:text-white dark:border-accent-800 dark:text-accent-200'
+                  : 'border-primary-200 text-primary-700 hover:bg-primary-600 hover:text-white dark:border-primary-800 dark:text-primary-200',
+              ]}
+            >
+              {a.name}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <div class="mx-auto mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          authors.map((author, i) => {
+            const tone = i % 2 === 0 ? 'accent' : 'primary';
+            const series = isSeries(author);
+            const solidBtn =
+              tone === 'primary' ? 'bg-primary-600 hover:bg-primary-700' : 'bg-accent-600 hover:bg-accent-700';
+            const tintRow =
+              tone === 'primary'
+                ? 'bg-primary-50 hover:bg-primary-600 hover:text-white dark:bg-primary-900/30 dark:hover:bg-primary-600'
+                : 'bg-accent-50 hover:bg-accent-600 hover:text-white dark:bg-accent-900/30 dark:hover:bg-accent-600';
+            return (
+              <article
+                id={writerId(author.name)}
+                class="flex scroll-mt-28 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-soft-lg dark:border-gray-700 dark:bg-gray-800"
+              >
+                <div class:list={['flex items-center gap-4 px-6 py-5 text-white', tone === 'primary' ? 'bg-primary-600' : 'bg-accent-500']}>
+                  <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-white/15 font-display text-2xl font-semibold ring-2 ring-white/30">
+                    {author.name.charAt(0)}
+                  </div>
+                  <div class="min-w-0">
+                    <h3 class="font-display text-2xl font-semibold leading-tight">{author.name}</h3>
+                    <p class="text-xs font-medium uppercase tracking-wider text-white/80">
+                      Palestine &middot; {series ? `${author.poems.length} chapters` : `${author.poems.length} ${author.poems.length === 1 ? 'piece' : 'pieces'}`}
+                    </p>
+                  </div>
+                </div>
+                <div class="px-6 pt-6">
+                  <p class="leading-relaxed text-gray-600 dark:text-gray-400">{author.bio}</p>
+                </div>
+
+                <div class="mt-6 flex flex-1 flex-col justify-end gap-2 p-6 pt-0">
+                  {series ? (
+                    <>
+                      <div class="rounded-xl bg-gray-50 px-4 py-3 text-center dark:bg-gray-900/40">
+                        <p class="font-semibold text-gray-900 dark:text-white">{author.poems[0].title}</p>
+                        <p class="mt-0.5 text-sm text-gray-500 dark:text-gray-400">A story in {author.poems.length} chapters</p>
+                      </div>
+                      {author.poems[0].slug ? (
+                        <>
+                          <a
+                            href={`/voices/${author.poems[0].slug}`}
+                            class:list={[
+                              'mt-1 flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5',
+                              solidBtn,
+                            ]}
+                          >
+                            Start Reading — Chapter 1 <span aria-hidden="true">→</span>
+                          </a>
+                          <div class="mt-1 flex flex-wrap items-center justify-center gap-2">
+                            {author.poems.slice(1).map((poem, pi) =>
+                              poem.slug ? (
+                                <a
+                                  href={`/voices/${poem.slug}`}
+                                  class:list={[
+                                    'rounded-full px-3 py-1.5 text-xs font-semibold transition-colors',
+                                    tone === 'primary'
+                                      ? 'bg-primary-100 text-primary-700 hover:bg-primary-600 hover:text-white dark:bg-primary-900/50 dark:text-primary-300'
+                                      : 'bg-accent-100 text-accent-700 hover:bg-accent-600 hover:text-white dark:bg-accent-900/50 dark:text-accent-300',
+                                  ]}
+                                >
+                                  Ch. {pi + 2}
+                                </a>
+                              ) : (
+                                <span class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-semibold text-gray-400 dark:bg-gray-900/40 dark:text-gray-500">
+                                  Ch. {pi + 2}
+                                </span>
+                              )
+                            )}
+                          </div>
+                        </>
+                      ) : (
+                        <div class="flex items-center justify-center gap-1.5 rounded-lg bg-gray-50 px-4 py-2.5 text-xs italic text-gray-400 dark:bg-gray-900/40 dark:text-gray-500">
+                          Coming soon
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    author.poems.map((poem) =>
+                      poem.slug ? (
+                        <a
+                          href={`/voices/${poem.slug}`}
+                          class:list={['group/poem flex flex-col gap-1 rounded-xl px-4 py-3 font-semibold text-gray-900 transition-colors dark:text-white', tintRow]}
+                        >
+                          <span class="flex items-center justify-between gap-3">
+                            <span>{poem.title}</span>
+                            <span class="flex flex-shrink-0 items-center gap-1 text-xs font-bold uppercase tracking-wide opacity-70 transition-opacity group-hover/poem:opacity-100">
+                              Read <span aria-hidden="true">→</span>
+                            </span>
+                          </span>
+                          {excerptBySlug.get(poem.slug) && (
+                            <span class="text-sm font-normal italic leading-snug opacity-80">
+                              &ldquo;{excerptBySlug.get(poem.slug)}&rdquo;
+                            </span>
+                          )}
+                        </a>
+                      ) : (
+                        <div class="flex items-center justify-between gap-3 rounded-xl bg-gray-50 px-4 py-3 text-gray-400 dark:bg-gray-900/40 dark:text-gray-500">
+                          <span class="font-medium">{poem.title}</span>
+                          <span class="flex-shrink-0 text-xs italic">Coming soon</span>
+                        </div>
+                      )
+                    )
+                  )}
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Heritage Gallery -->
+  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/50 dark:text-accent-300">
+          Heritage &amp; Culture
+        </div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+          Stories Told Through Art
+        </h2>
+        <p class="mx-auto mt-4 max-w-md leading-relaxed text-lg text-gray-600 dark:text-gray-400">
+          Palestinian identity, memory and belonging, shared through the visual culture of our community.
+        </p>
+      </div>
+      <div class="mx-auto mt-12 grid max-w-3xl gap-8 sm:grid-cols-2">
+        <figure class="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-gray-800">
+          <div class="flex aspect-square w-full items-center justify-center bg-cream-100 p-3 dark:bg-gray-900">
+            <img
+              src="/assets/img/memory-heritage-poster.jpg"
+              alt="A Ramzunā poster titled Memory: Traditions and Folk Stories, featuring an ornate letter M decorated with Palestinian embroidery patterns, a brass coffee pot and an open storybook"
+              class="max-h-full max-w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="p-4 text-center text-sm text-gray-500 dark:text-gray-400">Memory: Traditions &amp; Folk Stories</figcaption>
+        </figure>
+        <figure class="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-gray-800">
+          <div class="flex aspect-square w-full items-center justify-center bg-cream-100 p-3 dark:bg-gray-900">
+            <img
+              src="/assets/img/identity-belonging-poster.jpg"
+              alt="A Ramzunā poster in Arabic titled Identity and Belonging, showing the Dome of the Rock and a keffiyeh alongside an olive branch"
+              class="max-h-full max-w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="p-4 text-center text-sm text-gray-500 dark:text-gray-400">Identity &amp; Belonging &middot; الهوية والانتماء</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section class="page-hero py-16 lg:py-24">
     <div class="container mx-auto px-4 text-center lg:px-8">
       <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Have something to share?</h2>
@@ -113,28 +402,50 @@ const writers = [...byAuthor.keys()].sort((a, b) => a.localeCompare(b));
       </div>
     </div>
   </section>
+
+  <!-- Closing Quote -->
+  <section class="quote-section-photo py-12 lg:py-16">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="quote-glyph quote-glyph-photo" aria-hidden="true">&ldquo;</span>
+        <p class="font-display text-xl italic leading-relaxed text-white sm:text-2xl" style="text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);">
+          Against barbarity, poetry can resist only by confirming its attachment to human fragility like a blade of grass growing on a wall while armies march by.
+        </p>
+        <p class="mt-5 text-sm font-semibold text-white" style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);">Mahmoud Darwish</p>
+        <p class="mt-1 text-xs uppercase tracking-wide text-white/80" style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);">Palestinian poet &amp; author</p>
+      </div>
+    </div>
+  </section>
 </Base>
 
-<script>
-function initVoices() {
- const root = document.querySelector<HTMLElement>('[data-voices-library]');
- if (!root || root.dataset.ready) return;
- root.dataset.ready = 'true';
- const search = root.querySelector<HTMLInputElement>('[data-voices-search]')!;
- const writer = root.querySelector<HTMLSelectElement>('[data-writer]')!;
- const kind = root.querySelector<HTMLSelectElement>('[data-kind]')!;
- function update() {
-  const terms = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
-  let count = 0;
-  root!.querySelectorAll<HTMLElement>('[data-writing]').forEach(item => {
-   const visible = (!writer.value || item.dataset.author === writer.value) && (!kind.value || item.dataset.kind === kind.value) && terms.every(term => item.dataset.search!.includes(term));
-   item.hidden = !visible; if(visible) count++;
-  });
-  root!.querySelectorAll<HTMLElement>('[data-writer-section]').forEach(section => { section.hidden = !section.querySelector('[data-writing]:not([hidden])'); });
-  root!.querySelector('[data-voices-count]')!.textContent = `${count} ${count === 1 ? 'work' : 'works'}`;
-  root!.querySelector<HTMLElement>('[data-voices-empty]')!.hidden = count !== 0;
- }
- search.addEventListener('input', update); writer.addEventListener('change', update); kind.addEventListener('change', update); update();
-}
-initVoices(); document.addEventListener('astro:page-load', initVoices);
-</script>
+<style>
+  .quote-glyph {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4rem;
+    line-height: 0.5;
+    color: rgba(122, 34, 43, 0.35);
+    margin-bottom: 0.75rem;
+  }
+
+  :global(.dark) .quote-glyph {
+    color: rgba(224, 148, 156, 0.5);
+  }
+
+  /* Palestinian Voices closing quote: the olive-branch photo fills the whole
+     section edge to edge (no beige border), with just a light warm scrim so
+     the photo stays bright while the white text keeps its contrast. The
+     section itself is kept short (reduced vertical padding) so the banner
+     doesn't dominate the end of the page. */
+  .quote-section-photo {
+    position: relative;
+    background-image: linear-gradient(rgba(20, 11, 9, 0.32), rgba(20, 11, 9, 0.4)), url('/assets/img/olive-branch-quote-bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .quote-glyph-photo {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 3rem;
+  }
+</style>
