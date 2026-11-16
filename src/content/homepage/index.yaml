@@ -16,7 +16,7 @@ hero:
     text: "Free Learning Resources"
     url: "/resources"
     icon: false
-  note: "Student enrolment and volunteer applications are currently closed for the autumn term. We are not accepting new student applications at present; please check our website for future enrolment announcements."
+ 
   image: "/assets/img/illustration-hero.svg"
 
 # Impact numbers band (shown directly under the hero)
@@ -84,7 +84,6 @@ services:
 howItWorks:
   badge: How It Works
   title: From Sign-Up to Fluency in 4 Steps
-  description: We have made it simple to start learning — or to start teaching.
   steps:
     - number: "01"
       title: Sign Up Free
