@@ -1,0 +1,336 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+
+const voicePosts = await getCollection('voices', ({ data }) => !data.draft);
+const excerptBySlug = new Map(voicePosts.map((v) => [v.id, v.data.excerpt]));
+
+interface Poem {
+  title: string;
+  tag: string;
+  slug?: string;
+}
+
+interface Author {
+  name: string;
+  bio: string;
+  poems: Poem[];
+}
+
+const authors: Author[] = [
+  {
+    name: 'Amira',
+    bio: 'Amira is a Palestinian translation student and writer. She writes to document the genocide Palestinians have endured, and she translates her words so the story of Palestinians reaches the world, ensuring it is never forgotten.',
+    poems: [{ title: 'To My Brother', tag: 'Poem', slug: 'amira-to-my-brother' }],
+  },
+  {
+    name: 'Arwa',
+    bio: 'Arwa is a junior student at the Islamic University of Gaza, majoring in English translation and Literature. She turns to poetry and prose to translate silence into language and pain into meaning, believing that words are powerful tools of resistance, awareness, and transformation.',
+    poems: [{ title: 'Kindle the Spark: Echoes', tag: 'Poem', slug: 'arwa-kindle-the-spark-echoes' }],
+  },
+  {
+    name: 'Mais',
+    bio: 'Mais is only fourteen, yet her dreams far exceed her years. Mais believes learning is a never-ending journey. She dreams of becoming someone of value and influence who leaves a positive mark on her community and is remembered for her kindness and achievements.',
+    poems: [
+      { title: 'Meeting My New Self', tag: 'Poem', slug: 'mais-meeting-my-new-self' },
+      { title: 'I Am Still Here', tag: 'Poem', slug: 'mais-i-am-still-here' },
+    ],
+  },
+  {
+    name: 'Marah',
+    bio: 'Twenty-two-year-old Marah started writing during the war, focusing on her experiences of trying not just to survive but also to live with her family. Writing is not a choice to her — it is a way to survive.',
+    poems: [
+      { title: 'A Day of Breathing Life', tag: 'Chapter 1', slug: 'marah-a-day-of-breathing-life-chapter-1' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 2', slug: 'marah-a-day-of-breathing-life-chapter-2' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 3', slug: 'marah-a-day-of-breathing-life-chapter-3' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 4', slug: 'marah-a-day-of-breathing-life-chapter-4' },
+      { title: 'A Day of Breathing Life', tag: 'Chapter 5', slug: 'marah-a-day-of-breathing-life-chapter-5'},
+      { title: 'A Day of Breathing Life', tag: 'Chapter 6', slug: 'marah-a-day-of-breathing-life-chapter-6' },
+    ],
+  },
+  {
+    name: 'Noor',
+    bio: 'Noor is a student in English Literature and Translation who is passionate about writing. She aims to use her craft to share the voice of Gaza with the world.',
+    poems: [
+      { title: 'Between North and South', tag: 'Poem', slug: 'noor-between-north-and-south' },
+      { title: 'To My Beloved Home', tag: 'Poem', slug: 'noor-to-my-beloved-home' },
+      { title: 'Just Write', tag: 'Poem', slug: 'noor-just-write' },
+      { title: 'Grey', tag: 'Poem', slug: 'noor-grey' },
+      { title: 'Midnight', tag: 'Poem', slug: 'noor-midnight' },
+      { title: 'A Letter From Gaza to Santa Claus', tag: 'Poem', slug: 'noor-a-letter-from-gaza-to-santa-claus' },
+    ],
+  },
+  {
+    name: 'Shams',
+    bio: 'Shams has a bachelor’s degree in English Language and Teaching Methods from Al-Aqsa University in Gaza. She is passionate about creative writing and translation, believing in the power of words to express resilience and hope.',
+    poems: [
+      { title: 'The Sun of Hope', tag: 'Poem', slug: 'shams-the-sun-of-hope' },
+      { title: 'A Spring in Autumn', tag: 'Poem', slug: 'shams-a-spring-in-autumn' },
+    ],
+  },
+  {
+    name: 'Shahed',
+    bio: 'Shahed is a Palestinian poet who writes from the heart of lived experience. Even when life shuts the door, she finds ways to reach out through her letters, believing that true connection cannot be measured by maps or blocked by walls.',
+    poems: [
+      { title: 'The Door I No Longer Knock On', tag: 'Poem', slug: 'shahed-the-door-i-no-longer-knock-on' },
+      { title: 'Ash', tag: 'Poem', slug: 'shahed-ash' },
+    ],
+  },
+  {
+    name: 'Aya',
+    bio: 'Aya Rezeq Aldeeb is a voice from Gaza, writing to be heard.',
+    poems: [{ title: 'Obsessions', tag: 'Poem', slug: 'aya-obsessions' }],
+  },
+  {
+    name: 'Menna',
+    bio: 'Born in 2004, Menna is a translator, audio content presenter, podcaster, aspiring writer, and poet. Through her work, she brings life to her voice and to those the world has forgotten. Menna believes the genocide in Gaza has produced a new generation of writers. She writes many short texts you may find published on her Instagram page, and she also enjoys voice-over presentations and her latest work Roam the Streets and Collect Street Sayings, narrates colloquial Arabic street sayings alongside their English translations.',
+    poems: [{ title: 'Street Suffering', tag: 'Poem', slug: 'menna-street-suffering' }],
+  },
+];
+
+const minutes = (t?: string) => parseInt(t ?? '', 10) || 0;
+
+// One card per piece. A multi-chapter story (Marah) becomes a single card.
+interface Piece {
+  slug: string;
+  title: string;
+  arabicTitle?: string;
+  author: string;
+  excerpt: string;
+  readTime?: string;
+  minutes: number;
+  chapters?: number;
+}
+const pieces: Piece[] = [];
+for (const a of authors) {
+  const isSeries = a.poems.length > 1 && a.poems.every((p) => p.title === a.poems[0].title);
+  const list = isSeries ? [a.poems[0]] : a.poems;
+  for (const poem of list) {
+    const post = voicePosts.find((v) => v.id === poem.slug);
+    if (!post || !poem.slug) continue;
+    pieces.push({
+      slug: poem.slug,
+      title: poem.title,
+      arabicTitle: post.data.arabicTitle,
+      author: a.name,
+      excerpt: (post.data.excerpt ?? '').replace(/\s+/g, ' ').trim(),
+      readTime: post.data.readTime,
+      minutes: isSeries ? a.poems.reduce((n, pp) => n + minutes(voicePosts.find((v) => v.id === pp.slug)?.data.readTime), 0) : minutes(post.data.readTime),
+      chapters: isSeries ? a.poems.length : undefined,
+    });
+  }
+}
+
+const quick = pieces.filter((x) => x.minutes <= 2).length;
+const featured = pieces.find((x) => x.slug === 'shams-the-sun-of-hope') ?? pieces[0];
+const countBy = (name: string) => pieces.filter((x) => x.author === name).length;
+const cardTone = ['green', 'paper', 'maroon'] as const;
+const toneClass = {
+  green: 'bg-primary-600 text-white border-primary-600',
+  paper: 'bg-white text-gray-900 border-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-700',
+  maroon: 'bg-accent-500 text-white border-accent-500',
+};
+---
+
+<Base title="Palestinian Voices" description="Poems and stories written by Palestinian students, in Arabic and English. Pick one and read.">
+  <!-- Hero: invitation + one line to start with -->
+  <section class="page-hero py-12 lg:py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        <div class="text-center lg:text-left">
+          <nav class="mb-5 flex items-center justify-center gap-2 text-sm text-primary-200 lg:justify-start" aria-label="Breadcrumb">
+            <a href="/" class="hover:text-white">Home</a><span aria-hidden="true">/</span>
+            <a href="/resources" class="hover:text-white">Resources</a><span aria-hidden="true">/</span>
+            <span class="text-white">Palestinian Voices</span>
+          </nav>
+          <p dir="rtl" lang="ar" class="font-display text-2xl text-primary-100 sm:text-3xl">أصوات فلسطينية</p>
+          <h1 class="mt-1 font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">Palestinian Voices</h1>
+          <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/90 lg:mx-0 sm:text-xl">
+            Poems and stories written in Gaza and across Palestine, in the writers’ own words. Pick one and read — {quick} of {pieces.length} take two minutes or less.
+          </p>
+          <div class="mt-8 flex justify-center lg:justify-start">
+            <a href={`/voices/${featured.slug}`} class="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-7 py-3.5 text-base font-semibold text-primary-700 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-cream-50">
+              Start reading <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <a href={`/voices/${featured.slug}`} class="group relative block rounded-3xl bg-cream-50 p-8 shadow-soft-xl transition-transform hover:-translate-y-1 sm:p-10 dark:bg-gray-900">
+          <span aria-hidden="true" class="block font-display text-7xl leading-none text-accent-300">&ldquo;</span>
+          <div class="mt-2 font-display text-3xl italic leading-snug text-gray-900 sm:text-4xl dark:text-white">{featured.excerpt}</div>
+          <div class="mt-8 flex items-end justify-between gap-4 border-t border-gray-200 pt-5 dark:border-gray-700">
+            <div>
+              <div class="font-semibold text-gray-900 dark:text-white">{featured.author}</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">{featured.title}{featured.arabicTitle && <span class="ml-1 text-gray-500">· <span lang="ar" dir="rtl">{featured.arabicTitle}</span></span>}</div>
+            </div>
+            <span class="whitespace-nowrap text-sm font-bold text-accent-500 transition-transform group-hover:translate-x-1 dark:text-accent-300">{featured.readTime} →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- All writing: one calm, uniform grid -->
+  <section id="browse" class="scroll-mt-20 py-14 lg:py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">All writing</h2>
+        <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Every piece can be read in Arabic, English, or both side by side.</p>
+      </div>
+      <ul class="mx-auto mt-10 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {pieces.map((piece) => (
+          <li>
+            <a href={`/voices/${piece.slug}`} class="group flex h-full flex-col rounded-2xl border border-gray-200 border-t-4 border-t-primary-600 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:border-gray-700 dark:border-t-primary-500 dark:bg-gray-800">
+              <span class="text-xs font-bold uppercase tracking-wider text-accent-600 dark:text-accent-300">{piece.chapters ? `Story · ${piece.chapters} chapters` : 'Poem'}</span>
+              <span class="mt-3 line-clamp-4 font-display text-xl italic leading-relaxed text-gray-900 dark:text-white">&ldquo;{piece.excerpt}&rdquo;</span>
+              <span class="mt-auto block pt-6">
+                <span class="block font-semibold text-gray-900 group-hover:text-primary-700 dark:text-white dark:group-hover:text-primary-300">{piece.title}</span>
+                <span class="mt-0.5 block text-sm text-gray-500 dark:text-gray-400">{piece.author}{!piece.chapters && piece.readTime ? ` · ${piece.readTime}` : ''}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Writers: collapsed list -->
+  <section id="the-writers" class="scroll-mt-20 bg-cream-100 py-14 lg:py-20 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">The writers</h2>
+        <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Students and young writers from Palestine. Tap a name to read about them.</p>
+      </div>
+      <div class="mx-auto mt-10 max-w-3xl divide-y divide-gray-200 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800">
+        {authors.map((a) => (
+          <details class="group">
+            <summary class="flex cursor-pointer list-none items-center gap-4 px-5 py-4 transition-colors hover:bg-cream-50 dark:hover:bg-gray-700/40 [&::-webkit-details-marker]:hidden">
+              <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 font-display text-lg font-semibold text-white">{a.name.charAt(0)}</span>
+              <span class="flex-1">
+                <span class="block font-semibold text-gray-900 dark:text-white">{a.name}</span>
+                <span class="block text-sm text-gray-500 dark:text-gray-400">{countBy(a.name) === 1 ? '1 piece' : `${countBy(a.name)} pieces`}</span>
+              </span>
+              <svg class="h-5 w-5 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-5 pb-5 pl-[4.75rem]">
+              <p class="leading-relaxed text-gray-600 dark:text-gray-400">{a.bio}</p>
+              <p class="mt-3 text-sm">
+                <span class="font-semibold text-gray-900 dark:text-white">Read: </span>
+                {pieces.filter((x) => x.author === a.name).map((x, i) => (
+                  <>{i > 0 && ' · '}<a href={`/voices/${x.slug}`} class="font-medium text-primary-700 hover:underline dark:text-primary-300">{x.title}</a></>
+                ))}
+              </p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Heritage Gallery -->
+  <section class="py-16 lg:py-24">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-xl text-center">
+        <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/50 dark:text-accent-300">
+          Heritage &amp; Culture
+        </div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+          Stories Told Through Art
+        </h2>
+        <p class="mx-auto mt-4 max-w-md leading-relaxed text-lg text-gray-600 dark:text-gray-400">
+          Palestinian identity, memory and belonging, shared through the visual culture of our community.
+        </p>
+      </div>
+      <div class="mx-auto mt-12 grid max-w-3xl gap-8 sm:grid-cols-2">
+        <figure class="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-gray-800">
+          <div class="flex aspect-square w-full items-center justify-center bg-cream-100 p-3 dark:bg-gray-900">
+            <img
+              src="/assets/img/memory-heritage-poster.jpg"
+              alt="A Ramzunā poster titled Memory: Traditions and Folk Stories, featuring an ornate letter M decorated with Palestinian embroidery patterns, a brass coffee pot and an open storybook"
+              class="max-h-full max-w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="p-4 text-center text-sm text-gray-500 dark:text-gray-400">Memory: Traditions &amp; Folk Stories</figcaption>
+        </figure>
+        <figure class="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-gray-800">
+          <div class="flex aspect-square w-full items-center justify-center bg-cream-100 p-3 dark:bg-gray-900">
+            <img
+              src="/assets/img/identity-belonging-poster.jpg"
+              alt="A Ramzunā poster in Arabic titled Identity and Belonging, showing the Dome of the Rock and a keffiyeh alongside an olive branch"
+              class="max-h-full max-w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="p-4 text-center text-sm text-gray-500 dark:text-gray-400">Identity &amp; Belonging &middot; الهوية والانتماء</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="page-hero py-16 lg:py-24">
+    <div class="container mx-auto px-4 text-center lg:px-8">
+      <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Have something to share?</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
+        If you are a Palestinian writer with a poem, story, or letter you would like included here, we would love to hear from you. We publish both the Arabic and English/French/German versions.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="https://ee-eu.kobotoolbox.org/x/IJHWeAbH" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-primary-600 shadow-lg transition-all hover:bg-gray-100">
+          Submit Your Writing
+        </a>
+        <a href="/resources" class="inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">
+          Back to Resources
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing Quote -->
+  <section class="quote-section-photo py-12 lg:py-16">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="quote-glyph quote-glyph-photo" aria-hidden="true">&ldquo;</span>
+        <p class="font-display text-xl italic leading-relaxed text-white sm:text-2xl" style="text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);">
+          Against barbarity, poetry can resist only by confirming its attachment to human fragility like a blade of grass growing on a wall while armies march by.
+        </p>
+        <p class="mt-5 text-sm font-semibold text-white" style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);">Mahmoud Darwish</p>
+        <p class="mt-1 text-xs uppercase tracking-wide text-white/80" style="text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);">Palestinian poet &amp; author</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .quote-glyph {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4rem;
+    line-height: 0.5;
+    color: rgba(122, 34, 43, 0.35);
+    margin-bottom: 0.75rem;
+  }
+
+  :global(.dark) .quote-glyph {
+    color: rgba(224, 148, 156, 0.5);
+  }
+
+  /* Palestinian Voices closing quote: the olive-branch photo fills the whole
+     section edge to edge (no beige border), with just a light warm scrim so
+     the photo stays bright while the white text keeps its contrast. The
+     section itself is kept short (reduced vertical padding) so the banner
+     doesn't dominate the end of the page. */
+  .quote-section-photo {
+    position: relative;
+    background-image: linear-gradient(rgba(20, 11, 9, 0.32), rgba(20, 11, 9, 0.4)), url('/assets/img/olive-branch-quote-bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .quote-glyph-photo {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 3rem;
+  }
+
+</style>
+

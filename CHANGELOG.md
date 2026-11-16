@@ -60,3 +60,7 @@ Added full editable Lesson 9 (Freunde) main, audio-guided Lesson 9 extension, an
 ## Simplification pass: Language Resources and Palestinian Voices
 - Language Resources: one choice up front (language tabs), optional "Jump to" sidebar, one search box (searches all languages), uniform list rows. Removed the skill/format dropdowns, tile row, badges on every row and the mixed card shapes.
 - Palestinian Voices: one "Start reading" action, one uniform grid of all pieces, writers collapsed into an expandable list. Removed filter chips, the Surprise-me button, coloured card rotation and Arabic titles on cards.
+
+## Palestinian Voices — blog-style gallery
+- Rebuilt to mirror the blog index: same header, search, filter pills and 3-column card grid. Each card has a coloured cover showing a line from the piece (one colour per writer), then type, title, Arabic title, writer and read time. Writers are mixed so neighbouring cards differ.
+- The previous version (with writer bios, heritage posters and the Darwish quote) is kept as src/pages/_palestinian-voices.old.astro; Astro ignores it when building.
