@@ -115,7 +115,7 @@
     margin: 0 0 16px;
     color: inherit;
     font-family: 'Outfit', system-ui, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.65;
@@ -313,7 +313,7 @@
     }
 
     .tm-section .tm-quote {
-      font-size: 19px;
+      font-size: 16px;
       line-height: 1.75;
     }
 
@@ -330,82 +330,6 @@
     .tm-section .tm-role {
       font-size: 14px;
     }
-  }
-  /* ---- Polish layer: consistent rhythm with the rest of the page, dark mode ---- */
-  .tm-section {
-    padding-block: clamp(64px, 8vw, 96px);
-  }
-  .tm-section .tm-head {
-    margin-bottom: 36px;
-  }
-  .tm-section .tm-head::after {
-    content: none;
-  }
-  .tm-section .tm-eyebrow {
-    margin-bottom: 16px;
-    font-size: 0.875rem;
-  }
-  .tm-section .tm-head h2 {
-    color: #111827;
-    letter-spacing: -0.025em;
-  }
-  .tm-section .tm-card {
-    box-shadow: 0 10px 30px -14px rgba(42, 38, 34, 0.25);
-  }
-  .tm-section .tm-card--maroon {
-    box-shadow: 0 14px 34px -14px rgba(122, 34, 43, 0.55);
-  }
-  .tm-section .tm-button {
-    transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
-  }
-
-  :global(.dark) .tm-section {
-    background: #030712;
-    color: #f3f4f6;
-  }
-  :global(.dark) .tm-section .tm-head h2 {
-    color: #fff;
-  }
-  :global(.dark) .tm-section .tm-eyebrow {
-    background: rgba(56, 102, 79, 0.5);
-    color: #b3cdb8;
-  }
-  :global(.dark) .tm-section .tm-card:not(.tm-card--maroon) {
-    background: #111827;
-    border-color: #1f2937;
-    color: #e5e7eb;
-  }
-  :global(.dark) .tm-section .tm-card:not(.tm-card--maroon) .tm-quote-mark,
-  :global(.dark) .tm-section .tm-card:not(.tm-card--maroon) .tm-name {
-    color: #b3cdb8;
-  }
-  :global(.dark) .tm-section .tm-card:not(.tm-card--maroon) .tm-role,
-  :global(.dark) .tm-section .tm-count {
-    color: #9ca3af;
-  }
-  :global(.dark) .tm-section .tm-card:not(.tm-card--maroon) .tm-avatar {
-    background: rgba(56, 102, 79, 0.45);
-    color: #d9e6da;
-  }
-  :global(.dark) .tm-section .tm-card:not(.tm-card--maroon) .tm-profile {
-    border-top-color: rgba(255, 255, 255, 0.12);
-  }
-  :global(.dark) .tm-section .tm-button {
-    background: #111827;
-    border-color: #374151;
-    color: #f5e9e9;
-  }
-  :global(.dark) .tm-section .tm-play {
-    color: #e3bcbe;
-  }
-  :global(.dark) .tm-section .tm-dot::before {
-    background: #4b5563;
-  }
-  :global(.dark) .tm-section .tm-dot[aria-current="true"]::before {
-    background: #e3bcbe;
-  }
-  :global(.dark) .tm-section button:focus-visible {
-    outline-color: #fff;
   }
 </style>
 
@@ -437,8 +361,8 @@
       <figure class="tm-card tm-card--maroon">
         <div class="tm-quote-mark" aria-hidden="true">&ldquo;</div>
         <blockquote class="tm-quote">
-          Nelson Mandela once said, &ldquo;Education is the most powerful weapon
-          to change the world.&rdquo; Teaching French to a young Palestinian
+          Nelson Mandela once said, &rdquo;Education is the most powerful weapon
+          to change the world." Teaching French to a young Palestinian
           student at Ramzunā Languages has been incredibly rewarding.
           Preparing lessons, finding new ways to explain rules, and
           watching her progress fills me with joy and honour.

@@ -5,11 +5,6 @@ const site = await getSite();
 const nav = await getNav();
 const header = await getHeader();
 
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isCurrent = (url?: string) => !!url && (path === url || (url !== '/' && path.startsWith(url + '/')));
-const isActive = (item: { url?: string; children?: { url: string }[] }) =>
-  item.children ? item.children.some((c) => path === c.url || path.startsWith(c.url + '/')) : isCurrent(item.url);
-
 interface NavItem {
   text: string;
   url?: string;
@@ -37,7 +32,7 @@ interface NavItem {
   </div>
 </div>
 <header
-  class="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/90 backdrop-blur-lg transition-all dark:border-gray-800 dark:bg-gray-950/85"
+  class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg transition-all dark:border-gray-800 dark:bg-gray-950/80"
   data-header
 >
   <div
@@ -71,13 +66,7 @@ interface NavItem {
             <div class="group relative">
               <button
                 type="button"
-                class:list={[
-                  'relative flex items-center gap-1 py-2 text-sm font-medium transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-accent-500 after:transition-transform after:duration-200 hover:text-gray-900 dark:hover:text-white',
-                  isActive(item)
-                    ? 'text-gray-900 after:scale-x-100 dark:text-white dark:after:bg-accent-300'
-                    : 'text-gray-600 after:scale-x-0 hover:after:scale-x-100 dark:text-gray-400',
-                ]}
-                aria-current={isActive(item) ? 'true' : undefined}
+                class="flex items-center gap-1 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
               >
                 {item.text}
                 <svg class="h-3.5 w-3.5 transition-transform duration-150 group-hover:rotate-180 group-focus-within:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -94,11 +83,7 @@ interface NavItem {
                   {item.children.map((child) => (
                     <a
                       href={child.url}
-                      aria-current={isCurrent(child.url) ? 'page' : undefined}
-                      class:list={[
-                        'block px-4 py-2.5 text-sm font-medium transition-colors hover:bg-cream-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white',
-                        isCurrent(child.url) ? 'bg-cream-100 text-primary-700 dark:bg-gray-800 dark:text-primary-300' : 'text-gray-600 dark:text-gray-400',
-                      ]}
+                      class="block px-4 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-cream-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
                     >
                       {child.text}
                     </a>
@@ -110,13 +95,7 @@ interface NavItem {
             <a
               href={item.url}
               data-nav-link={item.url?.replace("/#", "")}
-              aria-current={isCurrent(item.url) ? 'page' : undefined}
-              class:list={[
-                'relative py-2 text-sm font-medium transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-accent-500 after:transition-transform after:duration-200 hover:text-gray-900 dark:hover:text-white',
-                isCurrent(item.url)
-                  ? 'text-gray-900 after:scale-x-100 dark:text-white dark:after:bg-accent-300'
-                  : 'text-gray-600 after:scale-x-0 hover:after:scale-x-100 dark:text-gray-400',
-              ]}
+              class="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
             >
               {item.text}
             </a>
@@ -221,11 +200,7 @@ interface NavItem {
           ) : (
             <a
               href={item.url}
-              aria-current={isCurrent(item.url) ? 'page' : undefined}
-              class:list={[
-                'block py-3 text-base font-medium',
-                isCurrent(item.url) ? 'text-accent-500 dark:text-accent-300' : 'text-gray-900 dark:text-white',
-              ]}
+              class="block py-3 text-base font-medium text-gray-900 dark:text-white"
             >
               {item.text}
             </a>
