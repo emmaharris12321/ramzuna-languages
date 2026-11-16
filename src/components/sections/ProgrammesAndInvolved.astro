@@ -117,7 +117,7 @@ const cardBase =
 
 {
   showTeach && (
-    <section class="bg-cream-200 py-16 lg:py-24 dark:bg-gray-950" aria-labelledby="how-we-teach-title">
+    <section class="bg-cream-200 py-10 lg:py-14 dark:bg-gray-950" aria-labelledby="how-we-teach-title">
       <div class="container mx-auto px-4 lg:px-8">
         <header class="mx-auto max-w-2xl text-center" data-animate="fade-in-up">
           <span class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
@@ -131,7 +131,7 @@ const cardBase =
           </h2>
         </header>
 
-        <div class="mt-12 grid gap-6 lg:mt-14 lg:grid-cols-3 lg:gap-8">
+        <div class="mt-8 grid gap-6 lg:mt-10 lg:grid-cols-3 lg:gap-8">
           {teach.map((c, i) => (
             <article class:list={[cardBase, tone[c.tone].card]} data-animate="fade-in-up" data-delay={100 + i * 80}>
               <div class:list={['mb-5 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl', tone[c.tone].icon]} aria-hidden="true">
@@ -163,7 +163,7 @@ const cardBase =
 
 {
   showInvolved && (
-    <section class="bg-white py-16 lg:py-24 dark:bg-gray-900" aria-labelledby="get-involved-title">
+    <section class="bg-white py-10 lg:py-14 dark:bg-gray-900" aria-labelledby="get-involved-title">
       <div class="container mx-auto px-4 lg:px-8">
         <header class="mx-auto max-w-2xl text-center" data-animate="fade-in-up">
           <span class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
@@ -186,7 +186,7 @@ const cardBase =
           </p>
         </header>
 
-        <div class="mt-12 grid gap-6 lg:mt-14 lg:grid-cols-3 lg:gap-8">
+        <div class="mt-8 grid gap-6 lg:mt-10 lg:grid-cols-3 lg:gap-8">
           {involved.map((c, i) => (
             <article class:list={[cardBase, tone[c.tone].card]} data-animate="fade-in-up" data-delay={100 + i * 80}>
               <div class:list={['mb-5 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl', tone[c.tone].icon]} aria-hidden="true">

@@ -88,264 +88,160 @@ const authors: Author[] = [
   },
 ];
 
-const totalPoems = authors.reduce((sum, a) => sum + a.poems.length, 0);
-const totalSeries = authors.filter((a) => a.poems.length > 1 && a.poems.every((p) => p.title === a.poems[0].title)).length;
-const writerId = (name: string) => `writer-${name.toLowerCase()}`;
+const minutes = (t?: string) => parseInt(t ?? '', 10) || 0;
 
-// Pull-quotes shown near the top. The line itself comes from each piece's
-// own `excerpt` in src/content/voices, so it always matches the real text.
-const featuredSlugs: { slug: string; author: string; title: string }[] = [
-  { slug: 'shams-the-sun-of-hope', author: 'Shams', title: 'The Sun of Hope' },
-  { slug: 'mais-i-am-still-here', author: 'Mais', title: 'I Am Still Here' },
-  { slug: 'noor-to-my-beloved-home', author: 'Noor', title: 'To My Beloved Home' },
-];
-const featured = featuredSlugs.filter((f) => excerptBySlug.get(f.slug));
-
-function isSeries(author: Author): boolean {
-  return (
-    author.poems.length > 1 &&
-    author.poems.every((p) => p.tag.startsWith('Chapter')) &&
-    author.poems.every((p) => p.title === author.poems[0].title)
-  );
+// One card per piece. A multi-chapter story (Marah) becomes a single card.
+interface Piece {
+  slug: string;
+  title: string;
+  arabicTitle?: string;
+  author: string;
+  excerpt: string;
+  readTime?: string;
+  minutes: number;
+  chapters?: number;
 }
+const pieces: Piece[] = [];
+for (const a of authors) {
+  const isSeries = a.poems.length > 1 && a.poems.every((p) => p.title === a.poems[0].title);
+  const list = isSeries ? [a.poems[0]] : a.poems;
+  for (const poem of list) {
+    const post = voicePosts.find((v) => v.id === poem.slug);
+    if (!post || !poem.slug) continue;
+    pieces.push({
+      slug: poem.slug,
+      title: poem.title,
+      arabicTitle: post.data.arabicTitle,
+      author: a.name,
+      excerpt: (post.data.excerpt ?? '').replace(/\s+/g, ' ').trim(),
+      readTime: post.data.readTime,
+      minutes: isSeries ? a.poems.reduce((n, pp) => n + minutes(voicePosts.find((v) => v.id === pp.slug)?.data.readTime), 0) : minutes(post.data.readTime),
+      chapters: isSeries ? a.poems.length : undefined,
+    });
+  }
+}
+
+const quick = pieces.filter((x) => x.minutes <= 2).length;
+const featured = pieces.find((x) => x.slug === 'shams-the-sun-of-hope') ?? pieces[0];
+const countBy = (name: string) => pieces.filter((x) => x.author === name).length;
+const cardTone = ['green', 'paper', 'maroon'] as const;
+const toneClass = {
+  green: 'bg-primary-600 text-white border-primary-600',
+  paper: 'bg-white text-gray-900 border-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-700',
+  maroon: 'bg-accent-500 text-white border-accent-500',
+};
 ---
 
-<Base title="Palestinian Voices" description="Poetry and prose from Palestinian students and writers, published by Ramzunā Languages.">
-  <!-- Page Header -->
-  <section class="page-hero py-16 lg:py-24">
-    <div class="container mx-auto px-4 text-center lg:px-8">
-      <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Palestinian Voices</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Poetry &amp; prose from Gaza, the West Bank, and displaced Palestinian writers.</p>
-      <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
-        <a href="/" class="transition-colors hover:text-white">Home</a>
-        <span>/</span>
-        <a href="/resources" class="transition-colors hover:text-white">Resources</a>
-        <span>/</span>
-        <span class="text-white">Palestinian Voices</span>
-      </nav>
-    </div>
-  </section>
-
-  <!-- Intro -->
-  <section class="py-16 lg:py-24">
+<Base title="Palestinian Voices" description="Poems and stories written by Palestinian students, in Arabic and English. Pick one and read.">
+  <!-- Hero: invitation + one line to start with -->
+  <section class="page-hero py-12 lg:py-20">
     <div class="container mx-auto px-4 lg:px-8">
-      <div class="mx-auto grid max-w-5xl items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div class="text-center lg:text-left">
-          <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/50 dark:text-accent-300">
-            Poetry &amp; Prose
-          </div>
-          <p dir="rtl" lang="ar" class="font-display text-3xl text-primary-600 sm:text-4xl dark:text-primary-400">أصوات فلسطينية</p>
-          <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-            A living collection of writing
-          </h2>
-          <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-gray-600 lg:mx-0 dark:text-gray-400">
-            Sharing what survival, memory, and hope sound like in the words of Palestinian students and writers. Every piece written here is an act of sumud — proof that Palestinian culture, thought, and feeling endure.
+          <nav class="mb-5 flex items-center justify-center gap-2 text-sm text-primary-200 lg:justify-start" aria-label="Breadcrumb">
+            <a href="/" class="hover:text-white">Home</a><span aria-hidden="true">/</span>
+            <a href="/resources" class="hover:text-white">Resources</a><span aria-hidden="true">/</span>
+            <span class="text-white">Palestinian Voices</span>
+          </nav>
+          <p dir="rtl" lang="ar" class="font-display text-2xl text-primary-100 sm:text-3xl">أصوات فلسطينية</p>
+          <h1 class="mt-1 font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">Palestinian Voices</h1>
+          <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/90 lg:mx-0 sm:text-xl">
+            Poems and stories written in Gaza and across Palestine, in the writers’ own words. Pick one and read — {quick} of {pieces.length} take two minutes or less.
           </p>
           <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-            <a href="#the-writers" class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-500/25 transition-all hover:-translate-y-0.5 hover:bg-accent-600">
-              Meet the writers <span aria-hidden="true">↓</span>
+            <a href={`/voices/${featured.slug}`} class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-primary-700 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-cream-50 sm:w-auto">
+              Start reading <span aria-hidden="true">→</span>
             </a>
-            <a href="https://ee-eu.kobotoolbox.org/x/IJHWeAbH" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-800 transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
-              Submit your writing
-            </a>
+            <button type="button" data-js-only hidden data-random={JSON.stringify(pieces.map((x) => x.slug))} class="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/10 sm:w-auto">
+              Surprise me
+            </button>
+            <a href="#browse" class="text-sm font-semibold text-white/90 underline-offset-4 hover:underline sm:ml-2">Browse all {pieces.length}</a>
           </div>
         </div>
 
-        <!-- Collection at a glance -->
-        <div class="grid grid-cols-3 gap-3 sm:gap-4 lg:grid-cols-1">
-          <div class="rounded-2xl bg-primary-600 p-5 text-center text-white shadow-soft-lg lg:flex lg:items-center lg:gap-5 lg:p-6 lg:text-left">
-            <p class="font-display text-4xl font-semibold leading-none sm:text-5xl lg:text-6xl">{authors.length}</p>
-            <p class="mt-2 text-sm font-medium text-white/85 lg:mt-0 lg:text-base">writers from Palestine</p>
+        <a href={`/voices/${featured.slug}`} class="group relative block rounded-3xl bg-cream-50 p-8 shadow-soft-xl transition-transform hover:-translate-y-1 sm:p-10 dark:bg-gray-900">
+          <span aria-hidden="true" class="block font-display text-7xl leading-none text-accent-300">&ldquo;</span>
+          <div class="mt-2 font-display text-3xl italic leading-snug text-gray-900 sm:text-4xl dark:text-white">{featured.excerpt}</div>
+          <div class="mt-8 flex items-end justify-between gap-4 border-t border-gray-200 pt-5 dark:border-gray-700">
+            <div>
+              <div class="font-semibold text-gray-900 dark:text-white">{featured.author}</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">{featured.title}{featured.arabicTitle && <span class="ml-1 text-gray-500">· <span lang="ar" dir="rtl">{featured.arabicTitle}</span></span>}</div>
+            </div>
+            <span class="whitespace-nowrap text-sm font-bold text-accent-500 transition-transform group-hover:translate-x-1 dark:text-accent-300">{featured.readTime} →</span>
           </div>
-          <div class="rounded-2xl bg-accent-500 p-5 text-center text-white shadow-soft-lg lg:flex lg:items-center lg:gap-5 lg:p-6 lg:text-left">
-            <p class="font-display text-4xl font-semibold leading-none sm:text-5xl lg:text-6xl">{totalPoems}</p>
-            <p class="mt-2 text-sm font-medium text-white/85 lg:mt-0 lg:text-base">poems &amp; chapters</p>
-          </div>
-          <div class="rounded-2xl border border-primary-200 bg-cream-50 p-5 text-center shadow-sm lg:flex lg:items-center lg:gap-5 lg:p-6 lg:text-left dark:border-primary-800 dark:bg-gray-900">
-            <p class="font-display text-4xl font-semibold leading-none text-primary-600 sm:text-5xl lg:text-6xl dark:text-primary-300">{totalSeries}</p>
-            <p class="mt-2 text-sm font-medium text-gray-700 lg:mt-0 lg:text-base dark:text-gray-300">serialised {totalSeries === 1 ? 'story' : 'stories'}</p>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- In their words -->
-  {
-    featured.length > 0 && (
-      <section class="bg-cream-100 py-16 lg:py-24 dark:bg-gray-900" aria-labelledby="in-their-words">
-        <div class="container mx-auto px-4 lg:px-8">
-          <div class="mx-auto max-w-3xl text-center">
-            <div class="mb-4 inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">Start Here</div>
-            <h2 id="in-their-words" class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">In Their Own Words</h2>
-            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">A line from each piece to begin with — tap one to read the full work.</p>
-          </div>
-          <div class="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-3">
-            {featured.map((f, i) => (
-              <a
-                href={`/voices/${f.slug}`}
-                class="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800"
-              >
-                <span aria-hidden="true" class:list={['absolute inset-x-0 top-0 h-1.5', i % 2 === 0 ? 'bg-primary-600' : 'bg-accent-500']} />
-                <span
-                  aria-hidden="true"
-                  class:list={['block font-display text-6xl leading-none', i % 2 === 0 ? 'text-primary-200 dark:text-primary-800' : 'text-accent-200 dark:text-accent-800']}
-                >&ldquo;</span>
-                <p class="mt-2 font-display text-xl italic leading-relaxed text-gray-900 dark:text-white">{excerptBySlug.get(f.slug)}</p>
-                <div class="mt-6 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-gray-700">
-                  <div>
-                    <p class="font-semibold text-gray-900 dark:text-white">{f.author}</p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">{f.title}</p>
-                  </div>
-                  <span class="text-sm font-bold text-accent-500 transition-transform group-hover:translate-x-1 dark:text-accent-200" aria-hidden="true">Read →</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  <!-- Authors -->
-  <section id="the-writers" class="scroll-mt-24 py-20 lg:py-28">
+  <!-- Browse pieces -->
+  <section id="browse" data-voices class="scroll-mt-20 py-14 lg:py-20">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/50 dark:text-accent-300">The Writers</div>
-        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Meet the Poets and Storytellers</h2>
-        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Click through to read each writer's work in full.</p>
-        <nav aria-label="Jump to a writer" class="mt-8 flex flex-wrap items-center justify-center gap-2">
-          {authors.map((a, i) => (
-            <a
-              href={`#${writerId(a.name)}`}
-              class:list={[
-                'rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors',
-                i % 2 === 0
-                  ? 'border-accent-200 text-accent-700 hover:bg-accent-500 hover:text-white dark:border-accent-800 dark:text-accent-200'
-                  : 'border-primary-200 text-primary-700 hover:bg-primary-600 hover:text-white dark:border-primary-800 dark:text-primary-200',
-              ]}
-            >
-              {a.name}
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Choose something to read</h2>
+        <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Each piece opens in Arabic and English, so you can read in either language, or both side by side.</p>
+        <div data-js-only hidden aria-label="Filter by writer" class="mt-7 flex flex-wrap items-center justify-center gap-2">
+          <button type="button" data-writer="All" aria-pressed="true" class="writer-chip">All <span class="opacity-70">{pieces.length}</span></button>
+          {authors.map((a) => <button type="button" data-writer={a.name} aria-pressed="false" class="writer-chip">{a.name} <span class="opacity-70">{countBy(a.name)}</span></button>)}
+        </div>
+      </div>
+
+      <ul class="mx-auto mt-10 max-w-6xl gap-5 [column-fill:_balance] sm:columns-2 lg:columns-3">
+        {pieces.map((piece, i) => {
+          const tone = cardTone[i % 3];
+          const dark = tone !== 'paper';
+          return (
+            <li data-piece data-author={piece.author} class="mb-5 break-inside-avoid">
+              <a href={`/voices/${piece.slug}`} class:list={['group flex flex-col rounded-2xl border p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg sm:p-7', toneClass[tone]]}>
+                <span aria-hidden="true" class:list={['block font-display text-5xl leading-none', dark ? 'text-white/45' : 'text-accent-300 dark:text-accent-700']}>&ldquo;</span>
+                <p class="mt-1 line-clamp-6 font-display text-xl italic leading-relaxed sm:text-[1.35rem]">{piece.excerpt}</p>
+                <div class:list={['mt-6 border-t pt-4', dark ? 'border-white/25' : 'border-gray-100 dark:border-gray-700']}>
+                  <h3 class="font-display text-lg font-semibold leading-snug">
+                    {piece.title}
+                    {piece.arabicTitle && <span lang="ar" dir="rtl" class:list={['mr-0 block text-base font-normal', dark ? 'text-white/80' : 'text-gray-500 dark:text-gray-400']}>{piece.arabicTitle}</span>}
+                  </h3>
+                  <div class:list={['mt-2 flex items-center justify-between gap-3 text-sm', dark ? 'text-white/85' : 'text-gray-600 dark:text-gray-400']}>
+                    <span>by <span class="font-semibold">{piece.author}</span> · {piece.chapters ? `${piece.chapters} chapters` : piece.readTime}</span>
+                    <span aria-hidden="true" class="font-bold transition-transform group-hover:translate-x-1">Read →</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Writers -->
+  <section id="the-writers" class="scroll-mt-20 bg-cream-100 py-16 lg:py-24 dark:bg-gray-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">The people behind the words</h2>
+        <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Students and young writers from Palestine. Tap a name to read their work.</p>
+      </div>
+      <ul class="mx-auto mt-10 grid max-w-6xl items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {authors.map((a, i) => (
+          <li class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-gray-800 dark:ring-white/10">
+            <div class="flex items-center gap-4">
+              <span class:list={['flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full font-display text-xl font-semibold text-white', i % 2 === 0 ? 'bg-primary-600' : 'bg-accent-500']}>{a.name.charAt(0)}</span>
+              <div>
+                <h3 class="font-display text-xl font-semibold text-gray-900 dark:text-white">{a.name}</h3>
+                <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{countBy(a.name) === 1 ? '1 piece' : `${countBy(a.name)} pieces`}</p>
+              </div>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{a.bio}</p>
+            <a href="#browse" data-writer-link={a.name} class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent-600 hover:underline dark:text-accent-300">
+              Read {a.name}’s work <span aria-hidden="true">→</span>
             </a>
-          ))}
-        </nav>
-      </div>
-
-      <div class="mx-auto mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          authors.map((author, i) => {
-            const tone = i % 2 === 0 ? 'accent' : 'primary';
-            const series = isSeries(author);
-            const solidBtn =
-              tone === 'primary' ? 'bg-primary-600 hover:bg-primary-700' : 'bg-accent-600 hover:bg-accent-700';
-            const tintRow =
-              tone === 'primary'
-                ? 'bg-primary-50 hover:bg-primary-600 hover:text-white dark:bg-primary-900/30 dark:hover:bg-primary-600'
-                : 'bg-accent-50 hover:bg-accent-600 hover:text-white dark:bg-accent-900/30 dark:hover:bg-accent-600';
-            return (
-              <article
-                id={writerId(author.name)}
-                class="flex scroll-mt-28 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-soft-lg dark:border-gray-700 dark:bg-gray-800"
-              >
-                <div class:list={['flex items-center gap-4 px-6 py-5 text-white', tone === 'primary' ? 'bg-primary-600' : 'bg-accent-500']}>
-                  <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-white/15 font-display text-2xl font-semibold ring-2 ring-white/30">
-                    {author.name.charAt(0)}
-                  </div>
-                  <div class="min-w-0">
-                    <h3 class="font-display text-2xl font-semibold leading-tight">{author.name}</h3>
-                    <p class="text-xs font-medium uppercase tracking-wider text-white/80">
-                      Palestine &middot; {series ? `${author.poems.length} chapters` : `${author.poems.length} ${author.poems.length === 1 ? 'piece' : 'pieces'}`}
-                    </p>
-                  </div>
-                </div>
-                <div class="px-6 pt-6">
-                  <p class="leading-relaxed text-gray-600 dark:text-gray-400">{author.bio}</p>
-                </div>
-
-                <div class="mt-6 flex flex-1 flex-col justify-end gap-2 p-6 pt-0">
-                  {series ? (
-                    <>
-                      <div class="rounded-xl bg-gray-50 px-4 py-3 text-center dark:bg-gray-900/40">
-                        <p class="font-semibold text-gray-900 dark:text-white">{author.poems[0].title}</p>
-                        <p class="mt-0.5 text-sm text-gray-500 dark:text-gray-400">A story in {author.poems.length} chapters</p>
-                      </div>
-                      {author.poems[0].slug ? (
-                        <>
-                          <a
-                            href={`/voices/${author.poems[0].slug}`}
-                            class:list={[
-                              'mt-1 flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5',
-                              solidBtn,
-                            ]}
-                          >
-                            Start Reading — Chapter 1 <span aria-hidden="true">→</span>
-                          </a>
-                          <div class="mt-1 flex flex-wrap items-center justify-center gap-2">
-                            {author.poems.slice(1).map((poem, pi) =>
-                              poem.slug ? (
-                                <a
-                                  href={`/voices/${poem.slug}`}
-                                  class:list={[
-                                    'rounded-full px-3 py-1.5 text-xs font-semibold transition-colors',
-                                    tone === 'primary'
-                                      ? 'bg-primary-100 text-primary-700 hover:bg-primary-600 hover:text-white dark:bg-primary-900/50 dark:text-primary-300'
-                                      : 'bg-accent-100 text-accent-700 hover:bg-accent-600 hover:text-white dark:bg-accent-900/50 dark:text-accent-300',
-                                  ]}
-                                >
-                                  Ch. {pi + 2}
-                                </a>
-                              ) : (
-                                <span class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-semibold text-gray-400 dark:bg-gray-900/40 dark:text-gray-500">
-                                  Ch. {pi + 2}
-                                </span>
-                              )
-                            )}
-                          </div>
-                        </>
-                      ) : (
-                        <div class="flex items-center justify-center gap-1.5 rounded-lg bg-gray-50 px-4 py-2.5 text-xs italic text-gray-400 dark:bg-gray-900/40 dark:text-gray-500">
-                          Coming soon
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    author.poems.map((poem) =>
-                      poem.slug ? (
-                        <a
-                          href={`/voices/${poem.slug}`}
-                          class:list={['group/poem flex flex-col gap-1 rounded-xl px-4 py-3 font-semibold text-gray-900 transition-colors dark:text-white', tintRow]}
-                        >
-                          <span class="flex items-center justify-between gap-3">
-                            <span>{poem.title}</span>
-                            <span class="flex flex-shrink-0 items-center gap-1 text-xs font-bold uppercase tracking-wide opacity-70 transition-opacity group-hover/poem:opacity-100">
-                              Read <span aria-hidden="true">→</span>
-                            </span>
-                          </span>
-                          {excerptBySlug.get(poem.slug) && (
-                            <span class="text-sm font-normal italic leading-snug opacity-80">
-                              &ldquo;{excerptBySlug.get(poem.slug)}&rdquo;
-                            </span>
-                          )}
-                        </a>
-                      ) : (
-                        <div class="flex items-center justify-between gap-3 rounded-xl bg-gray-50 px-4 py-3 text-gray-400 dark:bg-gray-900/40 dark:text-gray-500">
-                          <span class="font-medium">{poem.title}</span>
-                          <span class="flex-shrink-0 text-xs italic">Coming soon</span>
-                        </div>
-                      )
-                    )
-                  )}
-                </div>
-              </article>
-            );
-          })
-        }
-      </div>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
   <!-- Heritage Gallery -->
-  <section class="bg-cream-100 py-20 lg:py-28 dark:bg-gray-900">
+  <section class="py-16 lg:py-24">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto max-w-xl text-center">
         <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/50 dark:text-accent-300">
@@ -448,4 +344,43 @@ function isSeries(author: Author): boolean {
     color: rgba(255, 255, 255, 0.75);
     font-size: 3rem;
   }
+
+  [data-js-only][hidden] { display: none !important; }
+  .writer-chip {
+    border: 1px solid #d1d5db;
+    background: #fff;
+    color: #374151;
+    border-radius: 9999px;
+    padding: 0.4rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .writer-chip:hover { border-color: #38664f; color: #38664f; }
+  .writer-chip[aria-pressed="true"] { background: #38664f; border-color: #38664f; color: #fff; }
+  :global(.dark) .writer-chip { background: #1f2937; border-color: #374151; color: #d1d5db; }
+  :global(.dark) .writer-chip[aria-pressed="true"] { background: #38664f; border-color: #4b7d65; color: #fff; }
 </style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-voices]');
+  document.querySelectorAll<HTMLElement>('[data-js-only]').forEach((el) => (el.hidden = false));
+
+  if (root) {
+    const chips = [...root.querySelectorAll<HTMLButtonElement>('[data-writer]')];
+    const items = [...root.querySelectorAll<HTMLElement>('[data-piece]')];
+    const apply = (writer: string) => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.writer === writer)));
+      items.forEach((li) => (li.hidden = writer !== 'All' && li.dataset.author !== writer));
+    };
+    chips.forEach((c) => c.addEventListener('click', () => apply(c.dataset.writer!)));
+    document.querySelectorAll<HTMLElement>('[data-writer-link]').forEach((a) =>
+      a.addEventListener('click', () => apply(a.dataset.writerLink!))
+    );
+  }
+
+  document.querySelector<HTMLElement>('[data-random]')?.addEventListener('click', (e) => {
+    const slugs: string[] = JSON.parse((e.currentTarget as HTMLElement).dataset.random || '[]');
+    if (slugs.length) window.location.href = '/voices/' + slugs[Math.floor(Math.random() * slugs.length)];
+  });
+</script>

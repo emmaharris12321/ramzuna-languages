@@ -50,3 +50,9 @@ Added full editable Lesson 9 (Freunde) main, audio-guided Lesson 9 extension, an
 - Homepage: new full-width green "Our Impact" band (src/components/sections/ImpactStats.astro) directly under the hero, with large animated numbers. Content lives in `impact:` in src/content/homepage/index.yaml; the small stats row was removed from the hero.
 - Palestinian Voices: new intro with at-a-glance totals, "In Their Own Words" pull-quotes (taken from each piece's excerpt), writer jump-links, stronger writer cards; heritage gallery moved below the writers.
 - Study with Us / Teach with Us: quick-facts strip, icon lists, language tiles, comparison-style lesson formats, timelines, real student/educator quotes from the homepage content, teacher map.
+
+## Language resources page
+- Redesigned src/pages/resources/language-resources.astro: standard page header, language tiles with counts, search/filter card, resources as cards with format badges and source domains, live per-group counts. Filtering logic unchanged.
+
+## Palestinian Voices — reading-first redesign
+- Page now leads with the writing: hero with a featured line, "Start reading" and "Surprise me" buttons; a masonry grid of one card per piece (excerpt, title in English and Arabic, writer, read time) with writer filter chips; writers' bios moved lower. Marah's six chapters are a single card. Stats band removed.
