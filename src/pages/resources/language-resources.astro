@@ -173,25 +173,6 @@ const directory: Record<Collection, Record<string, Entry[]>> = {
   },
 };
 
-// "Start here" suggestion shown for each language, so a student who is unsure
-// where to begin has one clear first click. Edit freely: any resource from the
-// directory above (or another link) can be used here.
-const startHere: Record<Collection, { title: string; url: string; note: string }> = {
-  English: { title: 'BBC Learning English', url: 'https://www.bbc.co.uk/learningenglish/english/home', note: 'Lessons, news, listening and grammar in one place.' },
-  IELTS: { title: 'IELTS Liz', url: 'https://ieltsliz.com', note: 'Tips and practice for the IELTS exam.' },
-  French: { title: 'Easy French (YouTube)', url: 'https://www.youtube.com/@easyfrench', note: 'Video lessons and real-life French conversations.' },
-  German: { title: 'Deutsche Welle – Learn German', url: 'https://learngerman.dw.com/en/learn-german/s-9528', note: 'Free German courses to follow step by step.' },
-  Italian: { title: 'Coffee Break Italian', url: 'https://coffeebreaklanguages.com/coffeebreakitalian/', note: 'Short podcast lessons you can listen to anywhere.' },
-};
-
-const formatHelp: Record<Format, string> = {
-  Website: 'Read or practise online',
-  Video: 'Watch on YouTube',
-  Podcast: 'Listen',
-  PDF: 'Download or read a PDF',
-  Document: 'Open a shared document',
-};
-
 const sections = collections.map(collection => ({
   collection,
   groups: Object.entries(directory[collection]).map(([name, entries]) => ({
@@ -210,100 +191,54 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
 
 ---
 
-<Base title="Language Resources" description="Free language learning and IELTS preparation resources. Choose a language, choose what you want to practise, then open a resource.">
+<Base title="Language Resources" description="Browse language learning and IELTS preparation resources by subject and format.">
   <section class="bg-primary-600 py-10 dark:bg-primary-900 lg:py-14">
     <div class="container mx-auto px-4 lg:px-8">
       <nav aria-label="Breadcrumb" class="mb-4 flex flex-wrap gap-2 text-sm text-primary-100">
         <a href="/" class="hover:text-white">Home</a><span aria-hidden="true">/</span>
         <a href="/resources" class="hover:text-white">Resources</a><span aria-hidden="true">/</span>
-        <span aria-current="page" class="text-white">Language Resources</span>
+        <span aria-current="page" class="text-white">Languages</span>
       </nav>
       <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl">Language Resources</h1>
-      <p class="mt-3 max-w-2xl text-lg text-primary-100">
-        {resources.length} websites, videos and podcasts to help you study English, French, German, Italian or IELTS on your own.
+      <p class="mt-3 max-w-2xl text-primary-100">
+        Explore {resources.length} resources for language learning, teaching and IELTS preparation.
       </p>
     </div>
   </section>
 
   <section data-language-directory class="py-8 lg:py-12">
     <div class="container mx-auto max-w-5xl px-4 lg:px-8">
-
-      <!-- How it works -->
-      <div class="mb-8 rounded-2xl bg-white p-6 shadow-sm dark:bg-gray-800">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">How to use this page</h2>
-        <ol class="mt-4 grid gap-4 sm:grid-cols-3">
-          <li class="flex gap-3">
-            <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 text-sm font-semibold text-white" aria-hidden="true">1</span>
-            <span class="text-gray-700 dark:text-gray-300"><strong class="block text-gray-900 dark:text-white">Choose a language</strong>Select it in the buttons below.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 text-sm font-semibold text-white" aria-hidden="true">2</span>
-            <span class="text-gray-700 dark:text-gray-300"><strong class="block text-gray-900 dark:text-white">Pick what to practise</strong>Optional. Use the filters, or the search box.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 text-sm font-semibold text-white" aria-hidden="true">3</span>
-            <span class="text-gray-700 dark:text-gray-300"><strong class="block text-gray-900 dark:text-white">Open a resource</strong>Select any title. It opens in a new tab, so you can come back here.</span>
-          </li>
-        </ol>
+      <div class="mb-6">
+        <label for="resource-search" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Find a resource</label>
+        <input id="resource-search" data-search type="search" placeholder="Search titles, skills or formats..."
+          class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
       </div>
-
-      <!-- Step 1 -->
-      <h2 class="mb-3 text-base font-semibold text-gray-900 dark:text-white">Step 1: Choose a language</h2>
-      <div role="group" aria-label="Choose a language" class="flex flex-wrap gap-2 border-b border-gray-200 pb-5 dark:border-gray-700">
+      <div aria-label="Resource collections" class="flex flex-wrap gap-2 border-b border-gray-200 pb-4 dark:border-gray-700">
         {['All', ...collections].map(collection => (
           <button type="button" data-collection-filter={collection} aria-pressed={collection === 'English'}
-            class="collection-filter rounded-lg px-4 py-2 text-base font-medium transition-colors">
-            {collection === 'All' ? 'All languages' : collection}
-            <span class="ml-1 text-sm opacity-75">{collection === 'All' ? resources.length : resources.filter(r => r.collection === collection).length}</span>
+            class="collection-filter rounded-lg px-4 py-2 text-sm font-medium transition-colors">
+            {collection}
+            <span class="ml-1 text-xs opacity-75">{collection === 'All' ? resources.length : resources.filter(r => r.collection === collection).length}</span>
           </button>
         ))}
       </div>
-
-      <!-- Start here (updates with the chosen language) -->
-      {collections.map(collection => (
-        <div data-start-here={collection} hidden class="mt-5 flex flex-col gap-3 rounded-xl border border-primary-200 bg-primary-50 p-4 sm:flex-row sm:items-center sm:justify-between dark:border-primary-800 dark:bg-primary-900/20">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-wide text-primary-700 dark:text-primary-300">Not sure where to start?</p>
-            <p class="mt-1 text-gray-800 dark:text-gray-200"><strong>{startHere[collection].title}</strong>. {startHere[collection].note}</p>
-          </div>
-          <a href={startHere[collection].url} target="_blank" rel="noopener noreferrer"
-            class="inline-flex flex-shrink-0 items-center justify-center gap-2 rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-700">
-            Open it <span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span>
-          </a>
-        </div>
-      ))}
-
-      <!-- Step 2 -->
-      <h2 class="mb-3 mt-8 text-base font-semibold text-gray-900 dark:text-white">Step 2: Narrow it down <span class="font-normal text-gray-500 dark:text-gray-400">(optional)</span></h2>
-      <div class="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.4fr]">
+      <div class="my-5 flex flex-wrap items-end gap-3">
         <div>
-          <label for="resource-group" class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">I want to practise</label>
-          <select id="resource-group" data-group-filter class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-base text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white">
-            <option value="All">Everything</option>
+          <label for="resource-group" class="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-300">Learning objective</label>
+          <select id="resource-group" data-group-filter class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+            <option value="All">All objectives</option>
             {[...new Set(resources.map(r => r.group))].sort().map(group => <option value={group}>{group}</option>)}
           </select>
         </div>
         <div>
-          <label for="resource-format" class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">I prefer to</label>
-          <select id="resource-format" data-format-filter class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-base text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white">
-            <option value="All">Use any type</option>
-            {[...new Set(resources.map(r => r.format))].sort().map(format => <option value={format}>{formatHelp[format]} ({format})</option>)}
+          <label for="resource-format" class="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-300">Format</label>
+          <select id="resource-format" data-format-filter class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+            <option value="All">All formats</option>
+            {[...new Set(resources.map(r => r.format))].sort().map(format => <option value={format}>{format}</option>)}
           </select>
         </div>
-        <div>
-          <label for="resource-search" class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Or search by name</label>
-          <input id="resource-search" data-search type="search" placeholder="For example: podcast, grammar, BBC"
-            class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-base text-gray-900 placeholder-gray-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <h2 class="text-base font-semibold text-gray-900 dark:text-white">Step 3: Select a resource to open it</h2>
-        <div class="flex items-center gap-4">
-          <p data-result-count role="status" class="text-sm text-gray-600 dark:text-gray-400">{resources.length} resources</p>
-          <button type="button" data-reset class="text-sm font-medium text-primary-700 underline-offset-2 hover:underline dark:text-primary-300">Clear filters</button>
-        </div>
+        <button type="button" data-reset class="rounded-lg px-3 py-2 text-sm font-medium text-primary-700 hover:underline dark:text-primary-300">Reset filters</button>
+        <p data-result-count role="status" class="ml-auto py-2 text-sm text-gray-500 dark:text-gray-400">{resources.length} resources</p>
       </div>
 
       <div class="space-y-10">
@@ -313,25 +248,19 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
             {section.groups.map(group => (
               <section data-group-section={group.name}>
                 <div class="mb-2 flex items-center justify-between gap-2">
-                  <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">{group.name}</h3>
+                  <h3 class="font-semibold text-gray-800 dark:text-gray-200">{group.name}</h3>
                 </div>
                 <ul class="divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-200 bg-white dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800">
                   {group.entries.map(entry => (
                     <li data-entry>
-                      {entry.name && <h4 class="px-4 pt-3 text-base font-semibold text-gray-900 dark:text-white">{entry.name}</h4>}
+                      {entry.name && <h4 class="px-4 pt-3 text-sm font-semibold text-gray-900 dark:text-white">{entry.name}</h4>}
                       <ul>
                         {entry.links.map(resource => (
                           <li data-resource data-group={resource.group} data-format={resource.format}
                             data-search-text={`${entry.name} ${resource.title} ${section.collection} ${resource.group} ${resource.format}`.toLowerCase()}>
                             <a href={resource.url} target="_blank" rel="noopener noreferrer"
-                              class:list={["group flex items-center gap-3 px-4 text-base transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary-500 dark:hover:bg-gray-700/50", entry.name ? "py-2 pl-6 text-gray-700 dark:text-gray-300" : "py-3 font-medium text-gray-900 dark:text-white"]}>
-                              <span class="min-w-0 flex-1">
-                                <span class="group-hover:text-primary-700 dark:group-hover:text-primary-300">{resource.title}</span>
-                                {resource.group !== group.name && (
-                                  <span class="mt-0.5 block text-sm font-normal text-gray-500 dark:text-gray-400">For: {resource.group}</span>
-                                )}
-                              </span>
-                              <span class={`format-badge format-${resource.format.toLowerCase()}`}>{resource.format}</span>
+                              class:list={["group flex items-center gap-3 px-4 text-sm transition-colors hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary-500 dark:hover:bg-gray-700/50", entry.name ? "py-1.5 pl-6 text-gray-600 dark:text-gray-300" : "py-3 font-medium text-gray-900 dark:text-white"]}>
+                              <span class="min-w-0 flex-1 group-hover:text-primary-700 dark:group-hover:text-primary-300">{resource.title}</span>
                               <span aria-hidden="true" class="shrink-0 text-gray-400">↗</span>
                               <span class="sr-only">(opens in a new tab)</span>
                             </a>
@@ -346,8 +275,8 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
           </section>
         ))}
       </div>
-      <div data-empty hidden class="rounded-lg border border-dashed border-gray-300 p-8 text-center text-gray-600 dark:border-gray-700 dark:text-gray-400">
-        No resources match. Select &ldquo;Clear filters&rdquo; to see everything for this language again.
+      <div data-empty hidden class="rounded-lg border border-dashed border-gray-300 p-8 text-center text-gray-500 dark:border-gray-700 dark:text-gray-400">
+        No resources match your filters. Try another search or reset the filters.
       </div>
     </div>
   </section>
@@ -355,29 +284,14 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
 
 <style>
   [data-language-directory] [hidden] { display: none !important; }
-  .collection-filter { color: #374151; background: #e5e7eb; }
-  .collection-filter:hover { background: #d1d5db; }
-  .collection-filter[aria-pressed="true"] { background: #38664f; color: #fff; }
-  :global(.dark) .collection-filter { color: #d1d5db; background: #374151; }
-  :global(.dark) .collection-filter:hover { background: #4b5563; }
-  :global(.dark) .collection-filter[aria-pressed="true"] { background: #38664f; color: #fff; }
-
-  .format-badge {
-    flex-shrink: 0;
-    border-radius: 9999px;
-    padding: 0.125rem 0.625rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    background: #eef5f0;
-    color: #2c5240;
+  .collection-filter { color: #6b7280; }
+  .collection-filter:hover { background: rgb(128 128 128 / 0.12); }
+  .collection-filter[aria-pressed="true"] {
+    background: #e5e7eb;
+    color: #111827;
   }
-  .format-video { background: #f5e9e9; color: #7a222b; }
-  .format-podcast { background: #efe4cf; color: #5c4a1f; }
-  .format-pdf, .format-document { background: #e5e7eb; color: #374151; }
-  :global(.dark) .format-badge { background: rgba(56, 102, 79, 0.35); color: #d9e6da; }
-  :global(.dark) .format-video { background: rgba(122, 34, 43, 0.35); color: #f5e9e9; }
-  :global(.dark) .format-podcast { background: rgba(239, 228, 207, 0.15); color: #efe4cf; }
-  :global(.dark) .format-pdf, :global(.dark) .format-document { background: #374151; color: #d1d5db; }
+  :global(.dark) .collection-filter { color: #d1d5db; }
+  :global(.dark) .collection-filter[aria-pressed="true"] { background: #374151; color: white; }
 </style>
 
 <script>
@@ -392,7 +306,6 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
     const sections = [...root.querySelectorAll<HTMLElement>('[data-collection]')];
     const resultCount = root.querySelector<HTMLElement>('[data-result-count]')!;
     const empty = root.querySelector<HTMLElement>('[data-empty]')!;
-    const startBoxes = [...root.querySelectorAll<HTMLElement>('[data-start-here]')];
     let active = 'English';
 
     function updateObjectives() {
@@ -434,7 +347,6 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
         total += sectionCount;
       }
       buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.collectionFilter === active)));
-      startBoxes.forEach(box => { box.hidden = box.dataset.startHere !== active; });
       resultCount.textContent = `${total} resource${total === 1 ? '' : 's'}`;
       empty.hidden = total !== 0;
     }
@@ -449,7 +361,7 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
     objective.addEventListener('change', update);
     format.addEventListener('change', update);
     root.querySelector('[data-reset]')?.addEventListener('click', () => {
-      // Keep the chosen language; clear everything else.
+      active = 'All';
       search.value = '';
       objective.value = 'All';
       format.value = 'All';
