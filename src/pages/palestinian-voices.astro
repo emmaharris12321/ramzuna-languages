@@ -114,7 +114,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
   <section class="py-4 lg:py-8">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto max-w-xl text-center">
-        <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-700 dark:bg-accent-900/50 dark:text-accent-300">
+        <div class="mb-4 inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-sm font-medium text-accent-400 dark:bg-accent-500/50 dark:text-accent-200">
           Heritage &amp; Culture
         </div>
         <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
@@ -125,8 +125,8 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
         </p>
       </div>
       <div class="mx-auto mt-14 grid max-w-3xl gap-8 sm:grid-cols-2">
-        <figure class="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-gray-800">
-          <div class="flex aspect-square w-full items-center justify-center bg-cream-100 p-3 dark:bg-gray-900">
+        <figure class="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-gray-500">
+          <div class="flex aspect-square w-full items-center justify-center bg-cream-100 p-3 dark:bg-gray-500">
             <img
               src="/assets/img/memory-heritage-poster.jpg"
               alt="A Ramzunā poster titled Memory: Traditions and Folk Stories, featuring an ornate letter M decorated with Palestinian embroidery patterns, a brass coffee pot and an open storybook"
@@ -136,8 +136,8 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
           </div>
           <figcaption class="p-4 text-center text-sm text-gray-500 dark:text-gray-400">Memory: Traditions &amp; Folk Stories</figcaption>
         </figure>
-        <figure class="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-gray-800">
-          <div class="flex aspect-square w-full items-center justify-center bg-cream-100 p-3 dark:bg-gray-900">
+        <figure class="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-gray-500">
+          <div class="flex aspect-square w-full items-center justify-center bg-cream-100 p-3 dark:bg-gray-500">
             <img
               src="/assets/img/identity-belonging-poster.jpg"
               alt="A Ramzunā poster in Arabic titled Identity and Belonging, showing the Dome of the Rock and a keffiyeh alongside an olive branch"
@@ -152,7 +152,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
   </section>
 
   <!-- Poems & stories: laid out like the blog -->
-  <section id="writers" class="bg-cream-100 py-16 lg:py-24 dark:bg-gray-900" data-voices-directory>
+  <section id="writers" class="bg-cream-100 py-16 lg:py-24 dark:bg-gray-500" data-voices-directory>
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Poems &amp; Stories</h2>
@@ -166,7 +166,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
           </svg>
           <input id="voices-search" type="search" data-voices-search placeholder="Search poems..."
-            class="w-full rounded-lg border border-gray-300 bg-white py-3 pl-12 pr-4 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500" />
+            class="w-full rounded-lg border border-gray-300 bg-white py-3 pl-12 pr-4 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-500 dark:bg-gray-500 dark:text-white dark:placeholder-gray-500" />
         </div>
         <div class="mt-6 flex flex-wrap justify-center gap-3" role="group" aria-label="Filter by writer">
           <button type="button" data-author-filter="all" aria-pressed="true" class="voices-chip">All writers</button>
@@ -179,8 +179,8 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
       <!-- Writer bio (appears when one writer is chosen) -->
       <div class="mx-auto mt-8 max-w-3xl">
         {authors.map((a) => (
-          <div data-writer-bio={a.id} hidden class="rounded-2xl bg-white p-6 text-center shadow-sm dark:bg-gray-800">
-            <p class="font-display text-xl font-semibold text-gray-900 dark:text-white">{a.name}</p>
+          <div data-writer-bio={a.id} hidden class="rounded-2xl bg-white p-6 text-center shadow-sm dark:bg-gray-500">
+            <p class="font-display text-xl font-semibold text-gray-700 dark:text-white">{a.name}</p>
             <p class="mt-2 leading-relaxed text-gray-600 dark:text-gray-400">{a.bio}</p>
           </div>
         ))}
