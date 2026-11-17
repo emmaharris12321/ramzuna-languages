@@ -46,7 +46,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
       <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Palestinian Voices</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-base text-primary-100">Poetry &amp; prose from Gaza, the West Bank, and displaced Palestinian writers.</p>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">Poetry &amp; prose from Gaza, the West Bank, and displaced Palestinian writers.</p>
       <nav class="mt-6 flex items-center justify-center gap-2 text-sm text-primary-200" aria-label="Breadcrumb">
         <a href="/" class="transition-colors hover:text-white">Home</a>
         <span>/</span>
@@ -68,7 +68,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
         <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           A living collection of writing
         </h2>
-        <p class="mx-auto mt-4 max-w-md leading-relaxed text-base text-gray-600 dark:text-gray-400">
+        <p class="mx-auto mt-4 max-w-md leading-relaxed text-lg text-gray-600 dark:text-gray-400">
           Sharing what survival, memory, and hope sound like in the words of Palestinian students and writers. Every piece written here is an act of sumud — proof that Palestinian culture, thought, and feeling endure.
         </p>
         <p class="mt-6 text-sm font-medium uppercase tracking-wider text-gray-400 dark:text-gray-500">
@@ -88,7 +88,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
         <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           Stories Told Through Art
         </h2>
-        <p class="mx-auto mt-4 max-w-md leading-relaxed text-base text-gray-600 dark:text-gray-400">
+        <p class="mx-auto mt-4 max-w-md leading-relaxed text-lg text-gray-600 dark:text-gray-400">
           Palestinian identity, memory and belonging, shared through the visual culture of our community.
         </p>
       </div>
@@ -119,121 +119,87 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
     </div>
   </section>
 
-  <!-- Writers: choose one, then read their poems -->
+  <!-- Poems & stories: laid out like the blog -->
   <section id="writers" class="bg-cream-100 py-16 lg:py-24 dark:bg-gray-900" data-voices-directory>
     <div class="container mx-auto px-4 lg:px-8">
       <div class="mx-auto max-w-2xl text-center">
-        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Choose a writer</h2>
-        <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
-          Select a writer to read their poems and stories.
-        </p>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Poems &amp; Stories</h2>
+        <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">Browse everything, or choose a writer to see only their work.</p>
       </div>
 
-      <!-- Step 1: writer cards -->
-      <div class="mx-auto mt-12 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3" role="group" aria-label="Choose a writer">
-        {
-          authors.map((a, i) => {
-            const tone = i % 2 === 0 ? 'accent' : 'primary';
+      <div class="mx-auto mt-10 max-w-2xl">
+        <label for="voices-search" class="sr-only">Search poems and writers</label>
+        <div class="relative">
+          <svg class="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+          </svg>
+          <input id="voices-search" type="search" data-voices-search placeholder="Search poems..."
+            class="w-full rounded-lg border border-gray-300 bg-white py-3 pl-12 pr-4 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500" />
+        </div>
+        <div class="mt-6 flex flex-wrap justify-center gap-3" role="group" aria-label="Filter by writer">
+          <button type="button" data-author-filter="all" aria-pressed="true" class="voices-chip">All writers</button>
+          {authors.map((a) => (
+            <button type="button" data-author-filter={a.id} aria-pressed="false" class="voices-chip">{a.name}</button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Writer bio (appears when one writer is chosen) -->
+      <div class="mx-auto mt-8 max-w-3xl">
+        {authors.map((a) => (
+          <div data-writer-bio={a.id} hidden class="rounded-2xl bg-white p-6 text-center shadow-sm dark:bg-gray-800">
+            <p class="font-display text-xl font-semibold text-gray-900 dark:text-white">{a.name}</p>
+            <p class="mt-2 leading-relaxed text-gray-600 dark:text-gray-400">{a.bio}</p>
+          </div>
+        ))}
+      </div>
+
+      <p data-voices-status role="status" class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400"></p>
+
+      <!-- Poems, one after another -->
+      <div class="mx-auto mt-8 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {authors.flatMap((author) =>
+          author.pieces.map((v) => {
+            const sand = v.data.cardTheme === 'sand';
             return (
-              <button
-                type="button"
-                data-author-filter={a.id}
-                aria-pressed="false"
-                class="writer-card flex flex-col rounded-2xl bg-white p-6 text-left shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800"
+              <article
+                data-voice-card
+                data-author={author.id}
+                data-search-text={searchText(author.name, v)}
+                class="group overflow-hidden rounded-2xl bg-white shadow-soft transition-all hover:shadow-soft-lg dark:bg-gray-800"
               >
-                <span class="flex items-center gap-4">
-                  <span
-                    class:list={[
-                      'flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl font-display text-2xl font-semibold',
-                      tone === 'primary'
-                        ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/50 dark:text-primary-300'
-                        : 'bg-accent-100 text-accent-700 dark:bg-accent-900/50 dark:text-accent-300',
-                    ]}
-                    aria-hidden="true"
-                  >
-                    {a.name.charAt(0)}
-                  </span>
-                  <span>
-                    <span class="block text-lg font-semibold text-gray-900 dark:text-white">{a.name}</span>
-                    <span class="block text-sm text-gray-500 dark:text-gray-400">{a.pieces.length} {a.pieces.length === 1 ? 'piece' : 'pieces'}</span>
-                  </span>
-                </span>
-                <span class="writer-bio mt-4 flex-1 text-gray-600 dark:text-gray-400">{a.bio}</span>
-                <span
-                  class:list={[
-                    'mt-5 inline-flex w-fit items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white shadow-sm',
-                    tone === 'primary' ? 'bg-primary-600' : 'bg-accent-600',
-                  ]}
-                >
-                  See {a.name}&rsquo;s writing <span aria-hidden="true">→</span>
-                </span>
-              </button>
+                <a href={`/voices/${v.id}`} class="block">
+                  <div class:list={['voice-panel', sand ? 'voice-panel-sand' : 'voice-panel-green']}>
+                    <span class="voice-glyph" aria-hidden="true">&ldquo;</span>
+                    <p dir={v.data.arabicTitle ? 'rtl' : undefined} lang={v.data.arabicTitle ? 'ar' : undefined} class="voice-panel-title">
+                      {v.data.arabicTitle ?? v.data.title}
+                    </p>
+                  </div>
+                  <div class="p-6">
+                    <span class="inline-flex items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
+                      {v.data.tag}
+                    </span>
+                    <h3 class="mt-3 text-lg font-semibold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
+                      {v.data.title}
+                    </h3>
+                    {v.data.excerpt && <p class="mt-2 italic text-gray-600 dark:text-gray-400">&ldquo;{v.data.excerpt}&rdquo;</p>}
+                    <div class="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-gray-700">
+                      <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent-100 text-sm font-semibold text-accent-700 dark:bg-accent-900/50 dark:text-accent-300" aria-hidden="true">{author.name.charAt(0)}</span>
+                      <div class="text-sm text-gray-500 dark:text-gray-400">
+                        <div class="font-medium text-gray-700 dark:text-gray-300">{author.name}</div>
+                        <div>{v.data.readTime}</div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </article>
             );
           })
-        }
+        )}
       </div>
 
-      <!-- Step 2: the chosen writer's poems -->
-      <div id="poems" class="mx-auto mt-14 max-w-6xl scroll-mt-28" aria-live="polite">
-        <p data-voices-hint class="text-center text-gray-500 dark:text-gray-400">
-          Their poems will appear here.
-        </p>
-        {
-          authors.map((author, i) => {
-            const tone = i % 2 === 0 ? 'accent' : 'primary';
-            return (
-              <section data-author-section={author.id} hidden aria-labelledby={`writer-${author.id}`}>
-                <div class="flex flex-wrap items-center justify-between gap-3">
-                  <h3 id={`writer-${author.id}`} class="font-display text-2xl font-semibold text-gray-900 dark:text-white">Writing by {author.name}</h3>
-                  <button type="button" data-author-clear class="text-sm font-medium text-primary-700 underline-offset-2 hover:underline dark:text-primary-300">
-                    ← Choose another writer
-                  </button>
-                </div>
-                <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {author.pieces.map((v) => {
-                    const sand = v.data.cardTheme === 'sand';
-                    return (
-                      <article
-                        data-voice-card
-                        data-search-text={searchText(author.name, v)}
-                        class="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800"
-                      >
-                        <a href={`/voices/${v.id}`} class="flex h-full flex-col focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary-500">
-                          <div class:list={['voice-panel', sand ? 'voice-panel-sand' : 'voice-panel-green']}>
-                            <span class="voice-tag">{v.data.tag}</span>
-                            <span class="voice-glyph" aria-hidden="true">&ldquo;</span>
-                            <p dir={v.data.arabicTitle ? 'rtl' : undefined} lang={v.data.arabicTitle ? 'ar' : undefined} class="voice-panel-title">
-                              {v.data.arabicTitle ?? v.data.title}
-                            </p>
-                          </div>
-                          <div class="flex flex-1 flex-col p-6">
-                            <h4 class="text-lg font-semibold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
-                              {v.data.title}
-                            </h4>
-                            {v.data.excerpt && (
-                              <p class="mt-2 flex-1 italic leading-relaxed text-gray-600 dark:text-gray-400">&ldquo;{v.data.excerpt}&rdquo;</p>
-                            )}
-                            <div class="mt-5 flex items-center justify-between gap-3">
-                              <span class="text-sm text-gray-500 dark:text-gray-400">{v.data.readTime}</span>
-                              <span
-                                class:list={[
-                                  'inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white shadow-sm transition-all group-hover:shadow-md',
-                                  tone === 'primary' ? 'bg-primary-600 group-hover:bg-primary-700' : 'bg-accent-600 group-hover:bg-accent-700',
-                                ]}
-                              >
-                                Read <span aria-hidden="true">→</span>
-                              </span>
-                            </div>
-                          </div>
-                        </a>
-                      </article>
-                    );
-                  })}
-                </div>
-              </section>
-            );
-          })
-        }
+      <div data-voices-empty hidden class="mx-auto mt-12 max-w-xl rounded-lg border border-dashed border-gray-300 p-8 text-center text-gray-600 dark:border-gray-700 dark:text-gray-400">
+        Nothing matches your search. Clear the search box or choose &ldquo;All writers&rdquo;.
       </div>
     </div>
   </section>
@@ -242,7 +208,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
   <section class="bg-primary-600 py-16 lg:py-24 dark:bg-primary-900">
     <div class="container mx-auto px-4 text-center lg:px-8">
       <h2 class="font-display text-3xl font-semibold text-white sm:text-4xl">Have something to share?</h2>
-      <p class="mx-auto mt-4 max-w-2xl text-base text-primary-100">
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
         If you are a Palestinian writer with a poem, story, or letter you would like included here, we would love to hear from you. We publish both the Arabic and English/French/German versions.
       </p>
       <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -274,7 +240,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
 <style>
   .quote-glyph {
     display: block;
-    font-family: var(--rz-font-heading);
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 4rem;
     line-height: 0.5;
     color: rgba(122, 34, 43, 0.35);
@@ -310,7 +276,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
   .voice-panel {
     position: relative;
     display: flex;
-    min-height: 9rem;
+    aspect-ratio: 3 / 2;
     flex-direction: column;
     justify-content: flex-end;
     padding: 1.5rem;
@@ -335,7 +301,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
     left: 1.5rem;
     border-radius: 9999px;
     padding: 0.2rem 0.75rem;
-    font-size: var(--rz-text-small);
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     background: rgba(255, 255, 255, 0.18);
@@ -345,15 +311,15 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
     position: absolute;
     top: 0.25rem;
     right: 1.25rem;
-    font-family: var(--rz-font-heading);
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 6rem;
     line-height: 1;
     opacity: 0.2;
   }
   .voice-panel-title {
     position: relative;
-    font-family: var(--rz-font-heading);
-    font-size: var(--rz-text-subheading);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.75rem;
     font-weight: 600;
     line-height: 1.35;
   }
@@ -374,13 +340,13 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
     background: #e5e7eb;
     color: #374151;
     padding: 0.5rem 1rem;
-    font-size: var(--rz-text-body);
+    font-size: 0.875rem;
     font-weight: 500;
     transition: background-color 0.15s ease, color 0.15s ease;
   }
   .voices-chip:hover { background: #d1d5db; }
   .voices-chip[aria-pressed='true'] { background: #38664f; color: #fff; }
-  .voices-chip-count { font-size: var(--rz-text-small); opacity: 0.75; }
+  .voices-chip-count { font-size: 0.75rem; opacity: 0.75; }
   :global(.dark) .voices-chip { background: #374151; color: #d1d5db; }
   :global(.dark) .voices-chip:hover { background: #4b5563; }
   :global(.dark) .voices-chip[aria-pressed='true'] { background: #38664f; color: #fff; }
@@ -391,29 +357,43 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
     if (root.dataset.initialised) return;
     root.dataset.initialised = 'true';
 
-    const cards = [...root.querySelectorAll<HTMLButtonElement>('[data-author-filter]')];
-    const sections = [...root.querySelectorAll<HTMLElement>('[data-author-section]')];
-    const hint = root.querySelector<HTMLElement>('[data-voices-hint]')!;
-    const panel = root.querySelector<HTMLElement>('#poems')!;
+    const search = root.querySelector<HTMLInputElement>('[data-voices-search]')!;
+    const chips = [...root.querySelectorAll<HTMLButtonElement>('[data-author-filter]')];
+    const cards = [...root.querySelectorAll<HTMLElement>('[data-voice-card]')];
+    const bios = [...root.querySelectorAll<HTMLElement>('[data-writer-bio]')];
+    const status = root.querySelector<HTMLElement>('[data-voices-status]')!;
+    const empty = root.querySelector<HTMLElement>('[data-voices-empty]')!;
+    let active = 'all';
 
-    function show(id: string | null, scroll: boolean) {
-      sections.forEach((sec) => { sec.hidden = sec.dataset.authorSection !== id; });
-      cards.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.authorFilter === id)));
-      hint.hidden = id !== null;
-      if (id && scroll) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      if (!id && scroll) root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    function update() {
+      const terms = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      let total = 0;
+      for (const card of cards) {
+        const ok = (active === 'all' || card.dataset.author === active) && terms.every((t) => card.dataset.searchText?.includes(t));
+        card.hidden = !ok;
+        if (ok) total++;
+      }
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.authorFilter === active)));
+      bios.forEach((b) => { b.hidden = b.dataset.writerBio !== active; });
+      status.textContent = `${total} poem${total === 1 ? '' : 's'} & chapters`;
+      empty.hidden = total !== 0;
     }
 
-    cards.forEach((c) => c.addEventListener('click', () => show(c.dataset.authorFilter!, true)));
-    root.querySelectorAll('[data-author-clear]').forEach((b) => b.addEventListener('click', () => show(null, true)));
+    chips.forEach((c) => c.addEventListener('click', () => { active = c.dataset.authorFilter!; update(); }));
+    search.addEventListener('input', update);
 
     // Links such as /palestinian-voices#noor open straight on one writer.
     function fromHash() {
       const id = decodeURIComponent(location.hash.slice(1));
-      if (id && cards.some((c) => c.dataset.authorFilter === id)) show(id, true);
+      if (id && chips.some((c) => c.dataset.authorFilter === id)) {
+        active = id;
+        search.value = '';
+        update();
+        root.scrollIntoView();
+      }
     }
     window.addEventListener('hashchange', fromHash);
-    show(null, false);
+    update();
     fromHash();
   }
 
