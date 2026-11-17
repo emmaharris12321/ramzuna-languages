@@ -4,7 +4,7 @@ title: "Beyond Borders : A Voice for Palestinian Independence"
 arabicTitle: ""
 tag: Text
 bio: "Saja is a student at Ramzunā Languages."
-excerpt: "Behind every flag is a human story, behind every homeland is a heart that belongs to is, and behind every call for independence are people who simply wish to live with dignity, freedom, and hope."
+excerpt: "Behind every flag is a human story, behind every homeland is a heart that belongs to it, and behind every call for independence are people who simply wish to live with dignity, freedom, and hope."
 readTime: "2 mins read"
 languagesLabel: English
 ---
