@@ -37,7 +37,7 @@ impact:
       label: Nationalities
       note: Represented in our community
       icon: globe
-    - value: "1:4"
+    - value: "1:3"
       label: Teacher-Student Ratio
       note: Small groups, so every student is heard
       icon: group
