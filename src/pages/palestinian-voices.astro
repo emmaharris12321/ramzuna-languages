@@ -25,6 +25,38 @@ const writers: Writer[] = [
   { name: 'Menna', bio: 'Born in 2004, Menna is a translator, audio content presenter, podcaster, aspiring writer, and poet. Through her work, she brings life to her voice and to those the world has forgotten. Menna believes the genocide in Gaza has produced a new generation of writers. She writes many short texts you may find published on her Instagram page, and she also enjoys voice-over presentations and her latest work Roam the Streets and Collect Street Sayings, narrates colloquial Arabic street sayings alongside their English translations.' },
 ];
 
+// Each poem has its own illustration in /public/assets/img/voices-art/ (SVG).
+// New poems without an entry fall back to one of the general illustrations.
+const poemArt: Record<string, string> = {
+  'amira-to-my-brother': 'olive',
+  'arwa-kindle-the-spark-echoes': 'spark',
+  'aya-obsessions': 'orbit',
+  'mais-i-am-still-here': 'flower',
+  'mais-meeting-my-new-self': 'mirror',
+  'marah-a-day-of-breathing-life-chapter-1': 'marah-1',
+  'marah-a-day-of-breathing-life-chapter-2': 'marah-2',
+  'marah-a-day-of-breathing-life-chapter-3': 'marah-3',
+  'marah-a-day-of-breathing-life-chapter-4': 'marah-4',
+  'marah-a-day-of-breathing-life-chapter-5': 'marah-5',
+  'marah-a-day-of-breathing-life-chapter-6': 'marah-6',
+  'menna-street-suffering': 'street',
+  'noor-a-letter-from-gaza-to-santa-claus': 'letter',
+  'noor-between-north-and-south': 'compass',
+  'noor-grey': 'cloud',
+  'noor-just-write': 'pen',
+  'noor-midnight': 'moon',
+  'noor-to-my-beloved-home': 'home',
+  'shahed-ash': 'ember',
+  'shahed-the-door-i-no-longer-knock-on': 'door',
+  'shams-a-spring-in-autumn': 'blossom',
+  'shams-the-sun-of-hope': 'hope',
+};
+const fallbackArt = ['olive', 'hope', 'moon', 'blossom'];
+function artFor(id: string) {
+  const hash = [...id].reduce((n, c) => n + c.charCodeAt(0), 0);
+  return `/assets/img/voices-art/${poemArt[id] ?? fallbackArt[hash % fallbackArt.length]}.svg`;
+}
+
 const authors = writers
   .map((w) => {
     const pieces = voicePosts
@@ -160,8 +192,7 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
       <div class="mx-auto mt-8 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {authors.flatMap((author) =>
           author.pieces.map((v) => {
-            const sand = v.data.cardTheme === 'sand';
-            return (
+                        return (
               <article
                 data-voice-card
                 data-author={author.id}
@@ -169,17 +200,19 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
                 class="group overflow-hidden rounded-2xl bg-white shadow-soft transition-all hover:shadow-soft-lg dark:bg-gray-800"
               >
                 <a href={`/voices/${v.id}`} class="block">
-                  <div class:list={['voice-panel', sand ? 'voice-panel-sand' : 'voice-panel-green']}>
-                    <span class="voice-glyph" aria-hidden="true">&ldquo;</span>
-                    <p dir={v.data.arabicTitle ? 'rtl' : undefined} lang={v.data.arabicTitle ? 'ar' : undefined} class="voice-panel-title">
+                  <div class="voice-media">
+                    <img src={artFor(v.id)} alt="" loading="lazy" decoding="async" class="voice-img" />
+                    <div class="voice-shade"></div>
+                    <p dir={v.data.arabicTitle ? 'rtl' : undefined} lang={v.data.arabicTitle ? 'ar' : undefined} class="voice-media-title">
                       {v.data.arabicTitle ?? v.data.title}
                     </p>
+                    <span class="voice-tag">{v.data.tag}</span>
                   </div>
                   <div class="p-6">
                     <span class="inline-flex items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
                       {v.data.tag}
                     </span>
-                    <h3 class="mt-3 text-lg font-semibold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
+                    <h3 class="mt-3 text-xl font-semibold text-gray-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
                       {v.data.title}
                     </h3>
                     {v.data.excerpt && <p class="mt-2 italic text-gray-600 dark:text-gray-400">&ldquo;{v.data.excerpt}&rdquo;</p>}
@@ -272,56 +305,49 @@ function searchText(author: string, v: (typeof voicePosts)[number]) {
 <style>
   [data-voices-directory] [hidden] { display: none !important; }
 
-  /* Poem card header: same green / sand look as the poem pages themselves */
-  .voice-panel {
+  /* Poem card image */
+  .voice-media {
     position: relative;
-    display: flex;
     aspect-ratio: 3 / 2;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.5rem;
     overflow: hidden;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.5px, transparent 1.5px);
-    background-size: 20px 20px;
+    background: #38664f;
   }
-  .voice-panel-green {
-    background-color: #38664f;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.5px, transparent 1.5px), linear-gradient(135deg, #38664f, #2c5240);
-    color: #fff;
-  }
-  .voice-panel-sand {
-    background-color: #efe4cf;
-    background-image: radial-gradient(rgba(56, 102, 79, 0.12) 1.5px, transparent 1.5px);
-    color: #2c5240;
-  }
-  :global(.dark) .voice-panel-sand { background-color: #3c473e; color: #fdfbf7; }
-  .voice-tag {
+  .voice-img {
     position: absolute;
-    top: 1.25rem;
-    left: 1.5rem;
-    border-radius: 9999px;
-    padding: 0.2rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    background: rgba(255, 255, 255, 0.18);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
   }
-  .voice-panel-sand .voice-tag { background: rgba(56, 102, 79, 0.12); }
-  .voice-glyph {
+  :global(.group:hover) .voice-img { transform: scale(1.05); }
+  .voice-shade {
     position: absolute;
-    top: 0.25rem;
+    inset: 0;
+    background: linear-gradient(to top, rgba(28, 56, 44, 0.92) 0%, rgba(28, 56, 44, 0.55) 45%, rgba(28, 56, 44, 0.15) 100%);
+  }
+  .voice-media-title {
+    position: absolute;
+    left: 1.25rem;
     right: 1.25rem;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 6rem;
-    line-height: 1;
-    opacity: 0.2;
-  }
-  .voice-panel-title {
-    position: relative;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.75rem;
+    bottom: 1rem;
+    color: #fff;
+    font-family: var(--rz-font-heading);
+    font-size: var(--rz-text-subheading);
     font-weight: 600;
     line-height: 1.35;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  }
+  .voice-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    border-radius: 9999px;
+    padding: 0.2rem 0.75rem;
+    font-size: var(--rz-text-small);
+    font-weight: 600;
+    color: #2c5240;
+    background: rgba(255, 255, 255, 0.92);
   }
 
   .writer-card { cursor: pointer; }

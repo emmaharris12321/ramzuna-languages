@@ -36,3 +36,13 @@ Validation: `npm ci` and `npm run build` succeeded (89 pages). Checked in a head
 - Text stays at 16px everywhere (Round 2).
 
 Validation: `npm ci` and `npm run build` succeeded (89 pages); filters, deep links and card selection checked in a headless browser with no script errors.
+
+---
+
+# Round 5: original SVG artwork
+
+- **Palestinian Voices:** every poem card now has its own illustration, drawn as SVG and saved in `public/assets/img/voices-art/` (olive branch, flame, flower, mirror, a sun for each of Marah's six chapters, street lamp, letter, compass, cloud, pen, moon, home, embers, door, blossom, sun of hope). The Arabic title sits on the illustration. The mapping from poem to illustration is the `poemArt` list at the top of `src/pages/palestinian-voices.astro`. A new poem without an entry gets one of four general illustrations automatically.
+- **Language Resources:** English, IELTS, French, German and Italian each have an SVG banner in `public/assets/img/lang-art/`. The language cards show the banner, the resource count and how many websites, videos and podcasts are inside. After you choose a language, the banner appears again in the header, above the topic buttons and the tidy resource lists.
+- The earlier photo-based and cover-image changes were removed. Typography follows your shared scale (16px body).
+
+Validation: `npm ci` and `npm run build` succeeded (89 pages); both pages checked in a headless browser with no script errors.

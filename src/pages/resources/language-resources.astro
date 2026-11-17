@@ -245,17 +245,33 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
       </div>
 
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="group" aria-label="Choose a language">
-        {collections.map((collection, i) => (
-          <button type="button" data-collection-filter={collection} aria-pressed="false"
-            class="lang-card flex flex-col rounded-2xl bg-white p-6 text-left shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800">
-            <span class:list={['mb-4 flex h-12 w-12 items-center justify-center rounded-xl text-2xl', i % 2 === 0 ? 'bg-primary-100 dark:bg-primary-900/50' : 'bg-accent-100 dark:bg-accent-900/50']} aria-hidden="true">{langCards[collection].icon}</span>
-            <span class="text-lg font-semibold text-gray-900 dark:text-white">{collection}</span>
-            <span class="mt-1 flex-1 text-gray-600 dark:text-gray-400">{langCards[collection].blurb}</span>
-            <span class:list={['mt-5 inline-flex w-fit items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white shadow-sm', i % 2 === 0 ? 'bg-primary-600' : 'bg-accent-600']}>
-              See {resources.filter(r => r.collection === collection).length} resources <span aria-hidden="true">→</span>
-            </span>
-          </button>
-        ))}
+        {collections.map((collection, i) => {
+          const items = resources.filter(r => r.collection === collection);
+          const count = (f: Format) => items.filter(r => r.format === f).length;
+          return (
+            <button type="button" data-collection-filter={collection} aria-pressed="false"
+              class="lang-card group flex flex-col overflow-hidden rounded-2xl bg-white text-left shadow-sm transition-all hover:-translate-y-1 hover:shadow-soft-lg dark:bg-gray-800">
+              <span class="block aspect-[2/1] overflow-hidden bg-primary-700">
+                <img src={`/assets/img/lang-art/${collection.toLowerCase()}.svg`} alt="" loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </span>
+              <span class="flex flex-1 flex-col p-6">
+                <span class="flex items-baseline justify-between gap-3">
+                  <span class="text-xl font-semibold text-gray-900 dark:text-white">{collection}</span>
+                  <span class="text-sm text-gray-500 dark:text-gray-400">{items.length} resources</span>
+                </span>
+                <span class="mt-2 flex-1 text-gray-600 dark:text-gray-400">{langCards[collection].blurb}</span>
+                <span class="mt-4 flex flex-wrap gap-2">
+                  {(['Website', 'Video', 'Podcast'] as Format[]).filter(f => count(f) > 0).map(f => (
+                    <span class={`format-badge format-${f.toLowerCase()}`}><span aria-hidden="true">{formatIcon[f]}</span> {count(f)} {f === 'Website' ? (count(f) === 1 ? 'website' : 'websites') : f === 'Video' ? (count(f) === 1 ? 'video' : 'videos') : (count(f) === 1 ? 'podcast' : 'podcasts')}</span>
+                  ))}
+                </span>
+                <span class:list={['mt-5 inline-flex w-fit items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors', i % 2 === 0 ? 'bg-primary-600 group-hover:bg-primary-700' : 'bg-accent-600 group-hover:bg-accent-700']}>
+                  Open {collection} resources <span aria-hidden="true">→</span>
+                </span>
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       <!-- Step 2: the chosen language -->
@@ -263,9 +279,19 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
         <p data-lang-hint class="text-center text-gray-500 dark:text-gray-400">Resources for your language will appear here.</p>
 
         <div data-lang-panel hidden>
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <h2 data-lang-title class="font-display text-2xl font-semibold text-gray-900 dark:text-white"></h2>
-            <button type="button" data-lang-clear class="text-sm font-medium text-primary-700 underline-offset-2 hover:underline dark:text-primary-300">← Choose another language</button>
+          <div class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm sm:flex-row dark:bg-gray-800">
+            <div class="flex flex-1 flex-col justify-center gap-2 p-6 sm:p-8">
+              <button type="button" data-lang-clear class="w-fit text-sm font-medium text-primary-700 underline-offset-2 hover:underline dark:text-primary-300">← Choose another language</button>
+              <h2 data-lang-title class="font-display text-3xl font-semibold text-gray-900 dark:text-white"></h2>
+              {collections.map(collection => (
+                <p data-lang-blurb={collection} hidden class="text-gray-600 dark:text-gray-400">{langCards[collection].blurb}</p>
+              ))}
+            </div>
+            <div class="aspect-[2/1] bg-primary-700 sm:w-[26rem] sm:flex-shrink-0">
+              {collections.map(collection => (
+                <img data-lang-banner={collection} hidden src={`/assets/img/lang-art/${collection.toLowerCase()}.svg`} alt="" class="h-full w-full object-cover" />
+              ))}
+            </div>
           </div>
 
           {collections.map(collection => (
@@ -281,24 +307,24 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
             </div>
           ))}
 
-          <!-- Optional filters -->
-          <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <!-- Topic chips -->
+          <p class="mt-6 text-sm font-medium text-gray-700 dark:text-gray-300">Show me:</p>
+          <div class="mt-2 flex flex-wrap gap-2" role="group" aria-label="Choose a topic">
+            <button type="button" data-topic-filter="All" aria-pressed="true" class="topic-chip">Everything</button>
+            {[...new Set(resources.map(r => r.group))].sort().map(group => (
+              <button type="button" data-topic-filter={group} aria-pressed="false" class="topic-chip">{group}</button>
+            ))}
+          </div>
+          <div class="mt-5 grid gap-4 sm:grid-cols-2">
             <div>
-              <label for="resource-group" class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">I want to practise</label>
-              <select id="resource-group" data-group-filter class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-base text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white">
-                <option value="All">Everything</option>
-                {[...new Set(resources.map(r => r.group))].sort().map(group => <option value={group}>{group}</option>)}
-              </select>
-            </div>
-            <div>
-              <label for="resource-format" class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">I prefer to</label>
+              <label for="resource-format" class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Type</label>
               <select id="resource-format" data-format-filter class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-base text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white">
-                <option value="All">Use any type</option>
+                <option value="All">Any type</option>
                 {[...new Set(resources.map(r => r.format))].sort().map(format => <option value={format}>{formatHelp[format]}</option>)}
               </select>
             </div>
             <div>
-              <label for="resource-search" class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Or search by name</label>
+              <label for="resource-search" class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Search by name</label>
               <input id="resource-search" data-search type="search" placeholder="For example: grammar"
                 class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-base text-gray-900 placeholder-gray-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
             </div>
@@ -310,35 +336,31 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
 
           <div class="mt-6 space-y-10">
             {sections.map(section => (
-              <div data-collection={section.collection} hidden class="space-y-10">
+              <div data-collection={section.collection} hidden class="space-y-8">
                 {section.groups.map(group => (
                   <section data-group-section={group.name}>
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{group.name}</h3>
-                    <div class="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                      {group.entries.map(entry => (
-                        <div data-entry class="flex flex-col rounded-2xl bg-white p-5 shadow-sm transition-shadow hover:shadow-soft-lg dark:bg-gray-800">
-                          {entry.name && <h4 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">{entry.name}</h4>}
-                          <ul class="flex flex-1 flex-col gap-2">
-                            {entry.links.map(resource => (
-                              <li data-resource data-group={resource.group} data-format={resource.format} class="flex-1"
-                                data-search-text={`${entry.name} ${resource.title} ${section.collection} ${resource.group} ${resource.format}`.toLowerCase()}>
-                                <a href={resource.url} target="_blank" rel="noopener noreferrer"
-                                  class="group flex h-full flex-col rounded-xl p-3 transition-colors hover:bg-primary-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary-500 dark:hover:bg-primary-900/20">
-                                  <span class="flex items-center gap-2">
-                                    <span class={`format-badge format-${resource.format.toLowerCase()}`}><span aria-hidden="true">{formatIcon[resource.format]}</span> {resource.format}</span>
-                                  </span>
-                                  <span class="mt-2 font-medium text-gray-900 group-hover:text-primary-700 dark:text-white dark:group-hover:text-primary-300">{resource.title}</span>
-                                  {resource.group !== group.name && (
-                                    <span class="mt-0.5 text-sm text-gray-500 dark:text-gray-400">For: {resource.group}</span>
-                                  )}
-                                  <span class="mt-3 text-sm font-medium text-primary-700 dark:text-primary-300">Open <span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></span>
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
+                    <ul class="mt-3 divide-y divide-gray-100 overflow-hidden rounded-2xl bg-white shadow-sm dark:divide-gray-700 dark:bg-gray-800">
+                      {group.entries.flatMap(entry => entry.links.map(resource => (
+                        <li data-resource data-group={resource.group} data-format={resource.format}
+                          data-search-text={`${entry.name} ${resource.title} ${section.collection} ${resource.group} ${resource.format}`.toLowerCase()}>
+                          <a href={resource.url} target="_blank" rel="noopener noreferrer"
+                            class="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-primary-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary-500 dark:hover:bg-primary-900/20">
+                            <span class="min-w-0 flex-1">
+                              <span class="block font-medium text-gray-900 group-hover:text-primary-700 dark:text-white dark:group-hover:text-primary-300">
+                                {entry.name ? `${entry.name} · ${resource.title}` : resource.title}
+                              </span>
+                              {resource.group !== group.name && (
+                                <span class="block text-sm text-gray-500 dark:text-gray-400">Also for: {resource.group}</span>
+                              )}
+                            </span>
+                            <span class={`format-badge format-${resource.format.toLowerCase()}`}><span aria-hidden="true">{formatIcon[resource.format]}</span> {resource.format}</span>
+                            <span class="hidden w-16 flex-shrink-0 text-right text-sm font-medium text-primary-700 sm:block dark:text-primary-300">Open <span aria-hidden="true">↗</span></span>
+                            <span class="sr-only">(opens in a new tab)</span>
+                          </a>
+                        </li>
+                      )))}
+                    </ul>
                   </section>
                 ))}
               </div>
@@ -356,6 +378,11 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
 
 <style>
   [data-language-directory] [hidden] { display: none !important; }
+  .topic-chip { border-radius: 9999px; background: #e5e7eb; color: #374151; padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 500; transition: background-color .15s; }
+  .topic-chip:hover { background: #d1d5db; }
+  .topic-chip[aria-pressed="true"] { background: #38664f; color: #fff; }
+  :global(.dark) .topic-chip { background: #374151; color: #d1d5db; }
+  :global(.dark) .topic-chip[aria-pressed="true"] { background: #38664f; color: #fff; }
   .lang-card { cursor: pointer; }
   .lang-card[aria-pressed="true"] { outline: 2px solid #38664f; outline-offset: 2px; }
   .collection-filter { color: #374151; background: #e5e7eb; }
@@ -369,7 +396,7 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
     flex-shrink: 0;
     border-radius: 9999px;
     padding: 0.125rem 0.625rem;
-    font-size: var(--rz-text-small);
+    font-size: 0.75rem;
     font-weight: 600;
     background: #eef5f0;
     color: #2c5240;
@@ -389,11 +416,14 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
     root.dataset.initialised = 'true';
 
     const search = root.querySelector<HTMLInputElement>('[data-search]')!;
-    const objective = root.querySelector<HTMLSelectElement>('[data-group-filter]')!;
+    const topics = [...root.querySelectorAll<HTMLButtonElement>('[data-topic-filter]')];
+    let topic = 'All';
     const format = root.querySelector<HTMLSelectElement>('[data-format-filter]')!;
     const cards = [...root.querySelectorAll<HTMLButtonElement>('[data-collection-filter]')];
     const sections = [...root.querySelectorAll<HTMLElement>('[data-collection]')];
     const startBoxes = [...root.querySelectorAll<HTMLElement>('[data-start-here]')];
+    const banners = [...root.querySelectorAll<HTMLElement>('[data-lang-banner]')];
+    const blurbs = [...root.querySelectorAll<HTMLElement>('[data-lang-blurb]')];
     const hint = root.querySelector<HTMLElement>('[data-lang-hint]')!;
     const panel = root.querySelector<HTMLElement>('[data-lang-panel]')!;
     const title = root.querySelector<HTMLElement>('[data-lang-title]')!;
@@ -405,11 +435,8 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
       const available = new Set(sections
         .filter(section => section.dataset.collection === active)
         .flatMap(section => [...section.querySelectorAll<HTMLElement>('[data-resource]')].map(item => item.dataset.group!)));
-      for (const option of Array.from(objective.options)) {
-        option.hidden = option.value !== 'All' && !available.has(option.value);
-        option.disabled = option.hidden;
-      }
-      if (objective.selectedOptions[0]?.disabled) objective.value = 'All';
+      topics.forEach(t => { t.hidden = t.dataset.topicFilter !== 'All' && !available.has(t.dataset.topicFilter!); });
+      if (topic !== 'All' && !available.has(topic)) topic = 'All';
     }
 
     function update() {
@@ -422,7 +449,7 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
           let groupCount = 0;
           for (const item of group.querySelectorAll<HTMLElement>('[data-resource]')) {
             const matches = isActive
-              && (objective.value === 'All' || item.dataset.group === objective.value)
+              && (topic === 'All' || item.dataset.group === topic)
               && (format.value === 'All' || item.dataset.format === format.value)
               && terms.every(term => item.dataset.searchText?.includes(term));
             item.hidden = !matches;
@@ -437,8 +464,11 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
         section.hidden = !isActive;
         if (isActive) total = sectionCount;
       }
+      topics.forEach(t => t.setAttribute('aria-pressed', String(t.dataset.topicFilter === topic)));
       cards.forEach(card => card.setAttribute('aria-pressed', String(card.dataset.collectionFilter === active)));
       startBoxes.forEach(box => { box.hidden = box.dataset.startHere !== active; });
+      banners.forEach(el => { el.hidden = el.dataset.langBanner !== active; });
+      blurbs.forEach(el => { el.hidden = el.dataset.langBlurb !== active; });
       hint.hidden = active !== null;
       panel.hidden = active === null;
       title.textContent = active ? `${active} resources` : '';
@@ -449,7 +479,7 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
     function choose(collection: string | null, scroll: boolean) {
       active = collection;
       search.value = '';
-      objective.value = 'All';
+      topic = 'All';
       format.value = 'All';
       updateObjectives();
       update();
@@ -460,11 +490,11 @@ const resources = sections.flatMap(section => section.groups.flatMap(group =>
     cards.forEach(card => card.addEventListener('click', () => choose(card.dataset.collectionFilter!, true)));
     root.querySelector('[data-lang-clear]')?.addEventListener('click', () => choose(null, true));
     search.addEventListener('input', update);
-    objective.addEventListener('change', update);
+    topics.forEach(t => t.addEventListener('click', () => { topic = t.dataset.topicFilter!; update(); }));
     format.addEventListener('change', update);
     root.querySelector('[data-reset]')?.addEventListener('click', () => {
       search.value = '';
-      objective.value = 'All';
+      topic = 'All';
       format.value = 'All';
       update();
     });
