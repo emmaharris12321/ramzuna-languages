@@ -46,3 +46,5 @@ Validation: `npm ci` and `npm run build` succeeded (89 pages); filters, deep lin
 - The earlier photo-based and cover-image changes were removed. Typography follows your shared scale (16px body).
 
 Validation: `npm ci` and `npm run build` succeeded (89 pages); both pages checked in a headless browser with no script errors.
+
+- **Round 5 follow-up:** the French and German banners no longer show the Eiffel Tower or the Brandenburg Gate. French now shows accent letter tiles (é, ç, à) with "Bonjour" and "Salut !". German shows umlaut tiles (ä, ö, ü, ß) with "Hallo" and "Guten Tag". Files: `public/assets/img/lang-art/french.svg` and `german.svg`.
