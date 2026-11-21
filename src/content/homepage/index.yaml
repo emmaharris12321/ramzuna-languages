@@ -25,11 +25,11 @@ impact:
   title: Free Lessons, Real Numbers
   description: Every figure below is a lesson taught by a volunteer to a Palestinian student, at no cost to them.
   items:
-    - value: "942"
+    - value: "972"
       label: Hours Delivered
       note: Of free teaching by volunteer educators
       icon: clock
-    - value: "628"
+    - value: "648"
       label: Lessons Delivered
       note: Free lessons, taught one session at a time
       icon: book
